@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>产品库 - 金牌助理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 顶部导航玻璃态 */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 筛选胶囊 */
+        .filter-pill {
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            color: #6B7280;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-pill.active {
+            background: #FFF7ED;
+            border-color: #FFEDD5;
+            color: #C2410C;
+            /* 橙色文字 */
+            font-weight: 700;
+        }
+
+        /* 产品卡片 */
+        .product-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.1s;
+        }
+
+        .product-card:active {
+            transform: scale(0.99);
+        }
+
+        /* 公司 Logo 占位符 */
+        .company-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* 数据块 */
+        .data-box {
+            background: #F9FAFB;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+
+        /* 底部操作条 */
+        .action-bar {
+            border-top: 1px solid #F3F4F6;
+            margin-top: 12px;
+            padding-top: 10px;
+        }
+
+        /* 抽屉样式 */
+        .drawer-bottom {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(100%);
+        }
+
+        .drawer-open {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex flex-col">
+
+    <header class="glass-header sticky top-0 z-30">
+        <div class="px-4 py-3">
+            <div
+                class="h-10 bg-gray-100 rounded-xl flex items-center px-3 border border-transparent focus-within:bg-white focus-within:border-orange-200 transition-all">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 text-xs mr-2"></i>
+                <input type="text" placeholder="搜索产品名称、条款关键字..."
+                    class="bg-transparent text-sm outline-none flex-1 text-gray-700">
+                <i class="fa-solid fa-barcode text-gray-400 text-sm ml-2"></i>
+            </div>
+        </div>
+
+        <div class="pb-3 px-4">
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mb-3">
+                <button class="filter-pill active">全部</button>
+                <button class="filter-pill">重疾险</button>
+                <button class="filter-pill">终身寿</button>
+                <button class="filter-pill">年金险</button>
+                <button class="filter-pill">高端医疗</button>
+                <button class="filter-pill">意外险</button>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <div class="flex gap-2 text-xs font-medium text-gray-500">
+                    <span class="text-orange-600 font-bold">综合排序</span>
+                    <span class="hover:text-gray-800">销量</span>
+                    <span class="hover:text-gray-800">最新</span>
+                </div>
+
+                <button onclick="toggleCompanyDrawer()"
+                    class="flex items-center gap-1.5 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-lg text-xs font-bold text-gray-700 active:bg-gray-100">
+                    <i class="fa-regular fa-building"></i>
+                    筛选公司
+                    <i class="fa-solid fa-caret-down text-[10px] text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-3 space-y-4 pb-24">
+
+        <div class="product-card p-4">
+            <div class="flex justify-between items-start mb-3">
+                <div class="flex items-center gap-2">
+                    <div class="company-logo bg-orange-500">平</div>
+                    <span class="text-xs font-bold text-gray-500">平安人寿</span>
+                </div>
+                <span
+                    class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-0.5 rounded border border-red-100">本周热销
+                    🔥</span>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-900 mb-1">御享金瑞 · 增额终身寿</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="text-[10px] text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-100">现价增长快</span>
+                    <span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">减保灵活</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 mb-3">
+                <div class="data-box">
+                    <div class="text-[10px] text-gray-400 mb-0.5">长期 IRR 可达</div>
+                    <div class="text-lg font-black text-orange-600 leading-none">2.98%</div>
+                </div>
+                <div class="data-box">
+                    <div class="text-[10px] text-gray-400 mb-0.5">回本周期</div>
+                    <div class="text-base font-bold text-gray-800 leading-none">5-7年</div>
+                </div>
+            </div>
+
+            <div class="action-bar flex justify-between items-center">
+                <label class="flex items-center gap-2 text-xs text-gray-500 cursor-pointer">
+                    <input type="checkbox" class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
+                    加入对比
+                </label>
+                <button
+                    class="bg-gray-900 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md active:scale-95 transition-transform flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-signature"></i> 制作计划书
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card p-4">
+            <div class="flex justify-between items-start mb-3">
+                <div class="flex items-center gap-2">
+                    <div class="company-logo bg-blue-600">友</div>
+                    <span class="text-xs font-bold text-gray-500">友邦保险</span>
+                </div>
+                <span
+                    class="bg-blue-50 text-blue-500 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-100">绿通服务</span>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-900 mb-1">友如意 · 顺心版 (2025)</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="text-[10px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100">癌症二次赔</span>
+                    <span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">ICU 津贴</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="data-box col-span-1">
+                    <div class="text-[10px] text-gray-400 mb-0.5">重疾种类</div>
+                    <div class="text-base font-bold text-gray-800">120种</div>
+                </div>
+                <div class="data-box col-span-2 flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] text-gray-400 mb-0.5">最高保额</div>
+                        <div class="text-base font-bold text-gray-800">100万</div>
+                    </div>
+                    <div class="text-[10px] bg-green-50 text-green-600 px-2 py-1 rounded font-bold">免体检</div>
+                </div>
+            </div>
+
+            <div class="action-bar flex justify-between items-center">
+                <label class="flex items-center gap-2 text-xs text-gray-500 cursor-pointer">
+                    <input type="checkbox" class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
+                    加入对比
+                </label>
+                <button
+                    class="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-xs font-bold shadow-sm active:bg-gray-50 transition-colors">
+                    查看条款
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card p-4">
+            <div class="flex justify-between items-start mb-3">
+                <div class="flex items-center gap-2">
+                    <div class="company-logo bg-cyan-600">M</div>
+                    <span class="text-xs font-bold text-gray-500">MSH 万欣和</span>
+                </div>
+                <span class="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded">全球直付</span>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-gray-900 mb-1">精选 · 全球高端医疗</h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="text-[10px] text-cyan-600 bg-cyan-50 px-1.5 py-0.5 rounded border border-cyan-100">包含私立医院</span>
+                    <span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">0免赔</span>
+                </div>
+            </div>
+
+            <div class="action-bar flex justify-between items-center">
+                <label class="flex items-center gap-2 text-xs text-gray-500 cursor-pointer">
+                    <input type="checkbox" class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
+                    加入对比
+                </label>
+                <div class="flex gap-2">
+                    <button
+                        class="bg-white border border-gray-200 text-gray-700 px-3 py-2 rounded-full text-xs font-bold shadow-sm">
+                        责任表
+                    </button>
+                    <button
+                        class="bg-orange-50 text-orange-600 border border-orange-100 px-3 py-2 rounded-full text-xs font-bold shadow-sm">
+                        立即测算
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="company-drawer"
+        class="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl shadow-2xl drawer-bottom flex flex-col h-[70vh]">
+        <div class="flex justify-between items-center p-4 border-b border-gray-100">
+            <h3 class="text-sm font-bold text-gray-900">选择保险公司</h3>
+            <button onclick="toggleCompanyDrawer()"
+                class="w-8 h-8 rounded-full bg-gray-50 text-gray-400 flex items-center justify-center hover:bg-gray-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-1 overflow-hidden">
+            <div
+                class="w-10 bg-gray-50 flex flex-col items-center py-4 gap-1 text-[10px] font-bold text-gray-400 overflow-y-auto no-scrollbar">
+                <a href="#" class="text-orange-500">热</a>
+                <a href="#">A</a>
+                <a href="#">B</a>
+                <a href="#">C</a>
+                <a href="#">P</a>
+                <a href="#">T</a>
+                <a href="#">Z</a>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 space-y-6">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-3 uppercase">热门公司</h4>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button
+                            class="flex flex-col items-center gap-2 p-3 border border-orange-200 bg-orange-50 rounded-xl">
+                            <div
+                                class="w-8 h-8 rounded bg-orange-500 text-white flex items-center justify-center text-xs font-bold">
+                                平</div>
+                            <span class="text-xs font-bold text-gray-700">平安</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-2 p-3 border border-gray-100 bg-white rounded-xl">
+                            <div
+                                class="w-8 h-8 rounded bg-blue-600 text-white flex items-center justify-center text-xs font-bold">
+                                友</div>
+                            <span class="text-xs font-bold text-gray-700">友邦</span>
+                        </button>
+                        <button class="flex flex-col items-center gap-2 p-3 border border-gray-100 bg-white rounded-xl">
+                            <div
+                                class="w-8 h-8 rounded bg-green-600 text-white flex items-center justify-center text-xs font-bold">
+                                国</div>
+                            <span class="text-xs font-bold text-gray-700">国寿</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 mb-3 border-b border-gray-100 pb-1">T</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 py-2 cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500">
+                            <span class="text-sm text-gray-700">太平洋保险</span>
+                        </label>
+                        <label class="flex items-center gap-3 py-2 cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500">
+                            <span class="text-sm text-gray-700">泰康人寿</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-100 flex gap-3">
+            <button class="flex-1 py-3 rounded-xl bg-gray-100 text-gray-600 text-sm font-bold">重置</button>
+            <button onclick="toggleCompanyDrawer()"
+                class="flex-[2] py-3 rounded-xl bg-gray-900 text-white text-sm font-bold shadow-lg">确认 (1)</button>
+        </div>
+    </div>
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/20 z-40 hidden backdrop-blur-sm transition-opacity"
+        onclick="toggleCompanyDrawer()"></div>
+
+    <script>
+        function toggleCompanyDrawer() {
+            const drawer = document.getElementById('company-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (drawer.classList.contains('drawer-open')) {
+                drawer.classList.remove('drawer-open');
+                overlay.classList.add('hidden');
+            } else {
+                drawer.classList.add('drawer-open');
+                overlay.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

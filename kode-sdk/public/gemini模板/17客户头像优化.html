@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            padding: 20px;
+        }
+
+        /* 数字字体优化 */
+        .num-font {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* 外层大卡片：仿原图的柔和圆角和暖色背景 */
+        .profile-card-soft {
+            background-color: #FFF9F5;
+            /* 极淡的暖橙背景 */
+            border: 1px solid #FFE4D6;
+            border-radius: 32px;
+            /* 更大的圆角 */
+            box-shadow: 0 8px 24px -6px rgba(255, 107, 53, 0.08);
+        }
+
+        /* 右上角预算小白卡 */
+        .budget-box {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px -2px rgba(255, 166, 0, 0.1);
+            border: 1px solid #FFF0E0;
+            min-width: 100px;
+            /* 设定最小宽度，防止被挤压 */
+        }
+
+        /* 底部标签 */
+        .pill-tag {
+            background: #FFFFFF;
+            border: 1px solid #FFE4D6;
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-size: 12px;
+            color: #4B5563;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card-soft p-6 w-full max-w-[400px] mx-auto">
+
+        <div class="flex justify-between items-center mb-6">
+
+            <div class="flex gap-4 items-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-white border-2 border-orange-100 flex items-center justify-center shadow-sm shrink-0 relative overflow-hidden">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wang&backgroundColor=ffdfbf"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex items-center gap-2">
+                        <h2 class="text-2xl font-bold text-gray-900 tracking-tight">王志远</h2>
+                        <span
+                            class="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm leading-tight">
+                            高意向
+                        </span>
+                    </div>
+                    <div class="text-xs text-gray-500 font-medium flex items-center gap-1.5">
+                        <i class="fa-solid fa-briefcase text-orange-300"></i>
+                        科技公司 CTO (42岁)
+                    </div>
+                </div>
+            </div>
+
+            <div class="budget-box p-3 flex flex-col items-center justify-center shrink-0 ml-4">
+                <div class="flex items-center gap-1 mb-1">
+                    <i class="fa-solid fa-wallet text-orange-500 text-xs"></i>
+                    <span class="text-[10px] text-gray-400 font-bold">年预算</span>
+                </div>
+                <div class="text-gray-900 leading-none flex items-baseline">
+                    <span class="text-3xl font-black tracking-tight">5-8</span>
+                    <span class="text-sm font-bold ml-1 text-gray-500">万</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="h-px w-full bg-orange-100/50 mb-5"></div>
+
+        <div>
+            <div class="flex items-center gap-2 mb-3">
+                <i class="fa-solid fa-address-card text-orange-400 text-sm"></i>
+                <span class="text-xs font-bold text-orange-900/60">客户需求画像</span>
+            </div>
+
+            <div class="flex flex-wrap gap-2.5">
+                <span class="pill-tag">已婚育</span>
+                <span class="pill-tag">年收80w+</span>
+                <span class="pill-tag">北京海淀</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "我叫什么？你还记得吗？"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "```json\n{\n  \"thought\": \"用户询问我是否记得他们的名字，但在之前的对话中没有提供过任何个人信息，我需要诚实告知我无法记忆未提供的信息。\",\n  \"customer_profile\": {\n    \"name\": \"待确认\",\n    \"role\": \"待确认\",\n    \"age\": \"待确认\",\n    \"annual_budget\": \"待确认\",\n    \"marital_status\": \"待确认\",\n    \"annual_income\": \"待确认\",\n    \"location\": \"待确认\",\n    \"risk_factors\": [\"待确认\"],\n    \"needs\": [\"待确认\"]\n  },\n  \"insight_summary\": \"尚未收集到任何客户信息，需要首先确认基本个人信息才能提供保险建议。\",\n  \"recommendations\": [],\n  \"questions\": [\n    \"请问您的姓名是什么？\",\n    \"可以分享一些基本信息吗？如年龄、职业、所在地区等\"\n  ],\n  \"next_actions\": [\"建议客户提供基本信息以便开始保险规划\"]\n}\n```"
+      }
+    ]
+  }
+]

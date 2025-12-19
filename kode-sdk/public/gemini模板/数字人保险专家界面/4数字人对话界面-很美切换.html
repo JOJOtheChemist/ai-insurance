@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>与张伟对话中</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #1F2937;
+            /* 深色背景适配视频流 */
+            overscroll-behavior-y: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 模拟数字人视频流背景 */
+        .avatar-viewport {
+            height: 45vh;
+            background: radial-gradient(circle at center, #374151 0%, #111827 100%);
+            position: relative;
+        }
+
+        /* 引导面板 */
+        .interaction-sheet {
+            height: 60vh;
+            /* 稍微盖住一点视频，形成层级 */
+            background: #FFFFFF;
+            border-radius: 32px 32px 0 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-col;
+        }
+
+        /* 提问卡片 */
+        .prompt-card {
+            background: #F9FAFB;
+            border: 1px solid #F3F4F6;
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+
+        .prompt-card:active {
+            background: #EFF6FF;
+            border-color: #BFDBFE;
+            transform: scale(0.98);
+        }
+
+        /* 呼吸波纹 - 模拟正在聆听 */
+        .listening-wave {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: #10B981;
+            border-radius: 4px;
+            animation: wave 1s infinite ease-in-out;
+        }
+
+        .wave-bar:nth-child(2) {
+            animation-delay: 0.1s;
+            height: 15px;
+        }
+
+        .wave-bar:nth-child(3) {
+            animation-delay: 0.2s;
+            height: 25px;
+        }
+
+        .wave-bar:nth-child(4) {
+            animation-delay: 0.1s;
+            height: 15px;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                height: 10px;
+                opacity: 0.5;
+            }
+
+            50% {
+                height: 24px;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex flex-col overflow-hidden relative">
+
+    <div class="avatar-viewport w-full flex justify-center items-end pb-12 overflow-hidden">
+
+        <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-20 text-white/80">
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div
+                class="flex items-center gap-2 bg-black/20 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-xs font-bold">张伟 AI · 在线</span>
+            </div>
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+        </div>
+
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+            class="w-48 h-48 rounded-full border-4 border-white/10 shadow-2xl mb-6 z-10 transform scale-125">
+
+        <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#1F2937] to-transparent z-10"></div>
+
+        <div class="listening-wave z-20 mb-8 opacity-80">
+            <div class="wave-bar h-3"></div>
+            <div class="wave-bar h-5"></div>
+            <div class="wave-bar h-8"></div>
+            <div class="wave-bar h-5"></div>
+            <div class="wave-bar h-3"></div>
+        </div>
+        <p class="absolute bottom-16 text-xs text-white/60 font-medium z-20">正在聆听...</p>
+    </div>
+
+    <div class="interaction-sheet flex flex-col z-30">
+
+        <div class="w-full flex justify-center pt-3 pb-2">
+            <div class="w-12 h-1 bg-gray-200 rounded-full"></div>
+        </div>
+
+        <div class="px-6 pb-4 border-b border-gray-50">
+            <h1 class="text-xl font-bold text-gray-900 mb-1">你好，我是张伟 👋</h1>
+            <p class="text-sm text-gray-500 leading-snug">
+                友邦资深总监，擅长<span class="text-gray-800 font-bold">家族信托</span>与<span
+                    class="text-gray-800 font-bold">企业法商</span>。
+                已有 <span class="text-orange-500 font-bold">1.2万</span> 人通过我解决了资产隔离问题。
+            </p>
+        </div>
+
+        <div class="px-6 py-3 flex gap-3 overflow-x-auto no-scrollbar">
+            <button class="px-3 py-1.5 rounded-full bg-gray-900 text-white text-xs font-bold shadow-md">我是企业主</button>
+            <button
+                class="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold whitespace-nowrap">我是中产家庭</button>
+            <button
+                class="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-gray-600 text-xs font-bold whitespace-nowrap">我想问理赔</button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-6 space-y-3 pb-24">
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2">猜你想问</p>
+
+            <button class="prompt-card w-full p-4 flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-gray-800 group-hover:text-blue-600">企业债务隔离</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"我的公司负债会牵连家庭资产吗？"</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up text-gray-300 rotate-45 group-hover:text-blue-500"></i>
+            </button>
+
+            <button class="prompt-card w-full p-4 flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-gray-800 group-hover:text-blue-600">大额保单架构</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"如何通过保险实现税务筹划？"</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up text-gray-300 rotate-45 group-hover:text-blue-500"></i>
+            </button>
+
+            <button class="prompt-card w-full p-4 flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-child-reaching"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-sm font-bold text-gray-800 group-hover:text-blue-600">子女婚前财产</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"给孩子买的房怎么防止被分割？"</div>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up text-gray-300 rotate-45 group-hover:text-blue-500"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="absolute bottom-0 w-full bg-white border-t border-gray-100 px-4 py-3 pb-6 z-40 flex items-center gap-3">
+        <button
+            class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-gray-200">
+            <i class="fa-solid fa-microphone text-lg"></i>
+        </button>
+        <div
+            class="flex-1 bg-gray-100 rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-gray-300 transition-colors">
+            <input type="text" placeholder="向张伟提问..." class="bg-transparent flex-1 outline-none text-sm text-gray-800">
+        </div>
+        <button
+            class="w-11 h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+</body>
+
+</html>

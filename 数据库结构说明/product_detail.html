@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友邦传世无忧高端医疗保险 - 产品详情</title>
+    <style>
+        :root {
+            --primary-color: #D31145; /* 友邦红 */
+            --secondary-color: #1A1A1A;
+            --accent-color: #C69C6D; /* 金色 */
+            --bg-light: #F9FAFB;
+            --text-gray: #666;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--secondary-color);
+            line-height: 1.6;
+            padding-bottom: 80px; /* 为底部按钮留空间 */
+        }
+
+        /* 头部设计 */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(198,156,109,0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .company-name {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .company-name::before {
+            content: '🛡️';
+            margin-right: 6px;
+        }
+
+        .product-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+        }
+
+        /* 核心数据卡片 */
+        .metrics-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .metric-card {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        /* 主体内容 */
+        .container {
+            max-width: 800px;
+            margin: -20px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background-color: var(--primary-color);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        /* 标签列表 */
+        .tags-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .info-tag {
+            background-color: #F3F4F6;
+            color: #4B5563;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* 投保规则网格 */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .rule-item h4 {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        .rule-item p {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* 保障范围列表 */
+        .coverage-list {
+            list-style: none;
+        }
+
+        .coverage-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .coverage-item:last-child {
+            border-bottom: none;
+        }
+
+        .coverage-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #FFF5F7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .coverage-content {
+            flex: 1;
+        }
+
+        .coverage-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .coverage-desc {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .coverage-amount {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 15px;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        /* 责任免除 */
+        .exclusion-box {
+            background-color: #FFF9FA;
+            border: 1px dashed #FCC;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .exclusion-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .exclusion-box li {
+            margin-bottom: 5px;
+        }
+
+        /* 底部操作栏 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(211, 17, 69, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .rules-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .header {
+                padding: 60px 40px;
+                text-align: center;
+            }
+            .metrics-container {
+                justify-content: center;
+            }
+            .product-desc {
+                margin: 0 auto;
+            }
+            .bottom-nav {
+                justify-content: center;
+            }
+            .bottom-nav .btn {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部展示区 -->
+    <header class="header">
+        <div class="tag">TOP 推荐</div>
+        <h1 class="product-title">友邦传世无忧高端医疗保险</h1>
+        <div class="company-name">友邦人寿保险有限公司</div>
+        <p class="product-desc">
+            全球顶尖医疗资源尊享，千万保额守护健康。突破社保限制，直付服务无需垫付，给您和家人最极致的健康守护。
+        </p>
+
+        <!-- 关键指标 -->
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value">800<span style="font-size:14px">万</span></div>
+                <div class="metric-label">最高年度保额</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">0<span style="font-size:14px">免赔</span></div>
+                <div class="metric-label">可选免赔额</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">全球</div>
+                <div class="metric-label">保障区域</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">直付</div>
+                <div class="metric-label">理赔方式</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 产品标签 -->
+        <div class="section" style="padding: 15px;">
+            <div class="tags-list">
+                <span class="info-tag">#高端医疗</span>
+                <span class="info-tag">#全球保障</span>
+                <span class="info-tag">#私立医院</span>
+                <span class="info-tag">#直付服务</span>
+                <span class="info-tag">#癌症特药</span>
+            </div>
+        </div>
+
+        <!-- 投保规则 -->
+        <div class="section">
+            <h3 class="section-title">投保规则</h3>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <h4>投保年龄</h4>
+                    <p>0-70 周岁</p>
+                </div>
+                <div class="rule-item">
+                    <h4>保障期间</h4>
+                    <p>1 年</p>
+                </div>
+                <div class="rule-item">
+                    <h4>等待期</h4>
+                    <p>30 天</p>
+                </div>
+                <div class="rule-item">
+                    <h4>交费方式</h4>
+                    <p>年交</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 保障详情 -->
+        <div class="section">
+            <h3 class="section-title">核心保障权益</h3>
+            <div class="coverage-list">
+                <div class="coverage-item">
+                    <div class="coverage-icon">🏥</div>
+                    <div class="coverage-content">
+                        <div class="coverage-title">住院费用补偿</div>
+                        <div class="coverage-desc">包含床位费、膳食费、护理费、重症监护室费等，全额理赔。</div>
+                    </div>
+                    <div class="coverage-amount">全额</div>
+                </div>
+                <div class="coverage-item">
+                    <div class="coverage-icon">💊</div>
+                    <div class="coverage-content">
+                        <div class="coverage-title">癌症治疗费用</div>
+                        <div class="coverage-desc">涵盖化疗、放疗、靶向疗法、免疫疗法等费用。</div>
+                    </div>
+                    <div class="coverage-amount">全额</div>
+                </div>
+                <div class="coverage-item">
+                    <div class="coverage-icon">👨‍⚕️</div>
+                    <div class="coverage-content">
+                        <div class="coverage-title">门诊手术及特殊门诊</div>
+                        <div class="coverage-desc">门诊手术、肾透析、器官移植后的抗排异治疗。</div>
+                    </div>
+                    <div class="coverage-amount">全额</div>
+                </div>
+                <div class="coverage-item">
+                    <div class="coverage-icon">✈️</div>
+                    <div class="coverage-content">
+                        <div class="coverage-title">紧急医疗救援</div>
+                        <div class="coverage-desc">提供全球范围内的医疗转运、送返服务。</div>
+                    </div>
+                    <div class="coverage-amount">100万</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 费率参考 -->
+        <div class="section">
+            <h3 class="section-title">费率参考 (示例)</h3>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">*以0免赔额、全球除美计划为例</p>
+            <div style="background: #F9FAFB; border-radius: 8px; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                    <tr style="background: #eee;">
+                        <th style="padding: 10px; text-align: left;">年龄</th>
+                        <th style="padding: 10px; text-align: right;">年交保费</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">0-6 周岁</td>
+                        <td style="padding: 10px; text-align: right; font-weight: 600;">¥ 12,888</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">30 周岁</td>
+                        <td style="padding: 10px; text-align: right; font-weight: 600;">¥ 15,660</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">40 周岁</td>
+                        <td style="padding: 10px; text-align: right; font-weight: 600;">¥ 19,800</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 重要提示 -->
+        <div class="section">
+            <h3 class="section-title">重要提示</h3>
+            <div class="exclusion-box">
+                <strong>⚠️ 责任免除摘要</strong>
+                <ul>
+                    <li>既往症（投保前已存在的疾病，除非特别约定承保）。</li>
+                    <li>整形美容、视力矫正、牙科护理（非意外导致）。</li>
+                    <li>遗传性疾病和先天性畸形（部分计划除外）。</li>
+                    <li>未遵医嘱服用药物、吸毒或注射毒品。</li>
+                    <li>更多详情请见保险条款。</li>
+                </ul>
+            </div>
+            <div style="margin-top: 15px; font-size: 13px; color: #999;">
+                <p>犹豫期：自您签收保单之日起有 15 天犹豫期，期间退保无损失。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+        <button class="btn btn-outline" onclick="alert('即将连接AI保险顾问...')">🤖 咨询AI顾问</button>
+        <button class="btn btn-primary" onclick="alert('开始为您生成个性化计划书...')">📄 生成计划书</button>
+    </nav>
+
+</body>
+</html>

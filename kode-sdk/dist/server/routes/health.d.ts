@@ -1,0 +1,5 @@
+/**
+ * 健康检查路由
+ */
+declare const router: import("express-serve-static-core").Router;
+export default router;

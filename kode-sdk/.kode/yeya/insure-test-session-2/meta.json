@@ -1,0 +1,39 @@
+{
+  "agentId": "insure-test-session-2",
+  "templateId": "insure-recommand-v1-template",
+  "createdAt": "2025-12-13T17:10:29.677Z",
+  "lineage": [],
+  "configVersion": "v2.7.0",
+  "messageCount": 2,
+  "lastSfpIndex": 0,
+  "metadata": {
+    "agentId": "insure-test-session-2",
+    "templateId": "insure-recommand-v1-template",
+    "sandboxConfig": {
+      "kind": "local",
+      "workDir": "./workspace"
+    },
+    "modelConfig": {
+      "provider": "anthropic",
+      "model": "glm-4.5-air",
+      "baseUrl": "https://open.bigmodel.cn/api/anthropic/v1/messages",
+      "apiKey": "e5e0309233444360bd352ae4428ce7f1.0lAkwFWdK4IVKZJI",
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "tools": [],
+    "exposeThinking": true,
+    "permission": {
+      "mode": "auto"
+    },
+    "createdAt": "2025-12-13T17:10:29.677Z",
+    "updatedAt": "2025-12-13T17:10:31.209Z",
+    "configVersion": "v2.7.0",
+    "metadata": {
+      "toolTimeoutMs": 30000,
+      "maxToolConcurrency": 1
+    },
+    "lineage": [],
+    "breakpoint": "STREAMING_MODEL"
+  }
+}

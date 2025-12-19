@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>选择数字人专家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F7F8FA;
+            color: #333;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 金牌标签渐变 - 模拟 MDRT 质感 */
+        .badge-gold {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            color: #B47D00;
+            border: 1px solid #FFE082;
+        }
+
+        /* 专家卡片 */
+        .expert-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid #FFFFFF;
+            transition: all 0.2s;
+        }
+
+        .expert-card:active {
+            transform: scale(0.98);
+            background-color: #FAFAFA;
+        }
+
+        /* 选中状态的 Filter Pill */
+        .filter-pill-active {
+            background-color: #1F2937;
+            /* 深色背景更显专业 */
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .filter-pill-inactive {
+            background-color: #FFFFFF;
+            color: #6B7280;
+            border: 1px solid #E5E7EB;
+        }
+
+        /* AI 动态标识 */
+        .ai-badge {
+            background: #1F2937;
+            color: white;
+            font-size: 8px;
+            font-weight: 900;
+            padding: 1px 4px;
+            border-radius: 4px;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+
+<body class="h-screen flex flex-col">
+
+    <header class="bg-white sticky top-0 z-20 px-5 pt-4 pb-2">
+        <div class="flex items-center justify-between mb-4">
+            <button class="w-8 h-8 flex items-center justify-center text-gray-700">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
+            </button>
+            <h1 class="text-lg font-bold text-gray-900">保险专家库</h1>
+            <button class="w-8 h-8 flex items-center justify-center text-gray-700">
+                <i class="fa-regular fa-bell text-lg"></i>
+            </button>
+        </div>
+
+        <div class="h-11 bg-gray-100 rounded-xl flex items-center px-4 mb-2">
+            <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm mr-2"></i>
+            <input type="text" placeholder="搜索专家姓名、公司或领域..."
+                class="bg-transparent text-sm outline-none flex-1 text-gray-700 placeholder-gray-400">
+        </div>
+    </header>
+
+    <div class="bg-white sticky top-[108px] z-10 border-b border-gray-100 pb-2">
+        <div class="flex overflow-x-auto gap-2 px-5 pb-3 no-scrollbar">
+            <button
+                class="filter-pill-active px-4 py-1.5 rounded-full text-xs whitespace-nowrap shadow-sm">全部专家</button>
+            <button class="filter-pill-inactive px-4 py-1.5 rounded-full text-xs whitespace-nowrap">高净值专区</button>
+            <button class="filter-pill-inactive px-4 py-1.5 rounded-full text-xs whitespace-nowrap">企业保险</button>
+            <button class="filter-pill-inactive px-4 py-1.5 rounded-full text-xs whitespace-nowrap">财富传承</button>
+        </div>
+
+        <div class="flex gap-6 px-6 text-xs font-medium text-gray-500 pt-1">
+            <span
+                class="text-orange-600 font-bold relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-4 after:h-0.5 after:bg-orange-500 after:rounded-full">综合排序</span>
+            <span>MDRT/TOT</span>
+            <span>销冠</span>
+            <span>信托专家</span>
+        </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F7F8FA]">
+
+        <div class="expert-card p-4 relative overflow-hidden group">
+            <div class="flex gap-4">
+                <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-full bg-blue-50 overflow-hidden border border-gray-100">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-1 -right-1 ai-badge shadow-sm">
+                        <i class="fa-solid fa-robot mr-0.5"></i> AI
+                    </div>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="text-base font-bold text-gray-900">张伟</h3>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                        </div>
+                        <span class="text-orange-500 text-xs font-bold">5.2万次咨询</span>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mb-2">友邦保险 | 资深区域总监</p>
+
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="badge-gold px-2 py-0.5 rounded text-[10px] font-bold">MDRT 终身会员</span>
+                        <span class="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-[10px]">销冠</span>
+                    </div>
+
+                    <div class="flex items-start gap-1.5">
+                        <span class="text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded shrink-0">擅长</span>
+                        <p class="text-xs text-gray-600 line-clamp-1">家族财富保全与传承架构设计</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 pt-3 border-t border-gray-50 flex gap-2">
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-50 text-gray-600 text-xs font-bold hover:bg-gray-100">查看详情</button>
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-gray-200">
+                    <i class="fa-solid fa-video"></i> 视频咨询
+                </button>
+            </div>
+        </div>
+
+        <div class="expert-card p-4 relative">
+            <div class="flex gap-4">
+                <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-full bg-pink-50 overflow-hidden border border-gray-100">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Li&style=circle&top=longHair"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-1 -right-1 ai-badge shadow-sm">
+                        <i class="fa-solid fa-robot mr-0.5"></i> AI
+                    </div>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="text-base font-bold text-gray-900">李娜</h3>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                        </div>
+                        <span class="text-orange-500 text-xs font-bold">3.8万次咨询</span>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mb-2">平安人寿 | 营业部经理</p>
+
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="badge-gold px-2 py-0.5 rounded text-[10px] font-bold">TOT 顶尖会员</span>
+                        <span
+                            class="bg-pink-50 text-pink-600 px-2 py-0.5 rounded text-[10px] border border-pink-100">女性财富</span>
+                    </div>
+
+                    <div class="flex items-start gap-1.5">
+                        <span class="text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded shrink-0">擅长</span>
+                        <p class="text-xs text-gray-600 line-clamp-1">女性全方位保障、家庭资产配置</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-gray-50 flex gap-2">
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-50 text-gray-600 text-xs font-bold hover:bg-gray-100">查看详情</button>
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-gray-200">
+                    <i class="fa-solid fa-video"></i> 视频咨询
+                </button>
+            </div>
+        </div>
+
+        <div class="expert-card p-4 relative">
+            <div class="flex gap-4">
+                <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-full bg-orange-50 overflow-hidden border border-gray-100">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wang2&style=circle"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-1 -right-1 ai-badge shadow-sm">
+                        <i class="fa-solid fa-robot mr-0.5"></i> AI
+                    </div>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="text-base font-bold text-gray-900">王峰</h3>
+                        </div>
+                        <span class="text-orange-500 text-xs font-bold">1.9万次咨询</span>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mb-2">中信保诚 | 家族办公室顾问</p>
+
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="badge-gold px-2 py-0.5 rounded text-[10px] font-bold">信托专家</span>
+                        <span class="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-[10px]">法商顾问</span>
+                    </div>
+
+                    <div class="flex items-start gap-1.5">
+                        <span class="text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded shrink-0">擅长</span>
+                        <p class="text-xs text-gray-600 line-clamp-1">企业资产隔离、跨境税务规划</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-gray-50 flex gap-2">
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-50 text-gray-600 text-xs font-bold hover:bg-gray-100">查看详情</button>
+                <button
+                    class="flex-1 py-2 rounded-lg bg-gray-900 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-gray-200">
+                    <i class="fa-solid fa-video"></i> 视频咨询
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

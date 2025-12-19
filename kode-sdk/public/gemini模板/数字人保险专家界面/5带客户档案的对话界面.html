@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>沉浸式数字人 + 客户挂载</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            overflow: hidden;
+            /* 禁止整体滚动 */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================================
+           1. 数字人舞台 (Avatar Stage)
+           初始高度 50vh (留出空间给客户卡片)
+           激活后变为 200px (保留头部 + 客户卡片空间)
+           ========================================= */
+        #avatar-stage {
+            height: 50vh;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: radial-gradient(circle at center, #374151 0%, #111827 100%);
+            position: relative;
+            z-index: 0;
+            padding-top: 60px;
+            /* 给顶部 Header 留空 */
+        }
+
+        /* 激活状态：变矮，但比之前高一点，为了容纳客户卡片 */
+        #avatar-stage.minimized {
+            height: 210px;
+        }
+
+        /* 头像图片动画 */
+        #avatar-img {
+            transition: all 0.6s ease;
+            transform-origin: bottom center;
+        }
+
+        /* 激活状态：头像大幅缩小并下沉，给上面的卡片腾地方 */
+        #avatar-stage.minimized #avatar-img {
+            transform: scale(0.6) translateY(20px);
+            opacity: 0.8;
+        }
+
+        /* =========================================
+           2. 聊天面板 (Chat Sheet) - 帷幕
+           ========================================= */
+        #chat-sheet {
+            position: absolute;
+            top: 48vh;
+            /* 初始位置 */
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #FFFFFF;
+            border-radius: 32px 32px 0 0;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 激活状态：面板上滑 */
+        #chat-sheet.expanded {
+            top: 200px;
+            /* 紧贴在 minimized stage 下方 */
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* =========================================
+           3. 客户挂载卡片 (Context Card) - 核心新增
+           悬浮在舞台之上，采用玻璃拟态
+           ========================================= */
+        .context-card-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* 空态样式 */
+        .context-card-empty {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        /* 右侧抽屉动画 */
+        .drawer-right {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+
+        .drawer-open {
+            transform: translateX(0);
+        }
+
+        /* 内容切换动画 */
+        .fade-enter {
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bubble-user {
+            background: #1F2937;
+            color: white;
+            border-radius: 20px 4px 20px 20px;
+        }
+
+        .bubble-ai {
+            background: #F3F4F6;
+            color: #1F2937;
+            border-radius: 4px 20px 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full relative overflow-hidden">
+
+    <div id="avatar-stage" class="w-full flex justify-center items-end overflow-hidden">
+
+        <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-30 text-white/80">
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center"><i
+                    class="fa-solid fa-chevron-down"></i></button>
+            <div
+                class="flex items-center gap-2 bg-black/20 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-xs font-bold">张伟 AI · 在线</span>
+            </div>
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center"><i
+                    class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <div class="absolute top-16 left-0 w-full px-4 z-30">
+
+            <div id="customer-empty"
+                class="context-card-empty w-full h-14 rounded-2xl flex items-center justify-center gap-2 cursor-pointer text-white/60 hover:bg-white/10 transition-colors"
+                onclick="mountCustomer()">
+                <div class="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <span class="text-xs font-medium">挂载客户档案以开始</span>
+            </div>
+
+            <div id="customer-active"
+                class="context-card-glass w-full h-16 rounded-2xl flex items-center justify-between px-3 pl-4 cursor-pointer hidden"
+                onclick="toggleDrawer()">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 text-white flex items-center justify-center text-base font-bold shadow-lg border border-white/20">
+                        王
+                    </div>
+                    <div class="flex flex-col text-white">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold">王志远</span>
+                            <span
+                                class="px-1.5 py-0.5 bg-white/20 text-white text-[9px] font-bold rounded backdrop-blur-md">HOT</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-white/70">
+                            <span>CTO</span>
+                            <span class="w-0.5 h-2 bg-white/30"></span>
+                            <span>预算8W</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70">
+                    <i class="fa-solid fa-address-card text-xs"></i>
+                </div>
+            </div>
+        </div>
+
+        <img id="avatar-img" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+            class="w-56 h-56 rounded-full border-4 border-white/10 shadow-2xl mb-4 z-10">
+
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#111827] to-transparent z-0"></div>
+    </div>
+
+    <div id="chat-sheet" class="pb-24">
+
+        <div class="w-full flex justify-center pt-3 pb-1 shrink-0">
+            <div class="w-10 h-1 bg-gray-200 rounded-full"></div>
+        </div>
+
+        <div id="view-welcome" class="px-6 flex flex-col h-full transition-all duration-500 overflow-hidden">
+            <div class="mb-4 mt-2">
+                <h1 class="text-xl font-bold text-gray-900 mb-1">我是张伟 👋</h1>
+                <p class="text-sm text-gray-500">已为您准备好 <span class="font-bold text-orange-500">王志远</span> 的档案分析。</p>
+            </div>
+
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-3">针对该客户的策略建议：</p>
+
+            <div class="space-y-3 overflow-y-auto no-scrollbar pb-10">
+                <button onclick="startChat('生成降维打击方案')"
+                    class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-orange-50 hover:border-orange-200 transition-colors text-left">
+                    <div>
+                        <div class="text-sm font-bold text-gray-800"><i
+                                class="fa-solid fa-wand-magic-sparkles text-orange-500 mr-2"></i>生成降维打击方案</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"针对价格敏感，先做定期重疾+医疗..."</div>
+                    </div>
+                </button>
+
+                <button onclick="startChat('模拟异议处理')"
+                    class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-orange-50 hover:border-orange-200 transition-colors text-left">
+                    <div>
+                        <div class="text-sm font-bold text-gray-800"><i
+                                class="fa-solid fa-microphone-lines text-blue-500 mr-2"></i>模拟异议处理</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"演练如何回应他对查资产的抗拒..."</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div id="view-chat" class="px-4 flex-1 overflow-y-auto hidden pt-2 space-y-4">
+            <div id="msg-container" class="space-y-4 pb-4"></div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-4 py-3 pb-6 z-50 flex items-center gap-3">
+        <button class="w-10 h-10 rounded-full bg-gray-50 text-gray-500 hover:text-orange-500">
+            <i class="fa-solid fa-microphone text-lg"></i>
+        </button>
+        <div
+            class="flex-1 bg-gray-100 rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-gray-300">
+            <input id="user-input" type="text" placeholder="输入指令..."
+                class="bg-transparent flex-1 outline-none text-sm text-gray-800">
+        </div>
+        <button onclick="startChat(document.getElementById('user-input').value)"
+            class="w-11 h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+    <div id="crm-drawer"
+        class="fixed inset-y-0 right-0 w-[85%] max-w-md bg-white shadow-2xl z-[60] drawer-right flex flex-col border-l border-gray-100">
+        <div class="h-14 border-b border-gray-100 flex items-center justify-between px-4 bg-[#FFF9F5]">
+            <span class="text-sm font-bold text-gray-800">客户全景档案</span>
+            <button class="w-8 h-8 rounded-full bg-white text-gray-500 flex items-center justify-center"
+                onclick="toggleDrawer()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="p-10 flex flex-col items-center justify-center h-full text-gray-400">
+            <i class="fa-solid fa-address-card text-4xl mb-4 text-orange-200"></i>
+            <p>这里显示王志远的详细 Bento Grid 档案</p>
+        </div>
+    </div>
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/40 z-[55] hidden backdrop-blur-sm transition-opacity"
+        onclick="toggleDrawer()"></div>
+
+    <script>
+        // 挂载客户（空态 -> 实态）
+        function mountCustomer() {
+            document.getElementById('customer-empty').classList.add('hidden');
+            const active = document.getElementById('customer-active');
+            active.classList.remove('hidden');
+            active.classList.add('flex'); // 确保 Flex 生效
+        }
+
+        // 切换抽屉
+        function toggleDrawer() {
+            const drawer = document.getElementById('crm-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (drawer.classList.contains('drawer-open')) {
+                drawer.classList.remove('drawer-open');
+                overlay.classList.add('hidden');
+            } else {
+                drawer.classList.add('drawer-open');
+                overlay.classList.remove('hidden');
+            }
+        }
+
+        // 开始对话 (Curtain Lift 核心逻辑)
+        function startChat(msg) {
+            if (!msg) return;
+
+            // 1. 获取元素
+            const stage = document.getElementById('avatar-stage');
+            const sheet = document.getElementById('chat-sheet');
+            const welcomeView = document.getElementById('view-welcome');
+            const chatView = document.getElementById('view-chat');
+            const msgContainer = document.getElementById('msg-container');
+
+            // 2. 状态流转
+            stage.classList.add('minimized'); // 数字人变矮，但留出顶部空间
+            sheet.classList.add('expanded');  // 帷幕拉起
+
+            // 3. 视图切换
+            welcomeView.style.opacity = '0';
+            setTimeout(() => {
+                welcomeView.style.display = 'none';
+                chatView.classList.remove('hidden');
+                chatView.classList.add('fade-enter');
+            }, 300);
+
+            // 4. 插入消息
+            document.getElementById('user-input').value = '';
+            const userBubble = `
+                <div class="flex flex-row-reverse items-start gap-3 fade-enter">
+                    <div class="w-8 h-8 rounded-full bg-orange-100 border border-white shrink-0 overflow-hidden">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-full h-full">
+                    </div>
+                    <div class="bubble-user px-4 py-2.5 text-sm shadow-sm max-w-[80%]">
+                        ${msg}
+                    </div>
+                </div>`;
+            msgContainer.insertAdjacentHTML('beforeend', userBubble);
+
+            // 5. AI 回复
+            setTimeout(() => {
+                const aiBubble = `
+                    <div class="flex items-start gap-3 fade-enter">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 border border-white shrink-0 overflow-hidden flex items-center justify-center text-xs font-bold text-blue-600">AI</div>
+                        <div class="bubble-ai px-4 py-3 text-sm shadow-sm max-w-[85%] leading-relaxed">
+                            <p class="font-bold text-gray-800 mb-1">收到，已根据王总的预算进行调整。</p>
+                            通过组合<span class="text-orange-600 font-bold">消费型重疾</span>与<span class="text-orange-600 font-bold">百万医疗</span>，我们将总保费控制在了 7500元/年，同时保额提升至 300万...
+                        </div>
+                    </div>`;
+                msgContainer.insertAdjacentHTML('beforeend', aiBubble);
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            padding: 20px;
+        }
+
+        /* 卡片基础：纯白 + 极淡投影 + 物理边框 */
+        .compact-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            /* 模拟物理质感 */
+            transition: transform 0.1s;
+        }
+
+        .compact-card:active {
+            transform: scale(0.99);
+        }
+
+        /* 标签 */
+        .tag-pill {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #F9FAFB;
+            color: #6B7280;
+            border: 1px solid #F3F4F6;
+        }
+
+        /* 左侧历史按钮样式 */
+        .history-btn {
+            background-color: #F9FAFB;
+            border: 1px solid #F3F4F6;
+            transition: all 0.2s;
+        }
+
+        .history-btn:hover {
+            background-color: #FFF7ED;
+            /* 橙色淡背景 */
+            border-color: #FFEDD5;
+        }
+
+        .history-btn:active {
+            background-color: #FFEDD5;
+        }
+
+        /* 右侧新建按钮样式 */
+        .new-chat-btn {
+            background: white;
+            border: 1px dashed #D1D5DB;
+            transition: all 0.2s;
+        }
+
+        .new-chat-btn:active {
+            background: #FF6B35;
+            color: white;
+            border-style: solid;
+            border-color: #FF6B35;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="compact-card p-3 w-full max-w-[360px] mx-auto">
+
+        <div class="flex items-center justify-between mb-3 relative group cursor-pointer">
+            <div class="absolute inset-0 z-10" onclick="alert('跳转到客户详情页')"></div>
+
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 border border-orange-100 flex items-center justify-center text-base font-bold shrink-0">
+                    王
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-sm font-bold text-gray-900 leading-none">王志远</h3>
+                        <div class="flex gap-0.5">
+                            <div class="w-1 h-3 bg-orange-500 rounded-full"></div>
+                            <div class="w-1 h-3 bg-orange-500 rounded-full"></div>
+                            <div class="w-1 h-3 bg-gray-200 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-1">
+                        <span class="tag-pill">企业高管</span>
+                        <span class="tag-pill">预算8W</span>
+                    </div>
+                </div>
+            </div>
+
+            <i
+                class="fa-solid fa-chevron-right text-gray-300 text-xs group-hover:text-orange-500 transition-colors"></i>
+        </div>
+
+        <div class="flex gap-2 h-11 relative z-20">
+
+            <button
+                class="history-btn flex-1 rounded-lg px-3 flex flex-col justify-center gap-0.5 group text-left relative overflow-hidden">
+                <div
+                    class="absolute left-0 top-3 bottom-3 w-0.5 bg-orange-400 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
+
+                <div class="flex items-center justify-between w-full">
+                    <span class="text-xs font-bold text-gray-700 truncate max-w-[160px] group-hover:text-orange-700">
+                        <i class="fa-solid fa-reply text-[10px] text-gray-400 mr-1 rotate-180"></i>
+                        方案生成: 重疾险V2
+                    </span>
+                    <span class="text-[10px] text-gray-400 whitespace-nowrap">昨天</span>
+                </div>
+                <span class="text-[10px] text-gray-400 truncate group-hover:text-orange-400/80 pl-4">
+                    包含定期vs终身对比...
+                </span>
+            </button>
+
+            <button
+                class="new-chat-btn w-11 h-11 rounded-lg flex items-center justify-center text-gray-400 hover:text-orange-500 hover:border-orange-300 hover:bg-orange-50"
+                title="新建对话">
+                <i class="fa-solid fa-plus text-sm"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="compact-card p-3 w-full max-w-[360px] mx-auto mt-4 opacity-90">
+        <div class="flex items-center justify-between mb-3 relative group cursor-pointer">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-lg bg-gray-50 text-gray-400 border border-gray-100 flex items-center justify-center text-base font-bold shrink-0">
+                    张
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-sm font-bold text-gray-900 leading-none">张伟</h3>
+                    </div>
+                    <div class="flex gap-1">
+                        <span class="tag-pill">新客户</span>
+                    </div>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+        </div>
+
+        <button
+            class="w-full h-11 rounded-lg bg-gray-900 text-white flex items-center justify-center gap-2 text-xs font-bold hover:bg-gray-800 transition-colors shadow-sm relative z-20">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 开启第一次对话
+        </button>
+    </div>
+
+</body>
+
+</html>

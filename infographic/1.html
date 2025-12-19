@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连锁餐厅中央厨房模式分析</title>
+    <style>
+        /* 全局重置与字体 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #eef0f4;
+            font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* 主卡片容器 */
+        .infographic-card {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            /* 对角线纹理背景 */
+            background-image: repeating-linear-gradient(45deg,
+                    #ffffff,
+                    #ffffff 10px,
+                    #f9f9f9 10px,
+                    #f9f9f9 12px);
+            border: 1px solid #333;
+            position: relative;
+            padding-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 顶部装饰角标 */
+        .corner-decor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            z-index: 10;
+        }
+
+        .corner-tl {
+            top: 0;
+            left: 0;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+
+        .corner-tr {
+            top: 0;
+            right: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+        }
+
+        /* 内部边框装饰线 */
+        .inner-border-top {
+            border-top: 1px solid #333;
+            margin: 10px 10px 0 10px;
+            position: relative;
+        }
+
+        .inner-border-top::after {
+            content: "◇";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -10px;
+            background: #fff;
+            /* 遮挡线条 */
+            padding: 0 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 标题区域 */
+        .header {
+            text-align: center;
+            padding: 25px 20px 20px;
+        }
+
+        .main-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #3e3e3e;
+            line-height: 1.4;
+        }
+
+        /* 黑色药丸标题 */
+        .section-title-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .pill-title {
+            background-color: #3e3e3e;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 5px;
+            /* 这里原图其实是圆角很小的矩形，稍微调整 */
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* 利润率提升 小标题 */
+        .sub-label {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sub-label::after {
+            content: "▼";
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* 图表核心区域 */
+        .chart-area {
+            display: flex;
+            padding: 0 15px;
+        }
+
+        .rows-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 每一行数据 */
+        .data-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* 左侧胶囊 */
+        .left-pill {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #333;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        /* 虚线连接符 */
+        .connector-line {
+            flex-grow: 1;
+            border-bottom: 1px dashed #666;
+            margin: 0 5px;
+            position: relative;
+            top: -1px;
+            /* 微调对齐 */
+        }
+
+        .dot-point {
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(50%);
+            /* 修正：让圆点居中于线 */
+        }
+
+        /* 右侧数值胶囊 */
+        .value-pill {
+            background: #333;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 70px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* 右侧总计区域结构 */
+        .summary-column {
+            display: flex;
+            align-items: stretch;
+            margin-left: 10px;
+        }
+
+        /* 大括号绘制 */
+        .bracket {
+            width: 15px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            border-right: 1px solid #333;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            margin-right: 10px;
+            margin-top: 15px;
+            /* 为了对齐前四行 */
+            height: calc(100% - 70px);
+            /* 手动调整高度以包裹前四行 */
+            position: relative;
+        }
+
+        /* 大括号中间的尖尖 */
+        .bracket::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background: #eef0f4;
+            /* 这里的背景色实际上很难完美模拟，用白色背景遮罩 */
+            /* 这种CSS画括弧比较tricky，为了完美复刻，这里简化为直线方括号风格，更稳健 */
+        }
+
+        /* 总计框 */
+        .total-box-container {
+            display: flex;
+            align-items: center;
+            height: calc(100% - 60px);
+            /* 高度对齐 */
+            margin-top: 15px;
+        }
+
+        .total-box {
+            border: 2px dotted #999;
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .total-highlight {
+            font-size: 16px;
+        }
+
+        /* 底部备餐时间行 */
+        .time-row {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .time-text {
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 页脚 */
+        .footer {
+            border-top: 1px solid #333;
+            padding: 15px 20px;
+            font-size: 12px;
+            color: #666;
+            background: #fdfdfd;
+        }
+
+        .footer strong {
+            color: #333;
+            font-weight: 800;
+        }
+
+        .source-text {
+            line-height: 1.6;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="infographic-card">
+        <div class="corner-decor corner-tl"></div>
+        <div class="corner-decor corner-tr"></div>
+
+        <div class="inner-border-top"></div>
+
+        <div class="header">
+            <h1 class="main-title">超八成连锁餐厅采用中央厨房模式</h1>
+        </div>
+
+        <div class="section-title-wrapper">
+            <div class="pill-title">连锁餐厅使用中央厨房的好处</div>
+        </div>
+
+        <div class="sub-label">利润率提升</div>
+
+        <div class="chart-area">
+            <div class="rows-container">
+                <div class="data-row">
+                    <div class="left-pill">集中采购，价格下降</div>
+                    <div class="connector-line"><span class="dot-point"></span></div>
+                    <div class="value-pill">3%~4%</div>
+                </div>
+                <div class="data-row">
+                    <div class="left-pill">集中采购抵扣增值税</div>
+                    <div class="connector-line"><span class="dot-point"></span></div>
+                    <div class="value-pill">3%~4%</div>
+                </div>
+                <div class="data-row">
+                    <div class="left-pill">降低后厨人员配置</div>
+                    <div class="connector-line"><span class="dot-point"></span></div>
+                    <div class="value-pill">3%~4%</div>
+                </div>
+                <div class="data-row">
+                    <div class="left-pill">减少门店租赁面积</div>
+                    <div class="connector-line"><span class="dot-point"></span></div>
+                    <div class="value-pill" style="font-size: 11px;">0.8%~1.5%</div>
+                </div>
+            </div>
+
+            <div class="summary-column">
+                <div class="bracket"></div>
+                <div class="total-box-container">
+                    <div class="total-box">
+                        总计<br>可提升<br><span class="total-highlight">约13%</span><br>利润率
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-row">
+            <div class="left-pill">缩短备餐时间</div>
+            <div class="time-text">将备餐时间控制在15~30分钟</div>
+        </div>
+
+        <div class="footer">
+            <div><strong>数据来源：</strong></div>
+            <div class="source-text">
+                中研普华产业研究院《中央厨房行业市场规模分析》、华创证券《中央厨房深度报告：规模化餐饮必然出路》、中国连锁经营协会
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

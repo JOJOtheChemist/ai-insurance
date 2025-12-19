@@ -1,0 +1,68 @@
+{
+    "product_name": "友邦百倍安欣（精英版）定期寿险",
+    "description": "一款包含身故保险金、全残保险金责任的定期寿险产品。",
+    "extend_info": {
+        "highlights": [
+            {
+                "label": "最高保额",
+                "value": "详见条款"
+            },
+            {
+                "label": "保障期限",
+                "value": "自生效日至..."
+            },
+            {
+                "label": "等待期",
+                "value": "无"
+            },
+            {
+                "label": "险种类型",
+                "value": "定期寿险"
+            }
+        ],
+        "table_data": {
+            "rows": [
+                [
+                    "第10年",
+                    "¥110,000"
+                ],
+                [
+                    "第20年",
+                    "¥240,000"
+                ],
+                [
+                    "第30年",
+                    "¥450,000"
+                ]
+            ],
+            "title": "利益演示 (30岁男/年交10万)",
+            "headers": [
+                "保单年度",
+                "现金价值"
+            ]
+        },
+        "theme_color": "#4B0082",
+        "life_features": {
+            "basic_rules": {
+                "age_limit": "男18-45岁 女18-50岁",
+                "payment_period": "10/20年",
+                "waiting_period": "无",
+                "insurance_period": "至65岁",
+                "hesitation_period": "15日"
+            },
+            "other_rights": {
+                "surrender_terms": "犹豫期后退还现金价值"
+            },
+            "death_disability": {
+                "death_payout": "100%基本保险金额",
+                "disability_payout": "100%基本保险金额"
+            }
+        }
+    },
+    "id": 20,
+    "product_type": "定期寿险",
+    "coverage": {
+        "若被保险人身故，则给": "若被保险人身故，则给付身故保险金，金额等于基本保险金额。",
+        "若被保险人全残，则给": "若被保险人全残，则给付全残保险金，金额等于基本保险金额。"
+    }
+}

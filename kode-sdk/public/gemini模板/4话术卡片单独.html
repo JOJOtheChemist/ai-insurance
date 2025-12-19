@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金牌话术卡片组件</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F2F4F6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .pill-shape {
+            border-radius: 9999px;
+        }
+
+        .card-radius {
+            border-radius: 32px;
+        }
+
+        .inner-radius {
+            border-radius: 24px;
+        }
+
+        /* 活力橙渐变 */
+        .gradient-orange-soft {
+            background: linear-gradient(180deg, #FFF5F0 0%, #FFFFFF 100%);
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #FF9A5C 0%, #FF6B35 100%);
+        }
+
+        /* 阴影层次 */
+        .card-shadow {
+            box-shadow: 0 20px 40px -12px rgba(255, 107, 53, 0.15);
+        }
+    </style>
+</head>
+
+<body class="p-4">
+
+    <div
+        class="w-full max-w-[420px] bg-white card-radius card-shadow border border-orange-100 overflow-hidden relative group">
+
+        <div class="absolute top-0 right-0 w-32 h-32 bg-orange-100/50 rounded-full blur-3xl -z-0 pointer-events-none">
+        </div>
+
+        <div class="p-5 pb-2 relative z-10">
+            <div class="flex items-center gap-2 mb-3">
+                <span
+                    class="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center text-xs shadow-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </span>
+                <span class="text-sm font-bold text-gray-800">策略分析引擎</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-slate-50 border border-slate-100 inner-radius p-3">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase mb-2 tracking-wider">
+                        <i class="fa-solid fa-id-card-clip mr-1"></i>客户画像
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="px-2 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-[10px] font-medium shadow-sm">
+                            企业高管
+                        </span>
+                        <span
+                            class="px-2 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-[10px] font-medium shadow-sm">
+                            现金流敏感
+                        </span>
+                        <span
+                            class="px-2 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-[10px] font-medium shadow-sm">
+                            理性决策
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-red-50/50 border border-red-100 inner-radius p-3">
+                    <p class="text-[10px] font-bold text-red-400 uppercase mb-2 tracking-wider">
+                        <i class="fa-solid fa-shield-virus mr-1"></i>抗拒点
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="px-2 py-1 bg-white border border-red-100 text-red-500 rounded-full text-[10px] font-medium shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-xmark text-[8px]"></i> 嫌保费贵
+                        </span>
+                        <span
+                            class="px-2 py-1 bg-white border border-red-100 text-red-500 rounded-full text-[10px] font-medium shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-xmark text-[8px]"></i> 怕被套牢
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-5 py-2 relative z-10">
+            <div class="gradient-orange-soft border border-orange-200 inner-radius p-4 relative">
+                <i class="fa-solid fa-quote-left absolute top-4 left-4 text-orange-200 text-3xl -z-10"></i>
+
+                <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] text-orange-600 font-bold bg-orange-100 px-2 py-0.5 rounded-full">
+                        推荐语气：同理心 + 专业建议
+                    </span>
+                    <div class="flex gap-1">
+                        <button class="text-gray-300 hover:text-orange-500 transition-colors" title="重新生成"><i
+                                class="fa-solid fa-arrows-rotate text-xs"></i></button>
+                    </div>
+                </div>
+
+                <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                    “王总，非常理解您的想法。现在的环境，谁手里的<span
+                        class="bg-orange-100 text-orange-700 px-1 rounded mx-0.5">现金流</span>都很宝贵。
+                    <br><br>
+                    但风险是不等人的。我给您出一个<span
+                        class="border-b-2 border-orange-300 font-bold text-gray-800">‘降维打击’</span>的方案：我们先把这100万的保额锁定，用定期险把保费降到<span
+                        class="text-orange-600 font-bold">6000元/年</span>。
+                    <br><br>
+                    这样既不占用您现在的资金，保障也没有降级。等过几年经济形势好了，我们再转成终身，您看这样是不是更稳妥？”
+                </p>
+            </div>
+        </div>
+
+        <div class="p-5 pt-2 flex gap-3 relative z-10">
+            <button
+                class="flex-1 gradient-btn text-white py-3 rounded-full text-sm font-bold shadow-lg shadow-orange-200 hover:shadow-orange-300 hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 group">
+                <i class="fa-regular fa-copy group-hover:animate-bounce"></i> 一键复制话术
+            </button>
+
+            <button
+                class="w-12 h-12 bg-white border border-gray-200 rounded-full text-gray-400 hover:text-orange-500 hover:border-orange-200 transition-all flex items-center justify-center shadow-sm">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

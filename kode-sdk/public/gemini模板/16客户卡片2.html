@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>紧凑型客户卡片</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            /* 纯净灰背景 */
+            padding: 20px;
+        }
+
+        /* 卡片主体 */
+        .compact-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            /*稍微小一点的圆角，更干练 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.1s;
+        }
+
+        .compact-card:active {
+            transform: scale(0.99);
+        }
+
+        /* 顶部装饰条 */
+        .status-bar {
+            height: 3px;
+            width: 100%;
+        }
+
+        .status-hot {
+            background: #FF6B35;
+        }
+
+        /* 橙色高意向 */
+        .status-normal {
+            background: #E5E7EB;
+        }
+
+        /* 灰色普通 */
+
+        /* 标签 */
+        .tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #F9FAFB;
+            color: #6B7280;
+            border: 1px solid #F3F4F6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w-full max-w-sm mx-auto space-y-4">
+
+        <div class="compact-card">
+            <div class="status-bar status-hot"></div>
+
+            <div class="p-3">
+                <div class="flex justify-between items-start mb-3 relative">
+                    <div class="flex gap-3 items-center">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 border border-orange-100 flex items-center justify-center font-bold text-base shrink-0">
+                            王
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm font-bold text-gray-900 leading-none">王志远</h3>
+                                <span
+                                    class="text-[10px] text-orange-600 bg-orange-50 px-1 rounded font-medium">HOT</span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="tag">企业高管</span>
+                                <span class="tag">预算8W</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-8 h-8 -mr-2 -mt-2 flex items-center justify-center text-gray-300 hover:text-orange-500">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="flex gap-2 h-11">
+
+                    <button
+                        class="flex-1 bg-gray-50 hover:bg-orange-50 border border-gray-100 hover:border-orange-100 rounded-lg px-3 flex items-center justify-between group transition-colors text-left">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <i
+                                class="fa-solid fa-clock-rotate-left text-gray-400 text-xs group-hover:text-orange-400"></i>
+                            <div class="flex flex-col">
+                                <span
+                                    class="text-xs font-bold text-gray-700 truncate w-40 group-hover:text-gray-900">方案:
+                                    重疾险对比 V2</span>
+                                <span class="text-[10px] text-gray-400 truncate w-40">昨天 · 包含了定期vs终身</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-play text-[10px] text-gray-300 group-hover:text-orange-500 ml-2"></i>
+                    </button>
+
+                    <button
+                        class="w-11 bg-white border border-dashed border-gray-300 text-gray-400 rounded-lg flex items-center justify-center hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all shadow-sm">
+                        <i class="fa-solid fa-plus text-sm"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="compact-card">
+            <div class="status-bar status-normal"></div>
+
+            <div class="p-3">
+                <div class="flex justify-between items-start mb-3 relative">
+                    <div class="flex gap-3 items-center">
+                        <div
+                            class="w-10 h-10 rounded-lg bg-gray-100 text-gray-500 border border-gray-200 flex items-center justify-center font-bold text-base shrink-0">
+                            李
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h3 class="text-sm font-bold text-gray-900 leading-none">李晓雯</h3>
+                            <div class="flex gap-1">
+                                <span class="tag">教师</span>
+                                <span class="tag">二胎</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="w-8 h-8 -mr-2 -mt-2 flex items-center justify-center text-gray-300 hover:text-gray-600">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="flex gap-2 h-11">
+                    <button
+                        class="flex-1 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-lg px-3 flex items-center justify-between group transition-colors text-left">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <i class="fa-solid fa-comment-dots text-gray-400 text-xs"></i>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-bold text-gray-700 truncate">咨询: 子女教育金</span>
+                                <span class="text-[10px] text-gray-400">3天前 · 初步沟通</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-play text-[10px] text-gray-300 ml-2"></i>
+                    </button>
+
+                    <button
+                        class="w-11 bg-white border border-dashed border-gray-300 text-gray-400 rounded-lg flex items-center justify-center hover:bg-gray-800 hover:text-white hover:border-gray-800 transition-all shadow-sm">
+                        <i class="fa-solid fa-plus text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{
+    "products": [
+        {
+            "id": 35,
+            "product_name": "友邦传世无忧（2024）高端医疗保险",
+            "product_code": "PCODE_0030",
+            "description_snippet": "包含住院、手术、门急诊等费用补偿的高端医疗保险。",
+            "extend_info_snippet": null,
+            "score": 150
+        },
+        {
+            "id": 43,
+            "product_name": "友邦友童无忧高端医疗保险",
+            "product_code": "PCODE_0038",
+            "description_snippet": "一般门急诊、特定医疗及意外骨折费用补偿的高端医疗保险。",
+            "extend_info_snippet": null,
+            "score": 150
+        }
+    ]
+}

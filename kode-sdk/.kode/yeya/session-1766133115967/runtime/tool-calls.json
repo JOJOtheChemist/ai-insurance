@@ -1,0 +1,121 @@
+[
+  {
+    "id": "call_il507kthz7a",
+    "name": "insurance_filter",
+    "input": {
+      "age_min": 25,
+      "age_max": 30,
+      "product_type": "重疾险"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133254453,
+    "updatedAt": 1766133254473,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133254453
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133254470,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133254473,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133254470,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/filter?age_min=25&age_max=30&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/filter?age_min=25&age_max=30&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 failed, reason: ",
+    "isError": true,
+    "durationMs": 3,
+    "completedAt": 1766133254473
+  },
+  {
+    "id": "call_s8swbm2ptle",
+    "name": "insurance_filter",
+    "input": {
+      "age_min": 25,
+      "age_max": 30,
+      "product_type": "医疗险"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133257713,
+    "updatedAt": 1766133257716,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133257713
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133257713,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133257716,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133257713,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/filter?age_min=25&age_max=30&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/filter?age_min=25&age_max=30&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 failed, reason: ",
+    "isError": true,
+    "durationMs": 3,
+    "completedAt": 1766133257716
+  },
+  {
+    "id": "call_y4tc5w1kmi",
+    "name": "insurance_search",
+    "input": {
+      "keyword": "睡眠不足",
+      "limit": 5
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133276150,
+    "updatedAt": 1766133276154,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133276150
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133276152,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133276154,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133276152,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/search?keyword=%E7%9D%A1%E7%9C%A0%E4%B8%8D%E8%B6%B3&limit=5 failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/search?keyword=%E7%9D%A1%E7%9C%A0%E4%B8%8D%E8%B6%B3&limit=5 failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133276154
+  }
+]

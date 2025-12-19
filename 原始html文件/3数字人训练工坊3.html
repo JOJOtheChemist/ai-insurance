@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI 分身定向训练 - 输入版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+            padding-bottom: 120px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 顶部展示台 */
+        .agent-header {
+            background: radial-gradient(circle at top, #FFF7ED 0%, #FFFFFF 70%);
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 核心输入容器 */
+        .input-container {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s;
+        }
+
+        .input-container:focus-within {
+            border-color: #FF6B35;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+        }
+
+        /* 生成按钮 */
+        .btn-generate {
+            background: linear-gradient(90deg, #1F2937 0%, #000000 100%);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.1s;
+        }
+
+        .btn-generate:active {
+            transform: scale(0.98);
+        }
+
+        /* 风格标签 */
+        .style-tag {
+            border: 1px solid #E5E7EB;
+            background: #FFFFFF;
+            color: #6B7280;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .style-tag.active {
+            background: #FFF7ED;
+            border-color: #FF6B35;
+            color: #C2410C;
+            font-weight: 700;
+        }
+
+        /* 生成的客户卡片 (预览) */
+        .generated-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #FFE4D6;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.08);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滑块 */
+        .slider-track {
+            width: 100%;
+            height: 6px;
+            background: #E5E7EB;
+            border-radius: 99px;
+            position: relative;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B35, #FF8850);
+            border-radius: 99px;
+            width: 60%;
+        }
+
+        .slider-thumb {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <div class="agent-header px-4 pt-4 pb-4 flex items-center justify-between sticky top-0 z-20">
+        <button
+            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-500 shadow-sm"><i
+                class="fa-solid fa-chevron-left"></i></button>
+        <span class="text-sm font-bold text-gray-900">配置演练分身</span>
+        <div class="w-8"></div>
+    </div>
+
+    <main class="px-4 py-4 space-y-6">
+
+        <section>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 1</span>
+                <h2 class="font-bold text-gray-800 text-sm">谁是目标客户？</h2>
+            </div>
+
+            <div class="input-container p-3 mb-3">
+                <textarea
+                    class="w-full h-20 text-xs text-gray-800 bg-transparent outline-none resize-none placeholder-gray-400 leading-relaxed"
+                    placeholder="在此输入客户背景信息、复制微信聊天记录，或上传需求文档..."></textarea>
+
+                <div class="flex items-center justify-between pt-2 border-t border-gray-50 mt-1">
+                    <div class="flex gap-2">
+                        <button
+                            class="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-orange-500 transition-colors">
+                            <i class="fa-solid fa-microphone"></i>
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-orange-500 transition-colors">
+                            <i class="fa-solid fa-paperclip"></i>
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-orange-500 transition-colors">
+                            <i class="fa-solid fa-image"></i>
+                        </button>
+                    </div>
+                    <span class="text-[10px] text-gray-300">0/500</span>
+                </div>
+            </div>
+
+            <button onclick="document.getElementById('generated-preview').classList.remove('hidden')"
+                class="btn-generate w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 mb-4">
+                <i class="fa-solid fa-wand-magic-sparkles text-orange-400"></i>
+                AI 智能分析并生成画像
+            </button>
+
+            <div id="generated-preview" class="generated-card p-3 hidden">
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center font-bold">
+                        王</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h3 class="font-bold text-gray-900 text-sm">王志远</h3>
+                            <span class="text-[10px] text-gray-400">预算 5-8万</span>
+                        </div>
+                        <div class="flex gap-1 mt-1">
+                            <span class="text-[9px] bg-gray-100 px-1.5 rounded text-gray-500">CTO</span>
+                            <span class="text-[9px] bg-gray-100 px-1.5 rounded text-gray-500">已婚育</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-check-circle text-green-500 text-lg"></i>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full h-px bg-gray-100"></div>
+
+        <section>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 2</span>
+                <h2 class="font-bold text-gray-800 text-sm">如何搞定他？(投喂资料)</h2>
+            </div>
+
+            <div class="input-container p-3">
+                <textarea
+                    class="w-full h-16 text-xs text-gray-800 bg-transparent outline-none resize-none placeholder-gray-400 leading-relaxed"
+                    placeholder="输入您想使用的销售策略、话术要点，或者上传金牌话术文档..."></textarea>
+
+                <div class="flex items-center justify-between pt-2 border-t border-gray-50 mt-1">
+                    <div class="flex gap-2">
+                        <button
+                            class="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-red-50 text-red-500 text-[10px] font-bold">
+                            <i class="fa-solid fa-microphone"></i> 录制示范语气
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 3</span>
+                <h2 class="font-bold text-gray-800 text-sm">AI 性格调校</h2>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-gray-200">
+
+                <div class="mb-4">
+                    <p class="text-[10px] text-gray-400 mb-2">选择基础基调</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="style-tag active">顾问式专业</button>
+                        <button class="style-tag">狼性逼单</button>
+                        <button class="style-tag">亲和力共情</button>
+                        <button class="style-tag">数据流理性</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <p class="text-[10px] text-gray-400">个人风格浓度</p>
+                        <span class="text-xs font-bold text-orange-600">60%</span>
+                    </div>
+                    <div class="relative h-6 flex items-center">
+                        <div class="slider-track">
+                            <div class="slider-fill" style="width: 60%"></div>
+                            <div class="slider-thumb" style="left: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-[9px] text-gray-400 mt-1">
+                        <span>🤖 照本宣科</span>
+                        <span>😎 惟妙惟肖</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer
+        class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-5 py-3 pb-6 z-50 flex gap-3 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+        <button class="flex-[1] bg-white border border-gray-200 text-gray-600 rounded-xl h-11 text-xs font-bold">
+            保存模板
+        </button>
+        <button
+            class="flex-[2] bg-gray-900 text-white rounded-xl h-11 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-play text-xs text-green-400"></i>
+            <span class="font-bold text-sm">生成分身并演练</span>
+        </button>
+    </footer>
+
+</body>
+
+</html>

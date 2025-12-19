@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>客户列表 - 金牌助理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FFF9F5;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 卡片基础样式 */
+        .client-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #FFE4D6;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        /* 展开时的样式 */
+        .client-card.expanded {
+            border-color: #FFDCC2;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+        }
+
+        /* 标签胶囊 */
+        .tag-pill {
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* 历史记录条目 */
+        .history-item {
+            border-radius: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .history-item:active {
+            background-color: #FFF0E6;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex flex-col text-[#5C4B41]">
+
+    <header class="px-5 py-4 bg-white/90 backdrop-blur-md sticky top-0 z-20 border-b border-[#FFE4D6]">
+        <h1 class="text-xl font-bold mb-3">我的客户 <span class="text-sm font-normal text-gray-400 ml-1">(42)</span></h1>
+
+        <div class="flex gap-3">
+            <div
+                class="flex-1 h-10 bg-[#F7F5F2] rounded-full flex items-center px-4 border border-transparent focus-within:border-orange-200 focus-within:bg-white transition-all">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 text-xs mr-2"></i>
+                <input type="text" placeholder="搜索姓名、标签..."
+                    class="bg-transparent text-sm outline-none flex-1 text-[#5C4B41] placeholder-gray-400">
+            </div>
+            <button
+                class="w-10 h-10 rounded-full bg-white border border-[#EAE0D5] text-[#8C7364] flex items-center justify-center shadow-sm">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+        </div>
+
+        <div class="flex gap-2 mt-3 overflow-x-auto no-scrollbar">
+            <button class="px-3 py-1 bg-[#5C4B41] text-white rounded-full text-xs font-bold">全部</button>
+            <button
+                class="px-3 py-1 bg-white border border-[#EAE0D5] text-[#8C7364] rounded-full text-xs whitespace-nowrap">高意向
+                🔥</button>
+            <button
+                class="px-3 py-1 bg-white border border-[#EAE0D5] text-[#8C7364] rounded-full text-xs whitespace-nowrap">待跟进
+                ⏳</button>
+            <button
+                class="px-3 py-1 bg-white border border-[#EAE0D5] text-[#8C7364] rounded-full text-xs whitespace-nowrap">已成交
+                ✅</button>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-4 space-y-4 pb-24">
+
+        <div class="client-card expanded overflow-hidden group">
+            <div class="p-5 pb-3">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-3">
+                        <div class="relative">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wang"
+                                class="w-12 h-12 rounded-full bg-orange-50 border border-orange-100">
+                            <div
+                                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full">
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold flex items-center gap-2">
+                                王志远
+                                <span
+                                    class="text-[10px] text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded-md border border-orange-100">高意向</span>
+                            </h3>
+                            <p class="text-xs text-[#9A897D] mt-0.5">上次活跃：刚刚</p>
+                        </div>
+                    </div>
+                    <button
+                        class="w-8 h-8 rounded-full bg-[#F7F5F2] text-[#8C7364] flex items-center justify-center text-xs hover:bg-[#FFF0E6] hover:text-orange-500 transition-colors">
+                        <i class="fa-solid fa-phone"></i>
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="tag-pill bg-[#FFF0E6] text-[#D94F1A]">💰 年预算8万+</span>
+                    <span class="tag-pill bg-[#F2F7FF] text-[#4B7BEC]">🏢 互联网高管</span>
+                    <span class="tag-pill bg-[#FFF5F5] text-[#E05666]">⚠️ 脂肪肝</span>
+                </div>
+            </div>
+
+            <div class="bg-[#FAFAFA] border-t border-[#F0F0F0] p-4">
+
+                <div class="flex gap-2 mb-3">
+                    <button
+                        class="flex-1 bg-gradient-to-r from-[#FF8850] to-[#FF6B35] text-white py-2.5 rounded-full text-xs font-bold shadow-md shadow-orange-100 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        <i class="fa-solid fa-comment-medical"></i> 发起新对话
+                    </button>
+                    <button onclick="toggleHistory(this)"
+                        class="px-4 py-2.5 rounded-full border border-[#E0E0E0] bg-white text-[#5C4B41] text-xs font-bold flex items-center gap-1 active:bg-gray-50">
+                        历史记录 <i class="fa-solid fa-chevron-up text-[10px] ml-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <div class="history-list space-y-2">
+                    <div class="text-[10px] text-[#9A897D] font-bold mb-2 uppercase tracking-wider pl-1">Recent Sessions
+                    </div>
+
+                    <div
+                        class="history-item flex items-center justify-between p-3 bg-white border border-[#F0F0F0] cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#FFF0E6] text-orange-500 flex items-center justify-center text-xs shrink-0">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">重疾险方案对比 V2</h4>
+                                <p class="text-[10px] text-gray-400 mt-0.5">包含了定期vs终身的详细测算...</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] text-gray-300">昨天</span>
+                    </div>
+
+                    <div
+                        class="history-item flex items-center justify-between p-3 bg-white border border-[#F0F0F0] cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xs shrink-0">
+                                <i class="fa-solid fa-child-reaching"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">子女教育金咨询</h4>
+                                <p class="text-[10px] text-gray-400 mt-0.5">初步沟通了预算和年限...</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] text-gray-300">3天前</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="client-card overflow-hidden">
+            <div class="p-5 pb-4">
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Li"
+                            class="w-12 h-12 rounded-full bg-gray-100 border border-gray-200">
+                        <div>
+                            <h3 class="text-lg font-bold flex items-center gap-2">
+                                李晓雯
+                                <span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-md">待跟进</span>
+                            </h3>
+                            <p class="text-xs text-[#9A897D] mt-0.5">上次活跃：5天前</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="tag-pill bg-[#F7F5F2] text-[#8C7364]">👶 二胎妈妈</span>
+                    <span class="tag-pill bg-[#F7F5F2] text-[#8C7364]">🏥 关注医疗险</span>
+                </div>
+            </div>
+
+            <div class="bg-[#FAFAFA] border-t border-[#F0F0F0] p-3 flex gap-2">
+                <button
+                    class="flex-1 bg-white border border-[#E0E0E0] text-[#5C4B41] py-2 rounded-full text-xs font-bold hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-colors">
+                    <i class="fa-solid fa-comment-dots mr-1"></i> 发起对话
+                </button>
+                <button onclick="toggleHistory(this)"
+                    class="px-4 py-2 rounded-full bg-[#F5F5F5] text-[#9A897D] text-xs font-bold">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </button>
+            </div>
+
+            <div class="history-list hidden p-4 bg-[#FAFAFA] border-t border-[#F0F0F0]">
+                <div
+                    class="history-item flex items-center justify-between p-3 bg-white border border-[#F0F0F0] rounded-xl">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-comment"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-800">初步接触</h4>
+                            <p class="text-[10px] text-gray-400">询问了高端医疗险...</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-gray-300">11月24日</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-card p-5 flex items-center justify-center text-gray-300 text-sm">
+            --- 没有更多了 ---
+        </div>
+
+    </main>
+
+    <nav
+        class="fixed bottom-0 w-full bg-white border-t border-[#F0F0F0] h-16 flex justify-around items-center z-30 pb-2">
+        <a href="#" class="flex flex-col items-center gap-1 text-[#FF6B35]">
+            <i class="fa-solid fa-address-book text-xl"></i>
+            <span class="text-[10px] font-bold">客户</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-[#C4B5AD]">
+            <i class="fa-solid fa-robot text-xl"></i>
+            <span class="text-[10px] font-bold">助理</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-[#C4B5AD]">
+            <i class="fa-solid fa-user text-xl"></i>
+            <span class="text-[10px] font-bold">我的</span>
+        </a>
+    </nav>
+
+    <script>
+        function toggleHistory(btn) {
+            // 找到当前卡片容器
+            const card = btn.closest('.client-card');
+            // 找到历史列表区域
+            const list = card.querySelector('.history-list');
+            const icon = btn.querySelector('i');
+
+            if (list.classList.contains('hidden')) {
+                // 展开
+                list.classList.remove('hidden');
+                card.classList.add('expanded');
+                if (icon) {
+                    icon.className = 'fa-solid fa-chevron-up text-[10px] ml-1 transition-transform'; // 箭头向上
+                }
+                // 如果是收起状态的按钮点击，可能需要变更为文字按钮（这里为了演示简化处理）
+            } else {
+                // 收起
+                list.classList.add('hidden');
+                card.classList.remove('expanded');
+                if (icon) {
+                    icon.className = 'fa-solid fa-chevron-down text-[10px] ml-1 transition-transform'; // 箭头向下
+                }
+            }
+        }
+
+        // 初始化：让第二个卡片的 list 隐藏
+        document.querySelectorAll('.client-card')[1].querySelector('.history-list').classList.add('hidden');
+    </script>
+</body>
+
+</html>

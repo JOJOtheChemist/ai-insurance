@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "你好"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "```json\n{\n  \"thought\": \"用户打招呼后需要快速建立专业信任，根据固定客户画像王志远(42岁科技公司CTO)进行初步保险需求梳理，下一步将通过筛选工具获取匹配产品。\",\n  \"customer_profile\": {\n    \"name\": \"王志远\",\n    \"role\": \"科技公司 CTO\",\n    \"age\": 42,\n    \"annual_budget\": \"5-8万\",\n    \"marital_status\": \"已婚已育\",\n    \"annual_income\": \"80万+\",\n    \"location\": \"北京海淀\",\n    \"risk_factors\": [\"经常应酬\", \"轻度脂肪肝\", \"吸烟史(待确认)\"],\n    \"needs\": [\"保费压力\", \"子女教育\", \"隐私防护\"]\n  },\n  \"insight_summary\": \"王总作为42岁科技公司高管，面临高收入但预算有限的保险配置挑战，需重点保障健康风险和子女教育需求。\",\n  \"recommendations\": [],\n  \"questions\": [\"请问王总，您希望优先配置哪类保险产品？如重疾险、医疗险或其他？\"],\n  \"next_actions\": [\"等待客户明确需求方向后，通过精准筛选工具获取符合年龄、预算和风险特征的产品方案\"]\n}\n```"
+      }
+    ]
+  }
+]

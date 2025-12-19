@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>双态切换交互</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            overflow: hidden;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================================
+           1. 沉浸层 (Immersive Layer) - 初始显示
+           ========================================= */
+        #immersive-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45vh;
+            background: radial-gradient(circle at center, #374151 0%, #111827 100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            transform-origin: top;
+        }
+
+        /* 坍缩动画：向上移动并透明不可见 */
+        #immersive-layer.collapsed {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* =========================================
+           2. 高效导航栏 (Compact Header) - 初始隐藏
+           ========================================= */
+        #compact-header {
+            position: absolute;
+            top: -80px;
+            /* 初始在屏幕外 */
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #F3F4F6;
+            z-index: 20;
+            transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 激活状态：滑入屏幕 */
+        #compact-header.active {
+            top: 0;
+        }
+
+        /* =========================================
+           3. 聊天容器 (Chat Container)
+           ========================================= */
+        #chat-container-wrapper {
+            position: absolute;
+            top: 42vh;
+            /* 初始在沉浸层下方 */
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #FFFFFF;
+            border-radius: 32px 32px 0 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 15;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 激活状态：铺满全屏，只留出顶部导航栏的高度 */
+        #chat-container-wrapper.expanded {
+            top: 64px;
+            /* 紧贴 Compact Header */
+            border-radius: 0;
+            height: calc(100vh - 64px);
+            /* 减去头部高度 */
+        }
+
+        /* 气泡样式 */
+        .bubble-user {
+            background: #1F2937;
+            color: white;
+            border-radius: 20px 4px 20px 20px;
+        }
+
+        .bubble-ai {
+            background: #F3F4F6;
+            color: #1F2937;
+            border-radius: 4px 20px 20px 20px;
+        }
+
+        /* 客户胶囊样式 */
+        .client-pill-compact {
+            background: #FFF7ED;
+            /* 橙色淡背景 */
+            border: 1px solid #FFEDD5;
+            color: #C2410C;
+            border-radius: 99px;
+            padding: 4px 4px 4px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .client-pill-compact:active {
+            background: #FFEDD5;
+        }
+
+        /* 右侧抽屉 */
+        .drawer-right {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+
+        .drawer-open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full relative bg-white">
+
+    <div id="immersive-layer" class="flex flex-col items-center justify-end pb-12">
+        <div class="absolute top-4 left-4 text-white/80"><i class="fa-solid fa-chevron-down"></i></div>
+
+        <div class="absolute top-16 w-full px-6 z-20">
+            <div
+                class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex items-center gap-3 text-white shadow-xl">
+                <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center font-bold">王</div>
+                <div>
+                    <div class="font-bold text-sm">王志远 <span class="text-[9px] bg-white/20 px-1 rounded ml-1">HOT</span>
+                    </div>
+                    <div class="text-[10px] opacity-80">点击此处在任何时候查看档案</div>
+                </div>
+            </div>
+        </div>
+
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+            class="w-48 h-48 rounded-full border-4 border-white/10 shadow-2xl z-10 scale-110 translate-y-4">
+    </div>
+
+    <div id="compact-header">
+
+        <div class="flex items-center gap-2">
+            <div class="relative">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+                    class="w-8 h-8 rounded-full bg-gray-100 border border-gray-200">
+                <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full">
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-xs font-bold text-gray-800 leading-none">张伟 AI</span>
+                <span class="text-[10px] text-green-600 font-medium leading-none mt-0.5">在线服务中</span>
+            </div>
+        </div>
+
+        <button class="client-pill-compact" onclick="toggleDrawer()">
+            <span>王志远</span>
+            <div class="w-6 h-6 rounded-full bg-white text-orange-500 flex items-center justify-center shadow-sm">
+                <i class="fa-solid fa-address-card text-xs"></i>
+            </div>
+        </button>
+    </div>
+
+    <div id="chat-container-wrapper">
+
+        <div id="view-welcome" class="px-6 pt-6 transition-opacity duration-300">
+            <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-6"></div>
+            <h1 class="text-xl font-bold text-gray-900 mb-1">准备就绪</h1>
+            <p class="text-sm text-gray-500 mb-6">您可以针对 <span class="font-bold text-orange-500">王志远</span> 提出营销需求。</p>
+
+            <button onclick="startChat('生成开门红话术')"
+                class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-orange-50 mb-3 text-left">
+                <span class="text-sm font-bold text-gray-700">生成开门红邀约话术</span>
+                <i class="fa-solid fa-arrow-up text-gray-300 rotate-45"></i>
+            </button>
+        </div>
+
+        <div id="view-chat" class="flex-1 overflow-y-auto hidden px-4 pt-4 space-y-4 pb-24">
+            <div id="msg-container" class="space-y-4"></div>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-4 py-3 pb-6 z-50 flex items-center gap-3">
+        <button class="w-10 h-10 rounded-full bg-gray-50 text-gray-500 hover:text-orange-500"><i
+                class="fa-solid fa-microphone"></i></button>
+        <div
+            class="flex-1 bg-gray-100 rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-gray-300">
+            <input id="user-input" type="text" placeholder="输入指令..." class="bg-transparent flex-1 outline-none text-sm">
+        </div>
+        <button onclick="startChat(document.getElementById('user-input').value)"
+            class="w-11 h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform"><i
+                class="fa-solid fa-paper-plane"></i></button>
+    </div>
+
+    <div id="crm-drawer"
+        class="fixed inset-y-0 right-0 w-[85%] max-w-md bg-white shadow-2xl z-[60] drawer-right border-l border-gray-100 flex flex-col">
+        <div class="h-16 border-b border-gray-100 flex items-center justify-between px-4 bg-orange-50/30">
+            <span class="font-bold text-gray-800">客户全景档案</span>
+            <button onclick="toggleDrawer()"
+                class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-4">
+                <h2 class="text-lg font-bold text-gray-900">王志远</h2>
+                <div class="text-xs text-gray-500 mt-1">科技公司 CTO · 42岁</div>
+            </div>
+            <p class="text-sm text-gray-400">这里显示详细的 CRM 信息...</p>
+        </div>
+    </div>
+    <div id="drawer-overlay" class="fixed inset-0 bg-black/20 z-[55] hidden backdrop-blur-sm" onclick="toggleDrawer()">
+    </div>
+
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('crm-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (drawer.classList.contains('drawer-open')) {
+                drawer.classList.remove('drawer-open');
+                overlay.classList.add('hidden');
+            } else {
+                drawer.classList.add('drawer-open');
+                overlay.classList.remove('hidden');
+            }
+        }
+
+        function startChat(msg) {
+            if (!msg) return;
+
+            // 1. 获取元素
+            const immersiveLayer = document.getElementById('immersive-layer');
+            const compactHeader = document.getElementById('compact-header');
+            const wrapper = document.getElementById('chat-container-wrapper');
+            const welcomeView = document.getElementById('view-welcome');
+            const chatView = document.getElementById('view-chat');
+            const msgContainer = document.getElementById('msg-container');
+
+            // 2. 触发双态切换动画
+            immersiveLayer.classList.add('collapsed'); // 沉浸层消失
+            compactHeader.classList.add('active');     // 顶部导航栏滑下
+            wrapper.classList.add('expanded');         // 聊天框铺满
+
+            // 3. 隐藏引导页，显示聊天页
+            welcomeView.style.display = 'none';
+            chatView.classList.remove('hidden');
+
+            // 4. 插入消息
+            document.getElementById('user-input').value = '';
+
+            // 用户消息
+            msgContainer.insertAdjacentHTML('beforeend', `
+                <div class="flex flex-row-reverse items-start gap-3 animate-fade-in-up">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 border border-white shrink-0 overflow-hidden"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"></div>
+                    <div class="bubble-user px-4 py-2.5 text-sm shadow-sm max-w-[80%]">${msg}</div>
+                </div>
+            `);
+
+            // AI 回复
+            setTimeout(() => {
+                msgContainer.insertAdjacentHTML('beforeend', `
+                    <div class="flex items-start gap-3 animate-fade-in-up">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 border border-white shrink-0 overflow-hidden flex items-center justify-center text-[10px] font-bold text-blue-600">AI</div>
+                        <div class="bubble-ai px-4 py-3 text-sm shadow-sm max-w-[85%] leading-relaxed">
+                            好的，针对<span class="font-bold text-orange-600">王总</span>的身份，邀约话术不宜太商业化。<br><br>
+                            建议从“行业交流”切入：<br>
+                            “王总，最近看到科技圈关于AI医疗的讨论很热。刚好我们公司内部有个关于【高端医疗资源对接】的闭门沙龙，想邀请您来做客...”
+                        </div>
+                    </div>
+                `);
+            }, 600);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金牌保险助理 AI - 话术增强版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FFF5F0;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 玻璃拟态基础 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .pill-shape {
+            border-radius: 9999px;
+        }
+
+        .card-shape {
+            border-radius: 24px;
+        }
+
+        .gradient-orange {
+            background: linear-gradient(135deg, #FF9A5C 0%, #FF6B35 100%);
+        }
+
+        .shadow-soft {
+            box-shadow: 0 8px 20px -8px rgba(255, 107, 53, 0.2);
+        }
+
+        /* 话术卡片专用样式 */
+        .pitch-card {
+            background: linear-gradient(180deg, #FFFAF5 0%, #FFFFFF 100%);
+            border: 1px solid #FFDCC2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 金牌装饰 */
+        .pitch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #FF6B35;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex overflow-hidden text-[#4A3B32]">
+
+    <main class="flex-1 flex flex-col h-full relative">
+
+        <header
+            class="h-16 flex items-center px-6 border-b border-orange-100 bg-white/70 backdrop-blur-md z-10 justify-between">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 gradient-orange rounded-full flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-gray-800 text-sm">金牌助理 Jarvis</h1>
+                    <span class="text-[10px] text-green-600 bg-green-50 px-2 py-0.5 rounded-full">在线</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-6 space-y-8" id="chat-container">
+
+            <div class="flex flex-row-reverse gap-3 items-start max-w-[85%] ml-auto">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                    class="w-8 h-8 rounded-full border border-white shadow-sm bg-gray-100 flex-shrink-0 mt-1">
+                <div
+                    class="bg-gray-800 text-white p-3.5 rounded-tr-none rounded-tl-3xl rounded-bl-3xl rounded-br-3xl shadow-soft text-sm">
+                    这几年经济环境不好，我对每年拿出2万块还是有点压力的，有没有性价比更高的？
+                </div>
+            </div>
+
+            <div class="flex gap-3 items-start max-w-[95%]">
+                <div
+                    class="w-8 h-8 gradient-orange rounded-full flex-shrink-0 flex items-center justify-center text-white text-[10px] mt-1">
+                    AI</div>
+
+                <div class="flex flex-col gap-3 w-full">
+
+                    <div
+                        class="glass-panel p-4 rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-3xl shadow-sm text-sm w-fit">
+                        理解王总的顾虑。针对这种情况，我们可以调整策略，通过<span class="text-orange-600 font-bold">“定期重疾 +
+                            终身寿险”</span>的组合来降低当期保费压力。
+                    </div>
+
+                    <div class="pitch-card rounded-r-3xl rounded-bl-3xl shadow-md p-4 w-full md:w-[90%]">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="bg-orange-100 text-orange-600 w-6 h-6 rounded-full flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </span>
+                            <span class="font-bold text-gray-800 text-sm">推荐策略：降维打击法</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-[10px] bg-white border border-orange-200 text-gray-500 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-check text-orange-500 mr-1"></i>保留高保额
+                            </span>
+                            <span
+                                class="text-[10px] bg-white border border-orange-200 text-gray-500 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-check text-orange-500 mr-1"></i>缩短缴费期
+                            </span>
+                            <span
+                                class="text-[10px] bg-white border border-orange-200 text-gray-500 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-check text-orange-500 mr-1"></i>强调现金流
+                            </span>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-xl border-l-4 border-orange-300 relative">
+                            <i class="fa-solid fa-quote-left absolute top-2 left-2 text-gray-100 text-2xl -z-10"></i>
+                            <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                                “王总，其实很多精算师自己买保险也是这个思路。我们先把这100万的保障做足，用<span
+                                    class="text-orange-600">‘定期消费型’</span>把现在的杠杆拉到最高，每年只要6000多。等过几年经济环境好了，我们再补充终身型。这样既不占用您现在的现金流，保障也一分不少。”
+                            </p>
+                            <button
+                                class="absolute bottom-2 right-2 text-gray-300 hover:text-orange-500 transition-colors">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-white border border-orange-200 text-gray-600 rounded-full text-xs hover:border-orange-400 hover:text-orange-600 transition-all shadow-sm group">
+                            <div
+                                class="w-5 h-5 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+                            发送“低保费高保障”理赔案例
+                        </button>
+
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-white border border-orange-200 text-gray-600 rounded-full text-xs hover:border-orange-400 hover:text-orange-600 transition-all shadow-sm group">
+                            <div
+                                class="w-5 h-5 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            生成新旧方案对比表
+                        </button>
+
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-full text-xs shadow-md hover:shadow-lg transition-all">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            立即生成计划书
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="h-32"></div>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#FFF5F0] via-[#FFF5F0] to-transparent pt-12 pb-6 px-6 z-20">
+            <div class="flex gap-2 mb-2 pl-1">
+                <button
+                    class="text-[10px] text-gray-400 bg-white/80 px-2 py-1 rounded border border-gray-200 hover:text-orange-500">
+                    想问：定期重疾和终身的区别？
+                </button>
+                <button
+                    class="text-[10px] text-gray-400 bg-white/80 px-2 py-1 rounded border border-gray-200 hover:text-orange-500">
+                    想问：现金价值怎么算？
+                </button>
+            </div>
+            <div class="bg-white p-2 rounded-[30px] shadow-lg border border-orange-100 flex items-center gap-2">
+                <button class="w-10 h-10 bg-gray-50 rounded-full text-gray-400 hover:text-orange-500"><i
+                        class="fa-solid fa-plus"></i></button>
+                <input type="text" placeholder="输入客户反馈..."
+                    class="flex-1 bg-transparent border-none outline-none text-sm h-10 px-2">
+                <button class="w-12 h-10 gradient-orange rounded-full text-white shadow-md"><i
+                        class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <aside class="w-[360px] bg-white border-l border-orange-100 hidden md:flex flex-col p-5">
+        <h2 class="text-xs font-bold text-gray-400 uppercase mb-4">当前推荐方案</h2>
+
+        <div
+            class="bg-gradient-to-br from-orange-50 to-white border border-orange-100 rounded-3xl p-5 mb-4 relative overflow-hidden">
+            <i class="fa-solid fa-shield-cat absolute -right-4 -bottom-4 text-8xl text-orange-100 opacity-50"></i>
+            <h3 class="font-bold text-gray-800 text-lg">无忧人生·定期版</h3>
+            <p class="text-xs text-gray-500 mb-4">针对预算敏感型优化</p>
+
+            <div class="space-y-3">
+                <div class="flex justify-between items-center text-sm border-b border-orange-100 pb-2">
+                    <span class="text-gray-500">保额</span>
+                    <span class="font-bold text-gray-800">100万</span>
+                </div>
+                <div class="flex justify-between items-center text-sm border-b border-orange-100 pb-2">
+                    <span class="text-gray-500">保障期</span>
+                    <span class="font-bold text-gray-800">至70岁</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-500">年缴</span>
+                    <span class="font-bold text-orange-600 text-lg">¥6,240</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-3xl p-4 border border-gray-100">
+            <div class="flex items-center gap-2 mb-3">
+                <i class="fa-solid fa-chart-line text-blue-500"></i>
+                <span class="text-xs font-bold text-gray-700">方案优化效果</span>
+            </div>
+            <div class="flex items-end gap-2 h-24 px-2">
+                <div class="w-full bg-gray-200 rounded-t-lg relative group h-[90%]">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-400">原方案</span>
+                </div>
+                <div class="w-full bg-orange-400 rounded-t-lg relative group h-[30%]">
+                    <span
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-orange-600 font-bold">新方案</span>
+                </div>
+            </div>
+            <p class="text-center text-[10px] text-gray-400 mt-2">保费降低 65%</p>
+        </div>
+    </aside>
+
+</body>
+
+</html>

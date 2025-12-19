@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>输入框交互演示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            padding-bottom: 140px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 通用卡片 */
+        .config-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .config-card.active {
+            border-color: #FFDCC2;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.08);
+        }
+
+        /* 输入方式按钮网格 */
+        .input-grid-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 80px;
+            /* 稍微加大一点 */
+            background: #F9FAFB;
+            border: 1px solid #F3F4F6;
+            border-radius: 12px;
+            color: #6B7280;
+            transition: all 0.2s;
+        }
+
+        .input-grid-btn:active {
+            background: #FFF7ED;
+            border-color: #FFDCC2;
+            color: #C2410C;
+        }
+
+        /* 文本输入框容器 (展开后) */
+        .textarea-wrapper {
+            background: #FFF;
+            border: 2px solid #FF6B35;
+            /* 激活时橙色边框 */
+            border-radius: 12px;
+            padding: 12px;
+            animation: expand 0.2s ease-out;
+        }
+
+        @keyframes expand {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* 标签 */
+        .tag-req {
+            font-size: 10px;
+            background: #1F2937;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .tag-opt {
+            font-size: 10px;
+            background: #F3F4F6;
+            color: #6B7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen px-4 py-6">
+
+    <h2 class="text-xs font-bold text-gray-400 mb-4 text-center">👇 点击下方“贴个人简介”试试 👇</h2>
+
+    <div class="config-card active">
+        <div class="p-4 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-gray-200 text-gray-600 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">我 (基底模型)</h3>
+                </div>
+            </div>
+            <span class="tag-req">必选</span>
+        </div>
+
+        <div class="p-4">
+
+            <div id="grid-view" class="grid grid-cols-3 gap-3">
+                <button class="input-grid-btn">
+                    <i class="fa-solid fa-microphone-lines text-gray-400 text-xl"></i>
+                    <span class="text-[10px] font-medium">录音</span>
+                </button>
+
+                <button class="input-grid-btn">
+                    <i class="fa-solid fa-file-pdf text-gray-400 text-xl"></i>
+                    <span class="text-[10px] font-medium">传文件</span>
+                </button>
+
+                <button onclick="showInputBox()"
+                    class="input-grid-btn bg-orange-50/50 border-orange-100 text-orange-600">
+                    <i class="fa-solid fa-keyboard text-xl"></i>
+                    <span class="text-[10px] font-bold">✍️ 贴个人简介</span>
+                </button>
+            </div>
+
+            <div id="input-view" class="hidden">
+                <div class="textarea-wrapper mb-3">
+                    <textarea
+                        class="w-full h-32 text-xs text-gray-800 outline-none resize-none placeholder-gray-400 leading-relaxed"
+                        placeholder="请在此处直接粘贴您的个人简介、过往业绩描述，或者直接输入一段您的自我介绍..."></textarea>
+                    <div class="text-right text-[10px] text-gray-300 mt-1">0/500</div>
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="hideInputBox()"
+                        class="flex-1 py-2 rounded-lg border border-gray-200 text-gray-500 text-xs font-bold">取消</button>
+                    <button onclick="hideInputBox()"
+                        class="flex-1 py-2 rounded-lg bg-orange-500 text-white text-xs font-bold shadow-md">
+                        确认保存
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="config-card active border-orange-200 shadow-md mt-6">
+        <div class="p-4 border-b border-orange-100 bg-orange-50/30 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 text-sm">模仿对象 (自定义)</h3>
+                </div>
+            </div>
+            <span class="tag-opt">可选</span>
+        </div>
+
+        <div class="p-4">
+            <p class="text-[11px] text-gray-400 mb-2">已选择：<span class="font-bold text-orange-600">粘贴文字资料</span></p>
+
+            <div class="textarea-wrapper bg-orange-50/30 border-orange-200">
+                <textarea
+                    class="w-full h-40 text-xs text-gray-800 outline-none resize-none bg-transparent placeholder-gray-400 leading-relaxed"
+                    placeholder="在此粘贴金牌销售的对话记录、话术脚本、或者公众号文章内容...&#10;&#10;AI 将自动提取其中的语言风格与逻辑。"></textarea>
+
+                <div class="flex justify-between items-center mt-2 pt-2 border-t border-orange-100/50">
+                    <button class="text-gray-400 hover:text-orange-500"><i class="fa-solid fa-microphone"></i></button>
+                    <button class="px-4 py-1.5 bg-gray-900 text-white text-[10px] font-bold rounded-full">
+                        AI 解析
+                    </button>
+                </div>
+            </div>
+
+            <button class="w-full mt-3 text-[10px] text-gray-400 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-rotate-left"></i> 切换为录音或文件上传
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function showInputBox() {
+            document.getElementById('grid-view').classList.add('hidden');
+            document.getElementById('input-view').classList.remove('hidden');
+        }
+
+        function hideInputBox() {
+            document.getElementById('input-view').classList.add('hidden');
+            document.getElementById('grid-view').classList.remove('hidden');
+            // 实际逻辑中，这里会把按钮状态改为“已填”
+        }
+    </script>
+</body>
+
+</html>

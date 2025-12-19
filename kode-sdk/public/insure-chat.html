@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保险推荐 AI 对话测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            max-height: 700px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.assistant {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .message.assistant .message-bubble {
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+        }
+
+        .message.system .message-bubble {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            max-width: 100%;
+            font-size: 13px;
+        }
+
+        .input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 12px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #messageInput:focus {
+            border-color: #667eea;
+        }
+
+        #sendButton {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #sendButton:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        #sendButton:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 18px;
+            max-width: 70px;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #667eea;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        .config-panel {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        .config-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .config-row label {
+            font-weight: 600;
+            color: #555;
+            min-width: 80px;
+        }
+
+        .config-row input {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ 保险推荐 AI 顾问</h1>
+            <p>专业、理性、客观的保险咨询服务</p>
+        </div>
+
+        <div class="config-panel">
+            <div class="config-row">
+                <label>API 地址:</label>
+                <input type="text" id="apiUrl" value="http://127.0.0.1:3001/api/chat" placeholder="http://127.0.0.1:3001/api/chat">
+            </div>
+            <div class="config-row">
+                <label>Token:</label>
+                <input type="text" id="userToken" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoieWV5YSIsImlhdCI6MTc2NTYzNjQ5OX0.b148UQpq060_gdCV_HDwkUaFNcTAh8OOZtmp_-5jhpc" placeholder="输入 JWT Token">
+            </div>
+            <div class="config-row">
+                <label>Session ID:</label>
+                <input type="text" id="sessionId" value="insure-test-session-1" placeholder="会话ID（可选）">
+            </div>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="message system">
+                <div class="message-bubble">
+                    👋 您好！我是您的专业保险顾问。您可以向我咨询任何保险相关的问题，我会为您提供清晰、准确的建议。
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <div class="input-wrapper">
+                <input type="text" id="messageInput" placeholder="请输入您的问题..." />
+                <button id="sendButton">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chatContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const apiUrlInput = document.getElementById('apiUrl');
+        const userTokenInput = document.getElementById('userToken');
+        const sessionIdInput = document.getElementById('sessionId');
+
+        let isProcessing = false;
+
+        // 添加消息到聊天容器
+        function addMessage(content, type = 'user') {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'message-bubble';
+            bubbleDiv.textContent = content;
+            
+            messageDiv.appendChild(bubbleDiv);
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            return bubbleDiv;
+        }
+
+        // 添加打字指示器
+        function addTypingIndicator() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message assistant';
+            messageDiv.id = 'typingIndicator';
+            
+            const indicatorDiv = document.createElement('div');
+            indicatorDiv.className = 'typing-indicator active';
+            indicatorDiv.innerHTML = '<span></span><span></span><span></span>';
+            
+            messageDiv.appendChild(indicatorDiv);
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            return messageDiv;
+        }
+
+        // 移除打字指示器
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // 发送消息
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message || isProcessing) return;
+
+            const apiUrl = apiUrlInput.value.trim();
+            const token = userTokenInput.value.trim();
+            const sessionId = sessionIdInput.value.trim();
+
+            if (!token) {
+                addMessage('请先配置 Token', 'system');
+                return;
+            }
+
+            // 添加用户消息
+            addMessage(message, 'user');
+            messageInput.value = '';
+            
+            isProcessing = true;
+            sendButton.disabled = true;
+            sendButton.textContent = '发送中...';
+
+            // 添加打字指示器
+            addTypingIndicator();
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        agentId: 'insure-recommand-v1',
+                        sessionId: sessionId || undefined
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                // 移除打字指示器
+                removeTypingIndicator();
+
+                // 处理 SSE 流
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let assistantBubble = null;
+                let fullText = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n');
+
+                    let currentEvent = null;
+                    for (const line of lines) {
+                        if (line.startsWith('event: ')) {
+                            currentEvent = line.slice(7).trim();
+                        } else if (line.startsWith('data: ')) {
+                            const data = line.slice(6);
+                            if (data === '[DONE]') continue;
+
+                            try {
+                                const eventData = JSON.parse(data);
+                                
+                                // 支持 thinking 和 text 两种事件
+                                if (currentEvent === 'thinking' || currentEvent === 'text') {
+                                    if (!assistantBubble) {
+                                        assistantBubble = addMessage('', 'assistant');
+                                    }
+                                    fullText += eventData.delta || '';
+                                    assistantBubble.textContent = fullText;
+                                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                                }
+                                
+                                if (currentEvent === 'complete') {
+                                    console.log('对话完成:', eventData);
+                                }
+                                
+                                if (currentEvent === 'error') {
+                                    addMessage(`错误: ${eventData.message}`, 'system');
+                                }
+                            } catch (e) {
+                                console.error('解析 SSE 数据失败:', e, '原始数据:', data);
+                            }
+                        }
+                    }
+                }
+
+            } catch (error) {
+                removeTypingIndicator();
+                addMessage(`连接失败: ${error.message}`, 'system');
+                console.error('发送失败:', error);
+            } finally {
+                isProcessing = false;
+                sendButton.disabled = false;
+                sendButton.textContent = '发送';
+            }
+        }
+
+        // 绑定事件
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // 自动聚焦输入框
+        messageInput.focus();
+    </script>
+</body>
+</html>

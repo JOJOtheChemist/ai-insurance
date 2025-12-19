@@ -1,0 +1,42 @@
+# ==========================================
+# Kode-SDK 后端配置
+# ==========================================
+
+# 服务端口（避免与现有服务冲突）
+PORT=3001
+
+# AI 模型配置（智谱 GLM）
+# ANTHROPIC_API_KEY=ce85d782d3834f3982b87494dbd2a447.y8l8wxwEFafurRY2  #jojo的
+ANTHROPIC_API_KEY=e5e0309233444360bd352ae4428ce7f1.0lAkwFWdK4IVKZJI  # 佳月的
+ANTHROPIC_MODEL_ID=glm-4.5-air
+ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic/v1/messages
+
+# 环境模式
+NODE_ENV=production
+
+# 日志级别
+LOG_LEVEL=info
+
+# 工作目录
+WORKSPACE_DIR=./workspace
+
+# 工具执行超时（毫秒）
+TOOL_TIMEOUT_MS=30000
+
+# 最大并发工具数
+MAX_TOOL_CONCURRENCY=1
+JWT_SECRET=aB3dF9gH2jK5mN8pQ1rS4tU7vW0xY6zA9bC2dE5fG8hJ
+
+# 智谱 GLM API Key（用于 create_schedule 工具）
+# GLM_API_KEY=ce85d782d3834f3982b87494dbd2a447.y8l8wxwEFafurRY2  #jojo的
+ANTHROPIC_API_KEY=e5e0309233444360bd352ae4428ce7f1.0lAkwFWdK4IVKZJI  # 佳月的
+
+# 时间表系统的 JWT 密钥（用于验证时间表系统的Token）
+TIMESHEET_JWT_SECRET=aB3dF9gH2jK5mN8pQ1rS4tU7vW0xY6zA9bC2dE5fG8hJ
+
+
+USER_JWT_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoieWV5YSJ9.l6qcQxyQjuxtIZp-ZMeQSiZHdyTWXDSqs0joQshGN-M
+
+# JWT Secret Key (与后端保持一致)
+JWT_SECRET_KEY=aB3dF9gH2jK5mN8pQ1rS4tU7vW0xY6zA9bC2dE5fG8hJ
+JWT_SECRET=aB3dF9gH2jK5mN8pQ1rS4tU7vW0xY6zA9bC2dE5fG8hJ

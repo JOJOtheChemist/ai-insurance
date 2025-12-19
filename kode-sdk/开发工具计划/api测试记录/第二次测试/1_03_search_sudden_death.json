@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 40,
+            "product_name": "友邦友型运动意外伤害保险（互联网专属）",
+            "product_code": "PCODE_0035",
+            "description_snippet": "意外事故保险金、骨折医疗、医药费用补偿及猝死保险金。",
+            "extend_info_snippet": "\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"意外伤残保险金\"}}}",
+            "score": 80
+        },
+        {
+            "id": 7,
+            "product_name": "友邦享运动意外伤害保险（互联网）",
+            "product_code": "PCODE_0002",
+            "description_snippet": "一款包含意外身故、伤残及可选骨折医疗等责任的意外险。",
+            "extend_info_snippet": "\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"意外伤残保险金\"}}}",
+            "score": 30
+        },
+        {
+            "id": 29,
+            "product_name": "友邦附加添益（2025）意外伤害保险",
+            "product_code": "PCODE_0024",
+            "description_snippet": "包含一般意外、航空意外等责任的意外伤害保险产品。",
+            "extend_info_snippet": "\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"一般/航空/特定/重大自然灾害\"}}}",
+            "score": 30
+        }
+    ]
+}

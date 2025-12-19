@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>数字人交互 - 状态流转</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            overflow: hidden;
+            /* 禁止整体滚动 */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================================
+           1. 数字人舞台 (Avatar Stage)
+           初始高度 45vh，激活后变为 140px
+           ========================================= */
+        #avatar-stage {
+            height: 45vh;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* 弹性动画 */
+            background: radial-gradient(circle at center, #374151 0%, #111827 100%);
+            position: relative;
+            z-index: 0;
+        }
+
+        /* 激活状态：变矮 */
+        #avatar-stage.minimized {
+            height: 140px;
+        }
+
+        /* 头像图片动画 */
+        #avatar-img {
+            transition: all 0.6s ease;
+            transform-origin: bottom center;
+        }
+
+        /* 激活状态：头像缩小并略微移动 */
+        #avatar-stage.minimized #avatar-img {
+            transform: scale(0.7) translateY(10px);
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           2. 聊天面板 (Chat Sheet)
+           覆盖在舞台下方，圆角设计
+           ========================================= */
+        #chat-sheet {
+            position: absolute;
+            top: 42vh;
+            /* 初始位置稍微盖住一点视频 */
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* 足够高 */
+            background: #FFFFFF;
+            border-radius: 32px 32px 0 0;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 激活状态：面板上滑，占据绝大部分屏幕 */
+        #chat-sheet.expanded {
+            top: 130px;
+            /* 留出顶部给数字人露头 */
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* =========================================
+           3. 内容切换 (Fade Switch)
+           ========================================= */
+        .fade-exit {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s;
+        }
+
+        .fade-enter {
+            opacity: 1;
+            height: auto;
+            transition: opacity 0.5s delay 0.2s;
+        }
+
+        .bubble-user {
+            background: #1F2937;
+            color: white;
+            border-radius: 20px 4px 20px 20px;
+        }
+
+        .bubble-ai {
+            background: #F3F4F6;
+            color: #1F2937;
+            border-radius: 4px 20px 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full relative">
+
+    <div id="avatar-stage" class="w-full flex justify-center items-end overflow-hidden">
+
+        <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-20 text-white/80">
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center"><i
+                    class="fa-solid fa-chevron-down"></i></button>
+            <div
+                class="flex items-center gap-2 bg-black/20 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-xs font-bold">张伟 AI · 在线</span>
+            </div>
+            <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur flex items-center justify-center"><i
+                    class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <img id="avatar-img" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle"
+            class="w-48 h-48 rounded-full border-4 border-white/10 shadow-2xl mb-8 z-10 scale-110">
+
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#111827] to-transparent z-0"></div>
+    </div>
+
+    <div id="chat-sheet" class="pb-24">
+        <div class="w-full flex justify-center pt-3 pb-1 shrink-0">
+            <div class="w-10 h-1 bg-gray-200 rounded-full"></div>
+        </div>
+
+        <div id="view-welcome" class="px-6 flex flex-col h-full transition-opacity duration-300">
+            <div class="mb-6 mt-2">
+                <h1 class="text-xl font-bold text-gray-900 mb-1">我是张伟 👋</h1>
+                <p class="text-sm text-gray-500">家族信托专家，已协助 <span class="text-orange-500 font-bold">1.2w</span> 家庭。</p>
+            </div>
+
+            <div class="flex gap-2 mb-6">
+                <span class="px-3 py-1 bg-gray-900 text-white rounded-full text-xs font-bold">我是企业主</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-bold">我是高管</span>
+            </div>
+
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider mb-3">您可以这样问：</p>
+
+            <div class="space-y-3 overflow-y-auto no-scrollbar pb-10">
+                <button onclick="startChat('企业债务隔离')"
+                    class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-blue-50 transition-colors text-left">
+                    <div>
+                        <div class="text-sm font-bold text-gray-800">企业债务隔离</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"公司破产会影响我的个人房产吗？"</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up text-gray-300 rotate-45 group-hover:text-blue-500"></i>
+                </button>
+
+                <button onclick="startChat('大额保单架构')"
+                    class="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-blue-50 transition-colors text-left">
+                    <div>
+                        <div class="text-sm font-bold text-gray-800">大额保单架构</div>
+                        <div class="text-xs text-gray-400 mt-0.5">"如何利用保险进行税务合规筹划？"</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up text-gray-300 rotate-45 group-hover:text-blue-500"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="view-chat"
+            class="px-4 flex-1 overflow-y-auto hidden opacity-0 transition-opacity duration-500 pt-2 space-y-4">
+            <div class="text-center text-[10px] text-gray-400 my-2">对话已由 AI 加密保护</div>
+
+            <div id="msg-container" class="space-y-4 pb-4"></div>
+        </div>
+
+    </div>
+
+    <div class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-4 py-3 pb-6 z-50 flex items-center gap-3">
+        <button class="w-10 h-10 rounded-full bg-gray-50 text-gray-500 hover:text-orange-500 transition-colors">
+            <i class="fa-solid fa-microphone text-lg"></i>
+        </button>
+        <div
+            class="flex-1 bg-gray-100 rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-gray-300 transition-colors">
+            <input id="user-input" type="text" placeholder="向张伟提问..."
+                class="bg-transparent flex-1 outline-none text-sm text-gray-800"
+                onkeypress="if(event.keyCode==13) startChat(this.value)">
+        </div>
+        <button onclick="startChat(document.getElementById('user-input').value)"
+            class="w-11 h-11 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+    <script>
+        function startChat(msg) {
+            if (!msg) return;
+
+            // 1. 获取 DOM 元素
+            const stage = document.getElementById('avatar-stage');
+            const sheet = document.getElementById('chat-sheet');
+            const welcomeView = document.getElementById('view-welcome');
+            const chatView = document.getElementById('view-chat');
+            const msgContainer = document.getElementById('msg-container');
+            const input = document.getElementById('user-input');
+
+            // 2. 触发 UI 状态流转 (State Transition)
+            // 数字人变矮
+            stage.classList.add('minimized');
+            // 聊天面板上浮
+            sheet.classList.add('expanded');
+
+            // 3. 内容切换 (Fade Switch)
+            // 隐藏欢迎页
+            welcomeView.style.opacity = '0';
+            welcomeView.style.height = '0';
+            welcomeView.style.overflow = 'hidden'; // 防止占位
+
+            // 显示聊天流
+            chatView.classList.remove('hidden');
+            // 短暂延迟让 display:block 生效后再加 opacity，产生渐变效果
+            setTimeout(() => {
+                chatView.style.opacity = '1';
+            }, 100);
+
+            // 4. 插入用户消息
+            input.value = ''; // 清空输入框
+            const userBubble = `
+                <div class="flex flex-row-reverse items-start gap-3 animate-fade-in-up">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 border border-white shrink-0 overflow-hidden">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-full h-full">
+                    </div>
+                    <div class="bubble-user px-4 py-2.5 text-sm shadow-sm max-w-[80%]">
+                        ${msg}
+                    </div>
+                </div>
+            `;
+            msgContainer.insertAdjacentHTML('beforeend', userBubble);
+
+            // 5. 模拟 AI 思考与回复
+            setTimeout(() => {
+                const aiBubble = `
+                    <div class="flex items-start gap-3 animate-fade-in-up">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 border border-white shrink-0 overflow-hidden flex items-center justify-center text-xs font-bold text-blue-600">
+                            AI
+                        </div>
+                        <div class="bubble-ai px-4 py-3 text-sm shadow-sm max-w-[85%] leading-relaxed">
+                            <p class="font-bold text-gray-800 mb-1">这是一个非常典型的风险场景。</p>
+                            根据《公司法》与相关司法解释，如果您作为企业法定代表人与公司财产存在混同，债务确实可能穿透到个人。<br><br>
+                            建议我们从<span class="text-orange-600 font-bold">家企账户隔离</span>和<span class="text-orange-600 font-bold">信托架构搭建</span>两个维度来构建防火墙...
+                        </div>
+                    </div>
+                    
+                    <div class="pl-11 flex gap-2 overflow-x-auto no-scrollbar pt-1">
+                        <button class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs text-gray-600 font-medium whitespace-nowrap">查看类似判例</button>
+                        <button class="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs text-gray-600 font-medium whitespace-nowrap">生成隔离方案</button>
+                    </div>
+                `;
+                msgContainer.insertAdjacentHTML('beforeend', aiBubble);
+
+                // 滚动到底部
+                chatView.scrollTop = chatView.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

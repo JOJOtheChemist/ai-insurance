@@ -1,0 +1,63 @@
+{
+    "product_name": "友邦友型运动意外伤害保险（互联网专属）",
+    "extend_info": {
+        "highlights": [
+            {
+                "label": "最高保额",
+                "value": "详见条款"
+            },
+            {
+                "label": "保障期限",
+                "value": "7日、30日"
+            },
+            {
+                "label": "等待期",
+                "value": "无"
+            },
+            {
+                "label": "险种类型",
+                "value": "意外险"
+            }
+        ],
+        "table_data": {
+            "rows": [
+                [
+                    "0-17岁",
+                    "¥300"
+                ],
+                [
+                    "18-40岁",
+                    "¥500"
+                ],
+                [
+                    "41-60岁",
+                    "¥1,200"
+                ]
+            ],
+            "title": "费率参考 (示例)",
+            "headers": [
+                "年龄",
+                "年交保费"
+            ]
+        },
+        "theme_color": "#4682B4",
+        "accident_features": {
+            "basic_rules": {
+                "age_limit": "3-64岁",
+                "payment_period": "无",
+                "waiting_period": "无",
+                "insurance_period": "7日、30日"
+            },
+            "medical_protection": {
+                "bone_fracture": "意外骨折医疗保险金",
+                "medical_expense": "意外医药费用补偿金"
+            },
+            "accident_protection": {
+                "death_payout": "意外身故保险金",
+                "sudden_death": "猝死保险金",
+                "disability_payout": "意外伤残保险金"
+            }
+        }
+    },
+    "coverage": "[\"\\u2022 \\u610f\\u5916\\u8eab\\u6545\\u4fdd\\u9669\\u91d1\\uff1a\\u5728\\u4fdd\\u9669\\u5408\\u540c\\u6709\\u6548\\u671f\\u5185\\uff0c\\u82e5\\u88ab\\u4fdd\\u9669\\u4eba\\u56e0\\u906d\\u53d7\\u610f\\u5916\\u4e8b\\u6545\\uff0c\\u4e14\\u81ea\\u8be5\\u4e8b\\u6545\\u53d1\\u751f\\u4e4b\\u65e5\\u8d77\\u4e00\\u767e\\u516b\\u5341\\u65e5\\u5185\\u8eab\\u6545\\u7684\\uff08\\u4e0d\\u5305\\u62ec\\u731d\\u6b7b\\uff09\\uff0c\\u5219\\u672c\\u516c\\u53f8\\u7ed9\\u4ed8\\u610f\\u5916\\u8eab\\u6545\\u4fdd\\u9669\\u91d1\\u4e88\\u8eab\\u6545\\u4fdd\\u9669\\u91d1\\u53d7\\u76ca\\u4eba\\u3002\", \"\\u2022 \\u610f\\u5916\\u4f24\\u6b8b\\u4fdd\\u9669\\u91d1\\uff1a\\u5728\\u4fdd\\u9669\\u5408\\u540c\\u6709\\u6548\\u671f\\u5185\\uff0c\\u82e5\\u88ab\\u4fdd\\u9669\\u4eba\\u56e0\\u906d\\u53d7\\u610f\\u5916\\u4e8b\\u6545\\uff0c\\u4e14\\u81ea\\u8be5\\u4e8b\\u6545\\u53d1\\u751f\\u4e4b\\u65e5\\u8d77\\u4e00\\u767e\\u516b\\u5341\\u65e5\\u5185\\u5bfc\\u81f4\\u4f24\\u6b8b\\uff0c\\u5219\\u672c\\u516c\\u53f8\\u5c06\\u6309\\u300a\\u4eba\\u8eab\\u4fdd\\u9669\\u4f24\\u6b8b\\u8bc4\\u5b9a\\u6807\\u51c6\\u53ca\\u4ee3\\u7801\\u300b\\u4e2d\\u7684\\u8bc4\\u5b9a\\u539f\\u5219\\uff0c\\u786e\\u8ba4\\u8be5\\u4f24\\u6b8b\\u7684\\u4f24\\u6b8b\\u7c7b\\u522b\\u3001\\u4f24\\u6b8b\\u7b49\\u7ea7\\u548c\\u4fdd\\u9669\\u91d1\\u7ed9\\u4ed8\\u6bd4\\u4f8b\\uff0c\\u5e76\\u7ed9\\u4ed8\\u610f\\u5916\\u4f24\\u6b8b\\u4fdd\\u9669\\u91d1\\u4e88\\u88ab\\u4fdd\\u9669\\u4eba\\u3002\", \"\\u2022 \\u610f\\u5916\\u9aa8\\u6298\\u533b\\u7597\\u4fdd\\u9669\\u91d1\\uff1a\\u5728\\u4fdd\\u9669\\u5408\\u540c\\u6709\\u6548\\u671f\\u5185\\uff0c\\u82e5\\u88ab\\u4fdd\\u9669\\u4eba\\u56e0\\u906d\\u53d7\\u610f\\u5916\\u4e8b\\u6545\\u5bfc\\u81f4\\u4fdd\\u9669\\u5408\\u540c\\u6240\\u5b9a\\u4e49\\u7684\\u9aa8\\u6298\\uff0c\\u5728\\u533b\\u9662\\u63a5\\u53d7\\u6cbb\\u7597\\u5e76\\u53d1\\u751f\\u76f8\\u5e94\\u533b\\u7597\\u8d39\\u7528\\u652f\\u51fa\\u7684\\uff0c\\u82e5\\u8be5\\u9aa8\\u6298\\u5c5e\\u4e8e\\u4fdd\\u9669\\u5408\\u540c\\u6240\\u9644\\u300a\\u4eba\\u8eab\\u4fdd\\u9669\\u9aa8\\u6298\\u7a0b\\u5ea6\\u4e0e\\u4fdd\\u9669\\u91d1\\u7ed9\\u4ed8\\u6bd4\\u4f8b\\u8868\\u300b\\u4e2d\\u6240\\u5217\\u9aa8\\u6298\\uff0c\\u5219\\u672c\\u516c\\u53f8\\u7ed9\\u4ed8\\u610f\\u5916\\u9aa8\\u6298\\u533b\\u7597\\u4fdd\\u9669\\u91d1\\u4e88\\u88ab\\u4fdd\\u9669\\u4eba\\u3002\", \"\\u2022 \\u610f\\u5916\\u533b\\u836f\\u8d39\\u7528\\u8865\\u507f\\u91d1\\uff1a\\u5728\\u4fdd\\u9669\\u5408\\u540c\\u6709\\u6548\\u671f\\u5185\\uff0c\\u82e5\\u88ab\\u4fdd\\u9669\\u4eba\\u56e0\\u906d\\u53d7\\u610f\\u5916\\u4e8b\\u6545\\uff0c\\u4e14\\u81ea\\u8be5\\u4e8b\\u6545\\u53d1\\u751f\\u4e4b\\u65e5\\u8d77\\u4e00\\u767e\\u516b\\u5341\\u65e5\\u5185\\u56e0\\u8be5\\u4e8b\\u6545\\u6240\\u81f4\\u4f24\\u5bb3\\u800c\\u7ecf\\u533b\\u9662\\u8fdb\\u884c\\u5fc5\\u8981\\u6cbb\\u7597\\uff0c\\u5219\\u672c\\u516c\\u53f8\\u5c31\\u88ab\\u4fdd\\u9669\\u4eba\\u5df2\\u53d1\\u751f\\u7684\\u3001\\u5fc5\\u987b\\u4e14\\u5408\\u7406\\u7684\\u5b9e\\u9645\\u533b\\u836f\\u8d39\\u7528\\u6309\\u516c\\u5f0f\\u7ed9\\u4ed8\\u610f\\u5916\\u533b\\u836f\\u8d39\\u7528\\u8865\\u507f\\u91d1\\u4e88\\u88ab\\u4fdd\\u9669\\u4eba\\u3002\", \"\\u2022 \\u731d\\u6b7b\\u4fdd\\u9669\\u91d1\\uff1a\\u5728\\u4fdd\\u9669\\u5408\\u540c\\u6709\\u6548\\u671f\\u5185\\uff0c\\u82e5\\u88ab\\u4fdd\\u9669\\u4eba\\u53d1\\u751f\\u731d\\u6b7b\\uff0c\\u5219\\u672c\\u516c\\u53f8\\u7ed9\\u4ed8\\u731d\\u6b7b\\u4fdd\\u9669\\u91d1\\u4e88\\u8eab\\u6545\\u4fdd\\u9669\\u91d1\\u53d7\\u76ca\\u4eba\\u3002\"]"
+}

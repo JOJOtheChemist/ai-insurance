@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI保典 - 通用产品详情渲染引擎</title>
+    <style>
+        :root {
+            /* 动态主题色，将由JS控制 */
+            --primary-color: #D31145; 
+            --secondary-color: #1A1A1A;
+            --accent-color: #C69C6D;
+            --bg-light: #F9FAFB;
+            --text-gray: #666;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--secondary-color);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* 顶部模拟导航栏 */
+        .mock-nav {
+            background: #fff;
+            padding: 10px 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            padding: 6px 15px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .nav-btn.active {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        /* 头部设计 */
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2c2c2c 100%);
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .company-name {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+        }
+
+        /* 核心数据卡片 */
+        .metrics-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .metric-card {
+            flex: 1;
+            min-width: 130px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        /* 主体内容 */
+        .container {
+            max-width: 800px;
+            margin: -20px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: none; /* 默认隐藏，有数据才显示 */
+        }
+
+        .section.has-data {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background-color: var(--primary-color);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        /* 标签列表 */
+        .tags-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .info-tag {
+            background-color: #F3F4F6;
+            color: #4B5563;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* 投保规则网格 */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .rule-item h4 {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        .rule-item p {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* 保障范围列表 */
+        .coverage-list {
+            list-style: none;
+        }
+
+        .coverage-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .coverage-item:last-child {
+            border-bottom: none;
+        }
+
+        .coverage-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #FFF5F7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .coverage-content {
+            flex: 1;
+        }
+
+        .coverage-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .coverage-desc {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .coverage-amount {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 15px;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        /* 责任免除 */
+        .exclusion-box {
+            background-color: #FFF9FA;
+            border: 1px dashed #FCC;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .exclusion-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        /* 动态表格 */
+        .dynamic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        .dynamic-table th, .dynamic-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dynamic-table th {
+            text-align: left;
+            background: #eee;
+            font-weight: 600;
+        }
+
+        /* 自定义 Tooltip 样式 */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .tooltip-icon {
+            font-size: 12px;
+            cursor: pointer;
+            color: #999;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%; /* Position above */
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 12px;
+            font-weight: normal;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        /* Hover 和 Active (点击) 时显示 */
+        .tooltip-container:hover .tooltip-text,
+        .tooltip-container:active .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 底部操作栏 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .rules-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .header {
+                padding: 60px 40px;
+                text-align: center;
+            }
+            .metrics-container {
+                justify-content: center;
+            }
+            .product-desc {
+                margin: 0 auto;
+            }
+            .bottom-nav {
+                justify-content: center;
+            }
+            .bottom-nav .btn {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 模拟导航：切换不同产品数据 -->
+    <div class="mock-nav" id="navContainer">
+        <!-- JS 自动填充 -->
+    </div>
+
+    <!-- 顶部展示区 -->
+    <header class="header" id="headerSection">
+        <div class="tag" id="productType">产品类型</div>
+        <h1 class="product-title" id="productName">加载中...</h1>
+        <div class="company-name">🛡️ <span id="companyName">--</span></div>
+        <p class="product-desc" id="productDesc">--</p>
+
+        <!-- 关键指标 - 动态生成 -->
+        <div class="metrics-container" id="highlightsContainer"></div>
+    </header>
+
+    <div class="container">
+        <!-- 产品标签 -->
+        <div class="section has-data">
+            <div class="tags-list" id="tagsContainer"></div>
+        </div>
+
+        <!-- 投保规则 -->
+        <div class="section has-data">
+            <h3 class="section-title">投保规则</h3>
+            <div class="rules-grid" id="rulesContainer">
+                <!-- 动态填充 -->
+            </div>
+        </div>
+
+        <!-- 保障详情 -->
+        <div class="section" id="coverageSection">
+            <h3 class="section-title">核心保障权益</h3>
+            <div class="coverage-list" id="coverageList">
+                <!-- 动态填充 -->
+            </div>
+        </div>
+
+        <!-- 费率/利益演示 -->
+        <div class="section" id="tableSection">
+            <h3 class="section-title" id="tableTitle">数据参考</h3>
+            <div style="background: #F9FAFB; border-radius: 8px; overflow: hidden;">
+                <table class="dynamic-table" id="dynamicTable">
+                    <!-- 动态填充 -->
+                </table>
+            </div>
+        </div>
+
+        <!-- 责任免除 -->
+        <div class="section has-data">
+            <h3 class="section-title">重要提示</h3>
+            <div class="exclusion-box">
+                <strong>⚠️ 责任免除 / 特别约定</strong>
+                <ul id="exclusionList">
+                    <!-- 动态填充 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+        <button class="btn btn-outline">🤖 AI 顾问</button>
+        <button class="btn btn-primary">📄 生成计划书</button>
+    </nav>
+
+    <script>
+        /**
+         * 模拟数据库中的 JSON 数据结构
+         * 包含：基础字段 + extend_info (UI扩展字段)
+         */
+        const MOCK_DB_DATA = [
+            {
+                id: 1,
+                // --- 基础字段 (insurance_product) ---
+                product_name: "友邦传世无忧高端医疗保险",
+                product_type: "高端医疗险",
+                company_name: "友邦人寿",
+                description: "全球顶尖医疗资源尊享，千万保额守护健康。突破社保限制，直付服务无需垫付。",
+                tags: "高端医疗,全球保障,直付服务,癌症特药",
+                age_range: "0-70 周岁",
+                insurance_period: "1 年",
+                payment_period: "年交",
+                waiting_period: "30 天",
+                exclusions: "既往症;整形美容;遗传性疾病;未遵医嘱用药",
+                
+                // --- 扩展字段 (extend_info JSON) ---
+                extend_info: {
+                    theme_color: "#D31145", // 友邦红
+                    highlights: [
+                        { label: "年度保额", value: "800万" },
+                        { label: "免赔额", value: "0元" },
+                        { label: "保障区域", value: "全球" },
+                        { label: "理赔方式", value: "直付" }
+                    ],
+                    coverage_list: [
+                        { icon: "🏥", title: "住院医疗费用", desc: "包含床位费、手术费、ICU等", value: "全额" },
+                        { icon: "💊", title: "癌症治疗费用", desc: "化疗、放疗、靶向疗法", value: "全额" },
+                        { icon: "✈️", title: "紧急医疗救援", desc: "全球医疗转运与送返", value: "100万" }
+                    ],
+                    table_data: {
+                        title: "费率参考 (0免赔)",
+                        headers: ["年龄", "年交保费"],
+                        rows: [
+                            ["0-6岁", "¥12,888"],
+                            ["30岁", "¥15,660"],
+                            ["40岁", "¥19,800"]
+                        ]
+                    }
+                }
+            },
+            {
+                id: 2,
+                product_name: "友邦全佑倍至重疾险",
+                product_type: "重大疾病险",
+                company_name: "友邦人寿",
+                description: "提供多重重疾保障，覆盖癌症多次赔付，为您建立坚实的健康防线。",
+                tags: "重疾多次赔,癌症二次赔,身故保障",
+                age_range: "18-55 周岁",
+                insurance_period: "终身",
+                payment_period: "19年/29年交",
+                waiting_period: "90 天",
+                exclusions: "先天性疾病;自杀;犯罪行为",
+                
+                extend_info: {
+                    theme_color: "#008B8B", // 这里的颜色不同
+                    highlights: [
+                        { label: "重疾种类", value: "120种" },
+                        { label: "轻症种类", value: "60种" },
+                        { label: "赔付次数", value: "最高5次" },
+                        { label: "身故赔付", value: "保额" }
+                    ],
+                    coverage_list: [
+                        { icon: "🦠", title: "重大疾病保险金", desc: "120种重疾，分组多次赔付", value: "100%保额" },
+                        { icon: "🩺", title: "轻症疾病保险金", desc: "60种轻症，不分组无间隔", value: "20%保额" },
+                        { icon: "💀", title: "身故/全残", desc: "18岁后赔付保额", value: "100%保额" }
+                    ],
+                    // 重疾险可能不需要表格，或者展示现金价值示例
+                    table_data: null 
+                }
+            },
+            {
+                id: 3,
+                product_name: "友邦充裕未来年金保险",
+                product_type: "年金理财险",
+                company_name: "友邦人寿",
+                description: "长期资产规划首选，为您提供稳定的现金流，助力养老与子女教育。",
+                tags: "财富增值,养老规划,教育金",
+                age_range: "0-60 周岁",
+                insurance_period: "至105岁",
+                payment_period: "5年/10年交",
+                waiting_period: "无",
+                exclusions: "投保人对被保险人的故意杀害;被保险人两年内自杀",
+                
+                extend_info: {
+                    theme_color: "#DAA520", // 金色
+                    highlights: [
+                        { label: "起领时间", value: "第5年" },
+                        { label: "保证领取", value: "20年" },
+                        { label: "内部收益率", value: "3.5%+" }
+                    ],
+                    coverage_list: [
+                        { icon: "💰", title: "生存年金", desc: "第5年起每年领取", value: "10%保费" },
+                        { icon: "🎁", title: "满期金", desc: "合同期满给付", value: "100%保额" },
+                        { icon: "📈", title: "分红", desc: "根据公司经营状况分配", value: "浮动" }
+                    ],
+                    table_data: {
+                        title: "利益演示 (30岁男/年交10万)",
+                        headers: ["保单年度", "累计保费", "现金价值"],
+                        rows: [
+                            ["第5年", "50万", "38万"],
+                            ["第10年", "100万", "98万"],
+                            ["第20年", "100万", "165万"]
+                        ]
+                    }
+                }
+            }
+        ];
+
+        // --- 核心渲染逻辑 ---
+
+        function renderProduct(data) {
+            const ext = data.extend_info || {};
+
+            // 1. 设置主题色
+            document.documentElement.style.setProperty('--primary-color', ext.theme_color || '#D31145');
+
+            // 2. 基础信息绑定
+            setText('productType', data.product_type);
+            setText('productName', data.product_name);
+            setText('companyName', data.company_name);
+            setText('productDesc', data.description);
+
+            // 3. 标签
+            // 处理字符串列表或纯文本格式
+            let tagItems = [];
+            if (typeof data.tags === 'string') {
+                if (data.tags.startsWith('[')) {
+                    // It's a string representation of a list like "['tag1', 'tag2']"
+                    try {
+                        let cleaned = data.tags.replace(/'/g, '"');
+                        tagItems = JSON.parse(cleaned);
+                    } catch (e) {
+                        const matches = data.tags.match(/'([^']+)'/g);
+                        tagItems = matches ? matches.map(s => s.slice(1, -1)) : data.tags.split(/,|，| /);
+                    }
+                } else {
+                    // Simple comma-separated text
+                    tagItems = data.tags.split(/,|，| /);
+                }
+            } else if (Array.isArray(data.tags)) {
+                tagItems = data.tags;
+            }
+            
+            const tagsHtml = tagItems
+                .filter(tag => tag && tag.trim())
+                .map(tag => `<span class="info-tag">#${tag.trim()}</span>`)
+                .join('');
+            setHtml('tagsContainer', tagsHtml);
+
+            // 4. 关键指标 (Highlights) - 动态生成卡片
+            const highlightsHtml = (ext.highlights || []).map(h => `
+                <div class="metric-card">
+                    <div class="metric-value">${h.value}</div>
+                    <div class="metric-label">${h.label}</div>
+                </div>
+            `).join('');
+            setHtml('highlightsContainer', highlightsHtml);
+
+            // 5. 投保规则
+            const rules = [
+                { k: '投保年龄', v: data.age_range },
+                { k: '保障期限', v: data.insurance_period },
+                { k: '缴费年限', v: data.payment_period, tip: '需要连续交纳保费的年数' },
+                { k: '等待期', v: data.waiting_period, tip: '投保后需要等待一段时间，保障才正式生效' }
+            ];
+            const rulesHtml = rules.map(r => `
+                <div class="rule-item">
+                    <h4 style="display:flex; align-items:center;">
+                        ${r.k} 
+                        ${r.tip ? `
+                        <div class="tooltip-container" onclick="void(0)">
+                            <span class="tooltip-icon">?</span>
+                            <span class="tooltip-text">${r.tip}</span>
+                        </div>
+                        ` : ''}
+                    </h4>
+                    <p>${r.v}</p>
+                </div>
+            `).join('');
+            setHtml('rulesContainer', rulesHtml);
+
+            // 6. 核心保障 (Coverage List)
+            const coverageList = ext.coverage_list || [];
+            const covSection = document.getElementById('coverageSection');
+            if (coverageList.length > 0) {
+                covSection.classList.add('has-data');
+                const covHtml = coverageList.map(c => `
+                    <div class="coverage-item">
+                        <div class="coverage-icon" style="background-color: ${hexToRgba(ext.theme_color, 0.1)}; color:${ext.theme_color}">${c.icon || '🛡️'}</div>
+                        <div class="coverage-content">
+                            <div class="coverage-title">${c.title}</div>
+                            <div class="coverage-desc">${c.desc}</div>
+                        </div>
+                        <div class="coverage-amount" style="color:${ext.theme_color}">${c.value}</div>
+                    </div>
+                `).join('');
+                setHtml('coverageList', covHtml);
+            } else {
+                covSection.classList.remove('has-data');
+            }
+
+            // 7. 表格数据 (Table)
+            const tableData = ext.table_data;
+            const tableSection = document.getElementById('tableSection');
+            if (tableData) {
+                tableSection.classList.add('has-data');
+                setText('tableTitle', tableData.title);
+                
+                let tableHtml = `<thead><tr>${tableData.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`;
+                tableHtml += `<tbody>${tableData.rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>`;
+                
+                setHtml('dynamicTable', tableHtml);
+            } else {
+                tableSection.classList.remove('has-data');
+            }
+
+            // 8. 责任免除 (Exclusions)
+            // 处理字符串列表或纯文本格式
+            let exclusionItems = [];
+            if (typeof data.exclusions === 'string') {
+                if (data.exclusions.startsWith('[')) {
+                    // It's a string representation of a list like "['item1', 'item2']"
+                    try {
+                        // Clean up the string and parse it
+                        let cleaned = data.exclusions.replace(/'/g, '"');
+                        exclusionItems = JSON.parse(cleaned);
+                    } catch (e) {
+                        // Fallback: use regex to extract items
+                        const matches = data.exclusions.match(/'([^']+)'/g);
+                        exclusionItems = matches ? matches.map(s => s.slice(1, -1)) : [data.exclusions];
+                    }
+                } else {
+                    // Simple semicolon-separated text
+                    exclusionItems = data.exclusions.split(/;|；/);
+                }
+            } else if (Array.isArray(data.exclusions)) {
+                exclusionItems = data.exclusions;
+            }
+            
+            const excHtml = exclusionItems
+                .filter(ex => ex && ex.trim())
+                .map(ex => {
+                    // Remove bullet points and extra whitespace
+                    let cleaned = ex.replace(/^[•·\s]+/, '').trim();
+                    return `<li>${cleaned}</li>`;
+                })
+                .join('');
+            setHtml('exclusionList', excHtml);
+        }
+
+        // --- 工具函数 ---
+        function setText(id, text) { document.getElementById(id).textContent = text; }
+        function setHtml(id, html) { document.getElementById(id).innerHTML = html; }
+        
+        // 简单的 Hex 转 RGBA 用于背景色变淡
+        function hexToRgba(hex, alpha) {
+            // 这里的实现比较简略，仅适配 #RRGGBB 格式
+            let r = parseInt(hex.slice(1, 3), 16);
+            let g = parseInt(hex.slice(3, 5), 16);
+            let b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r},${g},${b},${alpha})`;
+        }
+
+        // --- 初始化逻辑 ---
+        function init() {
+            const nav = document.getElementById('navContainer');
+            
+            MOCK_DB_DATA.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = `nav-btn ${index === 0 ? 'active' : ''}`;
+                btn.textContent = item.product_name;
+                btn.onclick = () => {
+                    // 切换 active 样式
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // 渲染数据
+                    renderProduct(item);
+                };
+                nav.appendChild(btn);
+            });
+
+            // 默认渲染第一个
+            renderProduct(MOCK_DB_DATA[0]);
+        }
+
+        init();
+
+    </script>
+</body>
+</html>

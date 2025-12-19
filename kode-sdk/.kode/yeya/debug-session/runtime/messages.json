@@ -1,0 +1,55 @@
+[
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "帮我查一下所有重疾险产品"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "我来帮您查找所有重疾险产品。首先我需要使用筛选工具来获取重疾险产品列表，但需要您提供年龄范围信息。\n\n为了准确查询重疾险产品，我需要知道您的年龄范围。请问您的年龄在哪个区间内？例如：25-35岁或40-50岁等。\n"
+      },
+      {
+        "type": "tool_use",
+        "id": "call_5kqe8isdbeb",
+        "name": "customer_profile",
+        "input": {
+          "age": "待确认"
+        }
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "tool_result",
+        "tool_use_id": "call_5kqe8isdbeb",
+        "content": {
+          "ok": false,
+          "error": "Tool not found: customer_profile",
+          "recommendations": [
+            "确认工具是否已注册",
+            "检查模板或配置中的工具列表"
+          ]
+        },
+        "is_error": true
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "我需要先了解您的年龄范围才能为您筛选重疾险产品。请问您的年龄在哪个区间内？例如：\n- 18-25岁\n- 26-35岁 \n- 36-45岁\n- 46-55岁\n- 56-60岁\n\n请提供您的年龄范围，这样我就能为您查询到合适的重疾险产品了。"
+      }
+    ]
+  }
+]

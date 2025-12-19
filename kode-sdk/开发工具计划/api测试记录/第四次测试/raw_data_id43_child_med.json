@@ -1,0 +1,91 @@
+{
+    "product_name": "友邦友童无忧高端医疗保险",
+    "description": "包含一般门急诊、特定医疗及意外骨折费用补偿的高端医疗保险。",
+    "extend_info": {
+        "highlights": [
+            {
+                "label": "最高保额",
+                "value": "详见条款"
+            },
+            {
+                "label": "保障期限",
+                "value": "一年"
+            },
+            {
+                "label": "等待期",
+                "value": "7天"
+            },
+            {
+                "label": "险种类型",
+                "value": "医疗险"
+            }
+        ],
+        "table_data": {
+            "rows": [
+                [
+                    "0-17岁",
+                    "¥300"
+                ],
+                [
+                    "18-40岁",
+                    "¥500"
+                ],
+                [
+                    "41-60岁",
+                    "¥1,200"
+                ]
+            ],
+            "title": "费率参考 (示例)",
+            "headers": [
+                "年龄",
+                "年交保费"
+            ]
+        },
+        "theme_color": "#D31145",
+        "coverage_list": [
+            {
+                "desc": "在等待期后因意外事故或非意外原因发生的...",
+                "icon": "🏥",
+                "title": "一般门急诊医疗费用补偿金",
+                "value": "✅"
+            },
+            {
+                "desc": "包括眼科检查费、心理治疗费和儿保体检费...",
+                "icon": "🏥",
+                "title": "特定医疗费用补偿金",
+                "value": "✅"
+            },
+            {
+                "desc": "因意外事故导致骨折的医疗费用按约定比例...",
+                "icon": "🏥",
+                "title": "意外骨折医疗费用补偿金",
+                "value": "✅"
+            }
+        ],
+        "medical_features": {
+            "basic_rules": {
+                "age_limit": "0-12周岁",
+                "waiting_period": "7天",
+                "insurance_period": "1年",
+                "hesitation_period": "无"
+            },
+            "hospitalization": {
+                "reimbursement_rate": "约定比例",
+                "pre_post_hospitalization": "门急诊含"
+            },
+            "special_coverage": {
+                "designated_medical_equipment": "特定医疗含眼科/心理"
+            },
+            "value_added_services": [
+                "意外骨折医疗"
+            ]
+        }
+    },
+    "id": 43,
+    "product_type": "医疗险",
+    "coverage": {
+        "一般门急诊医疗费用补偿金": "在等待期后因意外事故或非意外原因发生的一般门急诊费用按约定比例给付。",
+        "特定医疗费用补偿金": "包括眼科检查费、心理治疗费和儿保体检费，按约定比例给付。",
+        "意外骨折医疗费用补偿金": "因意外事故导致骨折的医疗费用按约定比例给付。"
+    }
+}

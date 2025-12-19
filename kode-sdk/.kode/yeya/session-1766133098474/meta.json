@@ -1,0 +1,70 @@
+{
+  "agentId": "session-1766133098474",
+  "templateId": "default-tool-agent",
+  "createdAt": "2025-12-19T08:31:45.094Z",
+  "lineage": [],
+  "configVersion": "v2.7.0",
+  "messageCount": 1,
+  "lastSfpIndex": 0,
+  "metadata": {
+    "agentId": "session-1766133098474",
+    "templateId": "default-tool-agent",
+    "sandboxConfig": {
+      "kind": "local",
+      "workDir": "./workspace"
+    },
+    "modelConfig": {
+      "provider": "anthropic",
+      "model": "glm-4.5-air",
+      "baseUrl": "https://open.bigmodel.cn/api/anthropic/v1/messages",
+      "apiKey": "e5e0309233444360bd352ae4428ce7f1.0lAkwFWdK4IVKZJI",
+      "maxTokens": 4096,
+      "temperature": 0.7
+    },
+    "tools": [
+      {
+        "source": "registered",
+        "name": "insurance_filter",
+        "registryId": "insurance_filter",
+        "metadata": {
+          "tuned": false,
+          "access": "write",
+          "mutates": true
+        }
+      },
+      {
+        "source": "registered",
+        "name": "insurance_search",
+        "registryId": "insurance_search",
+        "metadata": {
+          "tuned": false,
+          "access": "write",
+          "mutates": true
+        }
+      },
+      {
+        "source": "registered",
+        "name": "insurance_inspect",
+        "registryId": "insurance_inspect",
+        "metadata": {
+          "tuned": false,
+          "access": "write",
+          "mutates": true
+        }
+      }
+    ],
+    "exposeThinking": true,
+    "permission": {
+      "mode": "auto"
+    },
+    "createdAt": "2025-12-19T08:31:45.094Z",
+    "updatedAt": "2025-12-19T08:31:45.099Z",
+    "configVersion": "v2.7.0",
+    "metadata": {
+      "toolTimeoutMs": 30000,
+      "maxToolConcurrency": 1
+    },
+    "lineage": [],
+    "breakpoint": "PRE_MODEL"
+  }
+}

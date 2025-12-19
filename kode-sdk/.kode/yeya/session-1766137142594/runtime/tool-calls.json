@@ -1,0 +1,645 @@
+[
+  {
+    "id": "call_bpqwpgprs6o",
+    "name": "insurance_filter",
+    "input": {
+      "age_min": 30,
+      "age_max": 30,
+      "product_type": "重疾险"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137360707,
+    "updatedAt": 1766137360727,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137360707
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137360714,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137360727,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137360714,
+    "result": {
+      "ok": true,
+      "count": 4,
+      "products": [
+        {
+          "id": 27,
+          "product_name": "友邦附加万全如意 A 款豁免保费重大疾病保险",
+          "product_type": "重疾险",
+          "age_range": "18周岁至55周岁"
+        },
+        {
+          "id": 33,
+          "product_name": "友邦附加盈如意顺心版提前给付重大疾病保险",
+          "product_type": "重疾险",
+          "age_range": "18周岁至55周岁"
+        },
+        {
+          "id": 42,
+          "product_name": "友邦友如意顺心版（2025）重大疾病保险",
+          "product_type": "重疾险",
+          "age_range": "18周岁至55周岁"
+        },
+        {
+          "id": 30,
+          "product_name": "友邦附加爱如意 D 款恶性肿瘤（重度）疾病保险",
+          "product_type": "重疾险",
+          "age_range": "男性0-50周岁，女性0-45周岁"
+        }
+      ]
+    },
+    "durationMs": 13,
+    "completedAt": 1766137360727
+  },
+  {
+    "id": "call_gim1drlvlyo",
+    "name": "insurance_search",
+    "input": {
+      "keyword": "猝死",
+      "limit": 5
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137362317,
+    "updatedAt": 1766137362338,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137362317
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137362319,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137362338,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137362319,
+    "result": {
+      "ok": true,
+      "products": [
+        {
+          "id": 40,
+          "product_name": "友邦友型运动意外伤害保险（互联网专属）",
+          "score": 80,
+          "matches": {
+            "description": "...包含意外事故保险金、骨折医疗、医药费用补偿及猝死保险金。...",
+            "extend_info": "{\"death_payout\": \"意外身故保险金\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"意外伤残保险金\"}",
+            "coverage": "...• 意外身故保险金：在保险合同有效期内，若被保险人因遭受意外事故，且自该事故发生之日起一百八十日内身故的（不包括猝死），则本公司给付意外身故保险金予身故保险金受益人。 • 意外伤残保险金：在保险合同有效期内，若被保险人因遭受意外事故，且自该事故发生之日起一百八十日内导致伤残，..."
+          }
+        },
+        {
+          "id": 7,
+          "product_name": "友邦享运动意外伤害保险（互联网）",
+          "score": 30,
+          "matches": {
+            "description": "一款包含意外身故、伤残及可选骨折医疗等责任的意外险。...",
+            "extend_info": "{\"death_payout\": \"意外身故保险金\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"意外伤残保险金\"}",
+            "coverage": "...费用补偿金：在保险合同有效期内，若被保险人因遭受意外事故，且自该事故发生之日起一百八十日内因该事故所致伤害而经医院进行必要治疗，则给付意外医药费用补偿金。 • 猝死保险金：在保险合同有效期内，若被保险人发生猝死，则给付猝死保险金。..."
+          }
+        },
+        {
+          "id": 29,
+          "product_name": "友邦附加添益（2025）意外伤害保险",
+          "score": 30,
+          "matches": {
+            "description": "包含一般意外、航空意外等责任的意外伤害保险产品。...",
+            "extend_info": "{\"death_payout\": \"一般/航空/特定/重大自然灾害\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"一般/航空/特定/重大自然灾害\"}",
+            "coverage": "...金：被保险人因九种重大自然灾害的发生而遭受意外事故，且自该事故发生之日起一百八十日内导致伤残，按《人身保险伤残评定及代码》给付重大自然灾害意外伤残保险金。 • 猝死保险金：被保险人猝死，给付猝死保险金。 • 意外医药费用补偿金：被保险人因遭受意外事故，且自该事故发生之日起一百八十日内因该事故所致伤害而经医院进行必要治疗，给..."
+          }
+        },
+        {
+          "id": 6,
+          "product_name": "友邦乐运动意外伤害保险（互联网）",
+          "score": 30,
+          "matches": {
+            "description": "一款包含意外身故、伤残及可选责任的保险产品。...",
+            "extend_info": "{\"death_payout\": \"意外身故保险金\", \"sudden_death\": \"猝死保险金\", \"disability_payout\": \"意外伤残保险金\"}",
+            "coverage": "...费用补偿金：在保险合同有效期内，若被保险人因遭受意外事故，且自该事故发生之日起一百八十日内因该事故所致伤害而经医院进行必要治疗，则给付意外医药费用补偿金。 • 猝死保险金：在保险合同有效期内，若被保险人发生猝死，则给付猝死保险金。..."
+          }
+        }
+      ]
+    },
+    "durationMs": 19,
+    "completedAt": 1766137362338
+  },
+  {
+    "id": "call_aahyh9t5bf",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 40,
+      "fields": "product_name,coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137363813,
+    "updatedAt": 1766137363827,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137363813
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137363815,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137363827,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137363815,
+    "result": {
+      "ok": true,
+      "data": {
+        "product_name": "友邦友型运动意外伤害保险（互联网专属）",
+        "coverage_keys": [
+          "意外身故保险金",
+          "意外伤残保险金",
+          "意外骨折医疗保险金",
+          "意外医药费用补偿金",
+          "猝死保险金"
+        ],
+        "extend_info_keys": [
+          "highlights",
+          "table_data",
+          "theme_color",
+          "accident_features"
+        ]
+      }
+    },
+    "durationMs": 12,
+    "completedAt": 1766137363827
+  },
+  {
+    "id": "call_3lc0cbd5mxr",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 40,
+      "fields": "coverage.猝死保险金,extend_info.highlights,extend_info.table_data",
+      "view": "full"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137365485,
+    "updatedAt": 1766137365501,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137365485
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137365485,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137365501,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137365485,
+    "result": {
+      "ok": true,
+      "data": {
+        "coverage": {
+          "猝死保险金": "在保险合同有效期内，若被保险人发生猝死，则本公司给付猝死保险金予身故保险金受益人。"
+        },
+        "extend_info.table_data": "{\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title\": \"费率参考 (示例)\", \"headers\": [\"年龄\", \"年交保费\"]}",
+        "extend_info.highlights": "[{\"label\": \"最高保额\", \"value\": \"详见条款\"}, {\"label\": \"保障期限\", \"value\": \"7日、30日\"}, {\"label\": \"等待期\", \"value\": \"无\"}, {\"label\": \"险种类型\", \"value\": \"意外险\"}]"
+      }
+    },
+    "durationMs": 16,
+    "completedAt": 1766137365501
+  },
+  {
+    "id": "call_riug681a5o",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 42,
+      "fields": "product_name,coverage",
+      "view": "summary"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137367514,
+    "updatedAt": 1766137367521,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137367514
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137367514,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137367521,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137367514,
+    "result": {
+      "ok": true,
+      "data": {
+        "product_name": "友邦友如意顺心版（2025）重大疾病保险",
+        "coverage_keys": [
+          "重度疾病保险金",
+          "中度疾病保险金",
+          "轻度疾病保险金",
+          "全残保险金",
+          "生命终末期保险金",
+          "身故保险金"
+        ]
+      }
+    },
+    "durationMs": 7,
+    "completedAt": 1766137367521
+  },
+  {
+    "id": "call_pviu5878kcq",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 42,
+      "fields": "coverage.身故保险金",
+      "view": "full"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137369603,
+    "updatedAt": 1766137369613,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137369603
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137369604,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137369613,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137369604,
+    "result": {
+      "ok": true,
+      "data": {
+        "coverage": {
+          "身故保险金": "给付金额等于身故时的基本保险金额。"
+        }
+      }
+    },
+    "durationMs": 9,
+    "completedAt": 1766137369613
+  },
+  {
+    "id": "call_li030c8fx4o",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 30,
+      "fields": "product_name,coverage",
+      "view": "summary"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137374072,
+    "updatedAt": 1766137374087,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137374072
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137374072,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137374087,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137374072,
+    "result": {
+      "ok": true,
+      "data": {
+        "product_name": "友邦附加爱如意 D 款恶性肿瘤（重度）疾病保险",
+        "coverage_keys": [
+          "等待期",
+          "豁免保险费",
+          "第一次“恶性肿瘤——重度”保险金",
+          "第二次“恶性肿瘤——重度”保险金"
+        ]
+      }
+    },
+    "durationMs": 15,
+    "completedAt": 1766137374087
+  },
+  {
+    "id": "call_sh8sfdukbib",
+    "name": "insurance_filter",
+    "input": {
+      "age_min": 30,
+      "age_max": 30,
+      "product_type": "医疗险"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137396284,
+    "updatedAt": 1766137396295,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137396284
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137396284,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137396295,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137396284,
+    "result": {
+      "ok": true,
+      "count": 7,
+      "products": [
+        {
+          "id": 9,
+          "product_name": "友邦优享康惠医疗保险",
+          "product_type": "医疗险",
+          "age_range": "出生满七日至六十岁（计划一）；十八岁至六十岁（计划二、三）"
+        },
+        {
+          "id": 19,
+          "product_name": "友邦深圳专属团体24医疗保险（互联网）",
+          "product_type": "医疗险",
+          "age_range": "无年龄限制"
+        },
+        {
+          "id": 26,
+          "product_name": "友邦长保康惠长期医疗保险（费率可调）",
+          "product_type": "医疗险",
+          "age_range": "出生满七日至六十五岁，最高可续保至九十九岁"
+        },
+        {
+          "id": 35,
+          "product_name": "友邦传世无忧（2024）高端医疗保险",
+          "product_type": "医疗险",
+          "age_range": "出生满三十日至七十岁，牙科部分为出生满三十日至六十五岁"
+        },
+        {
+          "id": 43,
+          "product_name": "友邦友童无忧高端医疗保险",
+          "product_type": "医疗险",
+          "age_range": "出生满三十日至十二岁，十三岁至十四岁需满足特定条件"
+        },
+        {
+          "id": 54,
+          "product_name": "友邦附加友童行住院费用补偿医疗保险",
+          "product_type": "医疗险",
+          "age_range": "3周岁至30周岁"
+        },
+        {
+          "id": 55,
+          "product_name": "友邦附加四海无忧（2025）医疗保险",
+          "product_type": "医疗险",
+          "age_range": "出生满三十日至八十岁"
+        }
+      ]
+    },
+    "durationMs": 11,
+    "completedAt": 1766137396295
+  },
+  {
+    "id": "call_tcys7zbxrqg",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 9,
+      "fields": "product_name,coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137426880,
+    "updatedAt": 1766137426903,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137426880
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137426881,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137426903,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137426881,
+    "result": {
+      "ok": true,
+      "data": {
+        "product_name": "友邦优享康惠医疗保险",
+        "coverage_keys": [
+          "住院费用补偿金",
+          "指定门急诊费用补偿金"
+        ],
+        "extend_info_keys": [
+          "highlights",
+          "table_data",
+          "theme_color",
+          "coverage_list",
+          "medical_features"
+        ]
+      }
+    },
+    "durationMs": 22,
+    "completedAt": 1766137426903
+  },
+  {
+    "id": "call_4dmxlso32pb",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 9,
+      "fields": "extend_info.highlights,extend_info.table_data",
+      "view": "full"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137439877,
+    "updatedAt": 1766137439914,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137439877
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137439877,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137439914,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137439877,
+    "result": {
+      "ok": true,
+      "data": {
+        "extend_info.table_data": "{\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title\": \"费率参考 (示例)\", \"headers\": [\"年龄\", \"年交保费\"]}",
+        "extend_info.highlights": "[{\"label\": \"最高保额\", \"value\": \"详见条款\"}, {\"label\": \"保障期限\", \"value\": \"一年\"}, {\"label\": \"等待期\", \"value\": \"30天；60天\"}, {\"label\": \"险种类型\", \"value\": \"医疗险\"}]"
+      }
+    },
+    "durationMs": 37,
+    "completedAt": 1766137439914
+  },
+  {
+    "id": "call_esdefrc2fyl",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 26,
+      "fields": "product_name,coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137487955,
+    "updatedAt": 1766137487962,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137487955
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137487955,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137487962,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137487955,
+    "result": {
+      "ok": true,
+      "data": {
+        "product_name": "友邦长保康惠长期医疗保险（费率可调）",
+        "coverage_keys": [
+          "一般医疗补偿金",
+          "重大疾病医疗补偿金",
+          "恶性肿瘤 CAR-T 疗法院外药品费补偿金",
+          "特别住院津贴保险金"
+        ],
+        "extend_info_keys": [
+          "highlights",
+          "table_data",
+          "theme_color",
+          "coverage_list",
+          "medical_features"
+        ]
+      }
+    },
+    "durationMs": 7,
+    "completedAt": 1766137487962
+  },
+  {
+    "id": "call_9jtbc3fd0wd",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 26,
+      "fields": "extend_info.highlights,extend_info.table_data",
+      "view": "full"
+    },
+    "state": "COMPLETED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766137490060,
+    "updatedAt": 1766137490075,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766137490060
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766137490060,
+        "note": "execution start"
+      },
+      {
+        "state": "COMPLETED",
+        "timestamp": 1766137490075,
+        "note": "execution complete"
+      }
+    ],
+    "startedAt": 1766137490060,
+    "result": {
+      "ok": true,
+      "data": {
+        "extend_info.table_data": "{\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title\": \"费率参考 (示例)\", \"headers\": [\"年龄\", \"年交保费\"]}",
+        "extend_info.highlights": "[{\"label\": \"最高保额\", \"value\": \"详见条款\"}, {\"label\": \"保障期限\", \"value\": \"一年\"}, {\"label\": \"等待期\", \"value\": \"30天\"}, {\"label\": \"险种类型\", \"value\": \"医疗险\"}]"
+      }
+    },
+    "durationMs": 15,
+    "completedAt": 1766137490075
+  }
+]

@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 28,
+            "product_name": "友邦附加倍如意（2025）重大疾病保险",
+            "product_code": "PCODE_0023",
+            "description_snippet": "包含多次重度疾病保险金及豁免保险费的重大疾病保险。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"重疾险\"}], \"table_data\": null, \"theme_color\": \"#2E8B57\", \"coverage_list\": [{\"desc\": \"若被保险人因意外事故或等待期后因意外",
+            "score": 30
+        },
+        {
+            "id": 32,
+            "product_name": "友邦附加盈如意星享版提前给付重大疾病保险",
+            "product_code": "PCODE_0027",
+            "description_snippet": "包含基本部分和可选部分的重大疾病保险产品。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"重疾险\"}], \"table_data\": null, \"theme_color\": \"#2E8B57\", \"coverage_list\": [{\"desc\": \"承保120种重度疾病，确诊后给付基本",
+            "score": 30
+        },
+        {
+            "id": 27,
+            "product_name": "友邦附加万全如意 A 款豁免保费重大疾病保险",
+            "product_code": "PCODE_0022",
+            "description_snippet": "包含身故、全残及重度疾病豁免保险费的重大疾病保险。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"重疾险\"}], \"table_data\": null, \"theme_color\": \"#2E8B57\", \"coverage_list\": [{\"desc\": \"保险合同生效日起或最后一次效力恢复之",
+            "score": 30
+        }
+    ]
+}

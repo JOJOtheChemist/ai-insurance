@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>客户档案列表 - 清爽版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            /* 干净的浅灰背景 */
+            color: #111827;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 卡片样式：纯白 + 极淡边框 */
+        .client-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #F3F4F6;
+            transition: all 0.2s ease;
+        }
+
+        /* 点击态：稍微加深边框，不搞发光 */
+        .client-card:active {
+            background-color: #FAFAFA;
+            transform: scale(0.98);
+        }
+
+        /* 标签样式：清淡背景 + 深色文字 */
+        .tag-pill {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* 活力橙点缀 (仅用于关键点) */
+        .text-accent {
+            color: #FF6B35;
+        }
+
+        .bg-accent {
+            background-color: #FF6B35;
+        }
+
+        .border-accent {
+            border-color: #FF6B35;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex flex-col">
+
+    <header class="px-5 py-4 bg-white/95 backdrop-blur-md sticky top-0 z-20 border-b border-gray-100">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-xl font-bold text-gray-900">客户档案 <span
+                    class="text-sm font-normal text-gray-400 ml-1">42</span></h1>
+            <button
+                class="w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-plus text-sm"></i>
+            </button>
+        </div>
+
+        <div
+            class="h-10 bg-gray-100 rounded-lg flex items-center px-3 transition-colors focus-within:bg-white focus-within:ring-1 focus-within:ring-gray-300">
+            <i class="fa-solid fa-magnifying-glass text-gray-400 text-xs mr-2"></i>
+            <input type="text" placeholder="搜索姓名、标签..."
+                class="bg-transparent text-sm outline-none flex-1 text-gray-700 placeholder-gray-400">
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-24">
+
+        <div class="client-card p-4 flex flex-col gap-3 shadow-sm">
+            <div class="flex justify-between items-start">
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-lg font-bold border border-orange-200">
+                        王
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-base font-bold text-gray-900">王志远</h3>
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-0.5">上次跟进：今天 14:30</p>
+                    </div>
+                </div>
+                <button class="text-gray-300 hover:text-orange-500 transition-colors">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <span class="tag-pill bg-gray-100 text-gray-600">企业高管</span>
+                <span class="tag-pill bg-gray-100 text-gray-600">年预算8W</span>
+                <span class="tag-pill bg-orange-50 text-orange-600 font-bold">高意向</span>
+            </div>
+
+            <div
+                class="bg-gray-50 rounded-lg p-3 flex items-start gap-2 border border-gray-100 cursor-pointer hover:bg-orange-50 hover:border-orange-100 transition-colors group">
+                <div class="mt-0.5 text-gray-400 group-hover:text-orange-400">
+                    <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-xs text-gray-600 line-clamp-1 group-hover:text-gray-800">已生成《重疾险方案对比 V2》...</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">点击继续生成方案</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-card p-4 flex flex-col gap-3 shadow-sm">
+            <div class="flex justify-between items-start">
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-lg font-bold border border-gray-200">
+                        李
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-base font-bold text-gray-900">李晓雯</h3>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-0.5">上次跟进：3天前</p>
+                    </div>
+                </div>
+                <button class="text-gray-300 hover:text-orange-500 transition-colors">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <span class="tag-pill bg-gray-100 text-gray-600">教师</span>
+                <span class="tag-pill bg-gray-100 text-gray-600">二胎妈妈</span>
+            </div>
+
+            <div
+                class="bg-gray-50 rounded-lg p-3 flex items-start gap-2 border border-gray-100 cursor-pointer hover:bg-orange-50 hover:border-orange-100 transition-colors group">
+                <div class="mt-0.5 text-gray-400 group-hover:text-orange-400">
+                    <i class="fa-solid fa-comment-dots text-xs"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-xs text-gray-600 line-clamp-1 group-hover:text-gray-800">咨询了子女教育金的初步规划</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">点击进入会话</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="client-card p-4 flex flex-col gap-3 shadow-sm">
+            <div class="flex justify-between items-start">
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-lg font-bold border border-gray-200">
+                        张
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-base font-bold text-gray-900">张伟</h3>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] bg-gray-100 text-gray-500">休眠</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-0.5">上次跟进：2周前</p>
+                    </div>
+                </div>
+                <button class="text-gray-300 hover:text-orange-500 transition-colors">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <span class="tag-pill bg-gray-100 text-gray-600">自由职业</span>
+            </div>
+
+            <div
+                class="bg-gray-50 rounded-lg p-3 flex items-center justify-center border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
+                <p class="text-xs text-gray-400">
+                    <i class="fa-solid fa-plus mr-1"></i> 发起新会话
+                </p>
+            </div>
+        </div>
+
+        <div class="client-card p-4 flex flex-col gap-3 shadow-sm opacity-60">
+            <div class="flex justify-between items-start">
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center text-lg font-bold border border-gray-200">
+                        陈
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900">陈总</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">上次跟进：1个月前</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <nav
+        class="fixed bottom-0 w-full bg-white border-t border-gray-100 h-16 flex justify-around items-center z-30 pb-2 text-xs">
+        <div class="flex flex-col items-center gap-1 text-orange-600">
+            <i class="fa-solid fa-folder-user text-lg"></i>
+            <span class="font-bold">档案</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600">
+            <i class="fa-solid fa-layer-group text-lg"></i>
+            <span class="font-medium">工具</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="font-medium">我的</span>
+        </div>
+    </nav>
+
+</body>
+
+</html>

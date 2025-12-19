@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Step 3 & 分身库</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 通用卡片容器 */
+        .step-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #FFFFFF;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        /* 风格标签 */
+        .vibe-tag {
+            border: 1px solid #F3F4F6;
+            background: #F9FAFB;
+            color: #6B7280;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .vibe-tag.active {
+            background: #FFF7ED;
+            border-color: #FF6B35;
+            color: #C2410C;
+        }
+
+        .vibe-tag i {
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        /* 滑块组件 */
+        .slider-container {
+            position: relative;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-track {
+            width: 100%;
+            height: 8px;
+            background: #E5E7EB;
+            border-radius: 99px;
+            position: relative;
+        }
+
+        /* 渐变填充条 */
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6 0%, #FF6B35 100%);
+            border-radius: 99px;
+            width: 55%;
+        }
+
+        /* 拖动块 */
+        .slider-thumb {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: bold;
+            color: #FF6B35;
+        }
+
+        /* 分身库卡片 */
+        .avatar-card {
+            width: 80px;
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .avatar-card.active {
+            border-color: #FF6B35;
+            transform: scale(1.05);
+        }
+
+        .avatar-card.new {
+            border: 2px dashed #D1D5DB;
+            background: #F9FAFB;
+            display: flex;
+            flex-col；
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+        }
+
+        /* 底部名称条 */
+        .avatar-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+            color: white;
+            font-size: 9px;
+            text-align: center;
+            padding: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="step-card max-w-md mx-auto p-5">
+
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 3</span>
+                <h2 class="font-bold text-gray-900 text-sm">性格与融合度</h2>
+            </div>
+            <span class="text-orange-500 font-black text-lg">55%</span>
+        </div>
+
+        <div class="mb-6">
+            <p class="text-xs text-gray-400 mb-3">设定 AI 的沟通底色：</p>
+            <div class="grid grid-cols-3 gap-3">
+                <button class="vibe-tag active">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>专业顾问</span>
+                </button>
+                <button class="vibe-tag">
+                    <i class="fa-solid fa-fire"></i>
+                    <span>狼性销售</span>
+                </button>
+                <button class="vibe-tag">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>亲和共情</span>
+                </button>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex justify-between items-end mb-2">
+                <p class="text-xs text-gray-400">AI 介入程度控制：</p>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="slider-fill" style="width: 55%"></div>
+                    <div class="slider-thumb">55</div>
+                </div>
+            </div>
+
+            <div class="flex justify-between mt-3 text-xs text-gray-500">
+                <div class="w-1/2 pr-2">
+                    <div class="flex items-center gap-1 mb-1 text-blue-600 font-bold">
+                        <i class="fa-solid fa-robot"></i> 标准 AI
+                    </div>
+                    <p class="text-[10px] text-gray-400 leading-tight">逻辑严谨，严守公司官方话术，不出错。</p>
+                </div>
+                <div class="w-1/2 pl-2 text-right">
+                    <div class="flex items-center justify-end gap-1 mb-1 text-orange-600 font-bold">
+                        完全克隆 😎
+                    </div>
+                    <p class="text-[10px] text-gray-400 leading-tight">深度模仿您的语气、口头禅及个人推销风格。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="max-w-md mx-auto">
+        <div class="flex items-center justify-between px-1 mb-3">
+            <h3 class="font-bold text-gray-700 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-gray-400"></i> 我的分身库
+            </h3>
+            <button class="text-[10px] text-blue-500 font-bold">管理全部</button>
+        </div>
+
+        <div class="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+
+            <button class="avatar-card new shrink-0 hover:border-orange-300 hover:text-orange-500">
+                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center mb-1">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <span class="text-[10px] font-bold">新建分身</span>
+            </button>
+
+            <div class="avatar-card shrink-0 active bg-gray-100 cursor-pointer">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=General" class="w-full h-full object-cover">
+                <div class="avatar-name">通用版</div>
+                <div
+                    class="absolute top-1 right-1 w-3 h-3 bg-orange-500 rounded-full border border-white flex items-center justify-center">
+                    <i class="fa-solid fa-check text-white text-[6px]"></i>
+                </div>
+            </div>
+
+            <div
+                class="avatar-card shrink-0 bg-gray-100 cursor-pointer grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wolf" class="w-full h-full object-cover">
+                <div class="avatar-name">激进版</div>
+            </div>
+
+            <div
+                class="avatar-card shrink-0 bg-gray-100 cursor-pointer grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rich" class="w-full h-full object-cover">
+                <div class="avatar-name">高净值版</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 px-5 py-3 pb-6 z-50 shadow-2xl">
+        <button
+            class="w-full bg-gray-900 text-white rounded-xl h-12 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-microchip text-green-400"></i>
+            <span class="font-bold text-sm">保存配置并开始训练</span>
+        </button>
+    </div>
+
+</body>
+
+</html>

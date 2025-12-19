@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专属保险计划书 - 李**女士</title>
+    <style>
+        :root {
+            --brand-color: #0A2342; /* 深蓝专业感 */
+            --brand-gold: #C69C6D; /* 尊贵金 */
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-page: #F5F7FA;
+            --white: #FFFFFF;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 90px;
+        }
+
+        /* 封面区域 */
+        .cover {
+            background: linear-gradient(135deg, var(--brand-color) 0%, #1c3d66 100%);
+            color: var(--white);
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        
+        .cover-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--brand-gold) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            background: rgba(198, 156, 109, 0.2);
+            border: 1px solid var(--brand-gold);
+            color: var(--brand-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 客户尊享卡片 - 放置用户信息的最佳位置 */
+        .client-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.15);
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--brand-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin-right: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .client-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .client-info p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .vip-tag {
+            background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* 主内容容器 */
+        .container {
+            padding: 0 20px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 通用卡片样式 */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--brand-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: var(--brand-gold);
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        /* 投保方案表格 */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .plan-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-label {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .plan-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .highlight-value {
+            color: #D31145;
+            font-size: 18px;
+        }
+
+        /* 利益演示表 */
+        .benefit-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .benefit-table th {
+            text-align: left;
+            padding: 10px 5px;
+            color: var(--text-light);
+            font-weight: normal;
+            border-bottom: 1px solid #eee;
+        }
+
+        .benefit-table td {
+            padding: 12px 5px;
+            border-bottom: 1px solid #f9f9f9;
+            font-family: monospace;
+        }
+
+        .benefit-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 底部操作 */
+        .footer-action {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 15px 24px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .price-display {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .price-total {
+            font-size: 20px;
+            font-weight: 700;
+            color: #D31145;
+        }
+
+        .btn-sign {
+            background: var(--brand-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(10, 35, 66, 0.3);
+            cursor: pointer;
+        }
+
+        /* 隐私锁图标 */
+        .privacy-lock {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: rgba(255,255,255,0.4);
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. 顶部封面与用户信息 -->
+    <header class="cover">
+        <div class="cover-pattern"></div>
+        <div class="privacy-lock">🔒 私密方案</div>
+        
+        <span class="plan-badge">定制方案 No.20251212-001</span>
+        <h1 class="cover-title">友邦传世无忧<br>高端医疗保险计划书</h1>
+        <p class="cover-subtitle">为您和家人定制的全球医疗保障方案</p>
+
+        <!-- 用户信息卡片：放在最显眼的位置，体现专属感 -->
+        <div class="client-card">
+            <div class="client-avatar">李</div>
+            <div class="client-info">
+                <h3>李** 女士 <span class="vip-tag">年度VIP</span></h3>
+                <p>138****5678 | 投保年龄：30周岁</p>
+                <p style="margin-top:2px; font-size:11px; opacity:0.6;">计划书生成时间：2025-12-12</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 2. 投保方案摘要 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">您的投保方案</div>
+                <span style="font-size:12px; color:#666">方案有效期：7天</span>
+            </div>
+            <div class="plan-grid">
+                <div class="plan-item">
+                    <span class="plan-label">年度保额</span>
+                    <span class="plan-value">800万</span>
+                </div>
+                <div class="plan-item">
+                    <span class="plan-label">首年保费</span>
+                    <span class="plan-value highlight-value">¥15,660</span>
+                </div>
+                <div class="plan-item">
+                    <span class="plan-label">保障区域</span>
+                    <span class="plan-value">全球除美</span>
+                </div>
+                <div class="plan-item">
+                    <span class="plan-label">免赔额</span>
+                    <span class="plan-value">0 元</span>
+                </div>
+                <div class="plan-item">
+                    <span class="plan-label">交费期间</span>
+                    <span class="plan-value">1年 (可续保)</span>
+                </div>
+                <div class="plan-item">
+                    <span class="plan-label">等待期</span>
+                    <span class="plan-value">30 天</span>
+                </div>
+            </div>
+            
+            <div style="margin-top:20px; padding-top:15px; border-top:1px dashed #eee; font-size:13px; color:#666;">
+                <p>📅 预计生效日期：<strong>2025年12月13日</strong> (次日生效)</p>
+            </div>
+        </div>
+
+        <!-- 3. 保障权益详情 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">核心保障内容</div>
+            </div>
+            <ul style="list-style:none; padding-left:0;">
+                <li style="margin-bottom:15px; display:flex;">
+                    <span style="color:var(--brand-gold); margin-right:10px;">✔</span>
+                    <div>
+                        <div style="font-weight:600; font-size:15px;">住院医疗费用</div>
+                        <div style="font-size:13px; color:#666; margin-top:2px;">全额赔付，包含床位费、手术费、ICU费用等</div>
+                    </div>
+                </li>
+                <li style="margin-bottom:15px; display:flex;">
+                    <span style="color:var(--brand-gold); margin-right:10px;">✔</span>
+                    <div>
+                        <div style="font-weight:600; font-size:15px;">特殊门诊治疗</div>
+                        <div style="font-size:13px; color:#666; margin-top:2px;">透析、放疗、化疗、靶向治疗全额赔付</div>
+                    </div>
+                </li>
+                <li style="margin-bottom:15px; display:flex;">
+                    <span style="color:var(--brand-gold); margin-right:10px;">✔</span>
+                    <div>
+                        <div style="font-weight:600; font-size:15px;">紧急医疗救援</div>
+                        <div style="font-size:13px; color:#666; margin-top:2px;">100万额度，包含医疗转运和送返</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. 利益演示/费率推演 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">未来费率演示</div>
+            </div>
+            <p style="font-size:12px; color:#999; margin-bottom:15px;">*以下为续保时的预估费率，仅供参考，不作为合同承诺</p>
+            <table class="benefit-table">
+                <thead>
+                    <tr>
+                        <th width="30%">年龄段</th>
+                        <th width="40%">预估年保费</th>
+                        <th width="30%">日均投入</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background:#FFF9FA">
+                        <td><strong>30-34岁</strong></td>
+                        <td><strong>¥15,660</strong></td>
+                        <td>¥42.9</td>
+                    </tr>
+                    <tr>
+                        <td>35-39岁</td>
+                        <td>¥17,800</td>
+                        <td>¥48.7</td>
+                    </tr>
+                    <tr>
+                        <td>40-44岁</td>
+                        <td>¥19,800</td>
+                        <td>¥54.2</td>
+                    </tr>
+                    <tr>
+                        <td>45-49岁</td>
+                        <td>¥23,500</td>
+                        <td>¥64.3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. 声明与签名 -->
+        <div style="text-align:center; margin-bottom: 30px; font-size:12px; color:#999;">
+            <p>本计划书仅供参考，具体保险责任、责任免除等<br>以正式签发的保险合同为准。</p>
+            <p style="margin-top:10px;">保险代理人：王专业 (工号: AIA8888)</p>
+        </div>
+    </div>
+
+    <!-- 底部固定栏 -->
+    <div class="footer-action">
+        <div class="price-display">
+            <span class="price-label">首年保费合计</span>
+            <span class="price-total">¥15,660</span>
+        </div>
+        <button class="btn-sign" onclick="alert('进入电子投保流程...')">立即投保</button>
+    </div>
+
+</body>
+</html>

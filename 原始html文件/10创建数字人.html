@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>全能输入 - 专家赋能</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            padding-bottom: 140px;
+            /* 留出底部操作区空间 */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 顶部融合图示 (橙色系) */
+        .fusion-stage {
+            background: radial-gradient(circle at center, #FFF7ED 0%, #FFFFFF 70%);
+            padding: 24px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 头像光环 */
+        .avatar-ring {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            padding: 3px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .ring-me {
+            background: #E5E7EB;
+            border: 1px solid #D1D5DB;
+        }
+
+        .ring-expert {
+            background: linear-gradient(135deg, #FF6B35, #FF9F43);
+            /* 橙色渐变 */
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.25);
+        }
+
+        /* 能量传输箭头 */
+        .flow-dot {
+            width: 5px;
+            height: 5px;
+            background: #E5E7EB;
+            border-radius: 50%;
+            animation: flow 1.5s infinite;
+        }
+
+        .flow-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .flow-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes flow {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+                background: #E5E7EB;
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+                background: #FF6B35;
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+                background: #E5E7EB;
+            }
+        }
+
+        /* 卡片通用 */
+        .config-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* 激活/选中状态 */
+        .config-card.active {
+            border-color: #FFDCC2;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.08);
+        }
+
+        /* 输入方式按钮网格 */
+        .input-grid-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 70px;
+            background: #F9FAFB;
+            border: 1px solid #F3F4F6;
+            border-radius: 12px;
+            color: #6B7280;
+            transition: all 0.2s;
+        }
+
+        .input-grid-btn:active {
+            background: #FFF7ED;
+            border-color: #FFDCC2;
+            color: #C2410C;
+        }
+
+        .input-grid-btn i {
+            font-size: 18px;
+        }
+
+        /* 标签 */
+        .tag-req {
+            font-size: 10px;
+            background: #1F2937;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .tag-opt {
+            font-size: 10px;
+            background: #F3F4F6;
+            color: #6B7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Tab 切换 */
+        .nav-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 11px;
+            font-weight: bold;
+            color: #6B7280;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #FF6B35;
+            shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 滑块 */
+        .slider-track {
+            width: 100%;
+            height: 6px;
+            background: #E5E7EB;
+            border-radius: 99px;
+            position: relative;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #94A3B8, #FF6B35);
+            border-radius: 99px;
+            width: 70%;
+        }
+
+        .slider-thumb {
+            width: 22px;
+            height: 22px;
+            background: white;
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <div class="fusion-stage sticky top-0 z-10">
+        <div class="flex flex-col items-center gap-2">
+            <div class="avatar-ring ring-expert flex items-center justify-center bg-white">
+                <img id="visual-expert-img" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1"
+                    class="w-full h-full rounded-full object-cover">
+                <div
+                    class="absolute -top-1 -right-1 bg-yellow-400 text-white w-5 h-5 rounded-full flex items-center justify-center border-2 border-white text-[10px]">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+            </div>
+            <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full">模仿对象</span>
+        </div>
+
+        <div class="flex gap-1 items-center">
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+        </div>
+
+        <div class="flex flex-col items-center gap-2">
+            <div class="avatar-ring ring-me p-1 bg-white">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MyAgent"
+                    class="w-full h-full rounded-full bg-gray-100">
+            </div>
+            <span class="text-[10px] font-bold text-gray-700 bg-gray-100 px-2 py-0.5 rounded-full">我的基底</span>
+        </div>
+    </div>
+
+    <main class="px-4 py-4 space-y-4">
+
+        <div class="config-card active">
+            <div class="p-4 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gray-200 text-gray-600 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-sm">我 (基底模型)</h3>
+                    </div>
+                </div>
+                <span class="tag-req">必选</span>
+            </div>
+
+            <div class="p-4">
+                <p class="text-[11px] text-gray-400 mb-3">完善您的基础资料，让 AI 拥有您的身份与声音：</p>
+
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="input-grid-btn border-orange-200 bg-orange-50 relative overflow-hidden group">
+                        <i class="fa-solid fa-microphone-lines text-orange-500"></i>
+                        <span class="text-[10px] font-bold text-orange-600">声纹已录</span>
+                        <div class="absolute top-1 right-1 text-green-500"><i
+                                class="fa-solid fa-check-circle text-[10px]"></i></div>
+                    </button>
+
+                    <button class="input-grid-btn">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span class="text-[10px] font-medium">传履历/案例</span>
+                    </button>
+
+                    <button class="input-grid-btn">
+                        <i class="fa-solid fa-keyboard"></i>
+                        <span class="text-[10px] font-medium">贴个人简介</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="config-card active border-orange-200 shadow-md">
+
+            <div
+                class="p-4 border-b border-orange-100 bg-gradient-to-r from-orange-50/80 to-transparent flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-7 h-7 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-sm">模仿对象 (导师)</h3>
+                    </div>
+                </div>
+                <span class="tag-opt">可选</span>
+            </div>
+
+            <div class="px-4 pt-3">
+                <div class="bg-gray-100 p-1 rounded-lg flex">
+                    <button onclick="switchTab('market')" id="tab-market" class="nav-tab active">
+                        <i class="fa-solid fa-store mr-1"></i>专家市场
+                    </button>
+                    <button onclick="switchTab('custom')" id="tab-custom" class="nav-tab">
+                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i>自定义上传
+                    </button>
+                </div>
+            </div>
+
+            <div id="content-market" class="p-4 space-y-3">
+                <label
+                    class="flex items-center gap-3 p-3 border border-orange-200 bg-orange-50 rounded-xl cursor-pointer transition-all relative">
+                    <input type="radio" name="expert" checked
+                        class="w-4 h-4 text-orange-500 border-gray-300 focus:ring-orange-500">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1"
+                        class="w-10 h-10 rounded-full bg-white border border-orange-100">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-gray-900">MDRT 冠军 · 强攻型</span>
+                            <span class="text-[8px] bg-yellow-100 text-yellow-700 px-1 rounded font-bold">Hot</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5 line-clamp-1">逻辑犀利，擅长处理价格异议，逼单能力强。</div>
+                    </div>
+                </label>
+
+                <label
+                    class="flex items-center gap-3 p-3 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50 transition-all">
+                    <input type="radio" name="expert"
+                        class="w-4 h-4 text-gray-300 border-gray-300 focus:ring-orange-500">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert2"
+                        class="w-10 h-10 rounded-full bg-white border border-gray-100">
+                    <div class="flex-1">
+                        <div class="text-xs font-bold text-gray-900">亲和力专家 · 顾问型</div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">擅长情感共鸣与长期主义服务。</div>
+                    </div>
+                </label>
+            </div>
+
+            <div id="content-custom" class="p-4 hidden">
+                <p class="text-[11px] text-gray-400 mb-3">上传您崇拜的销冠资料，生成专属导师模型：</p>
+
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="input-grid-btn hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">
+                        <i class="fa-solid fa-microphone text-gray-400"></i>
+                        <span class="text-[10px] font-medium">传销冠录音</span>
+                    </button>
+
+                    <button class="input-grid-btn hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">
+                        <i class="fa-solid fa-file-word text-gray-400"></i>
+                        <span class="text-[10px] font-medium">传金牌话术</span>
+                    </button>
+
+                    <button class="input-grid-btn hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">
+                        <i class="fa-solid fa-paste text-gray-400"></i>
+                        <span class="text-[10px] font-medium">贴聊天记录</span>
+                    </button>
+                </div>
+
+                <div class="mt-3 bg-blue-50 p-2 rounded-lg flex gap-2 items-start">
+                    <i class="fa-solid fa-circle-info text-blue-500 text-[10px] mt-0.5"></i>
+                    <p class="text-[10px] text-blue-600 leading-tight">上传后，系统将自动提取对方的语言逻辑、常用词汇与应对策略。</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer
+        class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-5 py-4 pb-8 z-50 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+
+        <div class="mb-5">
+            <div class="flex justify-between items-end mb-2">
+                <span class="text-xs font-bold text-gray-600">模仿强度 (Mimicry)</span>
+                <span class="text-sm font-black text-orange-500">70%</span>
+            </div>
+
+            <div class="relative h-6 flex items-center">
+                <div class="slider-track">
+                    <div class="slider-fill"></div>
+                    <div class="slider-thumb flex items-center justify-center">
+                        <i class="fa-solid fa-left-right text-[8px] text-orange-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between text-[10px] text-gray-400 mt-1">
+                <span>保持本色</span>
+                <span>完全复刻</span>
+            </div>
+        </div>
+
+        <button
+            class="w-full bg-gray-900 text-white rounded-xl h-12 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-bolt text-orange-400 animate-pulse"></i>
+            <span class="font-bold text-sm">开始融合训练</span>
+        </button>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // UI 切换逻辑
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.add('active');
+
+            if (tabName === 'market') {
+                document.getElementById('content-market').classList.remove('hidden');
+                document.getElementById('content-custom').classList.add('hidden');
+                // 视觉反馈：换回专家头像
+                document.getElementById('visual-expert-img').src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1";
+            } else {
+                document.getElementById('content-market').classList.add('hidden');
+                document.getElementById('content-custom').classList.remove('hidden');
+                // 视觉反馈：换成上传图标或占位符
+                document.getElementById('visual-expert-img').src = "https://api.dicebear.com/7.x/avataaars/svg?seed=CustomUpload";
+            }
+        }
+    </script>
+</body>
+
+</html>

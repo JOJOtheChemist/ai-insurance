@@ -1,0 +1,158 @@
+=== 1. 测试增强型搜索 (/api/tools/search) ===
+场景: 搜索关键词 '友邦'，期望返回包含关键词的产品，且带有摘要和评分
+{
+    "products": [
+        {
+            "id": 6,
+            "product_name": "\u53cb\u90a6\u4e50\u8fd0\u52a8\u610f\u5916\u4f24\u5bb3\u4fdd\u9669\uff08\u4e92\u8054\u7f51\uff09",
+            "product_code": "PCODE_0001",
+            "description_snippet": "\u4e00\u6b3e\u5305\u542b\u610f\u5916\u8eab\u6545\u3001\u4f24\u6b8b\u53ca\u53ef\u9009\u8d23\u4efb\u7684\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 100
+        },
+        {
+            "id": 7,
+            "product_name": "\u53cb\u90a6\u4eab\u8fd0\u52a8\u610f\u5916\u4f24\u5bb3\u4fdd\u9669\uff08\u4e92\u8054\u7f51\uff09",
+            "product_code": "PCODE_0002",
+            "description_snippet": "\u4e00\u6b3e\u5305\u542b\u610f\u5916\u8eab\u6545\u3001\u4f24\u6b8b\u53ca\u53ef\u9009\u9aa8\u6298\u533b\u7597\u7b49\u8d23\u4efb\u7684\u610f\u5916\u9669\u3002",
+            "score": 100
+        }
+    ]
+}
+
+=== 2. 测试 JSON 深度搜索 ===
+场景: 搜索隐藏在 JSON 里的关键词 '犹豫期'
+{
+    "products": [
+        {
+            "id": 12,
+            "product_name": "\u53cb\u90a6\u4f20\u4e16\u5145\u88d5\u5e74\u91d1\u4fdd\u9669\uff08\u5206\u7ea2\u578b\uff09",
+            "product_code": "PCODE_0007",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u4fdd\u9669\u91d1\u3001\u5e74\u91d1\u3001\u6ee1\u671f\u91d1\u7684\u5e74\u91d1\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 30
+        },
+        {
+            "id": 8,
+            "product_name": "\u53cb\u90a6\u4f18\u4eab\u5e74\u5e74\uff082025\uff09A \u6b3e\u5e74\u91d1\u4fdd\u9669",
+            "product_code": "PCODE_0003",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u4fdd\u9669\u91d1\u3001\u516c\u5171\u4ea4\u901a\u5de5\u5177\u610f\u5916\u5168\u6b8b\u4fdd\u9669\u91d1\u3001\u5e74\u91d1\u3001\u6ee1\u671f\u91d1\u7684\u5e74\u91d1\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 30
+        }
+    ]
+}
+
+=== 3. 扩展字段关键词 - 分红 ===
+场景: 关注分红类条款，验证 extend_info snippet 能否返回相关片段
+{
+    "products": [
+        {
+            "id": 16,
+            "product_name": "\u53cb\u90a6\u5229\u4eab\u5e74\u5e74\uff082025\uff09A \u6b3e\u5e74\u91d1\u4fdd\u9669\uff08\u5206\u7ea2\u578b\uff09",
+            "product_code": "PCODE_0011",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u4fdd\u9669\u91d1\u3001\u5e74\u91d1\u3001\u6ee1\u671f\u91d1\u7684\u5206\u7ea2\u578b\u5e74\u91d1\u4fdd\u9669\u3002",
+            "score": 150
+        },
+        {
+            "id": 15,
+            "product_name": "\u53cb\u90a6\u4f20\u4e16\u91d1\u751f 2025 \u8363\u8000\u7248\u5e74\u91d1\u4fdd\u9669\uff08\u5206\u7ea2\u578b\uff09",
+            "product_code": "PCODE_0010",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u4fdd\u9669\u91d1\u3001\u5e74\u91d1\u3001\u6ee1\u671f\u91d1\u8d23\u4efb\u7684\u5e74\u91d1\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 100
+        },
+        {
+            "id": 13,
+            "product_name": "\u53cb\u90a6\u4f20\u4e16\u672a\u6765 2025A \u6b3e\u5e74\u91d1\u4fdd\u9669\uff08\u5206\u7ea2\u578b\uff09",
+            "product_code": "PCODE_0008",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u4fdd\u9669\u91d1\u3001\u5e74\u91d1\u3001\u6ee1\u671f\u91d1\u7684\u5e74\u91d1\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 100
+        }
+    ]
+}
+
+=== 4. 扩展字段关键词 - 癌症 ===
+场景: 关注特定癌症条款，验证 extend_info snippet
+{
+    "products": []
+}
+
+=== 5. 扩展字段关键词 - 豁免 ===
+场景: 关注保费豁免类条款
+{
+    "products": [
+        {
+            "id": 34,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u8f7b\u5982\u610f\uff082025\uff09\u8c41\u514d\u4fdd\u9669\u8d39\u75be\u75c5\u4fdd\u9669",
+            "product_code": "PCODE_0029",
+            "description_snippet": "\u5305\u542b\u4e2d\u5ea6\u75be\u75c5\u548c\u8f7b\u5ea6\u75be\u75c5\u8c41\u514d\u4fdd\u9669\u8d39\u8d23\u4efb\u7684\u75be\u75c5\u4fdd\u9669\u4ea7\u54c1\u3002",
+            "score": 180
+        },
+        {
+            "id": 27,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u4e07\u5168\u5982\u610f A \u6b3e\u8c41\u514d\u4fdd\u8d39\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_code": "PCODE_0022",
+            "description_snippet": "\u5305\u542b\u8eab\u6545\u3001\u5168\u6b8b\u53ca\u91cd\u5ea6\u75be\u75c5\u8c41\u514d\u4fdd\u9669\u8d39\u7684\u91cd\u5927\u75be\u75c5\u4fdd\u9669\u3002",
+            "score": 180
+        },
+        {
+            "id": 28,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u500d\u5982\u610f\uff082025\uff09\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_code": "PCODE_0023",
+            "description_snippet": "\u5305\u542b\u591a\u6b21\u91cd\u5ea6\u75be\u75c5\u4fdd\u9669\u91d1\u53ca\u8c41\u514d\u4fdd\u9669\u8d39\u7684\u91cd\u5927\u75be\u75c5\u4fdd\u9669\u3002",
+            "score": 80
+        }
+    ]
+}
+
+=== 6. 测试精准查阅 (/api.tools/inspect) ===
+场景: 查询产品 ID=6，只看 product_name 和 extend_info 里的 waiting_period
+{
+    "product_name": "\u53cb\u90a6\u4e50\u8fd0\u52a8\u610f\u5916\u4f24\u5bb3\u4fdd\u9669\uff08\u4e92\u8054\u7f51\uff09",
+    "extend_info.waiting_period": null,
+    "product_code": "PCODE_0001"
+}
+
+=== 7. 测试智能过滤 (/api/tools/filter) ===
+场景: 筛选 product_type='重疾险' 的产品
+{
+    "products": [
+        {
+            "id": 28,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u500d\u5982\u610f\uff082025\uff09\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 33,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u76c8\u5982\u610f\u987a\u5fc3\u7248\u63d0\u524d\u7ed9\u4ed8\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 42,
+            "product_name": "\u53cb\u90a6\u53cb\u5982\u610f\u987a\u5fc3\u7248\uff082025\uff09\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 27,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u4e07\u5168\u5982\u610f A \u6b3e\u8c41\u514d\u4fdd\u8d39\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 30,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u7231\u5982\u610f D \u6b3e\u6076\u6027\u80bf\u7624\uff08\u91cd\u5ea6\uff09\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 41,
+            "product_name": "\u53cb\u90a6\u53cb\u5982\u610f\u661f\u4eab\u7248\uff082025\uff09\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        },
+        {
+            "id": 32,
+            "product_name": "\u53cb\u90a6\u9644\u52a0\u76c8\u5982\u610f\u661f\u4eab\u7248\u63d0\u524d\u7ed9\u4ed8\u91cd\u5927\u75be\u75c5\u4fdd\u9669",
+            "product_type": "\u91cd\u75be\u9669"
+        }
+    ]
+}
+
+场景: 筛选适合 30 岁人群的产品 (age_min <= 30 <= age_max)
+{
+    "products": []
+}

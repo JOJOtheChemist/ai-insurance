@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>专家赋能训练</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            padding-bottom: 120px;
+        }
+
+        /* 顶部融合图示 */
+        .fusion-stage {
+            background: radial-gradient(circle at center, #F3E8FF 0%, #FFFFFF 70%);
+            /* 紫色光晕代表专家能量 */
+            padding: 24px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 头像容器 */
+        .avatar-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            padding: 3px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .ring-me {
+            background: #E5E7EB;
+            border: 1px solid #D1D5DB;
+        }
+
+        .ring-expert {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            /* 紫粉渐变 */
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .ring-expert.empty {
+            background: #F3F4F6;
+            border: 2px dashed #D1D5DB;
+            box-shadow: none;
+        }
+
+        /* 能量传输箭头 */
+        .energy-flow {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .flow-dot {
+            width: 6px;
+            height: 6px;
+            background: #E5E7EB;
+            border-radius: 50%;
+            animation: flow 1.5s infinite;
+        }
+
+        .flow-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .flow-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes flow {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+                background: #E5E7EB;
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+                background: #A855F7;
+            }
+
+            /* 变成紫色 */
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+                background: #E5E7EB;
+            }
+        }
+
+        /* 配置卡片 */
+        .config-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .config-card.active {
+            border-color: #A855F7;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.08);
+        }
+
+        /* 滑块 */
+        .slider-track {
+            width: 100%;
+            height: 8px;
+            background: #E5E7EB;
+            border-radius: 99px;
+            position: relative;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3B82F6, #A855F7);
+            border-radius: 99px;
+            width: 60%;
+        }
+
+        /* 蓝到紫 */
+        .slider-thumb {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 2px solid #A855F7;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 标签 */
+        .tag-req {
+            font-size: 10px;
+            background: #1F2937;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .tag-opt {
+            font-size: 10px;
+            background: #F3F4F6;
+            color: #6B7280;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <div class="fusion-stage">
+
+        <div class="flex flex-col items-center gap-2 opacity-100" id="expert-visual">
+            <div class="avatar-ring ring-expert flex items-center justify-center bg-white">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1"
+                    class="w-full h-full rounded-full object-cover">
+                <div
+                    class="absolute -top-1 -right-1 bg-yellow-400 text-white w-5 h-5 rounded-full flex items-center justify-center border-2 border-white text-xs">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+            </div>
+            <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">模仿对象</span>
+        </div>
+
+        <div class="energy-flow">
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+        </div>
+
+        <div class="flex flex-col items-center gap-2">
+            <div class="avatar-ring ring-me p-1 bg-white">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MyAgent"
+                    class="w-full h-full rounded-full bg-gray-100">
+            </div>
+            <span class="text-[10px] font-bold text-gray-700 bg-gray-100 px-2 py-0.5 rounded-full">我的基底</span>
+        </div>
+    </div>
+
+    <main class="px-4 py-5">
+
+        <div class="flex items-center justify-between mb-2 px-1">
+            <h2 class="text-xs font-bold text-gray-400">配置赋能路径</h2>
+            <a href="#" class="text-[10px] text-blue-500 font-bold">如何选择导师?</a>
+        </div>
+
+        <div class="config-card">
+            <div class="p-4 border-b border-gray-50 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-sm">我 (基底模型)</h3>
+                        <p class="text-[10px] text-gray-400">保留您的音色与基础人设</p>
+                    </div>
+                </div>
+                <span class="tag-req">必选</span>
+            </div>
+            <div class="p-3 bg-gray-50/50">
+                <div
+                    class="flex items-center gap-2 text-xs text-gray-600 bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
+                    <i class="fa-solid fa-microphone-lines text-green-500"></i>
+                    <span>声纹已采集 (3分钟)</span>
+                    <i class="fa-solid fa-pen-to-square text-gray-300 ml-auto"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="config-card active border-purple-200 shadow-lg shadow-purple-500/5">
+            <div
+                class="p-4 border-b border-purple-50 bg-gradient-to-r from-purple-50/50 to-transparent flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-sm">模仿对象 (金牌导师)</h3>
+                        <p class="text-[10px] text-purple-500">学习对方的成单逻辑与话术风格</p>
+                    </div>
+                </div>
+                <span class="tag-opt">可选</span>
+            </div>
+
+            <div class="p-4">
+                <div class="flex p-1 bg-gray-100 rounded-lg mb-4">
+                    <button
+                        class="flex-1 py-1.5 text-[11px] font-bold rounded-md bg-white text-purple-700 shadow-sm transition-all">
+                        从专家库选择
+                    </button>
+                    <button class="flex-1 py-1.5 text-[11px] font-bold rounded-md text-gray-500 hover:text-gray-700">
+                        上传外部录音
+                    </button>
+                </div>
+
+                <div class="space-y-3">
+                    <label
+                        class="flex items-center gap-3 p-3 border border-purple-200 bg-purple-50 rounded-xl cursor-pointer relative transition-all">
+                        <input type="radio" name="mentor" checked
+                            class="w-4 h-4 text-purple-600 border-gray-300 focus:ring-purple-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1"
+                            class="w-9 h-9 rounded-full bg-white border border-purple-100">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold text-gray-900">MDRT 冠军 · 强攻型</span>
+                                <span class="text-[8px] bg-yellow-100 text-yellow-700 px-1 rounded font-bold">TOP
+                                    1</span>
+                            </div>
+                            <div class="text-[10px] text-gray-500 mt-0.5">逻辑犀利，擅长逼单，成单率提升 40%</div>
+                        </div>
+                    </label>
+
+                    <label
+                        class="flex items-center gap-3 p-3 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50 transition-all">
+                        <input type="radio" name="mentor"
+                            class="w-4 h-4 text-gray-300 border-gray-300 focus:ring-purple-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert2"
+                            class="w-9 h-9 rounded-full bg-white border border-gray-100">
+                        <div class="flex-1">
+                            <div class="text-xs font-bold text-gray-900">亲和力专家 · 顾问型</div>
+                            <div class="text-[10px] text-gray-500">如沐春风，擅长处理家庭情感纽带</div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-dashed border-gray-200 text-center">
+                    <p class="text-[10px] text-gray-400 mb-2">没找到合适的？上传您崇拜的销冠录音</p>
+                    <button
+                        class="w-full py-2 border border-dashed border-gray-300 rounded-lg text-xs font-bold text-gray-500 hover:text-purple-600 hover:border-purple-300 hover:bg-purple-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> 上传外部金牌录音/话术
+                    </button>
+                    <p class="text-[9px] text-gray-300 mt-1">* 上传后系统将解析并为您生成专属导师模型</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 mb-2">
+            <div class="flex justify-between items-end mb-3 px-1">
+                <span class="text-xs font-bold text-gray-700">模仿强度 (Mimicry Ratio)</span>
+                <span class="text-xs font-black text-purple-600">60%</span>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                <div class="relative h-6 flex items-center mb-1">
+                    <div class="slider-track">
+                        <div class="slider-fill" style="width: 60%"></div>
+                        <div class="slider-thumb">
+                            <i class="fa-solid fa-arrow-right-long text-[8px] text-purple-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-[10px] font-medium text-gray-400 mt-2">
+                    <div class="flex flex-col items-start gap-0.5">
+                        <span class="text-blue-500 font-bold">保持本色</span>
+                        <span>我的习惯为主</span>
+                    </div>
+                    <div class="flex flex-col items-end gap-0.5">
+                        <span class="text-purple-600 font-bold">完全复刻专家</span>
+                        <span>极致模仿话术逻辑</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-5 py-3 pb-6 z-50 shadow-2xl">
+        <div class="flex items-center gap-2 mb-2 justify-center text-[10px] text-gray-400">
+            <i class="fa-solid fa-info-circle"></i>
+            <span>预计消耗 50 算力点，耗时约 2 分钟</span>
+        </div>
+        <button
+            class="w-full bg-gray-900 text-white rounded-xl h-12 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform group hover:bg-black">
+            <i class="fa-solid fa-microchip text-purple-400 group-hover:animate-pulse"></i>
+            <span class="font-bold text-sm">开始融合训练</span>
+        </button>
+    </footer>
+
+</body>
+
+</html>

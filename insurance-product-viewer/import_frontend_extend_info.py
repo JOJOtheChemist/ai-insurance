@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+导入前端 JS 文件中的 extend_info 到数据库
+"""
+import json
+import re
+import psycopg2
+from psycopg2.extras import Json
+
+# 疾病列表 - 从 illness_list.js 提取
+HEAVY_ILLNESS_120 = [
+    "恶性肿瘤——重度", "较重急性心肌梗死", "严重脑中风后遗症", "重大器官移植术或造血干细胞移植术",
+    "冠状动脉搭桥术（或称冠状动脉旁路移植术）", "严重慢性肾衰竭", "多个肢体缺失", 
+    "急性重症肝炎或亚急性重症肝炎", "严重非恶性颅内肿瘤", "严重慢性肝衰竭",
+    "严重脑炎后遗症或严重脑膜炎后遗症", "深度昏迷", "双耳失聪", "双目失明", "瘫痪",
+    "心脏瓣膜手术", "严重阿尔茨海默病", "严重脑损伤", "严重帕金森病", "严重Ⅲ度烧伤",
+    "严重原发性肺动脉高压", "严重运动神经元病", "语言能力丧失", "重型再生障碍性贫血",
+    "主动脉手术", "严重慢性呼吸衰竭", "严重克罗恩病", "严重溃疡性结肠炎", "严重心肌病",
+    "持续植物人状态", "经输血导致的自身免疫缺陷病毒感染", "严重肌营养不良症", "严重多发性硬化",
+    "严重脊髓灰质炎", "全身性重症肌无力", "严重类风湿性关节炎", "严重系统性红斑狼疮性肾病",
+    "终末期肺病", "重症急性坏死性筋膜炎", "艾森门格综合征", "严重冠心病", "胰腺移植",
+    "埃博拉病毒感染", "严重继发性肺动脉高压", "细菌性脑脊髓膜炎", "丝虫病", "象皮病",
+    "严重心肌炎", "严重弥漫性硬皮病", "大动脉炎（高安氏病）", "严重感染性心内膜炎",
+    "骨髓纤维化", "严重大疱性表皮松解症", "严重面部烧伤", "严重瑞氏综合征（Reye综合征）",
+    "成骨不全症第三型", "室壁瘤切除术", "严重肾髓质囊性病", "严重特发性肺纤维化",
+    "严重自身免疫性肝炎", "原发性硬化性胆管炎", "严重肝豆状核变性（Wilson病）",
+    "破裂脑动脉瘤夹闭手术", "严重慢性缩窄性心包炎", "出血性登革热", "疯牛病",
+    "严重手足口病", "严重川崎病", "严重幼年型类风湿性关节炎", "严重脊柱裂", "严重哮喘",
+    "严重癫痫", "持续性植物人状态", "溶血性链球菌感染引起的坏疽", "严重坏死性筋膜炎",
+    "中度帕金森氏症", "肾上腺脑白质营养不良", "进行性核上性麻痹", "亚历山大病",
+    "多系统萎缩", "脊髓小脑变性症", "进行性多灶性白质脑病", "亚急性硬化性全脑炎",
+    "克雅氏病（CJD、人类疯牛病）", "莱姆病", "重症手足口病", "严重脊髓空洞症",
+    "严重肌萎缩侧索硬化症", "严重原发性心肌病", "严重肺淋巴管肌瘤病", "肺泡蛋白质沉积症",
+    "严重肺源性心脏病", "严重肺结节病", "席汉氏综合征", "垂体性侏儒症", "库欣综合征",
+    "肾上腺皮质功能减退症", "嗜铬细胞瘤", "原发性醛固酮增多症", "甲状旁腺功能亢进症",
+    "严重甲状腺功能减退症", "胰岛细胞瘤", "严重糖尿病酮症酸中毒", "严重高渗高血糖状态",
+    "严重低血糖脑病", "尿毒症", "溶血尿毒综合征", "肾小管间质性肾炎", "严重肾病综合征",
+    "IgA肾病", "膜性肾病", "膜增生性肾小球肾炎", "局灶节段性肾小球硬化",
+    "急进性肾小球肾炎", "慢性肾小球肾炎", "间质性膀胱炎", "严重输尿管狭窄", "严重膀胱挛缩"
+]
+
+MEDIUM_ILLNESS_25 = [
+    "中度恶性肿瘤", "中度急性心肌梗死", "中度脑中风后遗症", "中度脑损伤", "中度肌营养不良症",
+    "中度类风湿性关节炎", "中度重症肌无力", "中度帕金森氏病", "中度脊髓灰质炎",
+    "中度阿尔茨海默病", "中度运动神经元病", "中度瘫痪", "单侧肺脏切除",
+    "于颈动脉进行血管成形术或内膜切除术", "单目失明", "单耳失聪", "轻度面部烧伤",
+    "早期象皮病", "早期系统性硬皮病", "早期原发性心肌病", "早期肺源性心脏病",
+    "早期肝硬化", "慢性肾功能障碍", "一侧肾脏切除", "单个肢体缺失"
+]
+
+LIGHT_ILLNESS_40 = [
+    "极早期恶性肿瘤或恶性病变", "轻度急性心肌梗死", "轻度脑中风后遗症", "激光心肌血运重建术",
+    "微创冠状动脉搭桥手术", "心脏瓣膜介入手术", "视力严重受损", "主动脉内手术（非开胸）",
+    "脑垂体瘤、脑囊肿、脑动脉瘤及脑血管瘤", "轻度脑损伤", "微创颅脑手术", "植入大脑内分流器",
+    "起搏器或除颤器植入", "轻度面部烧伤", "轻度III度烧伤", "单耳失聪", "人工耳蜗植入术",
+    "听力严重受损", "单眼失明", "角膜移植", "单侧肾脏切除", "肝叶切除", "双侧卵巢切除术",
+    "双侧睾丸切除术", "腔静脉过滤器植入术", "心包膜切除术", "轻度原发性肺动脉高压",
+    "肺功能衰竭", "早期系统性红斑狼疮", "早期象皮病", "早期硬皮病", "骨质疏松骨折",
+    "轻度瘫痪", "轻度肌营养不良症", "轻度重症肌无力", "轻度脊髓灰质炎", "轻度运动神经元病",
+    "轻度帕金森氏病", "轻度克雅氏病", "轻度阿尔茨海默病"
+]
+
+# 数据库连接
+def get_db_connection():
+    return psycopg2.connect(
+        host="localhost",
+        port=5432,
+        database="insurance_products",
+        user="yeya",
+        password=""
+    )
+
+def read_js_file(file_path):
+    """读取 JS 文件并解析为 JSON"""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # 移除 export default 和 import 语句
+    content = re.sub(r'export\s+default\s+', '', content)
+    content = re.sub(r'import\s+.*?from.*?[;\n]', '', content, flags=re.MULTILINE)
+    
+    # 替换对疾病列表的引用
+    content = content.replace('HEAVY_ILLNESS_120', json.dumps(HEAVY_ILLNESS_120, ensure_ascii=False))
+    content = content.replace('MEDIUM_ILLNESS_25', json.dumps(MEDIUM_ILLNESS_25, ensure_ascii=False))
+    content = content.replace('LIGHT_ILLNESS_40', json.dumps(LIGHT_ILLNESS_40, ensure_ascii=False))
+    
+    # 解析 JSON
+    try:
+        products = json.loads(content)
+        return products
+    except json.JSONDecodeError as e:
+        print(f"JSON 解析错误: {e}")
+        print(f"出错位置附近内容: {content[max(0, e.pos-100):e.pos+100]}")
+        return []
+
+def update_extend_info(product_id, extend_info):
+    """更新产品的 extend_info"""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    try:
+        cur.execute(
+            "UPDATE insurance_product SET extend_info = %s WHERE id = %s",
+            (Json(extend_info), product_id)
+        )
+        conn.commit()
+        print(f"✓ 产品 ID {product_id} 的 extend_info 已更新")
+    except Exception as e:
+        conn.rollback()
+        print(f"✗ 产品 ID {product_id} 更新失败: {e}")
+    finally:
+        cur.close()
+        conn.close()
+
+def main():
+    import_dir = "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-viewer/src/data"
+    
+    # 要导入的文件列表
+    files = [
+        ('products_illness.js', '重疾险'),
+        ('products_medical.js', '医疗险'),
+        ('products_accident.js', '意外险'),
+        ('products_life.js', '寿险/两全保险'),
+        ('products_pension.js', '年金险')
+    ]
+    
+    total_count = 0
+    success_count = 0
+    
+    for filename, category in files:
+        file_path = f"{import_dir}/{filename}"
+        print(f"\n{'='*60}")
+        print(f"处理文件: {filename} ({category})")
+        print(f"{'='*60}")
+        
+        products = read_js_file(file_path)
+        
+        if not products:
+            print(f"警告: 文件 {filename} 未能解析出产品数据")
+            continue
+        
+        print(f"找到 {len(products)} 个产品")
+        
+        for product in products:
+            total_count += 1
+            product_id = product.get('id')
+            extend_info = product.get('extend_info')
+            
+            if product_id and extend_info:
+                update_extend_info(product_id, extend_info)
+                success_count += 1
+            else:
+                print(f"✗ 产品 ID {product_id} 没有 extend_info 或 ID 缺失")
+    
+    print(f"\n{'='*60}")
+    print(f"导入完成！")
+    print(f"总计处理: {total_count} 个产品")
+    print(f"成功更新: {success_count} 个产品")
+    print(f"{'='*60}")
+
+if __name__ == "__main__":
+    main()

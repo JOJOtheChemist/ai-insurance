@@ -1,0 +1,241 @@
+[
+  {
+    "id": "call_lyd2v0sjxdq",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 101,
+      "fields": "coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133658313,
+    "updatedAt": 1766133658327,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133658313
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133658325,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133658327,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133658325,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=101&fields=coverage%2Cextend_info&view=summary failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=101&fields=coverage%2Cextend_info&view=summary failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133658327
+  },
+  {
+    "id": "call_pal0wdwac7",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 102,
+      "fields": "coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133660985,
+    "updatedAt": 1766133660987,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133660985
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133660985,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133660987,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133660985,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=102&fields=coverage%2Cextend_info&view=summary failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=102&fields=coverage%2Cextend_info&view=summary failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133660987
+  },
+  {
+    "id": "call_3amwap8vend",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 103,
+      "fields": "coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133663138,
+    "updatedAt": 1766133663143,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133663138
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133663138,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133663143,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133663138,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=103&fields=coverage%2Cextend_info&view=summary failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=103&fields=coverage%2Cextend_info&view=summary failed, reason: ",
+    "isError": true,
+    "durationMs": 5,
+    "completedAt": 1766133663143
+  },
+  {
+    "id": "call_wt0rtbqv2q",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 104,
+      "fields": "coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133665159,
+    "updatedAt": 1766133665161,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133665159
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133665159,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133665161,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133665159,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=104&fields=coverage%2Cextend_info&view=summary failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=104&fields=coverage%2Cextend_info&view=summary failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133665161
+  },
+  {
+    "id": "call_u2syxlos7d",
+    "name": "insurance_inspect",
+    "input": {
+      "product_id": 105,
+      "fields": "coverage,extend_info",
+      "view": "summary"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133670516,
+    "updatedAt": 1766133670518,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133670516
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133670516,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133670518,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133670516,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=105&fields=coverage%2Cextend_info&view=summary failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/inspect?product_id=105&fields=coverage%2Cextend_info&view=summary failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133670518
+  },
+  {
+    "id": "call_07jlgpok1i5v",
+    "name": "insurance_search",
+    "input": {
+      "keyword": "30岁男性 重疾险 保费",
+      "limit": 5
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133672792,
+    "updatedAt": 1766133672795,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133672792
+      },
+      {
+        "state": "EXECUTING",
+        "timestamp": 1766133672793,
+        "note": "execution start"
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133672795,
+        "note": "tool reported failure"
+      }
+    ],
+    "startedAt": 1766133672793,
+    "result": {
+      "ok": false,
+      "error": "Connection failed: request to http://localhost:8000/api/tools/search?keyword=30%E5%B2%81%E7%94%B7%E6%80%A7+%E9%87%8D%E7%96%BE%E9%99%A9+%E4%BF%9D%E8%B4%B9&limit=5 failed, reason: "
+    },
+    "error": "Connection failed: request to http://localhost:8000/api/tools/search?keyword=30%E5%B2%81%E7%94%B7%E6%80%A7+%E9%87%8D%E7%96%BE%E9%99%A9+%E4%BF%9D%E8%B4%B9&limit=5 failed, reason: ",
+    "isError": true,
+    "durationMs": 2,
+    "completedAt": 1766133672795
+  }
+]

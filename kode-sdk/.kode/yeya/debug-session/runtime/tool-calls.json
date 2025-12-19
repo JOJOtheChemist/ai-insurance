@@ -1,0 +1,28 @@
+[
+  {
+    "id": "call_5kqe8isdbeb",
+    "name": "customer_profile",
+    "input": {
+      "age": "待确认"
+    },
+    "state": "FAILED",
+    "approval": {
+      "required": false
+    },
+    "createdAt": 1766133446160,
+    "updatedAt": 1766133446161,
+    "auditTrail": [
+      {
+        "state": "PENDING",
+        "timestamp": 1766133446160
+      },
+      {
+        "state": "FAILED",
+        "timestamp": 1766133446161,
+        "note": "tool missing"
+      }
+    ],
+    "error": "Tool not found: customer_profile",
+    "isError": true
+  }
+]

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            padding: 20px;
+        }
+
+        .step-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #FFFFFF;
+            overflow: hidden;
+        }
+
+        /* 市场按钮 - 幻彩渐变 */
+        .btn-market {
+            background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%);
+            border: 1px solid #E9D5FF;
+            color: #7E22CE;
+            transition: all 0.2s;
+        }
+
+        .btn-market:hover {
+            border-color: #D8B4FE;
+            box-shadow: 0 2px 10px rgba(147, 51, 234, 0.1);
+        }
+
+        /* 输入区 */
+        .input-area {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .input-area:focus-within {
+            background: #FFFFFF;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        /* 工具按钮 */
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .tool-btn:hover {
+            background: #FFF7ED;
+            color: #FF6B35;
+        }
+
+        /* 红色录音按钮 */
+        .btn-record {
+            background: #FEF2F2;
+            color: #EF4444;
+            border: 1px solid #FECACA;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-record:hover {
+            background: #FEE2E2;
+        }
+
+        /* 专家模型卡片 (选中后显示) */
+        .model-card {
+            background: linear-gradient(to right, #FAF5FF, #FFFFFF);
+            border: 1px solid #E9D5FF;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.4s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="step-card max-w-md mx-auto">
+
+        <div class="px-5 pt-5 pb-3 flex justify-between items-start">
+            <div class="flex items-center gap-2">
+                <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 2</span>
+                <div>
+                    <h2 class="font-bold text-gray-900 text-sm">注入销售心法</h2>
+                    <p class="text-[10px] text-gray-400 mt-0.5">决定 AI 说话像不像你</p>
+                </div>
+            </div>
+
+            <button onclick="simulateSelectModel()"
+                class="btn-market flex items-center gap-1.5 px-3 py-1.5 rounded-full shadow-sm group">
+                <i class="fa-solid fa-store text-purple-500 text-xs group-hover:animate-bounce"></i>
+                <span class="text-xs font-bold">数字专家市场</span>
+            </button>
+        </div>
+
+        <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+        <div id="step2-input" class="px-5 pb-5">
+            <p class="text-xs text-gray-500 mb-3 leading-relaxed">
+                <i class="fa-solid fa-fingerprint text-gray-400 mr-1"></i>
+                <span class="font-bold text-gray-700">自定义克隆：</span>
+                请提供您的优秀对话录音或常用话术库。AI 将模仿您的语气、口头禅和推销逻辑。
+            </p>
+
+            <div class="input-area p-3 mb-2">
+                <textarea
+                    class="w-full h-20 text-xs bg-transparent outline-none resize-none placeholder-gray-400 text-gray-800 leading-relaxed"
+                    placeholder="在此粘贴您的金牌话术文本..."></textarea>
+
+                <div class="flex items-center justify-between pt-2 border-t border-gray-100 mt-1">
+                    <div class="flex gap-2 items-center">
+                        <button class="btn-record">
+                            <i class="fa-solid fa-microphone"></i> 录音示范
+                        </button>
+                        <button class="tool-btn" title="上传话术文档"><i class="fa-solid fa-file-word"></i></button>
+                        <button class="tool-btn" title="粘贴文案"><i class="fa-solid fa-paste"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="step2-result" class="px-5 pb-5 hidden">
+
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-gray-400">已装载心法模型</span>
+                <button onclick="resetStep2()" class="text-[10px] text-purple-600 hover:underline">切换模型</button>
+            </div>
+
+            <div class="model-card p-4 flex gap-4 items-center shadow-sm">
+                <div class="relative w-12 h-12 shrink-0">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert1"
+                        class="w-full h-full rounded-full bg-purple-100 border border-purple-200">
+                    <div
+                        class="absolute -bottom-1 -right-1 bg-yellow-400 text-white text-[8px] px-1.5 py-0.5 rounded-full border border-white font-bold">
+                        MDRT</div>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-sm font-bold text-gray-900">MDRT 冠军 · 强攻型</h3>
+                        <i class="fa-solid fa-circle-check text-purple-500"></i>
+                    </div>
+                    <p class="text-[10px] text-gray-500 mt-1 leading-snug">
+                        擅长处理价格异议，逻辑犀利，以退为进。适合对付犹豫不决的客户。
+                    </p>
+
+                    <div class="flex gap-1 mt-2">
+                        <span
+                            class="text-[9px] bg-purple-50 text-purple-600 px-1.5 rounded border border-purple-100">狼性逼单</span>
+                        <span
+                            class="text-[9px] bg-white text-gray-500 px-1.5 rounded border border-gray-200">高压控场</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2 text-[10px] text-gray-400 text-center">
+                * 您依然可以通过下方滑块微调该模型的风格强度
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const s2Input = document.getElementById('step2-input');
+        const s2Result = document.getElementById('step2-result');
+
+        // 模拟：从市场选择
+        function simulateSelectModel() {
+            // 这里应该弹出一个 Market Drawer
+            s2Input.classList.add('hidden');
+            s2Result.classList.remove('hidden');
+        }
+
+        // 重置
+        function resetStep2() {
+            s2Result.classList.add('hidden');
+            s2Input.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+
+</html>

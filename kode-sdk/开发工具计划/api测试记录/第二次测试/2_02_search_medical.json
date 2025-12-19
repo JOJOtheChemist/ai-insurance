@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 19,
+            "product_name": "友邦深圳专属团体24医疗保险（互联网）",
+            "product_code": "PCODE_0014",
+            "description_snippet": "为深圳市基本医疗保险参保成员提供住院及特定药品费用保险。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"医疗险\"}], \"table_data\": {\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title",
+            "score": 30
+        },
+        {
+            "id": 26,
+            "product_name": "友邦长保康惠长期医疗保险（费率可调）",
+            "product_code": "PCODE_0021",
+            "description_snippet": "包含一般医疗补偿金、重大疾病医疗补偿金等责任的长期医疗保险。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"医疗险\"}], \"table_data\": {\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title",
+            "score": 30
+        },
+        {
+            "id": 9,
+            "product_name": "友邦优享康惠医疗保险",
+            "product_code": "PCODE_0004",
+            "description_snippet": "包含住院费用补偿金、指定门急诊费用补偿金的医疗保险产品。",
+            "extend_info_snippet": ": \"险种类型\", \"value\": \"医疗险\"}], \"table_data\": {\"rows\": [[\"0-17岁\", \"¥300\"], [\"18-40岁\", \"¥500\"], [\"41-60岁\", \"¥1,200\"]], \"title",
+            "score": 30
+        }
+    ]
+}

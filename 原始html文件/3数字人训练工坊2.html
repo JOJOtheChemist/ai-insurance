@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI 分身定向训练</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+            padding-bottom: 120px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 顶部展示台 */
+        .agent-header {
+            background: radial-gradient(circle at top, #FFF7ED 0%, #FFFFFF 70%);
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 上传虚线框 */
+        .upload-zone {
+            border: 2px dashed #E5E7EB;
+            border-radius: 16px;
+            background: #F9FAFB;
+            transition: all 0.2s;
+        }
+
+        .upload-zone:active {
+            border-color: #FF6B35;
+            background: #FFF7ED;
+        }
+
+        /* 生成的客户卡片 (Mini版) */
+        .generated-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid #FFE4D6;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.08);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标签 */
+        .tag-pill {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #F3F4F6;
+            color: #6B7280;
+        }
+
+        /* 风格滑块 */
+        .slider-track {
+            width: 100%;
+            height: 6px;
+            background: #E5E7EB;
+            border-radius: 99px;
+            position: relative;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B35, #FF8850);
+            border-radius: 99px;
+            width: 60%;
+        }
+
+        .slider-thumb {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <div class="agent-header px-5 pt-4 pb-6 flex items-center gap-4">
+        <button
+            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-500 shadow-sm"><i
+                class="fa-solid fa-chevron-left"></i></button>
+        <div class="flex-1 text-center pr-8">
+            <h1 class="text-base font-bold text-gray-900">分身定向特训</h1>
+            <p class="text-[10px] text-gray-400 flex items-center justify-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                模型准备就绪
+            </p>
+        </div>
+        <div class="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-orange-50">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MyAgent" class="w-full h-full">
+        </div>
+    </div>
+
+    <main class="px-4 py-5 space-y-8">
+
+        <section>
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 1</span>
+                    <h2 class="font-bold text-gray-800 text-sm">锁定目标客户</h2>
+                </div>
+                <span class="text-[10px] text-orange-500 font-bold bg-orange-50 px-2 py-0.5 rounded">AI 自动提取画像</span>
+            </div>
+
+            <div class="generated-card p-4">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-[10px] text-gray-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-wand-magic-sparkles text-orange-400"></i> 画像已生成
+                    </span>
+                    <button class="text-[10px] text-blue-500 font-bold">修改资料</button>
+                </div>
+
+                <div class="flex gap-3 items-start">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg shrink-0">
+                        王
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-base font-bold text-gray-900">王志远</h3>
+                                <p class="text-xs text-gray-500">科技公司 CTO · 42岁</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gray-400">预估年投</div>
+                                <div class="text-sm font-black text-gray-800">5-8万</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-2">
+                            <span class="tag-pill">已婚育</span>
+                            <span class="tag-pill">高净值</span>
+                            <span class="tag-pill bg-red-50 text-red-500">价格敏感</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-0.5 h-4 bg-gray-200 mx-auto -my-4 rounded-full"></div>
+
+        <section>
+            <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 2</span>
+                <h2 class="font-bold text-gray-800 text-sm">注入销售心法</h2>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+                <p class="text-xs text-gray-500 mb-3">
+                    针对<span class="font-bold text-gray-900">“王志远”</span>这类客户，您希望 AI 采用什么策略？
+                </p>
+
+                <div class="space-y-2">
+                    <label
+                        class="flex items-center justify-between p-3 border border-orange-200 bg-orange-50 rounded-xl cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white text-orange-500 flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs font-bold text-gray-800">上传针对性话术</div>
+                                <div class="text-[10px] text-gray-500">例如：高端医疗险对比.pdf</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-check-circle text-orange-500"></i>
+                    </label>
+
+                    <label
+                        class="flex items-center justify-between p-3 border border-gray-100 bg-white rounded-xl cursor-pointer hover:border-orange-200 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-gray-50 text-gray-400 flex items-center justify-center">
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs font-bold text-gray-800">录制/上传示范录音</div>
+                                <div class="text-[10px] text-gray-400">让 AI 模仿您的语气 (可选)</div>
+                            </div>
+                        </div>
+                        <div class="w-4 h-4 rounded-full border border-gray-300"></div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-0.5 h-4 bg-gray-200 mx-auto -my-4 rounded-full"></div>
+
+        <section>
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-200 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 3</span>
+                    <h2 class="font-bold text-gray-800 text-sm">风格融合度</h2>
+                </div>
+                <span class="text-xs font-bold text-orange-600">60%</span>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="relative h-6 flex items-center mb-4">
+                    <div class="slider-track">
+                        <div class="slider-fill" style="width: 60%"></div>
+                        <div class="slider-thumb" style="left: 60%"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-[10px] text-gray-400">
+                    <div class="text-left">
+                        <span class="font-bold text-gray-600 block mb-0.5">严谨合规</span>
+                        <span>严格按条款回答</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-bold text-gray-600 block mb-0.5">激进销售</span>
+                        <span>模仿您的促单技巧</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer
+        class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-5 py-3 pb-6 z-50 flex items-center gap-3 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+        <button class="flex flex-col items-center gap-0.5 text-gray-500 px-2 min-w-[50px]">
+            <i class="fa-regular fa-floppy-disk text-lg"></i>
+            <span class="text-[10px]">保存模板</span>
+        </button>
+
+        <button
+            class="flex-1 bg-gray-900 text-white rounded-xl h-11 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-play text-xs text-green-400"></i>
+            <span class="font-bold text-sm">生成分身并开始推演</span>
+        </button>
+    </footer>
+
+</body>
+
+</html>

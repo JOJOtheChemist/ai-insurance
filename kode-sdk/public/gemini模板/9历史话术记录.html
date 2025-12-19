@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史话术回溯</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F0F2F5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card-outer {
+            border-radius: 40px;
+        }
+
+        .card-inner {
+            border-radius: 20px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 文本截断，显示3行 */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* 复制成功的动画 */
+        @keyframes copySuccess {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                background-color: #4ADE80;
+                color: white;
+                border-color: #4ADE80;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.copied {
+            animation: copySuccess 0.4s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        class="w-[400px] bg-white card-outer shadow-xl border border-orange-100 overflow-hidden flex flex-col h-[800px]">
+
+        <div class="p-6 pb-0">
+            <h2 class="text-xl font-bold text-gray-800 mb-1">王志远</h2>
+            <div
+                class="h-20 bg-orange-50 rounded-2xl mb-4 border border-orange-100 flex items-center justify-center text-gray-400 text-xs">
+                (此处为画像/需求区域)
+            </div>
+        </div>
+
+        <div class="flex-1 bg-gray-50 border-t border-gray-100 pt-5 pb-6 flex flex-col">
+
+            <div class="px-6 flex justify-between items-center mb-3">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-500 flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </span>
+                    <span class="text-sm font-bold text-gray-700">话术锦囊记录</span>
+                    <span class="bg-gray-200 text-gray-500 text-[10px] px-1.5 py-0.5 rounded-full">12条</span>
+                </div>
+                <button class="text-xs text-orange-500 hover:text-orange-600 font-bold">查看全部</button>
+            </div>
+
+            <div class="flex overflow-x-auto gap-3 px-6 pb-2 snap-x snap-mandatory no-scrollbar h-full items-start">
+
+                <div
+                    class="min-w-[80%] snap-center bg-white border border-orange-200 rounded-[24px] p-4 shadow-sm flex flex-col h-48 relative group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span
+                            class="bg-orange-100 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                            🔥 降维打击策略
+                        </span>
+                        <span class="text-[10px] text-gray-400">刚刚</span>
+                    </div>
+
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-quote-left text-orange-100 text-2xl absolute -top-1 -left-1"></i>
+                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-3 pl-4 pt-1 font-medium">
+                            王总，咱们先把保额锁定，用定期消费型把杠杆拉满，每年只要6000多。等过几年经济环境好了...
+                        </p>
+                    </div>
+
+                    <button
+                        class="copy-btn w-full mt-2 py-2 rounded-full border border-orange-200 text-orange-600 text-xs font-bold flex items-center justify-center gap-2 hover:bg-orange-50 transition-all bg-white shadow-sm">
+                        <i class="fa-regular fa-copy"></i> 一键复制
+                    </button>
+                </div>
+
+                <div
+                    class="min-w-[80%] snap-center bg-white border border-gray-200 rounded-[24px] p-4 shadow-sm flex flex-col h-48 group">
+                    <div class="flex justify-between items-start mb-2">
+                        <span
+                            class="bg-red-50 text-red-500 border border-red-100 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                            🛡️ 嫌保费贵
+                        </span>
+                        <span class="text-[10px] text-gray-400">昨天 14:30</span>
+                    </div>
+
+                    <div class="relative flex-1">
+                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-3 pt-1">
+                            这笔钱其实不是消费，而是把未来的风险成本现在就锁定下来。如果我们分摊到每天，其实也就是一杯咖啡钱...
+                        </p>
+                    </div>
+
+                    <button
+                        class="copy-btn w-full mt-2 py-2 rounded-full border border-gray-200 text-gray-500 text-xs font-bold flex items-center justify-center gap-2 hover:border-gray-400 hover:text-gray-700 transition-all bg-white">
+                        <i class="fa-regular fa-copy"></i> 复制
+                    </button>
+                </div>
+
+                <div
+                    class="min-w-[80%] snap-center bg-white border border-gray-200 rounded-[24px] p-4 shadow-sm flex flex-col h-48 opacity-90">
+                    <div class="flex justify-between items-start mb-2">
+                        <span
+                            class="bg-blue-50 text-blue-500 border border-blue-100 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                            📘 绿通服务介绍
+                        </span>
+                        <span class="text-[10px] text-gray-400">3天前</span>
+                    </div>
+
+                    <div class="relative flex-1">
+                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-3 pt-1">
+                            这款产品最大的亮点就是协和、华西的直通车服务。一旦确诊，哪怕挂不上号，我们也有专人陪诊...
+                        </p>
+                    </div>
+
+                    <button
+                        class="copy-btn w-full mt-2 py-2 rounded-full border border-gray-200 text-gray-500 text-xs font-bold flex items-center justify-center gap-2 hover:border-gray-400 hover:text-gray-700 transition-all bg-white">
+                        <i class="fa-regular fa-copy"></i> 复制
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="flex justify-center gap-1 mt-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // 简单的复制交互模拟
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const originalContent = this.innerHTML;
+                this.classList.add('copied');
+                this.innerHTML = '<i class="fa-solid fa-check"></i> 已复制';
+
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                    this.innerHTML = originalContent;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>

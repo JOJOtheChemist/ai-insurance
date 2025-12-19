@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>创建数字分身 - 金牌助理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        
+        body { 
+            font-family: 'Noto Sans SC', sans-serif; 
+            background-color: #F9FAFB;
+            color: #1F2937;
+            padding-bottom: 100px;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* 顶部数字人展示台 */
+        .avatar-stage {
+            background: radial-gradient(circle at center, #F3F4F6 0%, #FFFFFF 100%);
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        /* 扫描动画效果 */
+        .scan-line {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(to right, transparent, #FF6B35, transparent);
+            animation: scan 3s infinite linear;
+            z-index: 10;
+        }
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* 投喂卡片 */
+        .upload-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+        .upload-card:active { border-color: #FFDCC2; background: #FFF9F5; }
+
+        /* 滑块样式 */
+        .slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 100%; height: 6px; background: #E5E7EB;
+            border-radius: 5px; outline: none;
+        }
+        .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 24px; height: 24px; border-radius: 50%;
+            background: #FF6B35;
+            cursor: pointer; border: 4px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* 分身列表项 */
+        .avatar-item {
+            transition: transform 0.2s;
+        }
+        .avatar-item.active {
+            border: 2px solid #FF6B35;
+            background: #FFF7ED;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div class="avatar-stage relative h-64 flex flex-col items-center justify-end pb-6 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-20">
+            <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm"><i class="fa-solid fa-chevron-left"></i></button>
+            <span class="font-bold text-gray-800">训练数字分身</span>
+            <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-gray-400"><i class="fa-regular fa-circle-question"></i></button>
+        </div>
+
+        <div class="relative w-32 h-32 mb-2">
+            <div class="scan-line"></div>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MyAgent&style=circle" class="w-full h-full rounded-full border-4 border-white shadow-xl bg-gray-50 opacity-80 filter grayscale hover:grayscale-0 transition-all duration-500">
+            <div class="absolute -bottom-2 -right-2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded-full border-2 border-white flex items-center gap-1">
+                <i class="fa-solid fa-brain text-orange-500"></i>
+                <span>数据空缺</span>
+            </div>
+        </div>
+
+        <h2 class="text-lg font-bold text-gray-900">未命名的分身 #1</h2>
+        <p class="text-xs text-gray-500 mt-1">请上传资料以激活 AI 销售逻辑</p>
+    </div>
+
+    <main class="px-4 py-6 space-y-6 flex-1">
+
+        <div>
+            <div class="flex items-center gap-2 mb-3">
+                <div class="w-1 h-4 bg-gray-800 rounded-full"></div>
+                <h3 class="font-bold text-gray-800 text-sm">Step 1: 基础资料投喂</h3>
+                <span class="text-[10px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded ml-auto">AI 自动提取画像</span>
+            </div>
+            
+            <div class="upload-card p-4">
+                <p class="text-xs text-gray-500 mb-3 leading-relaxed">
+                    上传您的履历、过往业绩、或公司介绍。AI 将学习您的<span class="text-gray-900 font-bold">基本背景</span>与<span class="text-gray-900 font-bold">专业领域</span>。
+                </p>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="flex flex-col items-center justify-center py-3 bg-gray-50 rounded-lg border border-dashed border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-colors">
+                        <i class="fa-solid fa-file-pdf text-gray-400 mb-1"></i>
+                        <span class="text-[10px] text-gray-600">传文件</span>
+                    </button>
+                    <button class="flex flex-col items-center justify-center py-3 bg-gray-50 rounded-lg border border-dashed border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-colors">
+                        <i class="fa-solid fa-keyboard text-gray-400 mb-1"></i>
+                        <span class="text-[10px] text-gray-600">贴文本</span>
+                    </button>
+                    <button class="flex flex-col items-center justify-center py-3 bg-gray-50 rounded-lg border border-dashed border-gray-300 hover:bg-orange-50 hover:border-orange-200 transition-colors">
+                        <i class="fa-solid fa-link text-gray-400 mb-1"></i>
+                        <span class="text-[10px] text-gray-600">公众号</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex items-center gap-2 mb-3">
+                <div class="w-1 h-4 bg-orange-500 rounded-full"></div>
+                <h3 class="font-bold text-gray-800 text-sm">Step 2: 销售风格克隆</h3>
+                <span class="text-[10px] text-gray-400 ml-auto">决定 AI 说话像不像你</span>
+            </div>
+
+            <div class="upload-card p-4 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-orange-50 rounded-bl-full -z-0"></div>
+                
+                <p class="text-xs text-gray-500 mb-3 relative z-10">
+                    请提供您的<span class="text-gray-900 font-bold">优秀对话录音</span>或<span class="text-gray-900 font-bold">常用话术库</span>。AI 将模仿您的语气、口头禅和推销逻辑。
+                </p>
+                
+                <div class="flex flex-col gap-2 relative z-10">
+                    <button class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-xl shadow-sm active:scale-99 transition-transform">
+                        <div class="w-8 h-8 rounded-full bg-red-50 text-red-500 flex items-center justify-center">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <div class="text-xs font-bold text-gray-800">录制/上传音频</div>
+                            <div class="text-[10px] text-gray-400">支持 mp3, wav (建议 5-10分钟)</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                    </button>
+                    
+                    <button class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-xl shadow-sm active:scale-99 transition-transform">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <i class="fa-solid fa-file-word"></i>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <div class="text-xs font-bold text-gray-800">上传金牌话术文档</div>
+                            <div class="text-[10px] text-gray-400">支持 doc, pdf, txt</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-4 bg-purple-500 rounded-full"></div>
+                    <h3 class="font-bold text-gray-800 text-sm">Step 3: 风格融合度</h3>
+                </div>
+                <span class="text-orange-600 font-bold text-lg" id="fusion-val">75%</span>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                <input type="range" min="0" max="100" value="75" class="slider-thumb w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-4" oninput="document.getElementById('fusion-val').innerText = this.value + '%'">
+                
+                <div class="flex justify-between text-[10px] text-gray-400 font-medium">
+                    <span class="w-20">🤖 标准 AI<br>逻辑严谨，官方话术</span>
+                    <span class="w-20 text-right">😎 完全克隆<br>模仿您的个人风格</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-100">
+            <h3 class="font-bold text-gray-800 text-xs mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-gray-400"></i> 我的分身库
+            </h3>
+            <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+                <button class="flex-shrink-0 w-16 h-20 rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-1 text-gray-400">
+                    <i class="fa-solid fa-plus text-lg"></i>
+                    <span class="text-[10px]">新建</span>
+                </button>
+                
+                <div class="avatar-item active flex-shrink-0 w-16 h-20 rounded-xl overflow-hidden relative shadow-sm">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MyAgent" class="w-full h-full object-cover bg-gray-100">
+                    <div class="absolute bottom-0 w-full bg-black/60 text-white text-[9px] text-center py-0.5">通用版</div>
+                </div>
+
+                <div class="avatar-item flex-shrink-0 w-16 h-20 rounded-xl border border-gray-200 overflow-hidden relative grayscale opacity-70">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=AgentAggressive" class="w-full h-full object-cover bg-gray-100">
+                    <div class="absolute bottom-0 w-full bg-black/60 text-white text-[9px] text-center py-0.5">激进版</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-white border-t border-gray-100 px-5 py-3 pb-6 z-50 flex items-center gap-3 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+        <button class="flex flex-col items-center gap-0.5 text-gray-500 px-2 min-w-[50px]">
+            <i class="fa-solid fa-vial text-lg"></i>
+            <span class="text-[10px]">试用</span>
+        </button>
+        
+        <button class="flex-1 bg-gray-900 text-white rounded-xl h-11 flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+            <i class="fa-solid fa-microchip"></i>
+            <span class="font-bold text-sm">开始训练数字人</span>
+        </button>
+    </footer>
+
+</body>
+</html>

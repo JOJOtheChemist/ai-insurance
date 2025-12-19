@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中学生如何讨论校园人机</title>
+    <style>
+        /* --- 基础设置 --- */
+        :root {
+            --bg-texture: #f9f9f9;
+            --text-main: #333;
+            --tag-dark: #3a3836;
+            --tag-green: #6ece88;
+            --tag-pink: #f29c89;
+            --highlight-green: #2c9c68;
+            --border-color: #333;
+            --bubble-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text-main);
+        }
+
+        /* --- 主卡片容器 --- */
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background-color: #fff;
+            /* 模拟纸张斜纹理 */
+            background-image: repeating-linear-gradient(45deg,
+                    #ffffff,
+                    #ffffff 4px,
+                    #f4f4f4 4px,
+                    #f4f4f4 5px);
+            border: 2px solid var(--border-color);
+            position: relative;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- 顶部装饰条 --- */
+        .top-bar {
+            background-color: var(--tag-dark);
+            color: #ccc;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            padding: 4px 0;
+            text-align: center;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .top-bar span {
+            margin: 0 5px;
+            color: #fff;
+        }
+
+        .top-bar i {
+            color: var(--tag-green);
+            font-style: normal;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+
+        /* --- 标题区域 --- */
+        .header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px dashed #999;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #222;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        /* 标题下的小方块装饰 */
+        .header::after {
+            content: "◇";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            /* 遮挡虚线 */
+            padding: 0 5px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* --- Logo 占位 (右上角) --- */
+        .logos {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 9px;
+            color: #666;
+            gap: 2px;
+        }
+
+        .logo-box {
+            border: 1px solid #ddd;
+            padding: 1px 3px;
+            background: #fff;
+        }
+
+        /* --- 通用：分段标题 (黑色胶囊) --- */
+        .section-title {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 20px 0;
+        }
+
+        .pill {
+            background-color: var(--tag-dark);
+            color: #fff;
+            padding: 6px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 20px;
+            /* 稍微不完全圆，更像图中的样子 */
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* 标题两侧的装饰线 */
+        .section-header-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .line-deco {
+            flex: 1;
+            height: 1px;
+            background: repeating-linear-gradient(to right, #999 0, #999 4px, transparent 4px, transparent 8px);
+            margin: 0 10px;
+        }
+
+        /* --- 通用布局：左右两列 --- */
+        .content-area {
+            padding: 0 15px 20px 15px;
+        }
+
+        .col-headers {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .col-headers span::after {
+            content: " ▼";
+            font-size: 8px;
+        }
+
+        /* --- 组件：一行数据 --- */
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            min-height: 40px;
+        }
+
+        /* 左侧标签 (黑色箭头状) */
+        .tag-dark {
+            background-color: var(--tag-dark);
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 6px 10px 6px 15px;
+            width: 90px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+            flex-shrink: 0;
+        }
+
+        /* 中间虚线 */
+        .connector {
+            flex: 1;
+            border-bottom: 1px dashed #888;
+            margin: 0 5px;
+            position: relative;
+            top: 1px;
+        }
+
+        /* 右侧气泡 */
+        .bubble {
+            background: #fff;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 8px 10px;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            width: 62%;
+            position: relative;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 气泡左侧小三角 */
+        .bubble::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 6px solid #333;
+        }
+
+        .bubble::after {
+            /* 遮盖边框实现镂空效果 */
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 5px solid #fff;
+        }
+
+        /* 文字高亮 */
+        .hl {
+            color: var(--highlight-green);
+            font-weight: bold;
+        }
+
+        /* --- 下半部分：彩色体验区 --- */
+        /* 绿色/粉色背景容器 */
+        .exp-container {
+            padding: 15px 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .exp-green {
+            background-color: rgba(110, 206, 136, 0.2);
+            /* 浅绿背景 */
+            border-top: 1px dotted var(--tag-green);
+            border-bottom: 1px dotted var(--tag-green);
+        }
+
+        .exp-pink {
+            background-color: rgba(242, 156, 137, 0.2);
+            /* 浅粉背景 */
+            border-top: 1px dotted var(--tag-pink);
+            border-bottom: 1px dotted var(--tag-pink);
+        }
+
+        /* 彩色区域的 Row */
+        .exp-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .exp-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 彩色左侧 Tag (圆角矩形带尖角) */
+        .tag-colored {
+            color: #333;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 10px 10px;
+            width: 100px;
+            text-align: center;
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            /* 固定高度以对齐 */
+        }
+
+        .tag-bg-green {
+            background-color: #fff;
+            border: 2px solid var(--tag-green);
+        }
+
+        .tag-bg-pink {
+            background-color: #fff;
+            border: 2px solid var(--tag-pink);
+        }
+
+        /* 标签右侧的小三角 */
+        .tag-colored::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+
+        .tag-bg-green::after {
+            border-left: 6px solid var(--tag-green);
+        }
+
+        .tag-bg-pink::after {
+            border-left: 6px solid var(--tag-pink);
+        }
+
+        /* 底部版权 */
+        .footer {
+            margin-top: 20px;
+            padding: 15px;
+            border-top: 1px solid #999;
+            font-size: 10px;
+            color: #666;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="top-bar">
+            GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA
+        </div>
+
+        <div class="header">
+            <div class="logos">
+                <div class="logo-box">腾讯新闻</div>
+                <div class="logo-box">谷雨数据</div>
+            </div>
+            <h1>中学生如何讨论“校园人机”</h1>
+        </div>
+
+        <div class="content-area">
+            <div class="section-header-line">
+                <div class="line-deco"></div>
+                <div class="pill">“校园人机”的典型表现</div>
+                <div class="line-deco"></div>
+            </div>
+
+            <div class="col-headers">
+                <span>关键词</span>
+                <span>网友评论举例</span>
+            </div>
+
+            <div class="row">
+                <div class="tag-dark">排名稳定</div>
+                <div class="connector"></div>
+                <div class="bubble">
+                    只要成绩不太差，不需要主动进步，保持<span class="hl">排名稳定</span>即可
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="tag-dark">情绪稳定</div>
+                <div class="connector"></div>
+                <div class="bubble">
+                    被批评表扬时一定要保持<span class="hl">情绪稳定</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="tag-dark">不主动</div>
+                <div class="connector"></div>
+                <div class="bubble">
+                    不参与任何小团体，<span class="hl">不主动</span>交朋友
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="tag-dark">被动微笑</div>
+                <div class="connector"></div>
+                <div class="bubble">
+                    时刻保持<span class="hl">被动微笑</span>，路上碰到打招呼就会触发
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="tag-dark">埋头做题</div>
+                <div class="connector"></div>
+                <div class="bubble">
+                    上课下课都自己<span class="hl">埋头做题</span>，不加入别人谈话
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-area" style="padding-bottom: 5px;">
+            <div class="section-header-line">
+                <div class="line-deco"></div>
+                <div class="pill">成为“校园人机”的真实体验</div>
+                <div class="line-deco"></div>
+            </div>
+
+            <div class="col-headers">
+                <span>好的体验</span>
+                <span>网友评论举例</span>
+            </div>
+        </div>
+
+        <div class="exp-container exp-green">
+            <div class="exp-row">
+                <div class="tag-colored tag-bg-green">
+                    可以躲避麻烦<br>减少烦恼
+                </div>
+                <div class="connector" style="border-style:dashed; border-color:#aaa;"></div>
+                <div class="bubble">
+                    从小走到高中结束都这样，真就没遇到过什么麻烦事
+                </div>
+            </div>
+            <div class="exp-row">
+                <div class="tag-colored tag-bg-green">
+                    可以有更多时间<br>做喜欢的事
+                </div>
+                <div class="connector" style="border-style:dashed; border-color:#aaa;"></div>
+                <div class="bubble">
+                    反正好坏都轮不到自己，埋头干自己的事情，特别爽
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area" style="padding-bottom: 5px; padding-top: 5px;">
+            <div class="col-headers">
+                <span>不好的体验</span>
+                <span>网友评论举例</span>
+            </div>
+        </div>
+
+        <div class="exp-container exp-pink">
+            <div class="exp-row">
+                <div class="tag-colored tag-bg-pink">
+                    可能被同学孤立<br>或恶意针对
+                </div>
+                <div class="connector" style="border-style:dashed; border-color:#aaa;"></div>
+                <div class="bubble">
+                    你可能会被渐渐孤立，然后被议论造谣你有心理问题
+                </div>
+            </div>
+            <div class="exp-row">
+                <div class="tag-colored tag-bg-pink">
+                    难以获得<br>朋友帮助
+                </div>
+                <div class="connector" style="border-style:dashed; border-color:#aaa;"></div>
+                <div class="bubble">
+                    得确保你自己能解决大部分事情，不需要别人的帮助
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <strong>数据来源：</strong><br>
+            B站UP主@一颗爆发的枯树勒 “校园人机”系列视频下的网友评论
+        </div>
+
+        <div class="top-bar" style="border-top: 2px solid var(--border-color); border-bottom: none;">
+            GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA <i>●</i> GUYUDATA
+        </div>
+
+    </div>
+
+</body>
+
+</html>

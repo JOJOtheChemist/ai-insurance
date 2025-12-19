@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>专家主页 - 张伟</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        
+        body { 
+            font-family: 'Noto Sans SC', sans-serif; 
+            background-color: #F7F8FA; 
+            color: #1F2937;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* 金牌渐变 */
+        .badge-gold {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            color: #B47D00;
+            border: 1px solid #FFE082;
+        }
+
+        /* 数字人呼吸灯 */
+        .ai-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* 案例卡片样式 */
+        .case-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #FFFFFF;
+            transition: all 0.2s;
+        }
+        .case-card:active { transform: scale(0.99); background: #FAFAFA; }
+    </style>
+</head>
+<body class="h-screen flex flex-col">
+
+    <div class="relative bg-white pb-6 rounded-b-[32px] shadow-sm z-10 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-50 to-white -z-10"></div>
+
+        <header class="px-5 pt-4 pb-2 flex justify-between items-center">
+            <button class="w-8 h-8 rounded-full bg-white/80 backdrop-blur flex items-center justify-center text-gray-700 shadow-sm">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="flex gap-3">
+                <button class="w-8 h-8 rounded-full bg-white/80 backdrop-blur flex items-center justify-center text-gray-700 shadow-sm"><i class="fa-regular fa-share-from-square"></i></button>
+                <button class="w-8 h-8 rounded-full bg-white/80 backdrop-blur flex items-center justify-center text-gray-700 shadow-sm"><i class="fa-regular fa-star"></i></button>
+            </div>
+        </header>
+
+        <div class="px-5 mt-2 flex gap-4">
+            <div class="relative w-24 h-32 rounded-2xl overflow-hidden shadow-md border-2 border-white shrink-0 group cursor-pointer">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang&style=circle" class="w-full h-full object-cover bg-blue-50">
+                <div class="absolute inset-0 bg-black/10 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center pl-0.5 shadow-lg">
+                        <i class="fa-solid fa-play text-xs text-blue-600"></i>
+                    </div>
+                </div>
+                <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[8px] px-2 py-0.5 rounded-full backdrop-blur-sm whitespace-nowrap">
+                    自我介绍
+                </div>
+            </div>
+
+            <div class="flex-1 py-1">
+                <div class="flex justify-between items-start">
+                    <h1 class="text-xl font-bold text-gray-900">张伟</h1>
+                    <div class="flex items-center gap-1.5 bg-green-50 px-2 py-1 rounded-full border border-green-100">
+                        <div class="ai-pulse"></div>
+                        <span class="text-[10px] font-bold text-green-700">AI 在线</span>
+                    </div>
+                </div>
+                
+                <p class="text-xs text-gray-500 mt-1 mb-2">友邦保险 · 资深区域总监</p>
+                
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="badge-gold px-2 py-0.5 rounded text-[10px] font-bold">MDRT 终身会员</span>
+                    <span class="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-[10px] border border-gray-200">从业12年</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-around mt-5 px-5 text-center">
+            <div>
+                <div class="text-lg font-bold text-gray-900">5.2w</div>
+                <div class="text-[10px] text-gray-400">咨询次数</div>
+            </div>
+            <div class="w-px h-8 bg-gray-100"></div>
+            <div>
+                <div class="text-lg font-bold text-gray-900">98%</div>
+                <div class="text-[10px] text-gray-400">好评率</div>
+            </div>
+            <div class="w-px h-8 bg-gray-100"></div>
+            <div>
+                <div class="text-lg font-bold text-orange-500">128</div>
+                <div class="text-[10px] text-gray-400">精选案例</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+        
+        <div class="flex items-center justify-between px-1">
+            <h2 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-orange-500"></i> 精选对话案例库
+            </h2>
+            <div class="flex gap-2">
+                 <button class="text-[10px] bg-white border border-gray-200 px-2 py-1 rounded-full text-gray-500 active:bg-gray-50">高净值</button>
+                 <button class="text-[10px] bg-white border border-gray-200 px-2 py-1 rounded-full text-gray-500 active:bg-gray-50">理赔实录</button>
+            </div>
+        </div>
+
+        <div class="case-card p-4 group cursor-pointer">
+            <div class="flex justify-between items-start mb-2">
+                <span class="bg-orange-50 text-orange-600 px-2 py-0.5 rounded text-[10px] font-bold">置顶 · 家族信托</span>
+                <span class="text-[10px] text-gray-300">3200人看过</span>
+            </div>
+            
+            <h3 class="text-sm font-bold text-gray-900 mb-2 leading-snug group-hover:text-orange-600 transition-colors">
+                客户咨询：家里有5000万资产，担心子女婚变分割，如何设计信托架构？
+            </h3>
+            
+            <div class="bg-gray-50 rounded-lg p-3 text-xs text-gray-600 leading-relaxed border border-gray-100 mb-3">
+                <span class="font-bold text-gray-800">张伟 AI：</span>
+                这需要做“三层隔离”设计。首先，资金必须在婚前完成信托置入；其次，受益人条款中需明确...
+            </div>
+
+            <div class="flex items-center justify-between text-[10px]">
+                <div class="flex gap-2 text-gray-400">
+                    <span><i class="fa-regular fa-clock mr-1"></i>38轮深度对话</span>
+                </div>
+                <span class="text-orange-500 font-bold flex items-center">
+                    查看完整对话 <i class="fa-solid fa-chevron-right ml-1 text-[8px]"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="case-card p-4 group cursor-pointer">
+            <div class="flex justify-between items-start mb-2">
+                <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded text-[10px] font-bold">企业资产隔离</span>
+                <span class="text-[10px] text-gray-300">1800人看过</span>
+            </div>
+            
+            <h3 class="text-sm font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-600 transition-colors">
+                企业主咨询：公司可能面临债务纠纷，我的个人寿险会被强制执行吗？
+            </h3>
+            
+            <div class="flex items-center justify-between text-[10px] mt-3">
+                <div class="flex gap-2 text-gray-400">
+                    <span><i class="fa-regular fa-clock mr-1"></i>12轮对话</span>
+                    <span><i class="fa-solid fa-file-contract mr-1"></i>附法条引用</span>
+                </div>
+                <button class="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition-colors">
+                    查看详情
+                </button>
+            </div>
+        </div>
+
+        <div class="case-card p-4 group cursor-pointer opacity-90">
+            <div class="flex justify-between items-start mb-2">
+                <span class="bg-gray-100 text-gray-500 px-2 py-0.5 rounded text-[10px] font-bold">重疾险理赔</span>
+            </div>
+            
+            <h3 class="text-sm font-bold text-gray-900 mb-2 leading-snug">
+                甲状腺结节被除外承保了，以后转成甲状腺癌还能赔吗？
+            </h3>
+            
+            <div class="flex items-center justify-between text-[10px] mt-3">
+                <div class="flex gap-2 text-gray-400">
+                    <span><i class="fa-regular fa-clock mr-1"></i>8轮对话</span>
+                </div>
+                <button class="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition-colors">
+                    查看详情
+                </button>
+            </div>
+        </div>
+
+        <div class="h-12"></div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 px-5 py-3 pb-6 sticky bottom-0 z-30 flex items-center gap-3 shadow-[0_-5px_20px_rgba(0,0,0,0.02)]">
+        <button class="flex flex-col items-center gap-0.5 text-gray-500 px-2">
+            <i class="fa-regular fa-heart text-lg"></i>
+            <span class="text-[10px]">收藏</span>
+        </button>
+        
+        <button class="flex-1 bg-gray-900 text-white rounded-xl h-11 flex items-center justify-center gap-2 shadow-lg shadow-gray-300 active:scale-95 transition-transform">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span class="font-bold text-sm">向张伟提问</span>
+        </button>
+    </footer>
+
+</body>
+</html>

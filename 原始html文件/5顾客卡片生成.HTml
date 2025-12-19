@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F3F4F6;
+            padding: 20px;
+        }
+
+        /* 主容器 */
+        .step-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #FFFFFF;
+            overflow: hidden;
+        }
+
+        /* 输入区域 */
+        .input-area {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .input-area:focus-within {
+            background: #FFFFFF;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        /* 工具栏按钮 */
+        .tool-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover {
+            background: #FFF7ED;
+            color: #FF6B35;
+        }
+
+        /* AI 生成按钮 */
+        .btn-ai-analyze {
+            background: linear-gradient(90deg, #1F2937 0%, #000000 100%);
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.1s;
+        }
+
+        .btn-ai-analyze:active {
+            transform: scale(0.98);
+        }
+
+        /* 画像卡片 (生成结果) */
+        .profile-result {
+            background: #FFF9F5;
+            border: 1px solid #FFE4D6;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        /* 标签 */
+        .tag-pill {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #FFFFFF;
+            color: #6B7280;
+            border: 1px solid #E5E7EB;
+        }
+
+        /* 动画 */
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="step-card max-w-md mx-auto">
+
+        <div class="px-5 pt-5 pb-3 flex justify-between items-start">
+            <div class="flex items-center gap-2">
+                <span class="bg-gray-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STEP 1</span>
+                <div>
+                    <h2 class="font-bold text-gray-900 text-sm">基础资料投喂</h2>
+                    <p class="text-[10px] text-gray-400 mt-0.5">设定本次演练的目标靶子</p>
+                </div>
+            </div>
+
+            <button onclick="simulateSelectCustomer()"
+                class="flex items-center gap-1.5 bg-white border border-gray-200 px-3 py-1.5 rounded-full shadow-sm hover:border-orange-200 hover:text-orange-600 transition-colors group">
+                <i class="fa-solid fa-folder-user text-gray-400 group-hover:text-orange-500 text-xs"></i>
+                <span class="text-xs font-bold text-gray-600 group-hover:text-orange-600">从客户库选择</span>
+            </button>
+        </div>
+
+        <div class="w-full h-px bg-gray-100 mb-4"></div>
+
+        <div id="input-mode" class="px-5 pb-5">
+            <p class="text-xs text-gray-500 mb-3 leading-relaxed">
+                <i class="fa-solid fa-wand-magic-sparkles text-orange-400 mr-1"></i>
+                <span class="font-bold text-gray-700">AI 自动提取画像：</span>
+                粘贴客户背景、微信聊天记录片段。AI 将为您深度分析客户的保险倾向与个性化卖点。
+            </p>
+
+            <div class="input-area p-3 mb-3">
+                <textarea id="raw-input"
+                    class="w-full h-24 text-xs bg-transparent outline-none resize-none placeholder-gray-400 text-gray-800 leading-relaxed"
+                    placeholder="例如：客户叫王志远，42岁科技公司高管，最近在问我高端医疗险，但他老婆比较保守，觉得社保就够了..."></textarea>
+
+                <div class="flex items-center justify-between pt-2 border-t border-gray-100 mt-1">
+                    <div class="flex gap-1">
+                        <button class="tool-btn" title="语音输入"><i class="fa-solid fa-microphone"></i></button>
+                        <button class="tool-btn" title="上传文件"><i class="fa-solid fa-folder-open"></i></button>
+                        <button class="tool-btn" title="上传图片"><i class="fa-solid fa-image"></i></button>
+                    </div>
+                    <span class="text-[10px] text-gray-300">支持长文本分析</span>
+                </div>
+            </div>
+
+            <button onclick="simulateAIGen()"
+                class="btn-ai-analyze w-full py-3 flex items-center justify-center gap-2 group">
+                <i class="fa-solid fa-bolt text-yellow-400 group-hover:animate-pulse"></i>
+                AI 智能分析并生成画像
+            </button>
+        </div>
+
+        <div id="result-mode" class="px-5 pb-5 hidden fade-in">
+
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-xs font-bold text-gray-400">当前锁定目标</span>
+                <button onclick="resetMode()" class="text-[10px] text-blue-500 hover:underline">重新选择/生成</button>
+            </div>
+
+            <div class="profile-result p-4 flex gap-4 items-start shadow-sm">
+                <div
+                    class="w-12 h-12 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-xl shadow-md shrink-0">
+                    王
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-base font-bold text-gray-900">王志远</h3>
+                                <span
+                                    class="bg-white border border-orange-200 text-orange-600 text-[9px] px-1.5 py-0.5 rounded font-bold">高意向</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-0.5">科技公司 CTO · 42岁</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-[10px] text-gray-400">年预算</span>
+                            <span class="block text-sm font-black text-gray-800">5-8万</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="tag-pill">已婚育</span>
+                        <span class="tag-pill">关注医疗资源</span>
+                        <span class="tag-pill bg-red-50 text-red-500 border-red-100">配偶保守</span>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-3 flex items-center gap-2 text-[10px] text-green-600 bg-green-50 px-3 py-2 rounded-lg border border-green-100">
+                <i class="fa-solid fa-circle-check"></i>
+                AI 已成功加载该客户画像，正在构建针对性策略...
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const inputMode = document.getElementById('input-mode');
+        const resultMode = document.getElementById('result-mode');
+
+        // 模拟：AI 生成
+        function simulateAIGen() {
+            const text = document.getElementById('raw-input').value;
+            // 加一点简单的loading效果...
+            inputMode.classList.add('hidden');
+            resultMode.classList.remove('hidden');
+        }
+
+        // 模拟：从库里选择 (实际会弹出一个列表Drawer，这里简化为直接选中)
+        function simulateSelectCustomer() {
+            // 这里应该调用您之前设计的 Customer Drawer
+            // 假设用户选了“王志远”
+            inputMode.classList.add('hidden');
+            resultMode.classList.remove('hidden');
+        }
+
+        // 重置
+        function resetMode() {
+            resultMode.classList.add('hidden');
+            inputMode.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+
+</html>
