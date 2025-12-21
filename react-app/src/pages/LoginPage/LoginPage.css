@@ -1,0 +1,314 @@
+/* 复制自时间表项目的 LoginPage.css */
+/* 略去重复内容，此处全量写入 */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    background: #f0f2f5;
+    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.login-rabbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+}
+
+.login-rabbit-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 48px 40px;
+    border-radius: 32px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo-circle {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a202c;
+    overflow: hidden;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    color: #718096;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.mode-tabs {
+    display: flex;
+    background: #edf2f7;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.mode-tab {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.mode-tab.active {
+    background: white;
+    color: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.error-message {
+    background: #fff5f5;
+    color: #c53030;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #fed7d7;
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.success-message {
+    background: #f0fff4;
+    color: #2f855a;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #c6f6d5;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 16px;
+    color: #a0aec0;
+    font-size: 16px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    background: #f7fafc;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.2s;
+    color: #2d3748;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    background: white;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+    box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+}
+
+.login-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(102, 126, 234, 0.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #a0aec0;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.login-divider span {
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+.guest-button {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.guest-button:hover {
+    border-color: #cbd5e0;
+    background: #f8fafc;
+}
+
+.login-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.bg-circle-1 {
+    width: 600px;
+    height: 600px;
+    background: rgba(102, 126, 234, 0.15);
+    top: -200px;
+    right: -100px;
+}
+
+.bg-circle-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(118, 75, 162, 0.1);
+    bottom: -150px;
+    left: -100px;
+}
+
+.bg-circle-3 {
+    width: 300px;
+    height: 300px;
+    background: rgba(102, 126, 234, 0.08);
+    top: 20%;
+    left: 10%;
+}

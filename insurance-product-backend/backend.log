@@ -1,0 +1,56 @@
+INFO:     Started server process [3891]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quitINFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2687]
+earch?keyword=%E7%8A%B9%E8%B1%AB%E6%9C%9F&limit=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62436 - "GET /api/tools/search?keyword=%E5%88%86%E7%BA%A2&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62439 - "GET /api/tools/search?keyword=%E7%99%8C%E7%97%87&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62442 - "GET /api/tools/search?keyword=%E8%B1%81%E5%85%8D&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62445 - "GET /api/tools/inspect?product_id=6&fields=product_name,extend_info.waiting_period,product_code HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62448 - "GET /api/tools/filter?product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62451 - "GET /api/tools/filter?age_min=30 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64205 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64409 - "GET /api/tools/filter?age_min=30&product_type=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64564 - "GET /api/tools/search?keyword=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /api/tools/search?keyword=%e7%8c%9d%e6%ad%bb&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64635 - "GET /api/tools/search?keyword=%e9%ab%98%e7%ab%af%e5%8c%bb%e7%96%97&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64648 - "GET /api/tools/inspect?product_id=40&fields=product_name%2cdescription%2cextend_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64726 - "GET /api/tools/search?keyword=%e5%8c%bb%e7%96%97%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64744 - "GET /api/tools/search?keyword=%e9%87%8d%e7%96%be%e9%99%a9&limit=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64757 - "GET /api/tools/search?keyword=%e6%bb%a1%e6%9c%9f%e9%87%91&limit=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56483 - "GET /api/tools/search?keyword=test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56664 - "GET /api/tools/filter?age_min=30 HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:56838 - "GET /api/tools/inspect?product_id=40&fields=product_name,extend_info,coverage HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:56847 - "GET /api/tools/inspect?product_id=33&fields=product_name,extend_info,coverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56850 - "GET /api/tools/inspect?product_id=28&fields=product_name,extend_info,coverage HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+INFO:     127.0.0.1:57008 - "GET /api/tools/filter?age_min=30&product_type=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57214 - "GET /api/tools/filter?age_min=30&product_type=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57217 - "GET /api/tools/search?keyword=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57220 - "GET /api/tools/search?keyword=%e7%8c%9d%e6%ad%bb&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57223 - "GET /api/tools/inspect?product_id=40&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57226 - "GET /api/tools/search?keyword=%e9%ab%98%e7%ab%af%e5%8c%bb%e7%96%97&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57229 - "GET /api/tools/search?keyword=%e5%8c%bb%e7%96%97%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57232 - "GET /api/tools/search?keyword=%e9%87%8d%e7%96%be%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57235 - "GET /api/tools/inspect?product_id=33&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57238 - "GET /api/tools/inspect?product_id=28&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57241 - "GET /api/tools/search?keyword=%e6%bb%a1%e6%9c%9f%e9%87%91&limit=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59661 - "GET /api/tools/filter?age_min=30&product_type=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59664 - "GET /api/tools/search?keyword=%e5%ae%9a%e6%9c%9f%e5%af%bf%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59667 - "GET /api/tools/search?keyword=%e7%8c%9d%e6%ad%bb&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59670 - "GET /api/tools/inspect?product_id=40&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59673 - "GET /api/tools/search?keyword=%e9%ab%98%e7%ab%af%e5%8c%bb%e7%96%97&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59676 - "GET /api/tools/search?keyword=%e5%8c%bb%e7%96%97%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59683 - "GET /api/tools/search?keyword=%e9%87%8d%e7%96%be%e9%99%a9&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59686 - "GET /api/tools/inspect?product_id=33&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59689 - "GET /api/tools/inspect?product_id=28&fields=product_name%2cextend_info%2ccoverage HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59692 - "GET /api/tools/search?keyword=%e6%bb%a1%e6%9c%9f%e9%87%91&limit=2 HTTP/1.1" 200 OK

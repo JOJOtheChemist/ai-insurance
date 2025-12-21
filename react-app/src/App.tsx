@@ -1,5 +1,6 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import LoginPage from './pages/LoginPage/LoginPage';
 import CustomerList16 from './components/CustomerList16';
 import MobileChatLayout from './components/MobileChatLayout';
 import MobileChatInterface from './components/MobileChatInterface';
@@ -31,49 +32,61 @@ import CompositeDigitalHumanChat from './components/CompositeDigitalHumanChat';
 import ExpertListPage from './pages/ExpertListPage';
 import CustomerProfilePage from './components/CustomerProfilePage';
 import CompositeChatFullPage from './pages/CompositeChatFullPage';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+};
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<CompositeChatFullPage />} />
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
 
-        {/* Mobile-like pages requested by user */}
-        <Route path="/crm-error-state" element={<CRMErrorState hideNav={true} />} />
-        <Route path="/composite-chat-full" element={<CompositeChatFullPage />} />
-        <Route path="/digital-human-profile" element={<DigitalHumanProfile />} />
-        <Route path="/mobile-workspace" element={<AIWorkspaceMobile />} />
-        <Route path="/customer-profile-panel" element={<CustomerProfilePanelPage />} />
-        <Route path="/expert-list" element={<ExpertListPage />} />
+          <Route path="/" element={<ProtectedRoute><CompositeChatFullPage /></ProtectedRoute>} />
 
-        {/* Other components available but hidden from main flow */}
-        <Route path="/customer-list-16" element={<CustomerList16 />} />
-        <Route path="/mobile-chat-layout" element={<MobileChatLayout />} />
-        <Route path="/mobile-chat-interface" element={<MobileChatInterface />} />
-        <Route path="/ai-role-intro" element={<AIRoleIntro />} />
-        <Route path="/crm-main" element={<CRMMain />} />
-        <Route path="/customer-list-15" element={<CustomerList15 />} />
-        <Route path="/customer-card-1" element={<CustomerCard1 />} />
-        <Route path="/customer-card-2" element={<CustomerCard2 />} />
-        <Route path="/crm-full" element={<CRMFull />} />
-        <Route path="/quick-info-guide" element={<QuickInfoGuide />} />
-        <Route path="/script-card-comparison" element={<ScriptCardComparison />} />
-        <Route path="/script-card-single" element={<ScriptCardSingle />} />
-        <Route path="/crm-card" element={<CRMCard />} />
-        <Route path="/optimized-customer-card" element={<OptimizedCustomerCard />} />
-        <Route path="/dual-card" element={<DualCard />} />
-        <Route path="/plan-recommendation-card" element={<PlanRecommendationCard />} />
-        <Route path="/history-records" element={<HistoryRecords />} />
-        <Route path="/composite-customer-profile" element={<CompositeCustomerProfile />} />
-        <Route path="/ai-workspace" element={<AIWorkspacePage />} />
-        <Route path="/digital-human-chat" element={<DigitalHumanChat />} />
-        <Route path="/digital-human-chat-switch" element={<DigitalHumanChatSwitch />} />
-        <Route path="/digital-human-chat-screen-efficiency" element={<DigitalHumanChatScreenEfficiency />} />
-        <Route path="/digital-human-chat-context" element={<DigitalHumanChatWithContext />} />
-        <Route path="/composite-chat" element={<CompositeDigitalHumanChat />} />
-        <Route path="/customer-profile" element={<CustomerProfilePage />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Mobile-like pages requested by user */}
+          <Route path="/crm-error-state" element={<ProtectedRoute><CRMErrorState hideNav={true} /></ProtectedRoute>} />
+          <Route path="/composite-chat-full" element={<ProtectedRoute><CompositeChatFullPage /></ProtectedRoute>} />
+          <Route path="/digital-human-profile" element={<ProtectedRoute><DigitalHumanProfile /></ProtectedRoute>} />
+          <Route path="/mobile-workspace" element={<ProtectedRoute><AIWorkspaceMobile /></ProtectedRoute>} />
+          <Route path="/customer-profile-panel" element={<ProtectedRoute><CustomerProfilePanelPage /></ProtectedRoute>} />
+          <Route path="/expert-list" element={<ProtectedRoute><ExpertListPage /></ProtectedRoute>} />
+
+          {/* Other components available but hidden from main flow */}
+          <Route path="/customer-list-16" element={<ProtectedRoute><CustomerList16 /></ProtectedRoute>} />
+          <Route path="/mobile-chat-layout" element={<ProtectedRoute><MobileChatLayout /></ProtectedRoute>} />
+          <Route path="/mobile-chat-interface" element={<ProtectedRoute><MobileChatInterface /></ProtectedRoute>} />
+          <Route path="/ai-role-intro" element={<ProtectedRoute><AIRoleIntro /></ProtectedRoute>} />
+          <Route path="/crm-main" element={<ProtectedRoute><CRMMain /></ProtectedRoute>} />
+          <Route path="/customer-list-15" element={<ProtectedRoute><CustomerList15 /></ProtectedRoute>} />
+          <Route path="/customer-card-1" element={<ProtectedRoute><CustomerCard1 /></ProtectedRoute>} />
+          <Route path="/customer-card-2" element={<ProtectedRoute><CustomerCard2 /></ProtectedRoute>} />
+          <Route path="/crm-full" element={<ProtectedRoute><CRMFull /></ProtectedRoute>} />
+          <Route path="/quick-info-guide" element={<ProtectedRoute><QuickInfoGuide /></ProtectedRoute>} />
+          <Route path="/script-card-comparison" element={<ProtectedRoute><ScriptCardComparison /></ProtectedRoute>} />
+          <Route path="/script-card-single" element={<ProtectedRoute><ScriptCardSingle /></ProtectedRoute>} />
+          <Route path="/crm-card" element={<ProtectedRoute><CRMCard /></ProtectedRoute>} />
+          <Route path="/optimized-customer-card" element={<ProtectedRoute><OptimizedCustomerCard /></ProtectedRoute>} />
+          <Route path="/dual-card" element={<ProtectedRoute><DualCard /></ProtectedRoute>} />
+          <Route path="/plan-recommendation-card" element={<ProtectedRoute><PlanRecommendationCard /></ProtectedRoute>} />
+          <Route path="/history-records" element={<ProtectedRoute><HistoryRecords /></ProtectedRoute>} />
+          <Route path="/composite-customer-profile" element={<ProtectedRoute><CompositeCustomerProfile /></ProtectedRoute>} />
+          <Route path="/ai-workspace" element={<ProtectedRoute><AIWorkspacePage /></ProtectedRoute>} />
+          <Route path="/digital-human-chat" element={<ProtectedRoute><DigitalHumanChat /></ProtectedRoute>} />
+          <Route path="/digital-human-chat-switch" element={<ProtectedRoute><DigitalHumanChatSwitch /></ProtectedRoute>} />
+          <Route path="/digital-human-chat-screen-efficiency" element={<ProtectedRoute><DigitalHumanChatScreenEfficiency /></ProtectedRoute>} />
+          <Route path="/digital-human-chat-context" element={<ProtectedRoute><DigitalHumanChatWithContext /></ProtectedRoute>} />
+          <Route path="/composite-chat" element={<ProtectedRoute><CompositeDigitalHumanChat /></ProtectedRoute>} />
+          <Route path="/customer-profile" element={<ProtectedRoute><CustomerProfilePage /></ProtectedRoute>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

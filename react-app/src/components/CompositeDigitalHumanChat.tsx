@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAuth } from '../context/AuthContext';
+
 import { InputArea } from './DigitalHumanChat/InputArea';
 import { CustomerProfileCards, type CustomerProfile } from './CustomerInfoCards';
 import {
@@ -18,6 +20,7 @@ interface Message {
 const CompositeDigitalHumanChat: React.FC = () => {
     // Stage: 0 = Initial, 1 = Chat Started, 2 = Efficiency (Full Screen)
     const [stage, setStage] = useState<0 | 1 | 2>(0);
+    const { token, user } = useAuth();
 
     // State
     const [isCustomerMounted, setIsCustomerMounted] = useState(false);
@@ -124,13 +127,13 @@ const CompositeDigitalHumanChat: React.FC = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoieWV5YSIsImlhdCI6MTc2NjEzMTIyNn0.jah2XDESnlS8pT38UvTBki76OuCXzSAbzHbEST2-w2Q'
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     message: msg,
                     agentId: 'insure-recommand-v3',
                     sessionId: sessionIdRef.current,
-                    userId: 'yeya'
+                    userId: user?.username || 'guest'
                 })
             });
 

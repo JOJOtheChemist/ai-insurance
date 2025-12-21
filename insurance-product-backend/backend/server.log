@@ -1,0 +1,15 @@
+INFO:     Started server process [63894]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:64645 - "POST /api/v1/users/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65125 - "OPTIONS /api/v1/users/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65125 - "POST /api/v1/users/auth/register HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65131 - "POST /api/v1/users/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65136 - "OPTIONS /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65136 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65472 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50423 - "OPTIONS /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50423 - "POST /api/v1/users/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50423 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
