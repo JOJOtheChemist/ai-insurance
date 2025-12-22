@@ -6,12 +6,14 @@ interface CustomerDrawerProps {
     isOpen: boolean;
     onClose: () => void;
     customerProfile: CustomerProfile | null;
+    onRefresh?: () => void;
 }
 
 export const CustomerDrawer: React.FC<CustomerDrawerProps> = ({
     isOpen,
     onClose,
-    customerProfile
+    customerProfile,
+    onRefresh
 }) => {
     return (
         <div
@@ -19,12 +21,23 @@ export const CustomerDrawer: React.FC<CustomerDrawerProps> = ({
         >
             <div className="h-14 border-b border-gray-100 flex items-center justify-between px-4 bg-[#FFF9F5]">
                 <span className="text-sm font-bold text-gray-800">客户全景档案</span>
-                <button
-                    onClick={onClose}
-                    className="w-8 h-8 rounded-full bg-white text-gray-500 flex items-center justify-center hover:bg-gray-100"
-                >
-                    <i className="fa-solid fa-xmark"></i>
-                </button>
+                <div className="flex items-center gap-2">
+                    {onRefresh && (
+                        <button
+                            onClick={onRefresh}
+                            className="w-8 h-8 rounded-full bg-white text-orange-500 flex items-center justify-center hover:bg-orange-50 transition-colors"
+                            title="刷新客户数据"
+                        >
+                            <i className="fa-solid fa-arrows-rotate text-sm"></i>
+                        </button>
+                    )}
+                    <button
+                        onClick={onClose}
+                        className="w-8 h-8 rounded-full bg-white text-gray-500 flex items-center justify-center hover:bg-gray-100"
+                    >
+                        <i className="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
             <div className="flex-1 overflow-hidden">
                 <CustomerProfilePanel

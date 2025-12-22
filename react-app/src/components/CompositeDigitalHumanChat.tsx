@@ -407,6 +407,7 @@ const CompositeDigitalHumanChat: React.FC = () => {
                 isOpen={isDrawerOpen}
                 onClose={toggleDrawer}
                 customerProfile={customerProfile}
+                onRefresh={loadClientData}
             />
 
             {/* History Drawer */}

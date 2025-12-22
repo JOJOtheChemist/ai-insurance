@@ -13,7 +13,7 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
     const handleSchemeScroll = () => {
         if (schemeScrollRef.current) {
             const { scrollLeft, clientWidth } = schemeScrollRef.current;
-            const index = Math.round(scrollLeft / (clientWidth * 0.85));
+            const index = Math.round(scrollLeft / (clientWidth * 0.70));
             setActiveSchemeIndex(index);
         }
     };
@@ -42,7 +42,7 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                 >
                     {proposedPlans && proposedPlans.length > 0 ? (
                         proposedPlans.map((plan, idx) => (
-                            <div key={idx} onClick={() => { setActiveSchemeIndex(idx); setIsSchemePopupOpen(true); }} className="min-w-[85%] snap-center relative rounded-[24px] overflow-hidden shadow-lg shadow-orange-100 group cursor-pointer h-40 shrink-0">
+                            <div key={idx} onClick={() => { setActiveSchemeIndex(idx); setIsSchemePopupOpen(true); }} className="w-[70%] max-w-[70%] snap-center relative rounded-[24px] overflow-hidden shadow-lg shadow-orange-100 group cursor-pointer h-40 shrink-0">
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35] to-[#FF9A5C]"></div>
                                 <i className="fa-solid fa-wand-magic-sparkles absolute top-3 right-3 text-white/20 text-4xl"></i>
 
@@ -54,20 +54,20 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                                             </span>
                                             <span className="text-2xl font-black tracking-tight">#{proposedPlans.length - idx}</span>
                                         </div>
-                                        <p className="text-sm font-bold opacity-85">{plan.title}</p>
-                                        <p className="text-[11px] opacity-70 mt-1 line-clamp-2">{plan.description || plan.reasoning || '暂无描述'}</p>
+                                        <p className="text-sm font-bold opacity-85 break-words line-clamp-1">{plan.title}</p>
+                                        <p className="text-[11px] opacity-70 mt-1 line-clamp-2 break-words">{plan.description || plan.reasoning || '暂无描述'}</p>
                                     </div>
-                                    <div className="flex items-center justify-between text-xs font-semibold tracking-wide">
-                                        <span className="flex items-center gap-1">
+                                    <div className="flex items-center justify-between text-xs font-semibold tracking-wide gap-2">
+                                        <span className="flex items-center gap-1 shrink-0">
                                             <i className="fa-solid fa-box-open"></i> {plan.products.length}款产品
                                         </span>
-                                        <span>预算：{plan.budget || '待定'}</span>
+                                        <span className="truncate">预算：{plan.budget || '待定'}</span>
                                     </div>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <div className="min-w-[85%] snap-center relative rounded-[24px] overflow-hidden border border-dashed border-gray-200 flex flex-col items-center justify-center bg-gray-50 h-40 shrink-0 text-gray-400 gap-2">
+                        <div className="w-[70%] max-w-[70%] snap-center relative rounded-[24px] overflow-hidden border border-dashed border-gray-200 flex flex-col items-center justify-center bg-gray-50 h-40 shrink-0 text-gray-400 gap-2">
                             <i className="fa-regular fa-clipboard text-2xl"></i>
                             <span className="text-xs font-bold">暂无AI推荐方案</span>
                         </div>
@@ -104,21 +104,21 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                         </div>
 
                         <div className="flex-1 overflow-y-auto p-4 bg-[#F2F4F6]">
-                            <div className="py-2 shrink-0">
+                            <div className="pb-20">
                                 <h3 className="text-xs font-bold text-gray-800 mb-3 ml-2 flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span> 推荐保险组合
                                 </h3>
                                 <div className="space-y-3">
                                     {proposedPlans[activeSchemeIndex].products.map((prod, pIdx) => (
-                                        <div key={pIdx} className={`p-3 border rounded-2xl flex items-center gap-3 ${prod.type === 'main' ? 'border-orange-200 bg-white shadow-sm' : 'border-gray-100 bg-gray-50 opacity-80'}`}>
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${prod.type === 'main' ? 'bg-orange-100 text-orange-500' : 'bg-white text-gray-400 shadow-sm'}`}>
-                                                <i className={`fa-solid ${prod.type === 'main' ? 'fa-heart-pulse' : 'fa-user-doctor'}`}></i>
+                                        <div key={pIdx} className={`p-3 border rounded-2xl flex items-center gap-3 ${prod.type === 'main' ? 'border-orange-200 bg-white shadow-sm' : 'border-gray-200 bg-white shadow-sm'}`}>
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${prod.type === 'main' ? 'bg-orange-100 text-orange-500' : 'bg-blue-50 text-blue-500'}`}>
+                                                <i className={`fa-solid ${prod.type === 'main' ? 'fa-heart-pulse' : 'fa-shield-halved'}`}></i>
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-sm font-bold text-gray-700">{prod.name}</p>
                                                 <p className="text-xs text-gray-400">{prod.coverage} {prod.reason ? `· ${prod.reason}` : ''}</p>
                                             </div>
-                                            {prod.type === 'main' ? <i className="fa-solid fa-check-circle text-orange-500"></i> : <i className="fa-regular fa-circle text-gray-300"></i>}
+                                            {prod.type === 'main' ? <i className="fa-solid fa-check-circle text-orange-500"></i> : <i className="fa-solid fa-plus-circle text-blue-500"></i>}
                                         </div>
                                     ))}
                                 </div>
