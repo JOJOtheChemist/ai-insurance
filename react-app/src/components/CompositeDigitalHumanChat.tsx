@@ -21,7 +21,12 @@ interface Message {
     content: string | React.ReactNode;
 }
 
-const CompositeDigitalHumanChat: React.FC = () => {
+interface CompositeDigitalHumanChatProps {
+    initialMessage?: string;
+    onMessageConsumed?: () => void;
+}
+
+const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ initialMessage, onMessageConsumed }) => {
     // Stage: 0 = Initial, 1 = Chat Started, 2 = Efficiency (Full Screen)
     const [stage, setStage] = useState<0 | 1 | 2>(0);
     const { token, user } = useAuth();
@@ -110,6 +115,27 @@ const CompositeDigitalHumanChat: React.FC = () => {
         const timer = setTimeout(checkOverflow, 100);
         return () => clearTimeout(timer);
     }, [messages, stage]);
+
+    // 🔥 自动触发首轮对话（如果有 initialMessage）
+    // 使用 sessionStorage 持久化标记，防止组件重新挂载时重复发送
+    useEffect(() => {
+        // 生成唯一的消息标识（基于 sessionId + 消息内容的hash）
+        const messageKey = `initial_msg_sent_${sessionIdRef.current}`;
+        const alreadySent = sessionStorage.getItem(messageKey);
+
+        if (initialMessage && !alreadySent && stage === 0) {
+            console.log('🚀 [Chat] 自动触发首轮对话:', initialMessage);
+            // 🔥 立即标记，防止 React StrictMode 双重触发
+            sessionStorage.setItem(messageKey, 'true');
+            setTimeout(() => {
+                handleStartChat(initialMessage);
+                // 🔥 消息已发送，通知父组件清除
+                if (onMessageConsumed) {
+                    onMessageConsumed();
+                }
+            }, 100);
+        }
+    }, [initialMessage, stage, onMessageConsumed]);
 
     // Render message content with customer profile detection
     const renderMessageContent = (text: string) => {

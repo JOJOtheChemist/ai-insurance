@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ProductHeader: React.FC = () => {
-    const [activeType, setActiveType] = useState('全部');
-    const [activeCompany, setActiveCompany] = useState('全部');
+interface ProductHeaderProps {
+    categories: string[];
+    activeCategory: string;
+    onCategoryChange: (category: string) => void;
+    companies: string[];
+    activeCompany: string;
+    onCompanyChange: (company: string) => void;
+    searchQuery: string;
+    onSearchChange: (query: string) => void;
+}
 
-    const types = ['全部', '重疾险', '终身寿', '百万医疗', '年金险', '意外险'];
-    const companies = ['全部', '平安', '友邦', '人保', '泰康', '国寿'];
+const ProductHeader: React.FC<ProductHeaderProps> = ({
+    categories,
+    activeCategory,
+    onCategoryChange,
+    companies,
+    activeCompany,
+    onCompanyChange,
+    searchQuery,
+    onSearchChange
+}) => {
 
     return (
         <header className="bg-white/96 backdrop-blur-md sticky top-0 z-30 px-4 py-3 border-b border-gray-100 flex flex-col gap-3 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
@@ -16,6 +31,8 @@ const ProductHeader: React.FC = () => {
                     type="text"
                     placeholder="搜索产品名称、条款关键字..."
                     className="bg-transparent text-sm flex-1 outline-none text-gray-700"
+                    value={searchQuery}
+                    onChange={(e) => onSearchChange(e.target.value)}
                 />
                 <i className="fa-solid fa-barcode text-gray-400 text-sm ml-2"></i>
             </div>
@@ -23,13 +40,13 @@ const ProductHeader: React.FC = () => {
             {/* Filter Tabs - Types */}
             <div className="flex flex-col gap-2">
                 <div className="flex gap-2 overflow-x-auto no-scrollbar">
-                    {types.map((type) => (
+                    {categories.map((type) => (
                         <button
                             key={type}
-                            onClick={() => setActiveType(type)}
-                            className={`px-4 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-all border ${activeType === type
-                                    ? 'bg-orange-50 text-orange-600 border-orange-200 shadow-sm'
-                                    : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
+                            onClick={() => onCategoryChange(type)}
+                            className={`px-4 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-all border ${activeCategory === type
+                                ? 'bg-orange-50 text-orange-600 border-orange-200 shadow-sm'
+                                : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
                                 }`}
                         >
                             {type}
@@ -43,10 +60,10 @@ const ProductHeader: React.FC = () => {
                     {companies.map((company) => (
                         <button
                             key={company}
-                            onClick={() => setActiveCompany(company)}
+                            onClick={() => onCompanyChange(company)}
                             className={`px-3 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap transition-all border ${activeCompany === company
-                                    ? 'bg-gray-900 text-white border-gray-900 shadow-md'
-                                    : 'bg-gray-50 text-gray-400 border-transparent hover:bg-gray-100'
+                                ? 'bg-gray-900 text-white border-gray-900 shadow-md'
+                                : 'bg-gray-50 text-gray-400 border-transparent hover:bg-gray-100'
                                 }`}
                         >
                             {company}
