@@ -101,3 +101,48 @@ export const getClientsList = async (
     }
 };
 
+
+export interface SessionSummary {
+    id: string;
+    title: string;
+    summary: string;
+    time: string;
+    full_time: string;
+}
+
+export interface ClientSessionGroup {
+    client: {
+        id: number;
+        name: string;
+        avatar_char: string;
+        role?: string;
+        status?: string;
+        annual_budget?: string; // New field
+    };
+    sessions: SessionSummary[];
+}
+
+export interface HistoryResponse {
+    groups: ClientSessionGroup[];
+    unassigned: SessionSummary[];
+}
+
+export const getGroupedSessions = async (salespersonId: number = 1): Promise<HistoryResponse | null> => {
+    try {
+        const response = await fetch(`${API_BASE}/clients/sessions/history?salesperson_id=${salespersonId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`获取历史会话失败: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('❌ [Client API] 获取历史会话失败:', error);
+        return null;
+    }
+};

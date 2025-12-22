@@ -392,6 +392,13 @@ const CompositeDigitalHumanChat: React.FC = () => {
             console.error('❌ 加载客户详情失败:', error);
         }
     };
+    const handleSelectSession = useCallback((sessionId: string) => {
+        console.log(`🔄 [Chat] 切换会话 -> ${sessionId}`);
+        sessionStorage.setItem('insure_chat_session_id', sessionId);
+        window.location.hash = `#${sessionId}`;
+        window.location.reload();
+    }, []);
+
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
     const toggleHistoryDrawer = () => setIsHistoryDrawerOpen(!isHistoryDrawerOpen);
 
@@ -408,6 +415,7 @@ const CompositeDigitalHumanChat: React.FC = () => {
                 stage={stage}
                 customerProfile={customerProfile}
                 onDrawerToggle={toggleDrawer}
+                onHistoryDrawerToggle={toggleHistoryDrawer}
                 onNewChat={handleNewChat}
             />
 
@@ -464,6 +472,7 @@ const CompositeDigitalHumanChat: React.FC = () => {
                 onClose={toggleHistoryDrawer}
                 customerProfile={customerProfile}
                 onNewChat={handleNewChat}
+                onSelectSession={handleSelectSession}
             />
 
             {/* Combined Overlay */}

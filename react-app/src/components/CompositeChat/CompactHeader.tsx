@@ -5,6 +5,7 @@ interface CompactHeaderProps {
     stage: 0 | 1 | 2;
     customerProfile: CustomerProfile | null;
     onDrawerToggle: () => void;
+    onHistoryDrawerToggle: () => void;
     onNewChat: () => void;
 }
 
@@ -12,6 +13,7 @@ export const CompactHeader: React.FC<CompactHeaderProps> = ({
     stage,
     customerProfile,
     onDrawerToggle,
+    onHistoryDrawerToggle,
     onNewChat
 }) => {
     return (
@@ -31,13 +33,22 @@ export const CompactHeader: React.FC<CompactHeaderProps> = ({
                 <div className="flex flex-col">
                     <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-gray-800">数智保险策略官 V3</span>
-                        <button
-                            onClick={onNewChat}
-                            title="开启新会话 (重置状态)"
-                            className="w-5 h-5 rounded-md bg-gray-50 border border-gray-200 text-gray-400 flex items-center justify-center hover:bg-orange-50 hover:border-orange-200 hover:text-orange-500 transition-all active:scale-90"
-                        >
-                            <i className="fa-solid fa-plus text-[10px]"></i>
-                        </button>
+                        <div className="flex items-center gap-1">
+                            <button
+                                onClick={onHistoryDrawerToggle}
+                                title="查看历史会话"
+                                className="w-5 h-5 rounded-md bg-gray-50 border border-gray-200 text-gray-400 flex items-center justify-center hover:bg-orange-50 hover:border-orange-200 hover:text-orange-500 transition-all active:scale-90"
+                            >
+                                <i className="fa-solid fa-clock-rotate-left text-[10px]"></i>
+                            </button>
+                            <button
+                                onClick={onNewChat}
+                                title="开启新会话 (重置状态)"
+                                className="w-5 h-5 rounded-md bg-gray-50 border border-gray-200 text-gray-400 flex items-center justify-center hover:bg-orange-50 hover:border-orange-200 hover:text-orange-500 transition-all active:scale-90"
+                            >
+                                <i className="fa-solid fa-plus text-[10px]"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
