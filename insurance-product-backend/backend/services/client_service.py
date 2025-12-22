@@ -211,6 +211,11 @@ class ClientService:
         grouped_data = {}
         unassigned_sessions = []
         
+        # Get session IDs to fetch associated follow-ups (AI summaries)
+        session_ids = [s.id for s, _ in results]
+        follow_ups = db.query(FollowUp).filter(FollowUp.session_id.in_(session_ids)).all()
+        session_summary_map = {f.session_id: f.content for f in follow_ups}
+
         def format_session(s):
             try:
                 ts = int(s.id.split('-')[1])
@@ -227,11 +232,18 @@ class ClientService:
             except:
                 time_str = "Unknown"
                 relative_time = "未知时间"
-    
+
+            # Use session summary, or fallback to FollowUp content (AI generated summary), or session title
+            summary_text = s.summary
+            if not summary_text:
+                summary_text = session_summary_map.get(s.id)
+            if not summary_text:
+                summary_text = s.title or "暂无摘要"
+
             return {
                 "id": s.id,
                 "title": s.title or "新会话",
-                "summary": s.summary or "暂无摘要",
+                "summary": summary_text,
                 "time": relative_time,
                 "full_time": time_str
             }
