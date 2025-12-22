@@ -340,4 +340,5 @@ export interface ToolContext {
     emit?: (eventType: string, data?: any) => void;
     userToken?: string;
     userId?: string;
+    sessionId?: string;
 }

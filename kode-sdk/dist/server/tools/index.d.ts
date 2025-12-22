@@ -47,4 +47,7 @@ export { fs_grepTool } from './fs_grep';
 export { InsuranceFilter } from './insurance_filter';
 export { InsuranceSearch } from './insurance_search';
 export { InsuranceInspect } from './insurance_inspect';
+export { UpdateClientIntelligence } from './update_client_intelligence';
+export { SubmitInsurancePlan } from './submit_insurance_plan';
+export { GetCurrentClientProfile } from './get_client_profile';
 export * from './http';

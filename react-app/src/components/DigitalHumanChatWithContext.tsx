@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { InputArea } from './DigitalHumanChat/InputArea';
+import ClientSelector from './ClientSelector';
+import type { ClientListItem } from '../services/clientApi';
 
 interface Message {
     role: 'user' | 'ai';
@@ -9,6 +11,8 @@ interface Message {
 const DigitalHumanChatWithContext: React.FC = () => {
     const [isChatStarted, setIsChatStarted] = useState(false);
     const [isCustomerMounted, setIsCustomerMounted] = useState(false);
+    const [selectedClient, setSelectedClient] = useState<ClientListItem | null>(null);
+    const [isSelectorOpen, setIsSelectorOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -38,7 +42,13 @@ const DigitalHumanChatWithContext: React.FC = () => {
     };
 
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
-    const mountCustomer = () => setIsCustomerMounted(true);
+    const openClientSelector = () => setIsSelectorOpen(true);
+    const handleSelectClient = (client: ClientListItem) => {
+        setSelectedClient(client);
+        setIsCustomerMounted(true);
+        setIsSelectorOpen(false);
+        console.log('✅ 已选择客户:', client);
+    };
 
     return (
         <div className="h-full w-full relative bg-[#F9FAFB] overflow-hidden font-sans">
@@ -67,7 +77,7 @@ const DigitalHumanChatWithContext: React.FC = () => {
                 <div className="absolute top-16 left-0 w-full px-4 z-30">
                     {/* Empty State */}
                     <div
-                        onClick={mountCustomer}
+                        onClick={openClientSelector}
                         className={`w-full h-14 rounded-2xl flex items-center justify-center gap-2 cursor-pointer text-white/60 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm border border-white/30 bg-white/5 border-dashed ${isCustomerMounted ? 'hidden' : 'flex'}`}
                     >
                         <div className="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center text-xs">
@@ -83,17 +93,27 @@ const DigitalHumanChatWithContext: React.FC = () => {
                     >
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 text-white flex items-center justify-center text-base font-bold shadow-lg border border-white/20">
-                                王
+                                {selectedClient?.name.charAt(0) || '王'}
                             </div>
                             <div className="flex flex-col text-white">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm font-bold">王志远</span>
-                                    <span className="px-1.5 py-0.5 bg-white/20 text-white text-[9px] font-bold rounded backdrop-blur-md">HOT</span>
+                                    <span className="text-sm font-bold">{selectedClient?.name || '王志远'}</span>
+                                    {selectedClient?.plans_count ? (
+                                        <span className="px-1.5 py-0.5 bg-white/20 text-white text-[9px] font-bold rounded backdrop-blur-md">
+                                            {selectedClient.plans_count}方案
+                                        </span>
+                                    ) : (
+                                        <span className="px-1.5 py-0.5 bg-white/20 text-white text-[9px] font-bold rounded backdrop-blur-md">NEW</span>
+                                    )}
                                 </div>
                                 <div className="flex items-center gap-2 text-[10px] text-white/70">
-                                    <span>CTO</span>
-                                    <span className="w-0.5 h-2 bg-white/30"></span>
-                                    <span>预算8W</span>
+                                    <span>{selectedClient?.role || 'CTO'}</span>
+                                    {selectedClient?.annual_budget && (
+                                        <>
+                                            <span className="w-0.5 h-2 bg-white/30"></span>
+                                            <span>预算{selectedClient.annual_budget}</span>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -128,7 +148,7 @@ const DigitalHumanChatWithContext: React.FC = () => {
                         <h1 className="text-xl font-bold text-gray-900 mb-1">我是张伟 👋</h1>
                         <p className="text-sm text-gray-500">
                             {isCustomerMounted ? (
-                                <>已为您准备好 <span className="font-bold text-orange-500">王志远</span> 的档案分析。</>
+                                <>已为您准备好 <span className="font-bold text-orange-500">{selectedClient?.name || '客户'}</span> 的档案分析。</>
                             ) : (
                                 "请先挂载客户档案以获取专属建议。"
                             )}
@@ -211,6 +231,14 @@ const DigitalHumanChatWithContext: React.FC = () => {
                     className="fixed inset-0 bg-black/40 z-[55] backdrop-blur-sm transition-opacity"
                 ></div>
             )}
+
+            {/* 客户选择器 */}
+            <ClientSelector
+                isOpen={isSelectorOpen}
+                onClose={() => setIsSelectorOpen(false)}
+                onSelectClient={handleSelectClient}
+                salespersonId={1}
+            />
         </div>
     );
 };

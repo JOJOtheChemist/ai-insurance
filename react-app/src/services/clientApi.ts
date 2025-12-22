@@ -49,3 +49,55 @@ export const getClientDetail = async (clientId: string | number): Promise<Custom
         return null;
     }
 };
+
+/**
+ * 获取客户列表
+ */
+export interface ClientListItem {
+    id: number;
+    name: string;
+    role?: string;
+    age?: number;
+    annual_budget?: string;
+    annual_income?: string;
+    location?: string;
+    marital_status?: string;
+    update_time?: string;
+    plans_count: number;
+    family_members_count: number;
+}
+
+export interface ClientListResponse {
+    total: number;
+    clients: ClientListItem[];
+}
+
+export const getClientsList = async (
+    salespersonId?: number,
+    limit: number = 100,
+    offset: number = 0
+): Promise<ClientListResponse | null> => {
+    try {
+        const params = new URLSearchParams();
+        if (salespersonId) params.append('salesperson_id', salespersonId.toString());
+        params.append('limit', limit.toString());
+        params.append('offset', offset.toString());
+
+        const response = await fetch(`${API_BASE}/clients/list?${params.toString()}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`获取客户列表失败: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('❌ [Client API] 获取客户列表失败:', error);
+        return null;
+    }
+};
+

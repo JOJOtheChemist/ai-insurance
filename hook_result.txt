@@ -1,0 +1,148 @@
+Token: eyJhbGciOi...
+event: think_start
+data: {"sessionId":"insure-recommand-v3"}
+
+event: tool_start
+data: {"name":"get_client_profile","input":"{\"name\":\"糯糯\"}","sessionId":"insure-recommand-v3"}
+
+event: tool
+data: {"index":1,"name":"get_client_profile","input":"{\"name\":\"糯糯\"}","output":{"ok":true,"client_found":true,"profile":{"id":9,"name":"糯糯","role":"互联网精英","age":30,"annual_budget":"50,000","annual_income":"500,000","location":"上海","marital_status":"未婚","risk_factors":["猝死风险","家庭责任","熬夜"],"needs":["母亲照护保障","医疗保障","重疾险","猝死保障","子女教育保障"],"family_structure":[{"relation":"儿子","name":"待确认","age":3},{"relation":"母亲","name":"待确认","age":70}],"plans_count":2}},"duration":8,"state":"COMPLETED","sessionId":"insure-recommand-v3"}
+
+event: tool_end
+data: {"name":"get_client_profile","duration":8,"sessionId":"insure-recommand-v3"}
+
+event: think_start
+data: {"sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"您好！根据","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"您查看","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"的糯糯客户","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"档案，我已","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"为您调","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"取了详细","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"资料。","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"糯糯是","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"30岁的互联网精英，年收入","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"50万元，年度","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"保险预算5万元","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"。\n\n目前","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"糯糯的主要","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"风险因素包括","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"猝死风险、","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"家庭责任和熬夜","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"习惯，需要","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"保障的方面","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"包括：\n","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"- 母","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"亲照护保障","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"\n- 医","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"疗保障\n-","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":" 重疾险\n","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"- 猝","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"死保障\n-","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":" 子女教育保障","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"\n\n虽然糯","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"糯目前未婚，","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"但已有一位","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"3岁的儿子和","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"70岁的母亲需要","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"保障。档案显示","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"已有2份保险","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"计划。\n\n请问您","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"需要针对糯糯","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"的哪方面需求","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"进行深入分析？","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"我可以帮助","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"您筛选合适","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"的产品并制定精准","sessionId":"insure-recommand-v3"}
+
+event: thinking
+data: {"delta":"的保险方案。","sessionId":"insure-recommand-v3"}
+
+event: think_end
+data: {"sessionId":"insure-recommand-v3"}
+
+event: complete
+data: {"reason":"completed","toolCount":1,"bookmark":{"seq":64,"timestamp":1766396399344},"sessionId":"insure-recommand-v3"}
+

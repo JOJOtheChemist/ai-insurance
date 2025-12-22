@@ -30,6 +30,13 @@ class Agent {
         this.userToken = userToken;
         console.log(`[Agent] 设置用户认证: ${userId}`);
     }
+    /**
+     * 设置会话信息
+     */
+    setSessionInfo(sessionId) {
+        this.sessionId = sessionId;
+        console.log(`[Agent] 设置会话信息: ${sessionId}`);
+    }
     get persistentStore() {
         if (!this.deps.store) {
             throw new Error('Agent persistent store is not configured for this operation.');
@@ -833,8 +840,19 @@ class Agent {
                 todo: this.todoService,
                 filePool: this.filePool,
             },
-            userToken: this.userToken, // 🔥 传递用户Token
-            userId: this.userId, // 🔥 传递用户ID
+            emit: (eventType, data) => {
+                this.events.emitMonitor({
+                    channel: 'monitor',
+                    type: 'tool_custom_event',
+                    toolName: tool.name,
+                    eventType,
+                    data,
+                    timestamp: Date.now(),
+                });
+            },
+            userToken: this.userToken,
+            userId: this.userId,
+            sessionId: this.sessionId,
         };
         let approvalMeta;
         let requireApproval = false;

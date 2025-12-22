@@ -19,7 +19,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InsuranceInspect = exports.InsuranceSearch = exports.InsuranceFilter = exports.fs_grepTool = exports.fs_readTool = exports.fs_globTool = exports.toolRegistry = exports.getToolStats = exports.unregisterTool = exports.hasTool = exports.getToolsByCategory = exports.getAllTools = exports.getTool = exports.registerTools = exports.registerTool = void 0;
+exports.GetCurrentClientProfile = exports.SubmitInsurancePlan = exports.UpdateClientIntelligence = exports.InsuranceInspect = exports.InsuranceSearch = exports.InsuranceFilter = exports.fs_grepTool = exports.fs_readTool = exports.fs_globTool = exports.toolRegistry = exports.getToolStats = exports.unregisterTool = exports.hasTool = exports.getToolsByCategory = exports.getAllTools = exports.getTool = exports.registerTools = exports.registerTool = void 0;
 exports.registerDefaultTools = registerDefaultTools;
 const registry_1 = require("./registry");
 // ============================================================
@@ -33,6 +33,9 @@ const registration_3 = require("./fs_grep/registration");
 const registration_4 = require("./insurance_filter/registration");
 const registration_5 = require("./insurance_search/registration");
 const registration_6 = require("./insurance_inspect/registration");
+const registration_7 = require("./update_client_intelligence/registration");
+const registration_8 = require("./submit_insurance_plan/registration");
+const registration_9 = require("./get_client_profile/registration");
 // ============================================================
 // 工具注册
 // ============================================================
@@ -49,6 +52,9 @@ function registerDefaultTools() {
     registry_1.toolRegistry.register(registration_4.insuranceFilterToolRegistration);
     registry_1.toolRegistry.register(registration_5.insuranceSearchToolRegistration);
     registry_1.toolRegistry.register(registration_6.insuranceInspectToolRegistration);
+    registry_1.toolRegistry.register(registration_7.updateClientIntelligenceToolRegistration);
+    registry_1.toolRegistry.register(registration_8.submitInsurancePlanToolRegistration);
+    registry_1.toolRegistry.register(registration_9.getClientProfileRegistration);
     console.log('\n✅ 工具注册完成!\n');
     // 打印统计信息
     registry_1.toolRegistry.printStats();
@@ -111,5 +117,11 @@ var insurance_search_1 = require("./insurance_search");
 Object.defineProperty(exports, "InsuranceSearch", { enumerable: true, get: function () { return insurance_search_1.InsuranceSearch; } });
 var insurance_inspect_1 = require("./insurance_inspect");
 Object.defineProperty(exports, "InsuranceInspect", { enumerable: true, get: function () { return insurance_inspect_1.InsuranceInspect; } });
+var update_client_intelligence_1 = require("./update_client_intelligence");
+Object.defineProperty(exports, "UpdateClientIntelligence", { enumerable: true, get: function () { return update_client_intelligence_1.UpdateClientIntelligence; } });
+var submit_insurance_plan_1 = require("./submit_insurance_plan");
+Object.defineProperty(exports, "SubmitInsurancePlan", { enumerable: true, get: function () { return submit_insurance_plan_1.SubmitInsurancePlan; } });
+var get_client_profile_1 = require("./get_client_profile");
+Object.defineProperty(exports, "GetCurrentClientProfile", { enumerable: true, get: function () { return get_client_profile_1.GetCurrentClientProfile; } });
 // HTTP 客户端
 __exportStar(require("./http"), exports);

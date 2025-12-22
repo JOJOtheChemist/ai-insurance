@@ -7,6 +7,7 @@ exports.InsuranceInspect = void 0;
 const src_1 = require("../../../src");
 const prompt_1 = require("./prompt");
 const node_fetch_1 = __importDefault(require("node-fetch"));
+const config_1 = require("../config");
 exports.InsuranceInspect = (0, src_1.defineTool)({
     name: 'insurance_inspect',
     description: prompt_1.DESCRIPTION,
@@ -27,7 +28,7 @@ exports.InsuranceInspect = (0, src_1.defineTool)({
     },
     async exec(args) {
         const { product_id, fields, view = 'full' } = args;
-        const url = new URL('http://localhost:8000/api/tools/inspect');
+        const url = new URL(`${config_1.API_CONFIG.BASE_URL}/api/tools/inspect`);
         url.searchParams.append('product_id', product_id.toString());
         url.searchParams.append('fields', fields);
         url.searchParams.append('view', view);

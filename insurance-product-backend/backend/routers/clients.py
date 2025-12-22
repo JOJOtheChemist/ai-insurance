@@ -271,6 +271,102 @@ async def submit_insurance_plan(data: PlanSubmissionSchema, db: Session = Depend
     
     return {"status": "success", "client_id": client_id, "plan_id": len(current_plans)}
 
+@router.get("/list")
+async def get_clients_list(
+    salesperson_id: Optional[int] = None,
+    limit: int = 100,
+    offset: int = 0,
+    db: Session = Depends(get_db)
+):
+    """
+    获取客户列表
+    
+    Args:
+        salesperson_id: 销售人员ID（可选，用于筛选）
+        limit: 返回数量限制
+        offset: 分页偏移量
+    
+    Returns:
+        客户列表，包含基本信息
+    """
+    query = db.query(Client)
+    
+    # 如果提供了销售人员ID，则筛选
+    if salesperson_id:
+        query = query.filter(Client.salesperson_id == salesperson_id)
+    
+    # 按更新时间倒序排列
+    query = query.order_by(Client.update_time.desc())
+    
+    # 分页
+    total = query.count()
+    clients = query.offset(offset).limit(limit).all()
+    
+    return {
+        "total": total,
+        "clients": [
+            {
+                "id": c.id,
+                "name": c.name,
+                "role": c.role,
+                "age": c.age,
+                "annual_budget": c.annual_budget,
+                "annual_income": c.annual_income,
+                "location": c.location,
+                "marital_status": c.marital_status,
+                "update_time": c.update_time.strftime("%Y-%m-%d %H:%M") if c.update_time else None,
+                # 统计信息
+                "plans_count": len(c.proposed_plans) if c.proposed_plans else 0,
+                "family_members_count": len(c.family_members),
+            }
+            for c in clients
+        ]
+    }
+
+@router.get("/search")
+async def search_clients(
+    keyword: str,
+    salesperson_id: Optional[int] = None,
+    limit: int = 5,
+    db: Session = Depends(get_db)
+):
+    """
+    搜索客户 (按姓名模糊匹配)
+    """
+    if not keyword:
+         return {"results": []}
+
+    query = db.query(Client).filter(Client.name.ilike(f"%{keyword}%"))
+    
+    if salesperson_id:
+        query = query.filter(Client.salesperson_id == salesperson_id)
+        
+    results = query.limit(limit).all()
+    
+    # 返回完整结构以供 AI 使用
+    return {
+        "results": [
+            {
+                "id": c.id,
+                "name": c.name,
+                "role": c.role,
+                "age": c.age,
+                "annual_budget": c.annual_budget,
+                "annual_income": c.annual_income,
+                "location": c.location,
+                "marital_status": c.marital_status,
+                "risk_factors": c.risk_factors,
+                "needs": c.needs,
+                "family_structure": [
+                    {"relation": m.relation, "name": m.name, "age": m.age} 
+                    for m in c.family_members
+                ],
+                "plans_count": len(c.proposed_plans) if c.proposed_plans else 0
+            }
+            for c in results
+        ]
+    }
+
 @router.get("/{client_id}")
 async def get_client_detail(client_id: int, db: Session = Depends(get_db)):
     """获取全景档案详情"""

@@ -42,3 +42,68 @@ INFO:     127.0.0.1:64538 - "GET /api/v1/clients/session/session-1766383216770 H
 📊 [SSE] 当前活跃连接数: 1
 INFO:     127.0.0.1:49545 - "GET /api/v1/clients/sse/session-1766383216770 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:49544 - "GET /api/v1/clients/session/session-1766383216770 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766383216770 连接被取消
+🔌 [SSE] 会话 session-1766383216770 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766383216770 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:49744 - "GET /api/v1/clients/sse/session-1766383216770 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49742 - "GET /api/v1/clients/session/session-1766383216770 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766383216770 连接被取消
+🔌 [SSE] 会话 session-1766383216770 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:49867 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49863 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49866 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 连接被取消
+🔌 [SSE] 会话 session-1766386283313 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51324 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 连接被取消
+🔌 [SSE] 会话 session-1766386283313 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:51323 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51328 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51327 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 连接被取消
+🔌 [SSE] 会话 session-1766386283313 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51383 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51381 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51382 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 连接被取消
+🔌 [SSE] 会话 session-1766386283313 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51550 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51548 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766386283313 连接被取消
+🔌 [SSE] 会话 session-1766386283313 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766386283313 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51570 - "GET /api/v1/clients/sse/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51568 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "GET /api/v1/clients/session/session-1766386283313 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'routers/clients.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89035]
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x00000001f879cc80 (most recent call first):
+  <no Python frame>
+INFO:     Stopping reloader process [88931]

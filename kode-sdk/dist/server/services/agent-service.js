@@ -97,7 +97,7 @@ class AgentManager {
                     agentId: storeAgentId, // 使用简化的存储ID
                     templateId: agentConfig.templateId,
                     sandbox: { kind: 'local', workDir: config_1.config.agent.workDir },
-                    exposeThinking: true, // 🤔 开启思考内容显示
+                    exposeThinking: false, // 🤔 关闭思考内容显示
                     metadata: {
                         toolTimeoutMs: config_1.config.agent.toolTimeoutMs,
                         maxToolConcurrency: config_1.config.agent.maxToolConcurrency,

@@ -66,6 +66,51 @@ router.post('/chat', authenticateToken, async (req, res) => {
   setupSSE(res);
   const emitter = new SSEEmitter(res, actualSessionId);
 
+
+  // 🔥 关键修复：如果前端传了 clientId，必须先通知后端绑定 Session -> Client
+  // 否则 AI 调用 get_current_client_profile 时后端不知道这个 Session 属于谁
+  // 🔥 关键修复：如果前端传了 clientId
+  // 1. 如果有 clientContext，注入到 System Prompt (首句生效)
+  // 2. 只有后端 Session 绑定 (Side Effect)
+  const { clientId, clientContext } = req.body;
+  let finalMessage = message;
+
+  if (clientId) {
+    // 1. 注入上下文到 Prompt (最快生效)
+    if (clientContext) {
+      console.log(`💡 [Context Injection] 注入客户上下文: ${clientContext.name}`);
+      const contextPreamble = `
+[System Context]
+User is currently viewing the profile of client "${clientContext.name}" (ID: ${clientId}).
+Basic Info: Role=${clientContext.role || 'Unknown'}, Age=${clientContext.age || 'Unknown'}, Budget=${clientContext.budget || 'Unknown'}.
+Action Required: Please immediately call \`get_client_profile(name="${clientContext.name}")\` to load the full profile details before answering.
+`;
+      finalMessage = contextPreamble + "\n" + message;
+    }
+
+    // 2. 后端会话绑定 (持久化副作用)
+    if (sessionId) {
+      try {
+        const backendUrl = process.env.INSURANCE_API_URL || 'http://localhost:8080';
+        // 使用 fire-and-forget 模式，不阻塞主流程，减少延迟
+        // 注意：为了避免每次都 import，这里动态 import 是为了兼容性，也可以提到顶部
+        const fetch = (await import('node-fetch')).default;
+
+        fetch(`${backendUrl}/api/v1/sessions/bind`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sessionId, client_id: clientId })
+        }).then(res => {
+          if (res.ok) console.log(`✅ [Session Binding] Async绑定成功 ${sessionId}->${clientId}`);
+          else console.warn(`⚠️ [Session Binding] Async绑定失败: ${res.status}`);
+        }).catch(e => console.error(`❌ [Session Binding] Async出错:`, e.message));
+
+      } catch (e: any) {
+        console.error(`❌ [Session Binding] 绑定过程出错:`, e.message);
+      }
+    }
+  }
+
   let statusCheck: NodeJS.Timeout | undefined;
   let assistantResponse = ''; // 收集AI回复
 
@@ -229,7 +274,7 @@ router.post('/chat', authenticateToken, async (req, res) => {
     console.log('[发送消息] 触发处理...');
     console.log(`[消息内容] ${message}`);
 
-    await agent.send(message);
+    await agent.send(finalMessage);
 
     console.log('[消息已入队] Agent 正在异步处理，事件会通过订阅流返回');
 

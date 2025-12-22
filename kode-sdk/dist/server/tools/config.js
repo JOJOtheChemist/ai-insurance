@@ -58,7 +58,7 @@ exports.API_CONFIG = {
      * 可以通过环境变量 BACKEND_API_URL 修改
      * 默认值: http://localhost:8000
      */
-    BASE_URL: process.env.BACKEND_API_URL || 'http://localhost:8000',
+    BASE_URL: process.env.BACKEND_API_URL || 'http://localhost:8080',
     /**
      * API 请求超时时间（毫秒）
      */

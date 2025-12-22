@@ -109,10 +109,15 @@ export declare class Agent {
     private lineage;
     private userToken?;
     private userId?;
+    private sessionId?;
     /**
      * 设置用户认证信息
      */
     setUserAuth(userId: string, userToken: string): void;
+    /**
+     * 设置会话信息
+     */
+    setSessionInfo(sessionId: string): void;
     private get persistentStore();
     private static requireStore;
     constructor(config: AgentConfig, deps: AgentDependencies, runtime: {

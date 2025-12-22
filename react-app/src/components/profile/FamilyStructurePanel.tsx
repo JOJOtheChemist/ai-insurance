@@ -15,24 +15,30 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
 
     return (
         <>
-            <div className="bg-white rounded-[24px] shadow-[0_-10px_40px_rgba(0,0,0,0.02)] relative border border-gray-100 overflow-hidden shrink-0 mb-6">
+            <div
+                onClick={() => { setIsDetailedFamilyPopupOpen(true); setExpandedMemberIdx(null); }}
+                className="bg-white rounded-[24px] shadow-[0_-10px_40px_rgba(0,0,0,0.02)] relative border border-gray-100 overflow-hidden shrink-0 mb-6 cursor-pointer hover:shadow-lg transition-shadow"
+            >
                 <div className="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full -z-0"></div>
 
-                <div onClick={() => { setIsDetailedFamilyPopupOpen(true); setExpandedMemberIdx(null); }} className="px-4 py-3 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur z-10 relative cursor-pointer hover:bg-gray-50 transition-colors">
+                <div className="px-4 py-3 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur z-10 relative">
                     <div className="flex items-center gap-2">
                         <span className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xs">
                             <i className="fa-solid fa-people-roof"></i>
                         </span>
                         <span className="text-xs font-bold text-gray-700">家庭结构图谱</span>
                     </div>
-                    <button className="text-[10px] bg-gray-100 hover:bg-orange-50 text-gray-500 hover:text-orange-500 px-2 py-1 rounded-full transition-colors">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); /* TODO: 配置功能 */ }}
+                        className="text-[10px] bg-gray-100 hover:bg-orange-50 text-gray-500 hover:text-orange-500 px-2 py-1 rounded-full transition-colors"
+                    >
                         配置 <i className="fa-solid fa-chevron-right text-[8px] ml-0.5"></i>
                     </button>
                 </div>
 
                 <div className="p-4 flex items-center justify-start z-10 relative overflow-x-auto scrollbar-hide gap-4">
                     {/* Always show "Self" */}
-                    <div className="flex flex-col items-center gap-1 cursor-pointer opacity-100 hover:scale-105 transition-transform shrink-0">
+                    <div className="flex flex-col items-center gap-1 opacity-100 shrink-0">
                         <div className="relative">
                             <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${displayName || 'self'}`} className="w-10 h-10 rounded-full border-2 border-green-400 p-0.5 bg-white" alt="Avatar" />
                             <div className="absolute -bottom-1 -right-1 bg-green-500 text-white text-[8px] px-1 rounded-full border border-white">
@@ -47,7 +53,10 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
                         customerData.family_structure.map((member, idx) => (
                             <React.Fragment key={idx}>
                                 <div className="h-px w-6 bg-gray-200 shrink-0"></div>
-                                <div className="flex flex-col items-center gap-1 cursor-pointer hover:scale-105 transition-transform shrink-0" onClick={() => { setIsDetailedFamilyPopupOpen(true); setExpandedMemberIdx(idx); }}>
+                                <div
+                                    className="flex flex-col items-center gap-1 shrink-0"
+                                    onClick={(e) => { e.stopPropagation(); setIsDetailedFamilyPopupOpen(true); setExpandedMemberIdx(idx); }}
+                                >
                                     <div className="relative">
                                         <img
                                             src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name || member.relation}`}
@@ -65,7 +74,7 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
                     ) : (
                         <>
                             <div className="h-px w-6 bg-gray-200 shrink-0"></div>
-                            <div className="flex flex-col items-center gap-1 cursor-pointer hover:scale-105 transition-transform shrink-0 opacity-50" onClick={() => setIsDetailedFamilyPopupOpen(true)}>
+                            <div className="flex flex-col items-center gap-1 shrink-0 opacity-50">
                                 <div className="relative">
                                     <div className="w-10 h-10 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-gray-50 text-gray-300">
                                         <i className="fa-solid fa-plus"></i>

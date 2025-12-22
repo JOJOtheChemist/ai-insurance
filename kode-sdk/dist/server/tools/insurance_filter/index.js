@@ -7,6 +7,7 @@ exports.InsuranceFilter = void 0;
 const src_1 = require("../../../src");
 const prompt_1 = require("./prompt");
 const node_fetch_1 = __importDefault(require("node-fetch"));
+const config_1 = require("../config");
 exports.InsuranceFilter = (0, src_1.defineTool)({
     name: 'insurance_filter',
     description: prompt_1.DESCRIPTION,
@@ -27,7 +28,7 @@ exports.InsuranceFilter = (0, src_1.defineTool)({
     },
     async exec(args) {
         const { age_min, age_max, product_type } = args;
-        const url = new URL('http://localhost:8000/api/tools/filter');
+        const url = new URL(`${config_1.API_CONFIG.BASE_URL}/api/tools/filter`);
         if (age_min !== undefined)
             url.searchParams.append('age_min', age_min.toString());
         if (age_max !== undefined)

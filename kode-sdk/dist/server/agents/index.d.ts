@@ -32,4 +32,3 @@ export { reviewAgentConfig } from './review-agent';
 export { searchAgentConfig } from './search-agent';
 export { insureRecommandV1AgentConfig } from './insure-recommand-v1';
 export { insureRecommandV3AgentConfig } from './insure-recommand-v3';
-export { insuranceSalesAssistantConfig } from './insurance-sales-assistant';

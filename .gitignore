@@ -19,3 +19,4 @@ dist/
 # Project specific
 kode-sdk/.kode/
 *.json.bak
+!kode-sdk/.kode/demon/session-*/runtime/messages.json

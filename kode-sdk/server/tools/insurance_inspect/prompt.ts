@@ -1,4 +1,4 @@
-export const DESCRIPTION = '查阅保险产品详情 (Inspect)';
+export const DESCRIPTION = '查阅保险产品条款 (Product ONLY - 禁止查人)';
 
 export const PROMPT = `Use this tool to read detailed fields of a specific product using its ID.
 

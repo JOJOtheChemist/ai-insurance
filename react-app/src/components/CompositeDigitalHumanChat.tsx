@@ -3,6 +3,8 @@ import { useAuth } from '../context/AuthContext';
 
 import { InputArea } from './DigitalHumanChat/InputArea';
 import { CustomerProfileCards, type CustomerProfile } from './CustomerInfoCards';
+import ClientSelector from './ClientSelector';
+import type { ClientListItem } from '../services/clientApi';
 import {
     CompactHeader,
     AvatarStage,
@@ -26,6 +28,8 @@ const CompositeDigitalHumanChat: React.FC = () => {
 
     // State
     const [isCustomerMounted, setIsCustomerMounted] = useState(false);
+    const [selectedClient, setSelectedClient] = useState<ClientListItem | null>(null);
+    const [isSelectorOpen, setIsSelectorOpen] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isHistoryDrawerOpen, setIsHistoryDrawerOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
@@ -34,6 +38,8 @@ const CompositeDigitalHumanChat: React.FC = () => {
     // Refs
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
+    // Track the last client ID for which we sent the context preamble
+    const lastContextClientIdRef = useRef<number | null>(null);
 
     // 🔥 优先从 URL Hash 或 sessionStorage 获取 SessionId，保证刷新后不丢失上下文
     const getInitialSessionId = () => {
@@ -55,7 +61,7 @@ const CompositeDigitalHumanChat: React.FC = () => {
         console.log('✨ [Chat] 开启新会话...');
         sessionStorage.removeItem('insure_chat_session_id');
         window.location.hash = '';
-        window.location.reload(); // 简单粗暴但有效：刷新页面彻底重置所有状态
+        window.location.reload();
     }, []);
 
     // 🔥 加载客户数据（初始加载和SSE更新后调用）
@@ -216,7 +222,17 @@ const CompositeDigitalHumanChat: React.FC = () => {
                     message: msg,
                     agentId: 'insure-recommand-v3',
                     sessionId: sessionIdRef.current,
-                    userId: user?.username || 'guest'
+                    userId: user?.username || 'guest',
+                    // 🔥 如果已选择客户，传递客户ID和上下文信息给后端
+                    ...(selectedClient?.id && {
+                        clientId: selectedClient.id,
+                        clientContext: {
+                            name: selectedClient.name,
+                            age: selectedClient.age,
+                            role: selectedClient.role,
+                            budget: selectedClient.annual_budget
+                        }
+                    })
                 })
             });
 
@@ -343,7 +359,39 @@ const CompositeDigitalHumanChat: React.FC = () => {
         }
     };
 
-    const mountCustomer = () => setIsCustomerMounted(true);
+    const openClientSelector = () => setIsSelectorOpen(true);
+    const handleSelectClient = async (client: ClientListItem) => {
+        // 🔥 切换客户时，强制创建新会话，防止上下文混淆
+        const newSessionId = 'session-' + Date.now();
+        console.log(`🔄 [Chat] 切换客户 [${client.name}] -> 创建新会话: ${newSessionId}`);
+
+        sessionStorage.setItem('insure_chat_session_id', newSessionId);
+        window.history.replaceState(null, '', `#${newSessionId}`);
+        sessionIdRef.current = newSessionId;
+
+        // 重置聊天状态
+        setMessages([]);
+
+        setSelectedClient(client);
+        setIsCustomerMounted(true);
+        setIsSelectorOpen(false);
+
+        console.log('✅ 已选择客户:', client);
+
+        // 🔥 加载完整的客户档案数据
+        try {
+            const { getClientDetail } = await import('../services/clientApi');
+            const fullClientData = await getClientDetail(client.id);
+            if (fullClientData) {
+                console.log('📊 客户完整数据加载成功:', fullClientData);
+                setCustomerProfile(fullClientData);
+                // 自动打开客户档案抽屉
+                setIsDrawerOpen(true);
+            }
+        } catch (error) {
+            console.error('❌ 加载客户详情失败:', error);
+        }
+    };
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
     const toggleHistoryDrawer = () => setIsHistoryDrawerOpen(!isHistoryDrawerOpen);
 
@@ -367,9 +415,9 @@ const CompositeDigitalHumanChat: React.FC = () => {
             <AvatarStage
                 stage={stage}
                 isCustomerMounted={isCustomerMounted}
-                customerProfile={customerProfile}
+                customerProfile={selectedClient || customerProfile}
                 onHistoryDrawerToggle={toggleHistoryDrawer}
-                onCustomerMount={mountCustomer}
+                onCustomerMount={openClientSelector}
                 onCustomerCardClick={toggleDrawer}
             />
 
@@ -425,6 +473,14 @@ const CompositeDigitalHumanChat: React.FC = () => {
                     className="fixed inset-0 bg-black/40 z-[55] backdrop-blur-sm transition-opacity"
                 ></div>
             )}
+
+            {/* 客户选择器 */}
+            <ClientSelector
+                isOpen={isSelectorOpen}
+                onClose={() => setIsSelectorOpen(false)}
+                onSelectClient={handleSelectClient}
+                salespersonId={1}
+            />
         </div>
     );
 };

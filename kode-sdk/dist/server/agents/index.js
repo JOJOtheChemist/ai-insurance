@@ -17,7 +17,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.insuranceSalesAssistantConfig = exports.insureRecommandV3AgentConfig = exports.insureRecommandV1AgentConfig = exports.searchAgentConfig = exports.reviewAgentConfig = exports.careerGoalAgentConfig = exports.timetableV2AgentConfig = exports.timetableAgentConfig = exports.scheduleAssistantConfig = exports.calculatorAgentConfig = void 0;
+exports.insureRecommandV3AgentConfig = exports.insureRecommandV1AgentConfig = exports.searchAgentConfig = exports.reviewAgentConfig = exports.careerGoalAgentConfig = exports.timetableV2AgentConfig = exports.timetableAgentConfig = exports.scheduleAssistantConfig = exports.calculatorAgentConfig = void 0;
 exports.registerDefaultAgentConfigs = registerDefaultAgentConfigs;
 exports.registerAgentConfig = registerAgentConfig;
 exports.getAgentConfig = getAgentConfig;
@@ -32,7 +32,6 @@ const review_agent_1 = require("./review-agent");
 const search_agent_1 = require("./search-agent");
 const insure_recommand_v1_1 = require("./insure-recommand-v1");
 const insure_recommand_v3_1 = require("./insure-recommand-v3");
-const insurance_sales_assistant_1 = require("./insurance-sales-assistant");
 /**
  * Agent 配置注册表
  */
@@ -50,7 +49,6 @@ function registerDefaultAgentConfigs() {
     registerAgentConfig(search_agent_1.searchAgentConfig);
     registerAgentConfig(insure_recommand_v1_1.insureRecommandV1AgentConfig);
     registerAgentConfig(insure_recommand_v3_1.insureRecommandV3AgentConfig);
-    registerAgentConfig(insurance_sales_assistant_1.insuranceSalesAssistantConfig);
 }
 /**
  * 注册单个 Agent 配置
@@ -100,5 +98,3 @@ var insure_recommand_v1_2 = require("./insure-recommand-v1");
 Object.defineProperty(exports, "insureRecommandV1AgentConfig", { enumerable: true, get: function () { return insure_recommand_v1_2.insureRecommandV1AgentConfig; } });
 var insure_recommand_v3_2 = require("./insure-recommand-v3");
 Object.defineProperty(exports, "insureRecommandV3AgentConfig", { enumerable: true, get: function () { return insure_recommand_v3_2.insureRecommandV3AgentConfig; } });
-var insurance_sales_assistant_2 = require("./insurance-sales-assistant");
-Object.defineProperty(exports, "insuranceSalesAssistantConfig", { enumerable: true, get: function () { return insurance_sales_assistant_2.insuranceSalesAssistantConfig; } });

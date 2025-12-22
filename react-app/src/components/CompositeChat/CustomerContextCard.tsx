@@ -44,7 +44,7 @@ export const CustomerContextCard: React.FC<CustomerContextCardProps> = ({
                         <div className="flex items-center gap-2 text-[10px] text-white/70">
                             <span>{customerProfile?.role || 'CTO'}</span>
                             <span className="w-0.5 h-2 bg-white/30"></span>
-                            <span>预算8W</span>
+                            <span>{customerProfile?.annual_budget ? `预算${customerProfile.annual_budget}` : '预算待定'}</span>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ exports.InsuranceSearch = void 0;
 const src_1 = require("../../../src");
 const prompt_1 = require("./prompt");
 const node_fetch_1 = __importDefault(require("node-fetch"));
+const config_1 = require("../config");
 exports.InsuranceSearch = (0, src_1.defineTool)({
     name: 'insurance_search',
     description: prompt_1.DESCRIPTION,
@@ -22,7 +23,7 @@ exports.InsuranceSearch = (0, src_1.defineTool)({
     },
     async exec(args) {
         const { keyword, limit = 5 } = args;
-        const url = new URL('http://localhost:8000/api/tools/search');
+        const url = new URL(`${config_1.API_CONFIG.BASE_URL}/api/tools/search`);
         url.searchParams.append('keyword', keyword);
         url.searchParams.append('limit', limit.toString());
         try {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PROMPT = exports.DESCRIPTION = void 0;
-exports.DESCRIPTION = '查阅保险产品详情 (Inspect)';
+exports.DESCRIPTION = '查阅保险产品条款 (Product ONLY - 禁止查人)';
 exports.PROMPT = `Use this tool to read detailed fields of a specific product using its ID.
 
 Supported parameters:
