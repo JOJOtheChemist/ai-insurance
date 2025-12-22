@@ -1,6 +1,7 @@
 import { defineTool } from '../../../src';
 import { DESCRIPTION, PROMPT } from './prompt';
 import fetch from 'node-fetch';
+import { API_CONFIG } from '../config';
 
 export const InsuranceSearch = defineTool({
     name: 'insurance_search',
@@ -18,7 +19,7 @@ export const InsuranceSearch = defineTool({
     async exec(args: { keyword: string; limit?: number }) {
         const { keyword, limit = 5 } = args;
 
-        const url = new URL('http://localhost:8000/api/tools/search');
+        const url = new URL(`${API_CONFIG.BASE_URL}/api/tools/search`);
         url.searchParams.append('keyword', keyword);
         url.searchParams.append('limit', limit.toString());
 

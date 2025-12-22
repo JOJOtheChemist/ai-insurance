@@ -423,4 +423,5 @@ export interface ToolContext {
   emit?: (eventType: string, data?: any) => void;
   userToken?: string;  // 🔥 用户JWT token（用于调用主后端API）
   userId?: string;     // 🔥 用户ID
+  sessionId?: string;  // 🔥 会话ID
 }

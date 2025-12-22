@@ -23,7 +23,7 @@ class AgentManager {
    */
   async getOrCreateAgent(agentConfig: AgentConfig): Promise<Agent> {
     const agentId = agentConfig.id;
-    
+
     // 如果 Agent 已存在，更新使用时间并返回
     if (this.agents.has(agentId)) {
       this.agentLastUsed.set(agentId, Date.now());
@@ -32,7 +32,7 @@ class AgentManager {
     }
 
     console.log(`🆕 [创建] 初始化 Agent: ${agentId}`);
-    
+
     // 🔥 优化存储结构：userId/sessionId/（扁平化，避免多层嵌套）
     // agentId 格式: userId:sessionId:agentType (例如: user1:concurrent_test_1:schedule-assistant)
     // JSONStore 会在 baseDir 后自动添加 agentId 作为子目录
@@ -41,7 +41,7 @@ class AgentManager {
     const parts = agentId.split(':');
     let storePath: string;
     let storeAgentId: string;
-    
+
     if (parts.length === 3) {
       // 多用户多会话模式: user1:session1:agent-type
       const [userId, sessionId, agentType] = parts;
@@ -54,7 +54,7 @@ class AgentManager {
       storeAgentId = agentId;
       console.log(`📁 [存储] 兼容模式，Agent: ${agentId}, 最终路径: ${storePath}/${agentId}/`);
     }
-    
+
     const store = new JSONStore(storePath);
     const templates = new AgentTemplateRegistry();
     const tools = new ToolRegistry();
@@ -110,7 +110,7 @@ class AgentManager {
             agentId: storeAgentId, // 使用简化的存储ID
             templateId: agentConfig.templateId,
             sandbox: { kind: 'local', workDir: config.agent.workDir },
-            exposeThinking: true, // 🤔 开启思考内容显示
+            exposeThinking: false, // 🤔 关闭思考内容显示
             metadata: {
               toolTimeoutMs: config.agent.toolTimeoutMs,
               maxToolConcurrency: config.agent.maxToolConcurrency,
@@ -236,7 +236,7 @@ class AgentManager {
 
     if (inactiveAgents.length > 0) {
       console.log(`🧹 [清理] 发现 ${inactiveAgents.length} 个不活跃的Agent:`, inactiveAgents);
-      
+
       for (const agentId of inactiveAgents) {
         this.cleanup(agentId);
       }
@@ -252,7 +252,7 @@ class AgentManager {
   getStats(): { total: number; active: number; inactive: number } {
     const now = Date.now();
     let inactive = 0;
-    
+
     for (const lastUsed of this.agentLastUsed.values()) {
       if (now - lastUsed > this.AGENT_TIMEOUT_MS) {
         inactive++;

@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "hi"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "您好！我是您的数智保险策略官。为了能够为您提供最合适的保险建议，我需要先了解一些基本信息：\n\n```json\n{\n  \"thought\": \"客户初次接触，需要收集基础画像信息以启动保险策略分析\",\n  \"customer_profile\": {\n    \"name\": \"待确认\",\n    \"role\": \"待确认\", \n    \"age\": \"待确认\",\n    \"annual_budget\": \"待确认\",\n    \"marital_status\": \"待确认\",\n    \"annual_income\": \"待确认\",\n    \"location\": \"待确认\",\n    \"risk_factors\": [\"待确认\"],\n    \"needs\": [\"待确认\"]\n  },\n  \"insight_summary\": \"尚未收集客户基础信息，无法进行保险产品分析和推荐\",\n  \"recommendations\": [],\n  \"questions\": [\n    \"请问您的姓名和职业是什么？\",\n    \"您的年龄和婚姻状况如何？\",\n    \"您预计的年度保险预算是多少？\"\n  ],\n  \"next_actions\": [\"等待客户提供基础信息后，进一步分析保险需求\"]\n}\n```\n\n请问您可以先告诉我您的姓名、职业、年龄和婚姻状况吗？这些信息将帮助我更好地理解您的需求并提供精准的保险建议。"
+      }
+    ]
+  }
+]

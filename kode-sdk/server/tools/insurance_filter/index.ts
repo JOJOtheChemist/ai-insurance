@@ -1,6 +1,7 @@
 import { defineTool } from '../../../src';
 import { DESCRIPTION, PROMPT } from './prompt';
 import fetch from 'node-fetch';
+import { API_CONFIG } from '../config';
 
 export const InsuranceFilter = defineTool({
     name: 'insurance_filter',
@@ -23,7 +24,7 @@ export const InsuranceFilter = defineTool({
     async exec(args: { age_min?: number; age_max?: number; product_type?: string }) {
         const { age_min, age_max, product_type } = args;
 
-        const url = new URL('http://localhost:8000/api/tools/filter');
+        const url = new URL(`${API_CONFIG.BASE_URL}/api/tools/filter`);
         if (age_min !== undefined) url.searchParams.append('age_min', age_min.toString());
         if (age_max !== undefined) url.searchParams.append('age_max', age_max.toString());
         if (product_type) url.searchParams.append('product_type', product_type);

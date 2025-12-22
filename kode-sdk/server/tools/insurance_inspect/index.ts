@@ -1,6 +1,7 @@
 import { defineTool } from '../../../src';
 import { DESCRIPTION, PROMPT } from './prompt';
 import fetch from 'node-fetch';
+import { API_CONFIG } from '../config';
 
 export const InsuranceInspect = defineTool({
     name: 'insurance_inspect',
@@ -23,7 +24,7 @@ export const InsuranceInspect = defineTool({
     async exec(args: { product_id: number; fields: string; view?: string }) {
         const { product_id, fields, view = 'full' } = args;
 
-        const url = new URL('http://localhost:8000/api/tools/inspect');
+        const url = new URL(`${API_CONFIG.BASE_URL}/api/tools/inspect`);
         url.searchParams.append('product_id', product_id.toString());
         url.searchParams.append('fields', fields);
         url.searchParams.append('view', view);

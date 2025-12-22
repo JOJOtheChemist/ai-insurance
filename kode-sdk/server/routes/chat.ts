@@ -17,17 +17,17 @@ const router = Router();
 router.post('/chat', authenticateToken, async (req, res) => {
   const { message, agentId = 'schedule-assistant', sessionId } = req.body;
   const userId = req.user?.userId || req.body.userId; // 从JWT token获取用户ID
-  
+
   // 🔥 提取用户的Token（用于调用MCP API）
   const authHeader = req.headers['authorization'];
   const userToken = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-  
+
   // 存储用户Token到全局store（供工具执行时使用）
   if (userToken && userId) {
     tokenStore.set(userId, userToken);
     console.log(`[Token Store] 已存储用户 ${userId} 的Token`);
   }
-  
+
   // 存储sessionId -> userId映射（供工具根据sessionId查找userId）
   if (sessionId && userId) {
     tokenStore.setSession(sessionId, userId);
@@ -75,17 +75,20 @@ router.post('/chat', authenticateToken, async (req, res) => {
     // - 否则使用原始agentId（兼容性）
     const agentIdForSession = sessionId ? `${userId}:${sessionId}:${agentId}` : agentId;
     const sessionAgentConfig = { ...agentConfig, id: agentIdForSession };
-    
+
     console.log(`🎯 [Agent策略] 原始ID: ${agentId}, 会话ID: ${sessionId || 'none'}, 最终ID: ${agentIdForSession}`);
-    
+
     const agent = await agentManager.getOrCreateAgent(sessionAgentConfig);
-    
+
     // 🔥 设置用户认证信息到Agent（传递给工具）
     if (userToken && userId) {
       agent.setUserAuth(userId, userToken);
       console.log(`[Agent] ✅ 已设置用户认证: ${userId}`);
     }
-    
+
+    // 🔥 设置会话信息（传递给工具）
+    agent.setSessionInfo(actualSessionId);
+
     let toolCount = 0;
     let isCompleted = false;
 
@@ -176,8 +179,8 @@ router.post('/chat', authenticateToken, async (req, res) => {
               console.log(
                 `[对话完成] 工具调用次数: ${toolCount}, 原因: ${event.reason}, bookmark: ${JSON.stringify(envelope.bookmark)}`
               );
-              
-              
+
+
               emitter.sendComplete({
                 reason: event.reason,
                 toolCount,

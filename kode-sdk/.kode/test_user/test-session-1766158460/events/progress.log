@@ -1,0 +1,136 @@
+{"cursor":4,"bookmark":{"seq":4,"timestamp":1766158460007},"event":{"channel":"progress","type":"think_chunk_start","step":1,"bookmark":{"seq":4,"timestamp":1766158460007}}}
+{"cursor":5,"bookmark":{"seq":5,"timestamp":1766158460894},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"```json\n","bookmark":{"seq":5,"timestamp":1766158460894}}}
+{"cursor":6,"bookmark":{"seq":6,"timestamp":1766158460916},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"{\n","bookmark":{"seq":6,"timestamp":1766158460916}}}
+{"cursor":7,"bookmark":{"seq":7,"timestamp":1766158460943},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"thought\": \"","bookmark":{"seq":7,"timestamp":1766158460943}}}
+{"cursor":8,"bookmark":{"seq":8,"timestamp":1766158460978},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户询问覆盖","bookmark":{"seq":8,"timestamp":1766158460978}}}
+{"cursor":9,"bookmark":{"seq":9,"timestamp":1766158461018},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"心脑血管疾病的保险产品","bookmark":{"seq":9,"timestamp":1766158461018}}}
+{"cursor":10,"bookmark":{"seq":10,"timestamp":1766158461055},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"。需要先","bookmark":{"seq":10,"timestamp":1766158461055}}}
+{"cursor":11,"bookmark":{"seq":11,"timestamp":1766158461094},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"使用保险","bookmark":{"seq":11,"timestamp":1766158461094}}}
+{"cursor":12,"bookmark":{"seq":12,"timestamp":1766158461221},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"搜索工具查找相关","bookmark":{"seq":12,"timestamp":1766158461221}}}
+{"cursor":13,"bookmark":{"seq":13,"timestamp":1766158461221},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"产品，然后获取","bookmark":{"seq":13,"timestamp":1766158461221}}}
+{"cursor":14,"bookmark":{"seq":14,"timestamp":1766158461221},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"详细信息。当前","bookmark":{"seq":14,"timestamp":1766158461221}}}
+{"cursor":15,"bookmark":{"seq":15,"timestamp":1766158461238},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户信息大部分","bookmark":{"seq":15,"timestamp":1766158461238}}}
+{"cursor":16,"bookmark":{"seq":16,"timestamp":1766158461271},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"仍处于","bookmark":{"seq":16,"timestamp":1766158461271}}}
+{"cursor":17,"bookmark":{"seq":17,"timestamp":1766158461304},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"'待确认","bookmark":{"seq":17,"timestamp":1766158461304}}}
+{"cursor":18,"bookmark":{"seq":18,"timestamp":1766158461342},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"'状态，需要","bookmark":{"seq":18,"timestamp":1766158461342}}}
+{"cursor":19,"bookmark":{"seq":19,"timestamp":1766158461377},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"进一步收集。\",\n","bookmark":{"seq":19,"timestamp":1766158461377}}}
+{"cursor":20,"bookmark":{"seq":20,"timestamp":1766158461408},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"customer_profile","bookmark":{"seq":20,"timestamp":1766158461408}}}
+{"cursor":21,"bookmark":{"seq":21,"timestamp":1766158461444},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": {\n    \"","bookmark":{"seq":21,"timestamp":1766158461444}}}
+{"cursor":22,"bookmark":{"seq":22,"timestamp":1766158461475},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"name\": \"待","bookmark":{"seq":22,"timestamp":1766158461475}}}
+{"cursor":23,"bookmark":{"seq":23,"timestamp":1766158461505},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n    \"","bookmark":{"seq":23,"timestamp":1766158461505}}}
+{"cursor":24,"bookmark":{"seq":24,"timestamp":1766158461546},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"role\": \"待","bookmark":{"seq":24,"timestamp":1766158461546}}}
+{"cursor":25,"bookmark":{"seq":25,"timestamp":1766158461574},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n    \"","bookmark":{"seq":25,"timestamp":1766158461574}}}
+{"cursor":26,"bookmark":{"seq":26,"timestamp":1766158461606},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"age\": \"待","bookmark":{"seq":26,"timestamp":1766158461606}}}
+{"cursor":27,"bookmark":{"seq":27,"timestamp":1766158461638},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n    \"","bookmark":{"seq":27,"timestamp":1766158461638}}}
+{"cursor":28,"bookmark":{"seq":28,"timestamp":1766158461669},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"annual_budget\": \"","bookmark":{"seq":28,"timestamp":1766158461669}}}
+{"cursor":29,"bookmark":{"seq":29,"timestamp":1766158461698},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"待确认\",\n  ","bookmark":{"seq":29,"timestamp":1766158461698}}}
+{"cursor":30,"bookmark":{"seq":30,"timestamp":1766158461734},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"marital_status","bookmark":{"seq":30,"timestamp":1766158461734}}}
+{"cursor":31,"bookmark":{"seq":31,"timestamp":1766158461772},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"待确认","bookmark":{"seq":31,"timestamp":1766158461772}}}
+{"cursor":32,"bookmark":{"seq":32,"timestamp":1766158461804},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n    \"annual","bookmark":{"seq":32,"timestamp":1766158461804}}}
+{"cursor":33,"bookmark":{"seq":33,"timestamp":1766158461840},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"_income\": \"待","bookmark":{"seq":33,"timestamp":1766158461840}}}
+{"cursor":34,"bookmark":{"seq":34,"timestamp":1766158461874},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n    \"","bookmark":{"seq":34,"timestamp":1766158461874}}}
+{"cursor":35,"bookmark":{"seq":35,"timestamp":1766158461904},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"location\": \"待","bookmark":{"seq":35,"timestamp":1766158461904}}}
+{"cursor":36,"bookmark":{"seq":36,"timestamp":1766158461937},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n    \"","bookmark":{"seq":36,"timestamp":1766158461937}}}
+{"cursor":37,"bookmark":{"seq":37,"timestamp":1766158461971},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"risk_factors\": [\"","bookmark":{"seq":37,"timestamp":1766158461971}}}
+{"cursor":38,"bookmark":{"seq":38,"timestamp":1766158462004},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"待确认\"],\n  ","bookmark":{"seq":38,"timestamp":1766158462004}}}
+{"cursor":39,"bookmark":{"seq":39,"timestamp":1766158462042},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"needs\": [\"","bookmark":{"seq":39,"timestamp":1766158462042}}}
+{"cursor":40,"bookmark":{"seq":40,"timestamp":1766158462068},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"心脑血管疾病保障\"]\n","bookmark":{"seq":40,"timestamp":1766158462068}}}
+{"cursor":41,"bookmark":{"seq":41,"timestamp":1766158462101},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  },\n  \"","bookmark":{"seq":41,"timestamp":1766158462101}}}
+{"cursor":42,"bookmark":{"seq":42,"timestamp":1766158462133},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"insight_summary\":","bookmark":{"seq":42,"timestamp":1766158462133}}}
+{"cursor":43,"bookmark":{"seq":43,"timestamp":1766158462166},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"客户正在","bookmark":{"seq":43,"timestamp":1766158462166}}}
+{"cursor":44,"bookmark":{"seq":44,"timestamp":1766158462294},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"寻找能够覆盖心脑血管","bookmark":{"seq":44,"timestamp":1766158462294}}}
+{"cursor":45,"bookmark":{"seq":45,"timestamp":1766158462310},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾病的保险产品。","bookmark":{"seq":45,"timestamp":1766158462310}}}
+{"cursor":46,"bookmark":{"seq":46,"timestamp":1766158462311},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"已确认","bookmark":{"seq":46,"timestamp":1766158462311}}}
+{"cursor":47,"bookmark":{"seq":47,"timestamp":1766158462311},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"需求点","bookmark":{"seq":47,"timestamp":1766158462311}}}
+{"cursor":48,"bookmark":{"seq":48,"timestamp":1766158462331},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，但","bookmark":{"seq":48,"timestamp":1766158462331}}}
+{"cursor":49,"bookmark":{"seq":49,"timestamp":1766158462365},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"年龄、预算","bookmark":{"seq":49,"timestamp":1766158462365}}}
+{"cursor":50,"bookmark":{"seq":50,"timestamp":1766158462386},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"等关键信息","bookmark":{"seq":50,"timestamp":1766158462386}}}
+{"cursor":51,"bookmark":{"seq":51,"timestamp":1766158462416},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"尚未收集，","bookmark":{"seq":51,"timestamp":1766158462416}}}
+{"cursor":52,"bookmark":{"seq":52,"timestamp":1766158462455},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"无法进行精准产品","bookmark":{"seq":52,"timestamp":1766158462455}}}
+{"cursor":53,"bookmark":{"seq":53,"timestamp":1766158462490},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"筛选。\",\n","bookmark":{"seq":53,"timestamp":1766158462490}}}
+{"cursor":54,"bookmark":{"seq":54,"timestamp":1766158462522},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"recommendations\":","bookmark":{"seq":54,"timestamp":1766158462522}}}
+{"cursor":55,"bookmark":{"seq":55,"timestamp":1766158462555},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" [\n    {\n","bookmark":{"seq":55,"timestamp":1766158462555}}}
+{"cursor":56,"bookmark":{"seq":56,"timestamp":1766158462592},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"      \"product_id","bookmark":{"seq":56,"timestamp":1766158462592}}}
+{"cursor":57,"bookmark":{"seq":57,"timestamp":1766158462621},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": 26","bookmark":{"seq":57,"timestamp":1766158462621}}}
+{"cursor":58,"bookmark":{"seq":58,"timestamp":1766158462661},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":",\n      \"product","bookmark":{"seq":58,"timestamp":1766158462661}}}
+{"cursor":59,"bookmark":{"seq":59,"timestamp":1766158462786},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"_name\": \"康","bookmark":{"seq":59,"timestamp":1766158462786}}}
+{"cursor":60,"bookmark":{"seq":60,"timestamp":1766158462795},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"健无忧重大","bookmark":{"seq":60,"timestamp":1766158462795}}}
+{"cursor":61,"bookmark":{"seq":61,"timestamp":1766158462795},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾病保险\",\n    ","bookmark":{"seq":61,"timestamp":1766158462795}}}
+{"cursor":62,"bookmark":{"seq":62,"timestamp":1766158462795},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"product_type\":","bookmark":{"seq":62,"timestamp":1766158462795}}}
+{"cursor":63,"bookmark":{"seq":63,"timestamp":1766158462830},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"重疾险","bookmark":{"seq":63,"timestamp":1766158462830}}}
+{"cursor":64,"bookmark":{"seq":64,"timestamp":1766158462850},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n      ","bookmark":{"seq":64,"timestamp":1766158462850}}}
+{"cursor":65,"bookmark":{"seq":65,"timestamp":1766158462884},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\"customer_fit\":","bookmark":{"seq":65,"timestamp":1766158462884}}}
+{"cursor":66,"bookmark":{"seq":66,"timestamp":1766158463070},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"该产品专门","bookmark":{"seq":66,"timestamp":1766158463070}}}
+{"cursor":67,"bookmark":{"seq":67,"timestamp":1766158463220},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"针对心脑血管疾病提供","bookmark":{"seq":67,"timestamp":1766158463220}}}
+{"cursor":68,"bookmark":{"seq":68,"timestamp":1766158463252},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保障，","bookmark":{"seq":68,"timestamp":1766158463252}}}
+{"cursor":69,"bookmark":{"seq":69,"timestamp":1766158463441},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"与客户需求","bookmark":{"seq":69,"timestamp":1766158463441}}}
+{"cursor":70,"bookmark":{"seq":70,"timestamp":1766158463487},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"直接匹配。","bookmark":{"seq":70,"timestamp":1766158463487}}}
+{"cursor":71,"bookmark":{"seq":71,"timestamp":1766158463530},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"虽然目前","bookmark":{"seq":71,"timestamp":1766158463530}}}
+{"cursor":72,"bookmark":{"seq":72,"timestamp":1766158463571},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"缺乏客户","bookmark":{"seq":72,"timestamp":1766158463571}}}
+{"cursor":73,"bookmark":{"seq":73,"timestamp":1766158463616},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"年龄和预算信息","bookmark":{"seq":73,"timestamp":1766158463616}}}
+{"cursor":74,"bookmark":{"seq":74,"timestamp":1766158463655},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，但此类","bookmark":{"seq":74,"timestamp":1766158463655}}}
+{"cursor":75,"bookmark":{"seq":75,"timestamp":1766158463687},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"重","bookmark":{"seq":75,"timestamp":1766158463687}}}
+{"cursor":76,"bookmark":{"seq":76,"timestamp":1766158463704},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾险","bookmark":{"seq":76,"timestamp":1766158463704}}}
+{"cursor":77,"bookmark":{"seq":77,"timestamp":1766158463741},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"通常适合需要","bookmark":{"seq":77,"timestamp":1766158463741}}}
+{"cursor":78,"bookmark":{"seq":78,"timestamp":1766158463764},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"健康","bookmark":{"seq":78,"timestamp":1766158463764}}}
+{"cursor":79,"bookmark":{"seq":79,"timestamp":1766158463800},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保障的人群。\",\n    ","bookmark":{"seq":79,"timestamp":1766158463800}}}
+{"cursor":80,"bookmark":{"seq":80,"timestamp":1766158463838},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"coverage_highlights","bookmark":{"seq":80,"timestamp":1766158463838}}}
+{"cursor":81,"bookmark":{"seq":81,"timestamp":1766158463852},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": [\n      ","bookmark":{"seq":81,"timestamp":1766158463852}}}
+{"cursor":82,"bookmark":{"seq":82,"timestamp":1766158463904},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"包含心肌","bookmark":{"seq":82,"timestamp":1766158463904}}}
+{"cursor":83,"bookmark":{"seq":83,"timestamp":1766158463933},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"梗塞、","bookmark":{"seq":83,"timestamp":1766158463933}}}
+{"cursor":84,"bookmark":{"seq":84,"timestamp":1766158463957},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"脑中风后遗症","bookmark":{"seq":84,"timestamp":1766158463957}}}
+{"cursor":85,"bookmark":{"seq":85,"timestamp":1766158463994},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"、冠状动脉","bookmark":{"seq":85,"timestamp":1766158463994}}}
+{"cursor":86,"bookmark":{"seq":86,"timestamp":1766158464007},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"搭桥术","bookmark":{"seq":86,"timestamp":1766158464007}}}
+{"cursor":87,"bookmark":{"seq":87,"timestamp":1766158464039},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"等心脑血管疾病","bookmark":{"seq":87,"timestamp":1766158464039}}}
+{"cursor":88,"bookmark":{"seq":88,"timestamp":1766158464075},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保障\",\n        \"","bookmark":{"seq":88,"timestamp":1766158464075}}}
+{"cursor":89,"bookmark":{"seq":89,"timestamp":1766158464173},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"提供额外心脑血管","bookmark":{"seq":89,"timestamp":1766158464173}}}
+{"cursor":90,"bookmark":{"seq":90,"timestamp":1766158464174},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾病保险金，","bookmark":{"seq":90,"timestamp":1766158464174}}}
+{"cursor":91,"bookmark":{"seq":91,"timestamp":1766158464180},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"提高赔付比例","bookmark":{"seq":91,"timestamp":1766158464180}}}
+{"cursor":92,"bookmark":{"seq":92,"timestamp":1766158464215},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n        \"","bookmark":{"seq":92,"timestamp":1766158464215}}}
+{"cursor":93,"bookmark":{"seq":93,"timestamp":1766158464243},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"覆盖多种心脑血管","bookmark":{"seq":93,"timestamp":1766158464243}}}
+{"cursor":94,"bookmark":{"seq":94,"timestamp":1766158464272},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"相关重大","bookmark":{"seq":94,"timestamp":1766158464272}}}
+{"cursor":95,"bookmark":{"seq":95,"timestamp":1766158464309},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾病\"\n      ],\n","bookmark":{"seq":95,"timestamp":1766158464309}}}
+{"cursor":96,"bookmark":{"seq":96,"timestamp":1766158464346},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"      \"tool_e","bookmark":{"seq":96,"timestamp":1766158464346}}}
+{"cursor":97,"bookmark":{"seq":97,"timestamp":1766158464375},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"vidence\": [\n      ","bookmark":{"seq":97,"timestamp":1766158464375}}}
+{"cursor":98,"bookmark":{"seq":98,"timestamp":1766158464410},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  {\n          \"tool","bookmark":{"seq":98,"timestamp":1766158464410}}}
+{"cursor":99,"bookmark":{"seq":99,"timestamp":1766158464555},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"","bookmark":{"seq":99,"timestamp":1766158464555}}}
+{"cursor":100,"bookmark":{"seq":100,"timestamp":1766158464586},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"insurance_search\",\n        ","bookmark":{"seq":100,"timestamp":1766158464586}}}
+{"cursor":101,"bookmark":{"seq":101,"timestamp":1766158464618},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"query\": \"","bookmark":{"seq":101,"timestamp":1766158464618}}}
+{"cursor":102,"bookmark":{"seq":102,"timestamp":1766158464647},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"心脑血管疾病\",\n        ","bookmark":{"seq":102,"timestamp":1766158464647}}}
+{"cursor":103,"bookmark":{"seq":103,"timestamp":1766158464681},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"evidence\":","bookmark":{"seq":103,"timestamp":1766158464681}}}
+{"cursor":104,"bookmark":{"seq":104,"timestamp":1766158464698},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"搜索","bookmark":{"seq":104,"timestamp":1766158464698}}}
+{"cursor":105,"bookmark":{"seq":105,"timestamp":1766158464829},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"结果显示","bookmark":{"seq":105,"timestamp":1766158464829}}}
+{"cursor":106,"bookmark":{"seq":106,"timestamp":1766158464910},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"产品26","bookmark":{"seq":106,"timestamp":1766158464910}}}
+{"cursor":107,"bookmark":{"seq":107,"timestamp":1766158464911},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"'康健","bookmark":{"seq":107,"timestamp":1766158464911}}}
+{"cursor":108,"bookmark":{"seq":108,"timestamp":1766158464932},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"无忧重大疾病保险","bookmark":{"seq":108,"timestamp":1766158464932}}}
+{"cursor":109,"bookmark":{"seq":109,"timestamp":1766158464968},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"'包含心脑血管疾病","bookmark":{"seq":109,"timestamp":1766158464968}}}
+{"cursor":110,"bookmark":{"seq":110,"timestamp":1766158465010},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保障\"\n","bookmark":{"seq":110,"timestamp":1766158465010}}}
+{"cursor":111,"bookmark":{"seq":111,"timestamp":1766158465039},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"        }\n      ],\n","bookmark":{"seq":111,"timestamp":1766158465039}}}
+{"cursor":112,"bookmark":{"seq":112,"timestamp":1766158465081},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"      \"disclaimer","bookmark":{"seq":112,"timestamp":1766158465081}}}
+{"cursor":113,"bookmark":{"seq":113,"timestamp":1766158465130},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"所有推荐","bookmark":{"seq":113,"timestamp":1766158465130}}}
+{"cursor":114,"bookmark":{"seq":114,"timestamp":1766158465158},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"以实际核保","bookmark":{"seq":114,"timestamp":1766158465158}}}
+{"cursor":115,"bookmark":{"seq":115,"timestamp":1766158465201},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"及条款为准。","bookmark":{"seq":115,"timestamp":1766158465201}}}
+{"cursor":116,"bookmark":{"seq":116,"timestamp":1766158465236},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\"\n    }\n","bookmark":{"seq":116,"timestamp":1766158465236}}}
+{"cursor":117,"bookmark":{"seq":117,"timestamp":1766158465271},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  ],\n  \"questions","bookmark":{"seq":117,"timestamp":1766158465271}}}
+{"cursor":118,"bookmark":{"seq":118,"timestamp":1766158465313},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": [\n    \"","bookmark":{"seq":118,"timestamp":1766158465313}}}
+{"cursor":119,"bookmark":{"seq":119,"timestamp":1766158465341},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"您的年龄是多少岁","bookmark":{"seq":119,"timestamp":1766158465341}}}
+{"cursor":120,"bookmark":{"seq":120,"timestamp":1766158465372},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"？这将帮助我们筛选","bookmark":{"seq":120,"timestamp":1766158465372}}}
+{"cursor":121,"bookmark":{"seq":121,"timestamp":1766158465406},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"适合您的产品\",\n","bookmark":{"seq":121,"timestamp":1766158465406}}}
+{"cursor":122,"bookmark":{"seq":122,"timestamp":1766158465440},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"您的年度","bookmark":{"seq":122,"timestamp":1766158465440}}}
+{"cursor":123,"bookmark":{"seq":123,"timestamp":1766158465475},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"预算大约是多少？","bookmark":{"seq":123,"timestamp":1766158465475}}}
+{"cursor":124,"bookmark":{"seq":124,"timestamp":1766158465509},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\"\n  ],\n","bookmark":{"seq":124,"timestamp":1766158465509}}}
+{"cursor":125,"bookmark":{"seq":125,"timestamp":1766158465540},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"next_actions\":","bookmark":{"seq":125,"timestamp":1766158465540}}}
+{"cursor":126,"bookmark":{"seq":126,"timestamp":1766158465575},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" [\n    \"请","bookmark":{"seq":126,"timestamp":1766158465575}}}
+{"cursor":127,"bookmark":{"seq":127,"timestamp":1766158465606},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"提供您的年龄和","bookmark":{"seq":127,"timestamp":1766158465606}}}
+{"cursor":128,"bookmark":{"seq":128,"timestamp":1766158465643},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"预算信息，以便","bookmark":{"seq":128,"timestamp":1766158465643}}}
+{"cursor":129,"bookmark":{"seq":129,"timestamp":1766158465680},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"我们为您推荐","bookmark":{"seq":129,"timestamp":1766158465680}}}
+{"cursor":130,"bookmark":{"seq":130,"timestamp":1766158465708},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"更精准的产品方案","bookmark":{"seq":130,"timestamp":1766158465708}}}
+{"cursor":131,"bookmark":{"seq":131,"timestamp":1766158465751},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n    \"考虑","bookmark":{"seq":131,"timestamp":1766158465751}}}
+{"cursor":132,"bookmark":{"seq":132,"timestamp":1766158465782},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"是否需要了解","bookmark":{"seq":132,"timestamp":1766158465782}}}
+{"cursor":133,"bookmark":{"seq":133,"timestamp":1766158465814},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"其他类型的心","bookmark":{"seq":133,"timestamp":1766158465814}}}
+{"cursor":134,"bookmark":{"seq":134,"timestamp":1766158465841},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"脑血管保障","bookmark":{"seq":134,"timestamp":1766158465841}}}
+{"cursor":135,"bookmark":{"seq":135,"timestamp":1766158465869},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"产品，如医疗","bookmark":{"seq":135,"timestamp":1766158465869}}}
+{"cursor":136,"bookmark":{"seq":136,"timestamp":1766158465901},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"险\"\n  ]\n","bookmark":{"seq":136,"timestamp":1766158465901}}}
+{"cursor":137,"bookmark":{"seq":137,"timestamp":1766158465916},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"}\n```","bookmark":{"seq":137,"timestamp":1766158465916}}}
+{"cursor":138,"bookmark":{"seq":138,"timestamp":1766158466042},"event":{"channel":"progress","type":"think_chunk_end","step":1,"bookmark":{"seq":138,"timestamp":1766158466042}}}
+{"cursor":140,"bookmark":{"seq":140,"timestamp":1766158466044},"event":{"channel":"progress","type":"done","step":1,"reason":"completed","bookmark":{"seq":140,"timestamp":1766158466044}}}

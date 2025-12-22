@@ -1,0 +1,151 @@
+{"cursor":4,"bookmark":{"seq":4,"timestamp":1766158441118},"event":{"channel":"progress","type":"think_chunk_start","step":1,"bookmark":{"seq":4,"timestamp":1766158441118}}}
+{"cursor":5,"bookmark":{"seq":5,"timestamp":1766158442087},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"```json","bookmark":{"seq":5,"timestamp":1766158442087}}}
+{"cursor":6,"bookmark":{"seq":6,"timestamp":1766158442130},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\n{\n","bookmark":{"seq":6,"timestamp":1766158442130}}}
+{"cursor":7,"bookmark":{"seq":7,"timestamp":1766158442144},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"thought","bookmark":{"seq":7,"timestamp":1766158442144}}}
+{"cursor":8,"bookmark":{"seq":8,"timestamp":1766158442165},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"","bookmark":{"seq":8,"timestamp":1766158442165}}}
+{"cursor":9,"bookmark":{"seq":9,"timestamp":1766158442189},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"已确认","bookmark":{"seq":9,"timestamp":1766158442189}}}
+{"cursor":10,"bookmark":{"seq":10,"timestamp":1766158442222},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户的基本","bookmark":{"seq":10,"timestamp":1766158442222}}}
+{"cursor":11,"bookmark":{"seq":11,"timestamp":1766158442241},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"信息：","bookmark":{"seq":11,"timestamp":1766158442241}}}
+{"cursor":12,"bookmark":{"seq":12,"timestamp":1766158442275},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"35岁","bookmark":{"seq":12,"timestamp":1766158442275}}}
+{"cursor":13,"bookmark":{"seq":13,"timestamp":1766158442429},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，年收入","bookmark":{"seq":13,"timestamp":1766158442429}}}
+{"cursor":14,"bookmark":{"seq":14,"timestamp":1766158442429},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"100万","bookmark":{"seq":14,"timestamp":1766158442429}}}
+{"cursor":15,"bookmark":{"seq":15,"timestamp":1766158442443},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，北京","bookmark":{"seq":15,"timestamp":1766158442443}}}
+{"cursor":16,"bookmark":{"seq":16,"timestamp":1766158442465},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"工作。","bookmark":{"seq":16,"timestamp":1766158442465}}}
+{"cursor":17,"bookmark":{"seq":17,"timestamp":1766158442495},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"但仍","bookmark":{"seq":17,"timestamp":1766158442495}}}
+{"cursor":18,"bookmark":{"seq":18,"timestamp":1766158442531},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"需确认","bookmark":{"seq":18,"timestamp":1766158442531}}}
+{"cursor":19,"bookmark":{"seq":19,"timestamp":1766158442538},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"更多","bookmark":{"seq":19,"timestamp":1766158442538}}}
+{"cursor":20,"bookmark":{"seq":20,"timestamp":1766158442566},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户","bookmark":{"seq":20,"timestamp":1766158442566}}}
+{"cursor":21,"bookmark":{"seq":21,"timestamp":1766158442589},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"画像信息","bookmark":{"seq":21,"timestamp":1766158442589}}}
+{"cursor":22,"bookmark":{"seq":22,"timestamp":1766158442632},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，包括","bookmark":{"seq":22,"timestamp":1766158442632}}}
+{"cursor":23,"bookmark":{"seq":23,"timestamp":1766158442640},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"姓名","bookmark":{"seq":23,"timestamp":1766158442640}}}
+{"cursor":24,"bookmark":{"seq":24,"timestamp":1766158442675},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"、婚姻","bookmark":{"seq":24,"timestamp":1766158442675}}}
+{"cursor":25,"bookmark":{"seq":25,"timestamp":1766158442710},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"状况、","bookmark":{"seq":25,"timestamp":1766158442710}}}
+{"cursor":26,"bookmark":{"seq":26,"timestamp":1766158442730},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"预算范围","bookmark":{"seq":26,"timestamp":1766158442730}}}
+{"cursor":27,"bookmark":{"seq":27,"timestamp":1766158442750},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"、风险","bookmark":{"seq":27,"timestamp":1766158442750}}}
+{"cursor":28,"bookmark":{"seq":28,"timestamp":1766158442770},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"因素和","bookmark":{"seq":28,"timestamp":1766158442770}}}
+{"cursor":29,"bookmark":{"seq":29,"timestamp":1766158442814},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"具体需求，才能","bookmark":{"seq":29,"timestamp":1766158442814}}}
+{"cursor":30,"bookmark":{"seq":30,"timestamp":1766158442850},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"进行精准的","bookmark":{"seq":30,"timestamp":1766158442850}}}
+{"cursor":31,"bookmark":{"seq":31,"timestamp":1766158443008},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保险产品推荐","bookmark":{"seq":31,"timestamp":1766158443008}}}
+{"cursor":32,"bookmark":{"seq":32,"timestamp":1766158443012},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"。\",\n  \"","bookmark":{"seq":32,"timestamp":1766158443012}}}
+{"cursor":33,"bookmark":{"seq":33,"timestamp":1766158443058},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"customer_profile\": {\n","bookmark":{"seq":33,"timestamp":1766158443058}}}
+{"cursor":34,"bookmark":{"seq":34,"timestamp":1766158443074},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":34,"timestamp":1766158443074}}}
+{"cursor":35,"bookmark":{"seq":35,"timestamp":1766158443092},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"name\":","bookmark":{"seq":35,"timestamp":1766158443092}}}
+{"cursor":36,"bookmark":{"seq":36,"timestamp":1766158443114},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"待","bookmark":{"seq":36,"timestamp":1766158443114}}}
+{"cursor":37,"bookmark":{"seq":37,"timestamp":1766158443147},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n","bookmark":{"seq":37,"timestamp":1766158443147}}}
+{"cursor":38,"bookmark":{"seq":38,"timestamp":1766158443161},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":38,"timestamp":1766158443161}}}
+{"cursor":39,"bookmark":{"seq":39,"timestamp":1766158443183},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"role\":","bookmark":{"seq":39,"timestamp":1766158443183}}}
+{"cursor":40,"bookmark":{"seq":40,"timestamp":1766158443216},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"待","bookmark":{"seq":40,"timestamp":1766158443216}}}
+{"cursor":41,"bookmark":{"seq":41,"timestamp":1766158443247},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\",\n","bookmark":{"seq":41,"timestamp":1766158443247}}}
+{"cursor":42,"bookmark":{"seq":42,"timestamp":1766158443252},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":42,"timestamp":1766158443252}}}
+{"cursor":43,"bookmark":{"seq":43,"timestamp":1766158443280},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"age\":","bookmark":{"seq":43,"timestamp":1766158443280}}}
+{"cursor":44,"bookmark":{"seq":44,"timestamp":1766158443301},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"3","bookmark":{"seq":44,"timestamp":1766158443301}}}
+{"cursor":45,"bookmark":{"seq":45,"timestamp":1766158443325},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"5\",\n","bookmark":{"seq":45,"timestamp":1766158443325}}}
+{"cursor":46,"bookmark":{"seq":46,"timestamp":1766158443351},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":46,"timestamp":1766158443351}}}
+{"cursor":47,"bookmark":{"seq":47,"timestamp":1766158443368},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"annual_budget","bookmark":{"seq":47,"timestamp":1766158443368}}}
+{"cursor":48,"bookmark":{"seq":48,"timestamp":1766158443395},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"","bookmark":{"seq":48,"timestamp":1766158443395}}}
+{"cursor":49,"bookmark":{"seq":49,"timestamp":1766158443421},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"待确认","bookmark":{"seq":49,"timestamp":1766158443421}}}
+{"cursor":50,"bookmark":{"seq":50,"timestamp":1766158443559},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n  ","bookmark":{"seq":50,"timestamp":1766158443559}}}
+{"cursor":51,"bookmark":{"seq":51,"timestamp":1766158443562},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"mar","bookmark":{"seq":51,"timestamp":1766158443562}}}
+{"cursor":52,"bookmark":{"seq":52,"timestamp":1766158443562},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"ital_status","bookmark":{"seq":52,"timestamp":1766158443562}}}
+{"cursor":53,"bookmark":{"seq":53,"timestamp":1766158443563},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": \"","bookmark":{"seq":53,"timestamp":1766158443563}}}
+{"cursor":54,"bookmark":{"seq":54,"timestamp":1766158443566},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"待确认","bookmark":{"seq":54,"timestamp":1766158443566}}}
+{"cursor":55,"bookmark":{"seq":55,"timestamp":1766158443567},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n  ","bookmark":{"seq":55,"timestamp":1766158443567}}}
+{"cursor":56,"bookmark":{"seq":56,"timestamp":1766158443589},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"annual","bookmark":{"seq":56,"timestamp":1766158443589}}}
+{"cursor":57,"bookmark":{"seq":57,"timestamp":1766158443663},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"_income\":","bookmark":{"seq":57,"timestamp":1766158443663}}}
+{"cursor":58,"bookmark":{"seq":58,"timestamp":1766158443663},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"100","bookmark":{"seq":58,"timestamp":1766158443663}}}
+{"cursor":59,"bookmark":{"seq":59,"timestamp":1766158443668},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"万\",\n","bookmark":{"seq":59,"timestamp":1766158443668}}}
+{"cursor":60,"bookmark":{"seq":60,"timestamp":1766158443777},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"location\":","bookmark":{"seq":60,"timestamp":1766158443777}}}
+{"cursor":61,"bookmark":{"seq":61,"timestamp":1766158443794},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"北京","bookmark":{"seq":61,"timestamp":1766158443794}}}
+{"cursor":62,"bookmark":{"seq":62,"timestamp":1766158443813},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\",\n  ","bookmark":{"seq":62,"timestamp":1766158443813}}}
+{"cursor":63,"bookmark":{"seq":63,"timestamp":1766158443841},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"risk","bookmark":{"seq":63,"timestamp":1766158443841}}}
+{"cursor":64,"bookmark":{"seq":64,"timestamp":1766158443861},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"_factors\": [","bookmark":{"seq":64,"timestamp":1766158443861}}}
+{"cursor":65,"bookmark":{"seq":65,"timestamp":1766158443880},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\"待","bookmark":{"seq":65,"timestamp":1766158443880}}}
+{"cursor":66,"bookmark":{"seq":66,"timestamp":1766158443900},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\"],\n","bookmark":{"seq":66,"timestamp":1766158443900}}}
+{"cursor":67,"bookmark":{"seq":67,"timestamp":1766158443920},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":67,"timestamp":1766158443920}}}
+{"cursor":68,"bookmark":{"seq":68,"timestamp":1766158443944},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"needs\":","bookmark":{"seq":68,"timestamp":1766158443944}}}
+{"cursor":69,"bookmark":{"seq":69,"timestamp":1766158443973},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" [\"待","bookmark":{"seq":69,"timestamp":1766158443973}}}
+{"cursor":70,"bookmark":{"seq":70,"timestamp":1766158443998},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"确认\"]\n","bookmark":{"seq":70,"timestamp":1766158443998}}}
+{"cursor":71,"bookmark":{"seq":71,"timestamp":1766158444017},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  },\n","bookmark":{"seq":71,"timestamp":1766158444017}}}
+{"cursor":72,"bookmark":{"seq":72,"timestamp":1766158444040},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"","bookmark":{"seq":72,"timestamp":1766158444040}}}
+{"cursor":73,"bookmark":{"seq":73,"timestamp":1766158444071},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"insight","bookmark":{"seq":73,"timestamp":1766158444071}}}
+{"cursor":74,"bookmark":{"seq":74,"timestamp":1766158444091},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"_summary\":","bookmark":{"seq":74,"timestamp":1766158444091}}}
+{"cursor":75,"bookmark":{"seq":75,"timestamp":1766158444116},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" \"初步了解","bookmark":{"seq":75,"timestamp":1766158444116}}}
+{"cursor":76,"bookmark":{"seq":76,"timestamp":1766158444140},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户为","bookmark":{"seq":76,"timestamp":1766158444140}}}
+{"cursor":77,"bookmark":{"seq":77,"timestamp":1766158444167},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"35","bookmark":{"seq":77,"timestamp":1766158444167}}}
+{"cursor":78,"bookmark":{"seq":78,"timestamp":1766158444186},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"岁高","bookmark":{"seq":78,"timestamp":1766158444186}}}
+{"cursor":79,"bookmark":{"seq":79,"timestamp":1766158444220},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"收入北京","bookmark":{"seq":79,"timestamp":1766158444220}}}
+{"cursor":80,"bookmark":{"seq":80,"timestamp":1766158444240},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"人群，","bookmark":{"seq":80,"timestamp":1766158444240}}}
+{"cursor":81,"bookmark":{"seq":81,"timestamp":1766158444275},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"年收入达","bookmark":{"seq":81,"timestamp":1766158444275}}}
+{"cursor":82,"bookmark":{"seq":82,"timestamp":1766158444281},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"100万","bookmark":{"seq":82,"timestamp":1766158444281}}}
+{"cursor":83,"bookmark":{"seq":83,"timestamp":1766158444304},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，具有","bookmark":{"seq":83,"timestamp":1766158444304}}}
+{"cursor":84,"bookmark":{"seq":84,"timestamp":1766158444325},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"较高保险","bookmark":{"seq":84,"timestamp":1766158444325}}}
+{"cursor":85,"bookmark":{"seq":85,"timestamp":1766158444349},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"配置","bookmark":{"seq":85,"timestamp":1766158444349}}}
+{"cursor":86,"bookmark":{"seq":86,"timestamp":1766158444375},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"潜力","bookmark":{"seq":86,"timestamp":1766158444375}}}
+{"cursor":87,"bookmark":{"seq":87,"timestamp":1766158444398},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，","bookmark":{"seq":87,"timestamp":1766158444398}}}
+{"cursor":88,"bookmark":{"seq":88,"timestamp":1766158444425},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"但需","bookmark":{"seq":88,"timestamp":1766158444425}}}
+{"cursor":89,"bookmark":{"seq":89,"timestamp":1766158444450},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"进一步了解","bookmark":{"seq":89,"timestamp":1766158444450}}}
+{"cursor":90,"bookmark":{"seq":90,"timestamp":1766158444477},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"其","bookmark":{"seq":90,"timestamp":1766158444477}}}
+{"cursor":91,"bookmark":{"seq":91,"timestamp":1766158444494},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"具体","bookmark":{"seq":91,"timestamp":1766158444494}}}
+{"cursor":92,"bookmark":{"seq":92,"timestamp":1766158444517},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"风险","bookmark":{"seq":92,"timestamp":1766158444517}}}
+{"cursor":93,"bookmark":{"seq":93,"timestamp":1766158444542},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"因素","bookmark":{"seq":93,"timestamp":1766158444542}}}
+{"cursor":94,"bookmark":{"seq":94,"timestamp":1766158444568},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"、","bookmark":{"seq":94,"timestamp":1766158444568}}}
+{"cursor":95,"bookmark":{"seq":95,"timestamp":1766158444587},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"家庭","bookmark":{"seq":95,"timestamp":1766158444587}}}
+{"cursor":96,"bookmark":{"seq":96,"timestamp":1766158444609},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"状况","bookmark":{"seq":96,"timestamp":1766158444609}}}
+{"cursor":97,"bookmark":{"seq":97,"timestamp":1766158444634},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"和保险","bookmark":{"seq":97,"timestamp":1766158444634}}}
+{"cursor":98,"bookmark":{"seq":98,"timestamp":1766158444655},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"需求。\",\n","bookmark":{"seq":98,"timestamp":1766158444655}}}
+{"cursor":99,"bookmark":{"seq":99,"timestamp":1766158444678},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"","bookmark":{"seq":99,"timestamp":1766158444678}}}
+{"cursor":100,"bookmark":{"seq":100,"timestamp":1766158444705},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"recommendations","bookmark":{"seq":100,"timestamp":1766158444705}}}
+{"cursor":101,"bookmark":{"seq":101,"timestamp":1766158444749},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": [],\n  \"","bookmark":{"seq":101,"timestamp":1766158444749}}}
+{"cursor":102,"bookmark":{"seq":102,"timestamp":1766158444778},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"questions\":","bookmark":{"seq":102,"timestamp":1766158444778}}}
+{"cursor":103,"bookmark":{"seq":103,"timestamp":1766158444815},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":" [\n    \"","bookmark":{"seq":103,"timestamp":1766158444815}}}
+{"cursor":104,"bookmark":{"seq":104,"timestamp":1766158444816},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"您的","bookmark":{"seq":104,"timestamp":1766158444816}}}
+{"cursor":105,"bookmark":{"seq":105,"timestamp":1766158444938},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"姓名","bookmark":{"seq":105,"timestamp":1766158444938}}}
+{"cursor":106,"bookmark":{"seq":106,"timestamp":1766158444957},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"和职业是什么？\",\n    \"您的婚姻状况","bookmark":{"seq":106,"timestamp":1766158444957}}}
+{"cursor":107,"bookmark":{"seq":107,"timestamp":1766158445307},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"如何","bookmark":{"seq":107,"timestamp":1766158445307}}}
+{"cursor":108,"bookmark":{"seq":108,"timestamp":1766158445309},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"？是否","bookmark":{"seq":108,"timestamp":1766158445309}}}
+{"cursor":109,"bookmark":{"seq":109,"timestamp":1766158445310},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"需要考虑","bookmark":{"seq":109,"timestamp":1766158445310}}}
+{"cursor":110,"bookmark":{"seq":110,"timestamp":1766158445313},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"家庭保障","bookmark":{"seq":110,"timestamp":1766158445313}}}
+{"cursor":111,"bookmark":{"seq":111,"timestamp":1766158445313},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"？\",\n","bookmark":{"seq":111,"timestamp":1766158445313}}}
+{"cursor":112,"bookmark":{"seq":112,"timestamp":1766158445313},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":112,"timestamp":1766158445313}}}
+{"cursor":113,"bookmark":{"seq":113,"timestamp":1766158445320},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"您希望","bookmark":{"seq":113,"timestamp":1766158445320}}}
+{"cursor":114,"bookmark":{"seq":114,"timestamp":1766158445350},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"年","bookmark":{"seq":114,"timestamp":1766158445350}}}
+{"cursor":115,"bookmark":{"seq":115,"timestamp":1766158445373},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"投入","bookmark":{"seq":115,"timestamp":1766158445373}}}
+{"cursor":116,"bookmark":{"seq":116,"timestamp":1766158445397},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"多少","bookmark":{"seq":116,"timestamp":1766158445397}}}
+{"cursor":117,"bookmark":{"seq":117,"timestamp":1766158445414},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"预算","bookmark":{"seq":117,"timestamp":1766158445414}}}
+{"cursor":118,"bookmark":{"seq":118,"timestamp":1766158445445},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"在","bookmark":{"seq":118,"timestamp":1766158445445}}}
+{"cursor":119,"bookmark":{"seq":119,"timestamp":1766158445489},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保险上？\",\n","bookmark":{"seq":119,"timestamp":1766158445489}}}
+{"cursor":120,"bookmark":{"seq":120,"timestamp":1766158445539},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":120,"timestamp":1766158445539}}}
+{"cursor":121,"bookmark":{"seq":121,"timestamp":1766158445540},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"您有哪些","bookmark":{"seq":121,"timestamp":1766158445540}}}
+{"cursor":122,"bookmark":{"seq":122,"timestamp":1766158445574},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"健康","bookmark":{"seq":122,"timestamp":1766158445574}}}
+{"cursor":123,"bookmark":{"seq":123,"timestamp":1766158445586},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"或生活方式","bookmark":{"seq":123,"timestamp":1766158445586}}}
+{"cursor":124,"bookmark":{"seq":124,"timestamp":1766158445612},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"上的","bookmark":{"seq":124,"timestamp":1766158445612}}}
+{"cursor":125,"bookmark":{"seq":125,"timestamp":1766158445641},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"风险因素","bookmark":{"seq":125,"timestamp":1766158445641}}}
+{"cursor":126,"bookmark":{"seq":126,"timestamp":1766158445674},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"？\",\n","bookmark":{"seq":126,"timestamp":1766158445674}}}
+{"cursor":127,"bookmark":{"seq":127,"timestamp":1766158445694},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"    \"","bookmark":{"seq":127,"timestamp":1766158445694}}}
+{"cursor":128,"bookmark":{"seq":128,"timestamp":1766158445718},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"您最","bookmark":{"seq":128,"timestamp":1766158445718}}}
+{"cursor":129,"bookmark":{"seq":129,"timestamp":1766158445744},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"关心的","bookmark":{"seq":129,"timestamp":1766158445744}}}
+{"cursor":130,"bookmark":{"seq":130,"timestamp":1766158445780},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保险保障","bookmark":{"seq":130,"timestamp":1766158445780}}}
+{"cursor":131,"bookmark":{"seq":131,"timestamp":1766158445796},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"需求","bookmark":{"seq":131,"timestamp":1766158445796}}}
+{"cursor":132,"bookmark":{"seq":132,"timestamp":1766158445823},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"是什么？（","bookmark":{"seq":132,"timestamp":1766158445823}}}
+{"cursor":133,"bookmark":{"seq":133,"timestamp":1766158445848},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"如重","bookmark":{"seq":133,"timestamp":1766158445848}}}
+{"cursor":134,"bookmark":{"seq":134,"timestamp":1766158445874},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"疾、","bookmark":{"seq":134,"timestamp":1766158445874}}}
+{"cursor":135,"bookmark":{"seq":135,"timestamp":1766158445906},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"医疗、","bookmark":{"seq":135,"timestamp":1766158445906}}}
+{"cursor":136,"bookmark":{"seq":136,"timestamp":1766158445937},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"意外等","bookmark":{"seq":136,"timestamp":1766158445937}}}
+{"cursor":137,"bookmark":{"seq":137,"timestamp":1766158445965},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"）\"\n","bookmark":{"seq":137,"timestamp":1766158445965}}}
+{"cursor":138,"bookmark":{"seq":138,"timestamp":1766158445990},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  ],\n","bookmark":{"seq":138,"timestamp":1766158445990}}}
+{"cursor":139,"bookmark":{"seq":139,"timestamp":1766158446011},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"  \"","bookmark":{"seq":139,"timestamp":1766158446011}}}
+{"cursor":140,"bookmark":{"seq":140,"timestamp":1766158446029},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"next_actions","bookmark":{"seq":140,"timestamp":1766158446029}}}
+{"cursor":141,"bookmark":{"seq":141,"timestamp":1766158446121},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"\": [\"","bookmark":{"seq":141,"timestamp":1766158446121}}}
+{"cursor":142,"bookmark":{"seq":142,"timestamp":1766158446127},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"建议","bookmark":{"seq":142,"timestamp":1766158446127}}}
+{"cursor":143,"bookmark":{"seq":143,"timestamp":1766158446127},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"补充","bookmark":{"seq":143,"timestamp":1766158446127}}}
+{"cursor":144,"bookmark":{"seq":144,"timestamp":1766158446136},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"完整","bookmark":{"seq":144,"timestamp":1766158446136}}}
+{"cursor":145,"bookmark":{"seq":145,"timestamp":1766158446165},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"客户","bookmark":{"seq":145,"timestamp":1766158446165}}}
+{"cursor":146,"bookmark":{"seq":146,"timestamp":1766158446190},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"画像后","bookmark":{"seq":146,"timestamp":1766158446190}}}
+{"cursor":147,"bookmark":{"seq":147,"timestamp":1766158446217},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"，进行","bookmark":{"seq":147,"timestamp":1766158446217}}}
+{"cursor":148,"bookmark":{"seq":148,"timestamp":1766158446246},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"针对性","bookmark":{"seq":148,"timestamp":1766158446246}}}
+{"cursor":149,"bookmark":{"seq":149,"timestamp":1766158446272},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"保险产品","bookmark":{"seq":149,"timestamp":1766158446272}}}
+{"cursor":150,"bookmark":{"seq":150,"timestamp":1766158446297},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"筛选和","bookmark":{"seq":150,"timestamp":1766158446297}}}
+{"cursor":151,"bookmark":{"seq":151,"timestamp":1766158446324},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"推荐\"]\n","bookmark":{"seq":151,"timestamp":1766158446324}}}
+{"cursor":152,"bookmark":{"seq":152,"timestamp":1766158446354},"event":{"channel":"progress","type":"think_chunk","step":1,"delta":"}\n```","bookmark":{"seq":152,"timestamp":1766158446354}}}
+{"cursor":153,"bookmark":{"seq":153,"timestamp":1766158446530},"event":{"channel":"progress","type":"think_chunk_end","step":1,"bookmark":{"seq":153,"timestamp":1766158446530}}}
+{"cursor":155,"bookmark":{"seq":155,"timestamp":1766158446531},"event":{"channel":"progress","type":"done","step":1,"reason":"completed","bookmark":{"seq":155,"timestamp":1766158446531}}}

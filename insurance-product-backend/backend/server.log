@@ -1,15 +1,169 @@
-INFO:     Started server process [63894]
+INFO:     Started server process [98827]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:64645 - "POST /api/v1/users/auth/register HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65125 - "OPTIONS /api/v1/users/auth/register HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65125 - "POST /api/v1/users/auth/register HTTP/1.1" 400 Bad Request
-INFO:     127.0.0.1:65131 - "POST /api/v1/users/auth/register HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65136 - "OPTIONS /api/v1/users/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65136 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65138 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:65472 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50423 - "OPTIONS /api/v1/users/auth/login HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50423 - "POST /api/v1/users/auth/login HTTP/1.1" 401 Unauthorized
-INFO:     127.0.0.1:50423 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51834 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51836 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51838 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51840 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52136 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52138 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52140 - "GET /api/v1/clients/3 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52142 - "GET /api/v1/clients/4 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52144 - "GET /api/v1/clients/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52146 - "GET /api/v1/clients/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52148 - "GET /api/v1/clients/7 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52150 - "GET /api/v1/clients/8 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52152 - "GET /api/v1/clients/9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52502 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52566 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52745 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52826 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52826 - "GET /api/tools/search?keyword=%E5%84%BF%E7%AB%A5%E5%81%A5%E5%BA%B7&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/search?keyword=%E5%B0%91%E5%84%BF&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/search?keyword=%E6%95%99%E8%82%B2%E9%87%91&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/filter?age_min=0&age_max=18&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/inspect?product_id=41&fields=product_name%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/inspect?product_id=41&fields=coverage.%E9%87%8D%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Ccoverage.%E5%B0%91%E5%84%BF%E7%89%B9%E5%AE%9A%E9%87%8D%E7%96%BE%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/inspect?product_id=41&fields=extend_info.illness_features&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/filter?age_min=0&age_max=18&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/inspect?product_id=43&fields=product_name%2Ccoverage%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52826 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Ccoverage%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52989 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:52989 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52989 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52989 - "GET /api/tools/inspect?product_id=32&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53011 - "GET /api/tools/inspect?product_id=9&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53011 - "GET /api/tools/inspect?product_id=43&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53046 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53048 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53050 - "GET /api/v1/clients/3 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53052 - "GET /api/v1/clients/4 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53054 - "GET /api/v1/clients/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53056 - "GET /api/v1/clients/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53058 - "GET /api/v1/clients/7 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53060 - "GET /api/v1/clients/8 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53062 - "GET /api/v1/clients/9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53111 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53113 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53115 - "GET /api/v1/clients/3 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53117 - "GET /api/v1/clients/4 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53120 - "GET /api/v1/clients/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53122 - "GET /api/v1/clients/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53124 - "GET /api/v1/clients/7 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53126 - "GET /api/v1/clients/8 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53128 - "GET /api/v1/clients/9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53130 - "GET /api/v1/clients/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53132 - "GET /api/v1/clients/11 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53134 - "GET /api/v1/clients/12 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53136 - "GET /api/v1/clients/13 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53138 - "GET /api/v1/clients/14 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53140 - "GET /api/v1/clients/15 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53142 - "GET /api/v1/clients/16 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53144 - "GET /api/v1/clients/17 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53146 - "GET /api/v1/clients/18 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53148 - "GET /api/v1/clients/19 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53246 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:53246 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/main.py", line 749, in tool_inspect_product
+    cursor.execute(query, (product_id,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/venv/lib/python3.13/site-packages/psycopg2/extras.py", line 236, in execute
+    return super().execute(query, vars)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "coverage_highlights" does not exist
+LINE 1: SELECT product_type, age_range, coverage_highlights, product...
+                                        ^
+
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=41&fields=product_name%2Cproduct_type%2Cage_range%2Ccoverage_highlights%2Cextend_info&view=summary HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=41&fields=product_name%2Cproduct_type%2Cage_range&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=41&fields=coverage&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=41&fields=coverage.%E9%87%8D%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Ccoverage.%E5%B0%91%E5%84%BF%E7%89%B9%E5%AE%9A%E9%87%8D%E7%96%BE%E4%BF%9D%E9%99%A9%E9%87%91&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=9&fields=product_name%2Cproduct_type%2Cage_range&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=9&fields=coverage&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=9&fields=coverage.%E4%BD%8F%E9%99%A2%E8%B4%B9%E7%94%A8%E8%A1%A5%E5%81%BF%E9%87%91&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=43&fields=product_name%2Cproduct_type%2Cage_range&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=43&fields=coverage&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53246 - "GET /api/tools/inspect?product_id=43&fields=coverage.%E4%B8%80%E8%88%AC%E9%97%A8%E6%80%A5%E8%AF%8A%E5%8C%BB%E7%96%97%E8%B4%B9%E7%94%A8%E8%A1%A5%E5%81%BF%E9%87%91&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53356 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53358 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53361 - "GET /api/v1/clients/3 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53363 - "GET /api/v1/clients/4 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53365 - "GET /api/v1/clients/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53367 - "GET /api/v1/clients/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53369 - "GET /api/v1/clients/7 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53371 - "GET /api/v1/clients/8 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53373 - "GET /api/v1/clients/9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53375 - "GET /api/v1/clients/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53377 - "GET /api/v1/clients/11 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53379 - "GET /api/v1/clients/12 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53381 - "GET /api/v1/clients/13 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53383 - "GET /api/v1/clients/14 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53385 - "GET /api/v1/clients/15 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53387 - "GET /api/v1/clients/16 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53389 - "GET /api/v1/clients/17 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53391 - "GET /api/v1/clients/18 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53393 - "GET /api/v1/clients/19 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53524 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:54072 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/filter?age_min=3&age_max=3&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/search?keyword=%E6%95%99%E8%82%B2%E9%87%91&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/inspect?product_id=41&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/inspect?product_id=41&fields=coverage.%E5%B0%91%E5%84%BF%E7%89%B9%E5%AE%9A%E9%87%8D%E7%96%BE%E4%BF%9D%E9%99%A9%E9%87%91&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/inspect?product_id=9&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54072 - "GET /api/tools/inspect?product_id=26&fields=extend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54160 - "GET /api/v1/clients/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54162 - "GET /api/v1/clients/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54164 - "GET /api/v1/clients/3 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54166 - "GET /api/v1/clients/4 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54168 - "GET /api/v1/clients/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54170 - "GET /api/v1/clients/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54172 - "GET /api/v1/clients/7 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54174 - "GET /api/v1/clients/8 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54176 - "GET /api/v1/clients/9 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54178 - "GET /api/v1/clients/10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54180 - "GET /api/v1/clients/11 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54182 - "GET /api/v1/clients/12 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54184 - "GET /api/v1/clients/13 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54186 - "GET /api/v1/clients/14 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54188 - "GET /api/v1/clients/15 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54190 - "GET /api/v1/clients/16 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54192 - "GET /api/v1/clients/17 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54194 - "GET /api/v1/clients/18 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54196 - "GET /api/v1/clients/19 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54448 - "OPTIONS /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54448 - "POST /api/v1/users/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54448 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54616 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E6%84%8F%E5%A4%96%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "GET /api/tools/search?keyword=%E7%8C%9D%E6%AD%BB&limit=5 HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/main.py", line 749, in tool_inspect_product
+    cursor.execute(query, (product_id,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/venv/lib/python3.13/site-packages/psycopg2/extras.py", line 236, in execute
+    return super().execute(query, vars)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "price" does not exist
+LINE 1: SELECT product_type, coverage, product_name, price, extend_i...
+                                                     ^
+
+INFO:     127.0.0.1:54661 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Cproduct_type%2Cprice%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info&view=full HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:54661 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Cproduct_type%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "GET /api/tools/inspect?product_id=7&fields=product_name%2Cproduct_type%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54661 - "GET /api/tools/inspect?product_id=6&fields=product_name%2Cproduct_type%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54775 - "POST /api/v1/users/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/search?keyword=%E7%8C%9D%E6%AD%BB&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Ccoverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/inspect?product_id=42&fields=product_name%2Ccoverage%2Cextend_info.highlights&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/inspect?product_id=9&fields=product_name%2Ccoverage%2Cextend_info.highlights&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54789 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Ccoverage%2Cextend_info.highlights&view=summary HTTP/1.1" 200 OK

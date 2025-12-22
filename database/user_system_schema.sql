@@ -1,0 +1,43 @@
+-- 用户管理系统表结构 (PostgreSQL)
+
+-- 1. 用户核心表
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    invite_code VARCHAR(50),
+    is_active BOOLEAN DEFAULT TRUE,
+    is_superuser BOOLEAN DEFAULT FALSE,
+    create_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. 用户个人资料与设置表
+CREATE TABLE IF NOT EXISTS user_profile (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT UNIQUE NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    profile_visibility VARCHAR(20) DEFAULT 'public',
+    allow_follow SMALLINT DEFAULT 1,
+    show_study_stats SMALLINT DEFAULT 1,
+    email_notification SMALLINT DEFAULT 1,
+    push_notification SMALLINT DEFAULT 1,
+    theme VARCHAR(20) DEFAULT 'light',
+    language VARCHAR(10) DEFAULT 'zh-CN',
+    timezone VARCHAR(50) DEFAULT 'Asia/Shanghai',
+    create_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. 邀请码表
+CREATE TABLE IF NOT EXISTS invite_code (
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(64) UNIQUE NOT NULL,
+    is_used BOOLEAN DEFAULT FALSE,
+    used_by BIGINT REFERENCES users(id) ON DELETE SET NULL,
+    used_at TIMESTAMP WITH TIME ZONE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 初始邀请码
+INSERT INTO invite_code (code) VALUES ('INV-SUPER-888') ON CONFLICT DO NOTHING;

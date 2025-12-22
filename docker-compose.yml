@@ -10,7 +10,7 @@ services:
     container_name: insurance-postgres
     restart: unless-stopped
     ports:
-      - "15432:5432"  # 映射到15432避免与服务器现有PostgreSQL冲突
+      - "15432:5432" # 映射到15432避免与服务器现有PostgreSQL冲突
     volumes:
       - ./database/insurance_products_dump.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data
@@ -20,7 +20,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-insurance_password_2024}
       POSTGRES_HOST_AUTH_METHOD: trust
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U insurance_user -d insurance_products"]
+      test: [ "CMD-SHELL", "pg_isready -U insurance_user -d insurance_products" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -39,15 +39,19 @@ services:
     container_name: insurance-api
     restart: unless-stopped
     ports:
-      - "18000:8000"  # 映射到18000避免冲突
+      - "18000:8000" # 映射到18000避免冲突
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://insurance_user:insurance_password_2024@postgres:5432/insurance_products
+      DB_HOST: postgres
+      DB_NAME: insurance_products
+      DB_USER: insurance_user
+      DB_PASSWORD: insurance_password_2024
+      DB_PORT: 5432
       PYTHONUNBUFFERED: 1
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/docs" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -66,7 +70,7 @@ services:
     container_name: kode-backend
     restart: unless-stopped
     ports:
-      - "13001:3001"  # 映射到13001避免冲突
+      - "13001:3001" # 映射到13001避免冲突
     depends_on:
       insurance-api:
         condition: service_healthy
@@ -74,14 +78,14 @@ services:
       NODE_ENV: production
       PORT: 3001
       HOST: 0.0.0.0
-      INSURANCE_API_URL: http://insurance-api:8000
+      BACKEND_API_URL: http://insurance-api:8000
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       ANTHROPIC_MODEL_ID: ${ANTHROPIC_MODEL_ID:-glm-4.5-air}
       ANTHROPIC_BASE_URL: ${ANTHROPIC_BASE_URL:-https://open.bigmodel.cn/api/anthropic/v1/messages}
     volumes:
       - kode_sessions:/app/.kode
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:3001/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -100,13 +104,13 @@ services:
     container_name: insurance-frontend
     restart: unless-stopped
     ports:
-      - "15173:80"  # 映射到15173，Nginx监听80
+      - "80:80" # 映射到80端口
     depends_on:
       - kode-backend
     environment:
       VITE_BACKEND_URL: http://${SERVER_IP:-localhost}:13001
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
       interval: 30s
       timeout: 10s
       retries: 3

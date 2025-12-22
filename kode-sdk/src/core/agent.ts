@@ -182,11 +182,12 @@ export class Agent {
   private subagents?: SubAgentConfig;
   private template: AgentTemplateDefinition;
   private lineage: string[] = [];
-  
+
   // 🔥 用户认证信息（用于工具调用主后端API）
   private userToken?: string;
   private userId?: string;
-  
+  private sessionId?: string;
+
   /**
    * 设置用户认证信息
    */
@@ -194,6 +195,14 @@ export class Agent {
     this.userId = userId;
     this.userToken = userToken;
     console.log(`[Agent] 设置用户认证: ${userId}`);
+  }
+
+  /**
+   * 设置会话信息
+   */
+  setSessionInfo(sessionId: string) {
+    this.sessionId = sessionId;
+    console.log(`[Agent] 设置会话信息: ${sessionId}`);
   }
 
   private get persistentStore(): Store {
@@ -336,10 +345,10 @@ export class Agent {
     const model = config.model
       ? config.model
       : config.modelConfig
-      ? ensureModelFactory(deps.modelFactory)(config.modelConfig)
-      : template.model
-      ? ensureModelFactory(deps.modelFactory)({ provider: 'anthropic', model: template.model })
-      : ensureModelFactory(deps.modelFactory)({ provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' });
+        ? ensureModelFactory(deps.modelFactory)(config.modelConfig)
+        : template.model
+          ? ensureModelFactory(deps.modelFactory)({ provider: 'anthropic', model: template.model })
+          : ensureModelFactory(deps.modelFactory)({ provider: 'anthropic', model: 'claude-3-5-sonnet-20241022' });
 
     const resolvedTools = resolveTools(config, template, deps.toolRegistry, deps.templateRegistry);
 
@@ -880,7 +889,7 @@ export class Agent {
       console.log('[Agent] Calling model.stream() with', this.messages.length, 'messages');
       console.log('[Agent] System prompt length:', this.template.systemPrompt?.length || 0);
       console.log('[Agent] Tools count:', this.getToolSchemas().length);
-      
+
       const stream = this.model.stream(this.messages, {
         tools: this.getToolSchemas(),
         maxTokens: this.config.metadata?.maxTokens,
@@ -1098,8 +1107,19 @@ export class Agent {
         todo: this.todoService,
         filePool: this.filePool,
       },
-      userToken: this.userToken,  // 🔥 传递用户Token
-      userId: this.userId,        // 🔥 传递用户ID
+      emit: (eventType: string, data?: any) => {
+        this.events.emitMonitor({
+          channel: 'monitor',
+          type: 'tool_custom_event',
+          toolName: tool.name,
+          eventType,
+          data,
+          timestamp: Date.now(),
+        });
+      },
+      userToken: this.userToken,
+      userId: this.userId,
+      sessionId: this.sessionId,
     };
 
     let approvalMeta: any;
@@ -1241,7 +1261,7 @@ export class Agent {
         const errorContent = outcome.content as any;
         const errorMessage = errorContent?.error || 'Tool returned failure';
         const errorType = errorContent?._validationError ? 'validation' :
-                          errorContent?._thrownError ? 'runtime' : 'logical';
+          errorContent?._thrownError ? 'runtime' : 'logical';
         const isRetryable = errorType !== 'validation';
 
         this.updateToolRecord(

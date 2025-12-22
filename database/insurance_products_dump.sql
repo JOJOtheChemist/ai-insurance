@@ -71,7 +71,7 @@ CREATE TABLE public.insurance_product (
 );
 
 
-ALTER TABLE public.insurance_product OWNER TO yeya;
+ALTER TABLE public.insurance_product OWNER TO insurance_user;
 
 --
 -- Name: TABLE insurance_product; Type: COMMENT; Schema: public; Owner: yeya
@@ -253,7 +253,7 @@ CREATE SEQUENCE public.insurance_product_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.insurance_product_id_seq OWNER TO yeya;
+ALTER TABLE public.insurance_product_id_seq OWNER TO insurance_user;
 
 --
 -- Name: insurance_product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: yeya
@@ -283,7 +283,7 @@ CREATE TABLE public.insurance_rates (
 );
 
 
-ALTER TABLE public.insurance_rates OWNER TO yeya;
+ALTER TABLE public.insurance_rates OWNER TO insurance_user;
 
 --
 -- Name: TABLE insurance_rates; Type: COMMENT; Schema: public; Owner: yeya
@@ -395,7 +395,7 @@ CREATE SEQUENCE public.insurance_rates_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.insurance_rates_id_seq OWNER TO yeya;
+ALTER TABLE public.insurance_rates_id_seq OWNER TO insurance_user;
 
 --
 -- Name: insurance_rates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: yeya

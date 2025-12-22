@@ -85,14 +85,17 @@ app = FastAPI(title="保险产品 API", version="1.0.0")
 # --- 用户系统集成 ---
 from core.database import engine, Base
 from routers import users, invite_codes
-from models import user, user_profile, invite_code # 确保模型被加载
+from models import user, user_profile, invite_code, client, family_member, follow_up, chat_session, session_client_link # 确保模型被加载
 
 # 自动创建数据库表 (生产环境建议使用 Alembic)
 Base.metadata.create_all(bind=engine)
 
 # 注册路由
+from routers import users, invite_codes, clients
+# ...
 app.include_router(users.router, prefix="/api/v1")
 app.include_router(invite_codes.router, prefix="/api/v1")
+app.include_router(clients.router, prefix="/api/v1")
 # ------------------
 
 # 配置 CORS
