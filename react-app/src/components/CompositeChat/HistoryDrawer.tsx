@@ -5,12 +5,14 @@ interface HistoryDrawerProps {
     isOpen: boolean;
     onClose: () => void;
     customerProfile: CustomerProfile | null;
+    onNewChat: () => void;
 }
 
 export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
     isOpen,
     onClose,
-    customerProfile
+    customerProfile,
+    onNewChat
 }) => {
     return (
         <div
@@ -107,8 +109,11 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                         </div>
                     </div>
 
-                    <div className="bg-gray-50 rounded-lg p-3 flex items-center justify-center border border-gray-100 cursor-pointer hover:bg-gray-100 transition-colors">
-                        <p className="text-xs text-gray-400">
+                    <div
+                        className="bg-gray-50 rounded-lg p-3 flex items-center justify-center border border-gray-100 cursor-pointer hover:bg-orange-50 hover:border-orange-100 hover:text-orange-600 transition-all active:scale-95 group"
+                        onClick={onNewChat}
+                    >
+                        <p className="text-xs text-gray-400 group-hover:text-orange-600 font-bold">
                             <i className="fa-solid fa-plus mr-1"></i> 发起新会话
                         </p>
                     </div>

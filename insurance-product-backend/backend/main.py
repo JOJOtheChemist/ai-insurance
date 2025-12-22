@@ -707,33 +707,51 @@ def tool_inspect_product(product_id: int, fields: str, view: str = "full"):
         select_parts = []
         coverage_subkeys = [] # To store requested sub-keys for coverage
         
-        for field in field_list:
-            field = field.strip()
+        # 定义允许查询的合法列名，防止 SQL 注入和非法列错误
+        VALID_COLUMNS = [
+            'id', 'product_name', 'product_code', 'product_type', 'company_name',
+            'min_amount', 'max_amount', 'min_premium', 'max_premium', 'coverage',
+            'description', 'details', 'image_url', 'status', 'create_time',
+            'update_time', 'tags', 'age_range', 'insurance_period', 'payment_period',
+            'waiting_period', 'exclusions', 'cooling_off_period', 'surrender_terms',
+            'extend_info', 'coverage_raw_backup', 'coverage_structured'
+        ]
+        
+        # 处理特殊字段映射
+        field_mapping = {
+            'price': 'min_premium' # 兼容 AI 可能输出的 price 字段
+        }
+        
+        for field_raw in field_list:
+            field = field_raw.strip()
+            # 映射处理
+            actual_field = field_mapping.get(field, field)
             
             # Special Handling for 'coverage.xxx'
-            if field.startswith('coverage.'):
+            if actual_field.startswith('coverage.'):
                 # We cannot do SQL extraction because coverage is TEXT (stringified JSON).
                 # So we must fetch 'coverage' full and parse in Python.
-                subkey = field.split('.', 1)[1]
+                subkey = actual_field.split('.', 1)[1]
                 coverage_subkeys.append(subkey)
                 # Ensure we fetch the base column (avoid dups)
-                if '"coverage"' not in select_parts: # simple check
+                if "coverage" not in select_parts: # simple check
                      select_parts.append("coverage")
-                continue
+                continue # Move to next field_raw
 
-            if '.' in field:
-                # 处理 JSON 路径 (Assuming native JSONB columns like extend_info)
-                parts = field.split('.')
-                col = parts[0]
-                json_key = parts[1]
-                if not col.replace('_', '').isalnum() or not json_key.replace('_', '').isalnum():
+            if "." in actual_field:
+                # 处理 JSONB/JSON 内部路径 (如 extend_info.yyy)
+                col, json_key = actual_field.split(".", 1)
+                if col not in ["extend_info", "details"]: # coverage handled above
+                     continue
+                if not json_key.replace('_', '').isalnum():
                      continue
                 select_parts.append(f"{col}->>'{json_key}' as \"{field}\"")
             else:
-                # 普通字段
-                if not field.replace('_', '').isalnum():
-                    continue
-                select_parts.append(f"{field}")
+                # 普通字段：只允许合法列表中的字段
+                if actual_field in VALID_COLUMNS:
+                    select_parts.append(f"{actual_field}")
+                else:
+                    print(f"⚠️ [Inspect] 跳过非法或不存在的列: {actual_field}")
         
         if not select_parts and not coverage_subkeys:
              raise HTTPException(status_code=400, detail="无有效字段")

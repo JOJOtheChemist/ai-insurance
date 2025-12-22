@@ -9,7 +9,7 @@ dotenv.config();
 
 export const config = {
   // 服务器配置
-  port: parseInt(process.env.PORT || '3000', 10),
+  port: parseInt(process.env.PORT || '3001', 10),
   host: process.env.HOST || '127.0.0.1',  // 默认只监听localhost，由nginx代理
 
   // AI 模型配置

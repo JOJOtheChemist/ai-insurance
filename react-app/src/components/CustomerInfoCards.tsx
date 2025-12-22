@@ -11,6 +11,41 @@ export interface CustomerProfile {
     location?: string;
     risk_factors?: string[];
     needs?: string[];
+    resistances?: string[];
+    contacts?: {
+        name: string;
+        role: string;
+        type?: string;     // secretary, finance, doctor, etc.
+        contact_info?: string;
+        actions?: string[];
+        avatar_seed?: string;
+    }[];
+    family_structure?: {
+        relation: string;
+        name?: string;
+        age?: number;
+        status?: string;
+    }[];
+    follow_ups?: {
+        type: string;     // AI, 电话, 微信
+        content: string;
+        time: string;
+        session_id?: string;
+    }[];
+    proposed_plans?: {
+        title: string;
+        tag?: string;
+        budget?: string;
+        description?: string;
+        products: {
+            name: string;
+            coverage: string;
+            type: string;
+            reason?: string;
+        }[];
+        reasoning?: string;
+        created_at?: string;
+    }[];
 }
 
 // 1. 客户基本信息卡片

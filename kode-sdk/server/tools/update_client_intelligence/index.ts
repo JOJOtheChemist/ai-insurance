@@ -11,13 +11,24 @@ export const UpdateClientIntelligence = defineTool({
             type: 'string',
             description: 'The name of the client to update (e.g. "王先生", "张女士"). Required for multi-client sessions.',
         },
-        clientId: {
-            type: 'number',
-            description: 'Optional. Direct client ID if known.',
-        },
+        // clientId removed to prevent LLM hallucination
         profileUpdates: {
             type: 'object',
             description: 'Fields to update: name, role, age, annual_budget, risk_factors[], needs[], resistances[].',
+        },
+        contacts: {
+            type: 'array',
+            items: {
+                type: 'object',
+                properties: {
+                    name: { type: 'string' },
+                    role: { type: 'string' },
+                    type: { type: 'string', description: 'secretary, finance, doctor, etc.' },
+                    contact_info: { type: 'string', description: 'WeChat, email, etc.' },
+                    actions: { type: 'array', items: { type: 'string' } }
+                }
+            },
+            description: 'Common contacts discovered.',
         },
         familyMembers: {
             type: 'array',
@@ -41,7 +52,7 @@ export const UpdateClientIntelligence = defineTool({
         console.log(`[UpdateClientIntelligence] 🚀 开始执行:`, JSON.stringify(args, null, 2));
         console.log(`[UpdateClientIntelligence] Context keys:`, Object.keys(context));
         console.log(`[UpdateClientIntelligence] SessionId in context:`, context.sessionId);
-        const { targetClient, clientId, profileUpdates, familyMembers, followUpSummary } = args;
+        const { targetClient, profileUpdates, contacts, familyMembers, followUpSummary } = args;
         const sessionId = context.sessionId;
         const userId = context.userId;
 
@@ -53,10 +64,13 @@ export const UpdateClientIntelligence = defineTool({
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     targetClient,
-                    clientId,
+                    // clientId removed
                     sessionId: sessionId,
                     salespersonId: salespersonId,
-                    profileUpdates,
+                    profileUpdates: {
+                        ...(profileUpdates || {}),
+                        contacts: contacts || (profileUpdates || {}).contacts
+                    },
                     familyMembers,
                     followUpSummary
                 })
@@ -67,11 +81,11 @@ export const UpdateClientIntelligence = defineTool({
                 return { ok: false, error: `API Error (${response.status}): ${errText}` };
             }
 
-            const result = await response.json();
+            const result = await response.json() as any;
+
             return {
-                ok: true,
-                message: `Intelligence updated for client ${result.client_id} (linked to session ${result.linked_session}).`,
-                clientId: result.client_id
+                message: `成功同步客户投保画像。客户ID: ${result.client_id || '未知'}, 会话: ${result.linked_session || sessionId}`,
+                data: result
             };
         } catch (e: any) {
             return { ok: false, error: `Connection to insurance-api failed: ${e.message}` };

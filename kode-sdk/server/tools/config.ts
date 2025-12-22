@@ -20,13 +20,13 @@ export const API_CONFIG = {
    * 可以通过环境变量 BACKEND_API_URL 修改
    * 默认值: http://localhost:8000
    */
-  BASE_URL: process.env.BACKEND_API_URL || 'http://localhost:8000',
-  
+  BASE_URL: process.env.BACKEND_API_URL || 'http://localhost:8080',
+
   /**
    * API 请求超时时间（毫秒）
    */
   TIMEOUT: parseInt(process.env.API_TIMEOUT || '10000', 10),
-  
+
   /**
    * API 版本
    */
@@ -42,7 +42,7 @@ export const AUTH_CONFIG = {
    * （可选，主要用于测试）
    */
   DEFAULT_USER_TOKEN: process.env.USER_JWT_TOKEN,
-  
+
   /**
    * Token 过期时间检查（毫秒）
    */
@@ -57,22 +57,22 @@ export const GLM_CONFIG = {
    * GLM API Key
    */
   API_KEY: process.env.GLM_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || '',
-  
+
   /**
    * GLM API 地址
    */
   BASE_URL: process.env.GLM_BASE_URL || 'https://open.bigmodel.cn/api/paas/v4',
-  
+
   /**
    * 使用的模型
    */
   MODEL: process.env.GLM_MODEL || 'glm-4.5-air',
-  
+
   /**
    * 默认温度参数
    */
   TEMPERATURE: parseFloat(process.env.GLM_TEMPERATURE || '0.7'),
-  
+
   /**
    * 最大 token 数
    */
@@ -87,12 +87,12 @@ export const TOOL_CONFIG = {
    * 默认最大重试次数
    */
   MAX_RETRY: parseInt(process.env.TOOL_MAX_RETRY || '3', 10),
-  
+
   /**
    * 重试间隔（毫秒）
    */
   RETRY_INTERVAL: parseInt(process.env.TOOL_RETRY_INTERVAL || '1000', 10),
-  
+
   /**
    * 是否启用调试日志
    */

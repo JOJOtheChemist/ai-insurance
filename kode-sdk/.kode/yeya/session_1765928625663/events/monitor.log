@@ -1,8 +1,0 @@
-{"cursor":0,"bookmark":{"seq":0,"timestamp":1765928628753},"event":{"channel":"monitor","type":"tool_manual_updated","tools":["insurance_filter","insurance_search","insurance_inspect"],"timestamp":1765928628753,"bookmark":{"seq":0,"timestamp":1765928628753}}}
-{"cursor":1,"bookmark":{"seq":1,"timestamp":1765928628755},"event":{"channel":"monitor","type":"state_changed","state":"WORKING","bookmark":{"seq":1,"timestamp":1765928628755}}}
-{"cursor":2,"bookmark":{"seq":2,"timestamp":1765928628755},"event":{"channel":"monitor","type":"breakpoint_changed","previous":"READY","current":"PRE_MODEL","timestamp":1765928628755,"bookmark":{"seq":2,"timestamp":1765928628755}}}
-{"cursor":3,"bookmark":{"seq":3,"timestamp":1765928628758},"event":{"channel":"monitor","type":"breakpoint_changed","previous":"PRE_MODEL","current":"STREAMING_MODEL","timestamp":1765928628758,"bookmark":{"seq":3,"timestamp":1765928628758}}}
-{"cursor":118,"bookmark":{"seq":118,"timestamp":1765928638706},"event":{"channel":"monitor","type":"token_usage","inputTokens":3077,"outputTokens":320,"totalTokens":3397,"bookmark":{"seq":118,"timestamp":1765928638706}}}
-{"cursor":120,"bookmark":{"seq":120,"timestamp":1765928638709},"event":{"channel":"monitor","type":"step_complete","step":2,"bookmark":{"seq":120,"timestamp":1765928638709}}}
-{"cursor":121,"bookmark":{"seq":121,"timestamp":1765928638709},"event":{"channel":"monitor","type":"state_changed","state":"READY","bookmark":{"seq":121,"timestamp":1765928638709}}}
-{"cursor":122,"bookmark":{"seq":122,"timestamp":1765928638709},"event":{"channel":"monitor","type":"breakpoint_changed","previous":"STREAMING_MODEL","current":"READY","timestamp":1765928638709,"bookmark":{"seq":122,"timestamp":1765928638709}}}

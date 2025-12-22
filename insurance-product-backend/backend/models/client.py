@@ -23,6 +23,7 @@ class Client(Base):
     needs = Column(JSON, default=list)        # 需求点数组
     resistances = Column(JSON, default=list)  # 抗拒点数组
     contacts = Column(JSON, default=list)     # 常用联系人数组
+    proposed_plans = Column(JSON, default=list) # 推荐保险方案数组
     
     create_time = Column(DateTime, default=datetime.utcnow)
     update_time = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

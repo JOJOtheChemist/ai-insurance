@@ -49,7 +49,7 @@ const LoginPage: React.FC = () => {
 
         try {
             const endpoint = mode === 'login' ? '/users/auth/login' : '/users/auth/register';
-            const response = await fetch(`http://localhost:8000/api/v1${endpoint}`, {
+            const response = await fetch(`http://localhost:8080/api/v1${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

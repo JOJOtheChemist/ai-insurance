@@ -20,6 +20,7 @@ import { insuranceFilterToolRegistration } from './insurance_filter/registration
 import { insuranceSearchToolRegistration } from './insurance_search/registration';
 import { insuranceInspectToolRegistration } from './insurance_inspect/registration';
 import { updateClientIntelligenceToolRegistration } from './update_client_intelligence/registration';
+import { submitInsurancePlanToolRegistration } from './submit_insurance_plan/registration';
 
 
 // ============================================================
@@ -42,6 +43,7 @@ export function registerDefaultTools(): void {
   toolRegistry.register(insuranceSearchToolRegistration);
   toolRegistry.register(insuranceInspectToolRegistration);
   toolRegistry.register(updateClientIntelligenceToolRegistration);
+  toolRegistry.register(submitInsurancePlanToolRegistration);
 
   console.log('\n✅ 工具注册完成!\n');
 
@@ -114,6 +116,8 @@ export { InsuranceFilter } from './insurance_filter';
 export { InsuranceSearch } from './insurance_search';
 export { InsuranceInspect } from './insurance_inspect';
 export { UpdateClientIntelligence } from './update_client_intelligence';
+export { SubmitInsurancePlan } from './submit_insurance_plan';
+
 
 // HTTP 客户端
 export * from './http';

@@ -12,6 +12,7 @@ export interface AgentConfig {
   description: string;
   systemPrompt: string;
   tools: string[];
+  exposeThinking?: boolean;
   modelId?: string;
 }
 

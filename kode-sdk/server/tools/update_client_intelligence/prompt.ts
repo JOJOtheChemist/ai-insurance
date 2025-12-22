@@ -16,5 +16,10 @@ When to use:
 Parameters:
 - targetClient: Critical! The name or identifier of the person you are updating.
 - profileUpdates: The specific fields changing for THIS person.
-- familyMembers: Family members relative to THIS person.
+- contacts: Array of contact objects {name: string, role: string, type: "secretary"|"finance"|"doctor"|string, contact_info: string, actions: string[]}.
+- familyMembers: Array of family member objects. 
+    * relation: Specific identity (e.g., "儿子", "女儿", "配偶"). Avoid general terms like "子女".
+    * name: Real name if known (e.g., "刘六六").
+    * status: DO NOT use "None" or "Gap". Use "Insured" or specified recommendations like "Advised: [Product Name]".
+- followUpSummary: A brief summary of the conversation turn.
 `;

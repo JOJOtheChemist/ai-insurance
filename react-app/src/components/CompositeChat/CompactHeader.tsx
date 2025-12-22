@@ -5,12 +5,14 @@ interface CompactHeaderProps {
     stage: 0 | 1 | 2;
     customerProfile: CustomerProfile | null;
     onDrawerToggle: () => void;
+    onNewChat: () => void;
 }
 
 export const CompactHeader: React.FC<CompactHeaderProps> = ({
     stage,
     customerProfile,
-    onDrawerToggle
+    onDrawerToggle,
+    onNewChat
 }) => {
     return (
         <div
@@ -27,7 +29,16 @@ export const CompactHeader: React.FC<CompactHeaderProps> = ({
                     <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full animate-pulse"></div>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-xs font-bold text-gray-800">数智保险策略官 V3</span>
+                    <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-gray-800">数智保险策略官 V3</span>
+                        <button
+                            onClick={onNewChat}
+                            title="开启新会话 (重置状态)"
+                            className="w-5 h-5 rounded-md bg-gray-50 border border-gray-200 text-gray-400 flex items-center justify-center hover:bg-orange-50 hover:border-orange-200 hover:text-orange-500 transition-all active:scale-90"
+                        >
+                            <i className="fa-solid fa-plus text-[10px]"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
 
