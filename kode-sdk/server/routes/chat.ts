@@ -15,7 +15,7 @@ const router = Router();
  * 处理聊天消息，使用 SSE 流式返回
  */
 router.post('/chat', authenticateToken, async (req, res) => {
-  const { message, agentId = 'schedule-assistant', sessionId } = req.body;
+  const { message, agentId = 'insure-recommand-v3', sessionId } = req.body;
   const userId = req.user?.userId || req.body.userId; // 从JWT token获取用户ID
 
   // 🔥 提取用户的Token（用于调用MCP API）
@@ -83,7 +83,7 @@ router.post('/chat', authenticateToken, async (req, res) => {
 [System Context]
 User is currently viewing the profile of client "${clientContext.name}" (ID: ${clientId}).
 Basic Info: Role=${clientContext.role || 'Unknown'}, Age=${clientContext.age || 'Unknown'}, Budget=${clientContext.budget || 'Unknown'}.
-Action Required: Please immediately call \`get_client_profile(name="${clientContext.name}")\` to load the full profile details before answering.
+Note: If you need detailed profile information that is not available in your context, you can call \`get_client_profile(name="${clientContext.name}")\` to load the full profile details.
 `;
       finalMessage = contextPreamble + "\n" + message;
     }
