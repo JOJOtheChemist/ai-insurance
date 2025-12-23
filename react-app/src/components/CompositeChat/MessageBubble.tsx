@@ -7,6 +7,7 @@ interface Message {
     role: 'user' | 'ai';
     content: string | React.ReactNode;
     toolCalls?: ToolCall[];
+    hideBubble?: boolean;
 }
 
 interface MessageBubbleProps {
@@ -26,6 +27,26 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
 
     if (message.role === 'ai' && typeof message.content === 'string') {
         // Redundant JSON parsing removed, handled by AIMessageContent
+    }
+
+    const aiHasContent = !(
+        displayContent === null ||
+        displayContent === undefined ||
+        (typeof displayContent === 'string' && displayContent.trim() === '')
+    );
+    const userHasContent = !(
+        displayContent === null ||
+        displayContent === undefined ||
+        (typeof displayContent === 'string' && displayContent.trim() === '')
+    );
+
+    const shouldRenderBubble = !message.hideBubble && (
+        message.role === 'user' ? userHasContent : aiHasContent
+    );
+    const hasToolCalls = message.role === 'ai' && !!(message.toolCalls && message.toolCalls.length > 0);
+
+    if (!shouldRenderBubble && !hasToolCalls) {
+        return null;
     }
 
     return (
@@ -49,19 +70,21 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
                     )}
 
                     {/* Message Bubble */}
-                    <div className={`px-4 py-2.5 text-sm w-full ${message.role === 'user' ? 'bg-[#1F2937] text-white rounded-[20px_4px_20px_20px] shadow-md' : 'bg-white border border-[#E5E7EB] text-[#1F2937] rounded-[4px_20px_20px_20px] overflow-hidden shadow-[0_4px_12px_-2px_rgba(0,0,0,0.05)]'}`}>
-                        {message.role === 'ai' && typeof message.content === 'string' ? (
-                            <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0">
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                    {message.content}
-                                </ReactMarkdown>
-                            </div>
-                        ) : message.role === 'user' && typeof displayContent === 'string' ? (
-                            <div className="whitespace-pre-wrap">{displayContent}</div>
-                        ) : (
-                            displayContent
-                        )}
-                    </div>
+                    {shouldRenderBubble && (
+                        <div className={`px-4 py-2.5 text-sm w-full ${message.role === 'user' ? 'bg-[#1F2937] text-white rounded-[20px_4px_20px_20px] shadow-md' : 'bg-white border border-[#E5E7EB] text-[#1F2937] rounded-[4px_20px_20px_20px] overflow-hidden shadow-[0_4px_12px_-2px_rgba(0,0,0,0.05)]'}`}>
+                            {message.role === 'ai' && typeof message.content === 'string' ? (
+                                <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        {message.content}
+                                    </ReactMarkdown>
+                                </div>
+                            ) : message.role === 'user' && typeof displayContent === 'string' ? (
+                                <div className="whitespace-pre-wrap">{displayContent}</div>
+                            ) : (
+                                displayContent
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
             {/* Extracted profile display removed, handled by AIMessageContent */}

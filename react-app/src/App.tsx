@@ -28,10 +28,12 @@ import DigitalHumanChat from './components/DigitalHumanChat';
 import DigitalHumanChatSwitch from './components/DigitalHumanChatSwitch';
 import DigitalHumanChatScreenEfficiency from './components/DigitalHumanChatScreenEfficiency';
 import DigitalHumanChatWithContext from './components/DigitalHumanChatWithContext';
-import CompositeDigitalHumanChat from './components/CompositeDigitalHumanChat';
+import CompositeDigitalHumanChat from './components/CompositeDigitalHumanChat/index';
 import ExpertListPage from './pages/ExpertListPage';
 import CustomerProfilePage from './components/CustomerProfilePage';
 import CompositeChatFullPage from './pages/CompositeChatFullPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import { DebugHistoryPage } from './pages/DebugHistoryPage';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 
@@ -47,6 +49,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/debug-history" element={<DebugHistoryPage />} />
 
           <Route path="/" element={<ProtectedRoute><CompositeChatFullPage /></ProtectedRoute>} />
 
@@ -57,6 +60,7 @@ function App() {
           <Route path="/mobile-workspace" element={<ProtectedRoute><AIWorkspaceMobile /></ProtectedRoute>} />
           <Route path="/customer-profile-panel" element={<ProtectedRoute><CustomerProfilePanelPage /></ProtectedRoute>} />
           <Route path="/expert-list" element={<ProtectedRoute><ExpertListPage /></ProtectedRoute>} />
+          <Route path="/product-detail/:productId" element={<ProtectedRoute><ProductDetailPage /></ProtectedRoute>} />
 
           {/* Other components available but hidden from main flow */}
           <Route path="/customer-list-16" element={<ProtectedRoute><CustomerList16 /></ProtectedRoute>} />

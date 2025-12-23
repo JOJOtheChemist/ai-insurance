@@ -11,13 +11,13 @@ import { SuggestedSteps } from './parts/SuggestedSteps';
 import { RecommendationList } from './parts/RecommendationList';
 import { SalesPitchCard } from './parts/SalesPitchCard';
 
+// Import ToolStatus for rendering structured tool calls
 // Re-export ToolCall type for backward compatibility
 export type { ToolCall } from './ToolStatus';
 
 interface AIMessageContentProps {
     content: string;
     onSend: (msg: string) => void;
-    toolCalls?: any[];
     onUpdateProfile?: (profile: any) => void;
 }
 
@@ -165,6 +165,20 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
 
     }, [content, onUpdateProfile]);
 
+    const hasText = parsedData.textContent?.trim().length > 0;
+    const hasRenderableContent =
+        hasText ||
+        !!parsedData.profileUpdates ||
+        !!parsedData.thinkContent ||
+        (parsedData.recommendations && parsedData.recommendations.length > 0) ||
+        (parsedData.salesPitch) ||
+        parsedData.quickReplies.length > 0 ||
+        parsedData.suggestedSteps.length > 0;
+
+    if (!hasRenderableContent) {
+        return null;
+    }
+
     return (
         <div className="space-y-3 w-full">
             {/* 1. 客户档案卡片 */}
@@ -204,11 +218,13 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             )}
 
             {/* 3. 主要文本内容 */}
-            <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0 text-gray-900 message-content leading-7">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {parsedData.textContent}
-                </ReactMarkdown>
-            </div>
+            {hasText && (
+                <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0 text-gray-900 message-content leading-7">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {parsedData.textContent}
+                    </ReactMarkdown>
+                </div>
+            )}
 
             {/* 3.5 推荐产品卡片 (如果是 V3 Agent 的推荐结构) */}
             {parsedData.recommendations && parsedData.recommendations.length > 0 && (

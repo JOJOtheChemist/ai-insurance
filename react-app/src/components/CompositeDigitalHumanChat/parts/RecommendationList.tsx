@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CopyButton } from './CopyButton';
 
 export interface RecommendationListProps {
@@ -7,6 +8,16 @@ export interface RecommendationListProps {
 }
 
 export const RecommendationList: React.FC<RecommendationListProps> = ({ recommendations }) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleProductClick = (productId: string | number) => {
+        if (!productId) return;
+        navigate(`/product-detail/${productId}`, {
+            state: { from: location.pathname }
+        });
+    };
+
     return (
         <div className="mt-4 space-y-3 animate-fadeIn">
             <p className="text-xs font-bold text-orange-500 mb-2 pl-1 tracking-wider uppercase flex items-center gap-2">
@@ -14,7 +25,11 @@ export const RecommendationList: React.FC<RecommendationListProps> = ({ recommen
             </p>
             <div className="space-y-3">
                 {recommendations.map((prod, idx) => (
-                    <div key={idx} className="bg-white border border-gray-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow relative group">
+                    <div
+                        key={idx}
+                        className="bg-white border border-gray-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow relative group cursor-pointer"
+                        onClick={() => handleProductClick(prod.id || prod.product_id)}
+                    >
                         <div className="flex justify-between items-start mb-2">
                             <span className="bg-[#FFF9F2] text-orange-600 px-2 py-0.5 rounded-full text-[10px] font-bold border border-orange-200 uppercase">
                                 {prod.product_type}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import CompositeDigitalHumanChat from '../components/CompositeDigitalHumanChat';
+import CompositeDigitalHumanChat from '../components/CompositeDigitalHumanChat/index';
 import MobileBottomNav from '../components/MobileBottomNav';
 import DigitalHumanSection from '../components/DigitalHumanSection';
 import CRMErrorState from '../components/CRMErrorState';

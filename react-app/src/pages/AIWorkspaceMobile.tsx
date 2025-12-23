@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CompositeDigitalHumanChat from '../components/CompositeDigitalHumanChat';
+import CompositeDigitalHumanChat from '../components/CompositeDigitalHumanChat/index';
 
 const tabs = [
     { key: 'ai', label: 'AI对话', desc: '实时同步王志远的问答纪要。' },
