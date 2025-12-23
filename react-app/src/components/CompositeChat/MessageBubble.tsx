@@ -18,6 +18,13 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
     let extractedProfile = null;
     let displayContent = message.content;
 
+    // 🔥 Filter out [System Context] from user messages
+    if (message.role === 'user' && typeof message.content === 'string') {
+        // Remove everything from start up to and including the System Context block
+        // The format is: \n[System Context]\n...multiple lines...\n\nActual message
+        displayContent = message.content.replace(/^[\s\S]*?\[System Context\][\s\S]*?\n\n/, '').trim();
+    }
+
     if (message.role === 'ai' && typeof message.content === 'string') {
         try {
             const parsed = JSON.parse(message.content);
@@ -57,8 +64,10 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
                                     {message.content}
                                 </ReactMarkdown>
                             </div>
+                        ) : message.role === 'user' && typeof displayContent === 'string' ? (
+                            <div className="whitespace-pre-wrap">{displayContent}</div>
                         ) : (
-                            message.content
+                            displayContent
                         )}
                     </div>
                 </div>
