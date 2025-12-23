@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const multi_user_storage_1 = require("../../modules/session-management/multi-user-storage");
 const auto_naming_1 = require("../../modules/session-management/auto-naming");
+const message_formatter_1 = require("../modules/session-management/message-formatter");
 const auth_1 = require("../middleware/auth");
 const router = (0, express_1.Router)();
 /**
@@ -143,13 +144,16 @@ router.get('/sessions/:agentId', auth_1.authenticateToken, async (req, res) => {
         console.log(`[会话详情API] ✅ 找到会话:`);
         console.log(`  - 消息数量: ${messages.length}`);
         console.log(`  - 会话名称: ${meta.customName || '未命名'}`);
+        // 🔥 Format messages for frontend (includes tool calls)
+        const formattedMessages = (0, message_formatter_1.formatMessagesForFrontend)(messages);
+        console.log(`[会话详情API] 🎨 消息格式化完成: ${formattedMessages.length} 条`);
         res.json({
             ok: true,
             session: {
                 id: agentId,
                 name: meta.customName || (0, auto_naming_1.generateSessionTitle)(messages),
                 agentId,
-                messages,
+                messages: formattedMessages,
                 createdAt: meta.createdAt || meta.created,
                 updatedAt: meta.updatedAt || meta.updated,
                 messagesCount: messages.length

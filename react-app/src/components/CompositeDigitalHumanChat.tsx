@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 import { InputArea } from './DigitalHumanChat/InputArea';
-import { CustomerProfileCards, type CustomerProfile } from './CustomerInfoCards';
+import { type CustomerProfile } from './CustomerInfoCards';
 import ClientSelector from './ClientSelector';
 import type { ClientListItem } from '../services/clientApi';
 import {
@@ -13,12 +13,14 @@ import {
     CustomerDrawer,
     HistoryDrawer
 } from './CompositeChat';
+import { AIMessageContent } from './CompositeDigitalHumanChat/AIMessageContent';
 import { useClientSSE } from '../hooks/useClientSSE';
 import { getClientBySession } from '../services/clientApi';
 
 interface Message {
     role: 'user' | 'ai';
     content: string | React.ReactNode;
+    toolCalls?: any[];
 }
 
 interface CompositeDigitalHumanChatProps {
@@ -44,7 +46,6 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
     // Track the last client ID for which we sent the context preamble
-    const lastContextClientIdRef = useRef<number | null>(null);
 
     // 🔥 优先从 URL Hash 或 sessionStorage 获取 SessionId，保证刷新后不丢失上下文
     const getInitialSessionId = () => {
@@ -137,89 +138,22 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
         }
     }, [initialMessage, stage, onMessageConsumed]);
 
-    // Render message content with customer profile detection
-    const renderMessageContent = (text: string) => {
-        try {
-            const json = JSON.parse(text);
-            // 允许没有 name，只要我们当前已经有了 Profile (说明是增量更新)
-            if (json.customer_profile) {
-                const profileUpdates = json.customer_profile;
-
-                setCustomerProfile(prev => {
-                    const base = prev || {} as CustomerProfile;
-
-                    // 辅助函数：只有在有实际内容且不是“待确认”时合并
-                    const safeMerge = (newVal: any, oldVal: any) => {
-                        if (newVal === undefined || newVal === null || newVal === '待确认' || newVal === '') {
-                            return oldVal;
-                        }
-                        return newVal;
-                    };
-
-                    // 增量合并逻辑
-                    return {
-                        ...base,
-                        name: safeMerge(profileUpdates.name, base.name),
-                        role: safeMerge(profileUpdates.role, base.role),
-                        age: safeMerge(profileUpdates.age, base.age),
-                        annual_budget: safeMerge(profileUpdates.annual_budget, base.annual_budget),
-                        annual_income: safeMerge(profileUpdates.annual_income, base.annual_income),
-                        location: safeMerge(profileUpdates.location, base.location),
-                        marital_status: safeMerge(profileUpdates.marital_status, base.marital_status),
-
-                        risk_factors: profileUpdates.risk_factors?.length ? profileUpdates.risk_factors : (base.risk_factors || []),
-                        needs: profileUpdates.needs?.length ? profileUpdates.needs : (base.needs || []),
-                        resistances: profileUpdates.resistances?.length ? profileUpdates.resistances : (base.resistances || []),
-                        family_structure: profileUpdates.family_structure?.length ? profileUpdates.family_structure : (base.family_structure || []),
-                        follow_ups: profileUpdates.follow_ups?.length ? profileUpdates.follow_ups : (base.follow_ups || []),
-                        contacts: profileUpdates.contacts?.length ? profileUpdates.contacts : (base.contacts || []),
-
-                        // 特别注意：proposed_plans 只通过后端拉取(SSE触发)，不被 AI 的 JSON 覆盖
-                        proposed_plans: base.proposed_plans || []
-                    };
-                });
-
-                setIsCustomerMounted(true);
-
-                return (
-                    <div className="space-y-3">
-                        {/* 这里传入合并后的预览（由于状态更新是异步的，这里直接构造一个预览对象） */}
-                        <CustomerProfileCards data={json.customer_profile} />
-
-                        <div className="bg-green-50 border border-green-200 rounded-2xl p-3">
-                            <div className="flex items-start gap-2">
-                                <i className="fa-solid fa-circle-check text-green-500 mt-0.5"></i>
-                                <div className="flex-1">
-                                    <p className="text-xs font-bold text-green-700 mb-1">✅ 已更新客户信息为：</p>
-                                    <details className="text-xs">
-                                        <summary className="text-green-600 cursor-pointer hover:text-green-700 font-medium">
-                                            点击查看提取的JSON数据
-                                        </summary>
-                                        <pre className="mt-2 p-2 bg-white rounded border border-green-100 text-[11px] overflow-x-auto">
-                                            {JSON.stringify(profileUpdates, null, 2)}
-                                        </pre>
-                                    </details>
-                                </div>
-                            </div>
-                        </div>
-
-                        {json.thought && (
-                            <details className="mt-3">
-                                <summary className="text-xs text-gray-400 cursor-pointer hover:text-gray-600">查看分析过程</summary>
-                                <p className="text-xs text-gray-500 mt-2 pl-2 border-l-2 border-gray-200">{json.thought}</p>
-                            </details>
-                        )}
-                    </div>
-                );
-            }
-        } catch (e) {
-            // Not valid JSON, display as-is
-        }
+    // Render message content with AIMessageContent component
+    const renderMessageContent = (text: string, _toolCalls?: any[]) => {
+        // Even if no text, if there are tool calls, we want to render the bubble
+        // Note: toolCalls are handled by MessageBubble, not internal to AIMessageContent
 
         return (
-            <pre className="whitespace-pre-wrap text-[13px] leading-relaxed font-mono text-gray-900 break-words">
-                {text}
-            </pre>
+            <AIMessageContent
+                content={text || ''}
+                onSend={handleStartChat}
+                onUpdateProfile={(profile) => {
+                    if (profile) {
+                        setCustomerProfile(prev => ({ ...prev, ...profile } as CustomerProfile));
+                        setIsCustomerMounted(true);
+                    }
+                }}
+            />
         );
     };
 
@@ -233,9 +167,10 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
         const newMessages = [...messages, { role: 'user', content: msg }] as Message[];
         setMessages(newMessages);
 
-        setMessages(prev => [...prev, { role: 'ai', content: renderMessageContent('') }]);
+        setMessages(prev => [...prev, { role: 'ai', content: renderMessageContent(''), toolCalls: [] }]);
 
         let fullResponseText = '';
+        let currentToolCalls: any[] = [];
 
         try {
             const response = await fetch('/api/chat', {
@@ -272,13 +207,17 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
             const decoder = new TextDecoder();
             let buffer = '';
 
-            const updateBubble = (text: string) => {
+            const updateBubble = (text: string, toolCalls?: any[]) => {
                 setMessages(prev => {
                     const last = prev[prev.length - 1];
                     if (last && last.role === 'ai') {
                         return [
                             ...prev.slice(0, -1),
-                            { ...last, content: renderMessageContent(text) }
+                            {
+                                ...last,
+                                content: renderMessageContent(text, toolCalls || last.toolCalls),
+                                toolCalls: toolCalls || last.toolCalls
+                            }
                         ];
                     }
                     return prev;
@@ -329,14 +268,43 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
                                 }
                             }
 
-                            // Handle Tool Events
-                            if (currentEvent === 'tool') {
-                                console.log('🛠️ Tool Event Received:', data); // Log full tool data for debugging
+                            // Handle Tool Events (Real-time and Final)
+                            if (currentEvent === 'tool' || currentEvent === 'tool_start' || currentEvent === 'tool_end' || currentEvent === 'tool_call') {
+                                console.log(`🛠️ Tool Event [${currentEvent}]:`, data);
 
-                                // 🔥 工具事件现在只用于日志，实际更新通过SSE的client_updated事件触发
-                                // SSE会在后端完成数据库更新后推送，保证数据一致性
-                                if (data.name === 'update_client_intelligence') {
-                                    console.log('ℹ️ Client Intelligence工具已调用，等待SSE更新通知...');
+                                const toolId = data.id || (data.name + (data.index || ''));
+                                const rawState = (data.state || data.status || '').toLowerCase();
+                                const toolCall = {
+                                    id: toolId,
+                                    name: data.name,
+                                    status: (currentEvent === 'tool_start' ? 'running' :
+                                        (rawState === 'failed' ? 'failed' : 'success')) as 'running' | 'success' | 'failed',
+                                    args: data.args || data.input,
+                                    result: data.result || data.output,
+                                    timestamp: Date.now()
+                                };
+
+                                // Find existing tool call or add new one
+                                const existingIdx = currentToolCalls.findIndex(t => t.id === toolCall.id || t.name === toolCall.name);
+
+                                if (existingIdx > -1) {
+                                    // Merge if existing found
+                                    currentToolCalls[existingIdx] = {
+                                        ...currentToolCalls[existingIdx],
+                                        ...toolCall,
+                                        // Preserve args if we only got result in tool_end
+                                        args: toolCall.args || currentToolCalls[existingIdx].args
+                                    };
+                                } else {
+                                    currentToolCalls.push(toolCall);
+                                }
+
+                                updateBubble(fullResponseText, [...currentToolCalls]);
+
+                                // Side effects for specific tools
+                                if (data.name === 'update_client_intelligence' && (data.status === 'success' || data.state === 'success')) {
+                                    console.log('ℹ️ Client Intelligence工具已成功执行，触发数据刷新...');
+                                    setTimeout(loadClientData, 500);
                                 }
                             }
 

@@ -23,12 +23,4 @@ export declare function getAllAgentConfigs(): AgentConfig[];
  */
 export declare function hasAgentConfig(id: string): boolean;
 export * from './types';
-export { calculatorAgentConfig } from './calculator-agent';
-export { scheduleAssistantConfig } from './schedule-assistant';
-export { timetableAgentConfig } from './timetable-agent';
-export { timetableV2AgentConfig } from './timetable-v2-agent';
-export { careerGoalAgentConfig } from './career-goal-agent';
-export { reviewAgentConfig } from './review-agent';
-export { searchAgentConfig } from './search-agent';
-export { insureRecommandV1AgentConfig } from './insure-recommand-v1';
 export { insureRecommandV3AgentConfig } from './insure-recommand-v3';

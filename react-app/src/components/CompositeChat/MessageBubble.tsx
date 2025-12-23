@@ -15,7 +15,6 @@ interface MessageBubbleProps {
 }
 
 export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) => {
-    let extractedProfile = null;
     let displayContent = message.content;
 
     // 🔥 Filter out [System Context] from user messages
@@ -26,14 +25,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
     }
 
     if (message.role === 'ai' && typeof message.content === 'string') {
-        try {
-            const parsed = JSON.parse(message.content);
-            if (parsed.customer_profile && parsed.customer_profile.name) {
-                extractedProfile = parsed.customer_profile;
-            }
-        } catch (e) {
-            // Not JSON, normal text
-        }
+        // Redundant JSON parsing removed, handled by AIMessageContent
     }
 
     return (
@@ -72,12 +64,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
                     </div>
                 </div>
             </div>
-            {extractedProfile && (
-                <div className="ml-11 mt-2 bg-green-50 border-2 border-green-500 rounded-lg p-3">
-                    <p className="text-xs font-bold text-green-700 mb-2">✅ 已提取客户信息：</p>
-                    <pre className="text-[11px] bg-white p-2 rounded border border-green-200 overflow-x-auto">{JSON.stringify(extractedProfile, null, 2)}</pre>
-                </div>
-            )}
+            {/* Extracted profile display removed, handled by AIMessageContent */}
         </div>
     );
 };

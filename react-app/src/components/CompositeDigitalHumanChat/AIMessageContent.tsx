@@ -74,12 +74,14 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
         suggestedSteps: string[];
         profileUpdates: any;
         thinkContent: string | null;
+        recommendations: any[];
     }>({
         textContent: '',
         quickReplies: [],
         suggestedSteps: [],
         profileUpdates: null,
-        thinkContent: null
+        thinkContent: null,
+        recommendations: []
     });
 
     useEffect(() => {
@@ -88,28 +90,64 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
         let suggestedSteps: string[] = [];
         let profileUpdates: any = null;
         let thinkContent: string | null = null;
+        let recommendations: any[] = [];
 
         try {
             // 1. 尝试解析完整 JSON
             const json = JSON.parse(content);
 
-            if (json.content) textContent = json.content;
+            if (json.content || json.insight_summary) {
+                textContent = json.insight_summary || json.content;
+            }
+
             if (json.quick_replies && Array.isArray(json.quick_replies)) quickReplies = json.quick_replies;
-            if (json.suggested_next_steps && Array.isArray(json.suggested_next_steps)) suggestedSteps = json.suggested_next_steps;
+
+            // Handle both suggested_next_steps and next_actions
+            if (json.suggested_next_steps && Array.isArray(json.suggested_next_steps)) {
+                suggestedSteps = json.suggested_next_steps;
+            } else if (json.next_actions && Array.isArray(json.next_actions)) {
+                suggestedSteps = json.next_actions;
+            }
+
             if (json.customer_profile) profileUpdates = json.customer_profile;
             if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
 
+            if (json.recommendations && Array.isArray(json.recommendations)) {
+                recommendations = json.recommendations;
+            }
+
         } catch (e) {
-            // 2. 解析失败（可能是流式传输中），尝试使用正则提取 partial content
-            if (content.trim().startsWith('{')) {
-                const contentMatch = content.match(/"content"\s*:\s*"((?:[^"\\]|\\.)*)/);
-                if (contentMatch && contentMatch[1]) {
-                    try {
-                        textContent = JSON.parse(`"${contentMatch[1]}"`);
-                    } catch (err) {
-                        textContent = contentMatch[1].replace(/\\n/g, '\n').replace(/\\"/g, '"');
+            // 2. 解析失败（可能是流式传输中，或者包含 Markdown 代码块）
+            // 尝试通过正则寻找所有的 JSON 块
+            const jsonBlockMatch = content.match(/```json\s*(\{[\s\S]*?\})\s*```/) || content.match(/(\{[\s\S]*\})/);
+
+            if (jsonBlockMatch) {
+                const rawJson = jsonBlockMatch[1];
+                try {
+                    // 尝试解析提取出的 JSON
+                    const json = JSON.parse(rawJson);
+                    if (json.content || json.insight_summary) textContent = json.insight_summary || json.content;
+                    if (json.quick_replies) quickReplies = json.quick_replies;
+                    if (json.suggested_next_steps || json.next_actions) suggestedSteps = json.suggested_next_steps || json.next_actions;
+                    if (json.customer_profile) profileUpdates = json.customer_profile;
+                    if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
+                    if (json.recommendations) recommendations = json.recommendations;
+                } catch (parseErr) {
+                    // 正则回退提取特定字段 (用于流式输出)
+                    const insightMatch = rawJson.match(/"insight_summary"\s*:\s*"((?:[^"\\]|\\.)*)/);
+                    const contentMatch = rawJson.match(/"content"\s*:\s*"((?:[^"\\]|\\.)*)/);
+                    if (insightMatch || contentMatch) {
+                        const val = (insightMatch ? insightMatch[1] : contentMatch![1]);
+                        try {
+                            textContent = JSON.parse(`"${val}"`);
+                        } catch (err) {
+                            textContent = val.replace(/\\n/g, '\n').replace(/\\"/g, '"');
+                        }
                     }
                 }
+            } else {
+                // 3. 完全没有 JSON 迹象，显示原文本
+                textContent = content;
             }
         }
 
@@ -119,7 +157,8 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             quickReplies,
             suggestedSteps,
             profileUpdates,
-            thinkContent
+            thinkContent,
+            recommendations: recommendations || []
         });
 
         // 触发外部档案更新 (副作用)
@@ -173,6 +212,38 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
                     {parsedData.textContent}
                 </ReactMarkdown>
             </div>
+
+            {/* 3.5 推荐产品卡片 (如果是 V3 Agent 的推荐结构) */}
+            {parsedData.recommendations && parsedData.recommendations.length > 0 && (
+                <div className="mt-4 space-y-3 animate-fadeIn">
+                    <p className="text-xs font-bold text-orange-500 mb-2 pl-1 tracking-wider uppercase flex items-center gap-2">
+                        <i className="fa-solid fa-star"></i> 为您甄选的保险产品
+                    </p>
+                    <div className="space-y-3">
+                        {parsedData.recommendations.map((prod, idx) => (
+                            <div key={idx} className="bg-white border-2 border-orange-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex justify-between items-start mb-2">
+                                    <span className="bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full text-[10px] font-bold border border-orange-200 uppercase">
+                                        {prod.product_type}
+                                    </span>
+                                </div>
+                                <h4 className="font-bold text-gray-800 text-sm mb-1">{prod.product_name}</h4>
+                                <p className="text-xs text-gray-600 leading-relaxed mb-3">{prod.customer_fit}</p>
+
+                                {prod.coverage_highlights && (
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {prod.coverage_highlights.map((h: string, i: number) => (
+                                            <span key={i} className="bg-blue-50 text-blue-600 px-2 py-0.5 rounded-lg text-[10px] font-medium border border-blue-100 italic">
+                                                #{h}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             {/* 4. 快捷回复按钮 */}
             {parsedData.quickReplies.length > 0 && (
