@@ -4,70 +4,23 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { CustomerProfileCards } from '../CustomerInfoCards';
 
+// Import refactored parts and utils
+import { tryParsePartialJson, knownKeys } from './utils/messageParser';
+import { QuickReplies } from './parts/QuickReplies';
+import { SuggestedSteps } from './parts/SuggestedSteps';
+import { RecommendationList } from './parts/RecommendationList';
+import { SalesPitchCard } from './parts/SalesPitchCard';
+
 // Re-export ToolCall type for backward compatibility
 export type { ToolCall } from './ToolStatus';
-
-interface QuickReplyProps {
-    replies: string[];
-    onReply: (reply: string) => void;
-}
-
-const QuickReplies: React.FC<QuickReplyProps> = ({ replies, onReply }) => (
-    <div className="flex flex-wrap gap-2 mt-3 animate-fadeIn">
-        {replies.map((reply, idx) => (
-            <button
-                key={idx}
-                onClick={() => onReply(reply)}
-                className="px-4 py-2 bg-[#F0F7FF] text-blue-700 text-xs font-semibold rounded-xl border border-blue-100 shadow-sm hover:shadow-md hover:bg-[#E0EFFF] active:scale-95 transition-all duration-200"
-            >
-                {reply}
-            </button>
-        ))}
-    </div>
-);
-
-interface SuggestedStepsProps {
-    steps: string[];
-    onStep: (step: string) => void;
-}
-
-const SuggestedSteps: React.FC<SuggestedStepsProps> = ({ steps, onStep }) => (
-    <div className="mt-4 pt-3 border-t border-gray-100 animate-fadeIn">
-        <p className="text-xs font-bold text-gray-400 mb-3 pl-1 tracking-wide uppercase">Suggested Actions</p>
-        <div className="flex flex-col gap-2">
-            {steps.map((step, idx) => (
-                <button
-                    key={idx}
-                    onClick={() => onStep(step)}
-                    className="group relative overflow-hidden text-left w-full px-4 py-3 bg-white text-gray-700 text-sm font-medium rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-200 flex items-center justify-between"
-                >
-                    <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    <span className="relative z-10 flex-1">{step}</span>
-                    <i className="relative z-10 fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-500 transition-colors duration-200 -translate-x-2 group-hover:translate-x-0 transform" />
-                </button>
-            ))}
-        </div>
-    </div>
-);
 
 interface AIMessageContentProps {
     content: string;
     onSend: (msg: string) => void;
-    toolCalls?: any[]; // Added to fix TS error
+    toolCalls?: any[];
     onUpdateProfile?: (profile: any) => void;
 }
 
-/**
- * AI 消息内容组件
- * 负责解析 JSON 响应并渲染：
- * 1. 文本内容 (ReactMarkdown)
- * 2. 思考过程 (Think content)
- * 3. 客户档案更新卡片 (CustomerProfileCards)
- * 4. 快捷回复 (QuickReplies)
- * 5. 建议下一步 (SuggestedSteps)
- * 
- * 注意: 工具调用由 MessageBubble 组件处理，不在这里渲染
- */
 export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onSend, onUpdateProfile }) => {
     const [parsedData, setParsedData] = useState<{
         textContent: string;
@@ -97,68 +50,105 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
         let salesPitch: any = null;
 
         try {
-            // 1. 尝试解析完整 JSON
-            const json = JSON.parse(content);
+            let json: any = null;
+            try {
+                const trimmed = content.trim();
 
-            if (json.content || json.insight_summary) {
-                textContent = json.insight_summary || json.content;
-            }
-
-            if (json.quick_replies && Array.isArray(json.quick_replies)) quickReplies = json.quick_replies;
-
-            // Handle both suggested_next_steps and next_actions
-            if (json.suggested_next_steps && Array.isArray(json.suggested_next_steps)) {
-                suggestedSteps = json.suggested_next_steps;
-            } else if (json.next_actions && Array.isArray(json.next_actions)) {
-                suggestedSteps = json.next_actions;
-            }
-
-            if (json.customer_profile) profileUpdates = json.customer_profile;
-            if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
-
-            if (json.recommendations && Array.isArray(json.recommendations)) {
-                recommendations = json.recommendations;
-            }
-
-            if (json.sales_pitch) salesPitch = json.sales_pitch;
-
-        } catch (e) {
-            // 2. 解析失败（可能是流式传输中，或者包含 Markdown 代码块）
-            // 尝试通过正则寻找所有的 JSON 块
-            const jsonBlockMatch = content.match(/```json\s*(\{[\s\S]*?\})\s*```/) || content.match(/(\{[\s\S]*\})/);
-
-            if (jsonBlockMatch) {
-                const rawJson = jsonBlockMatch[1];
-                try {
-                    // 尝试解析提取出的 JSON
-                    const json = JSON.parse(rawJson);
-                    if (json.content || json.insight_summary) textContent = json.insight_summary || json.content;
-                    if (json.quick_replies) quickReplies = json.quick_replies;
-                    if (json.suggested_next_steps || json.next_actions) suggestedSteps = json.suggested_next_steps || json.next_actions;
-                    if (json.customer_profile) profileUpdates = json.customer_profile;
-                    if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
-                    if (json.recommendations) recommendations = json.recommendations;
-                    if (json.sales_pitch) salesPitch = json.sales_pitch;
-                } catch (parseErr) {
-                    // 正则回退提取特定字段 (用于流式输出)
-                    const insightMatch = rawJson.match(/"insight_summary"\s*:\s*"((?:[^"\\]|\\.)*)/);
-                    const contentMatch = rawJson.match(/"content"\s*:\s*"((?:[^"\\]|\\.)*)/);
-                    if (insightMatch || contentMatch) {
-                        const val = (insightMatch ? insightMatch[1] : contentMatch![1]);
-                        try {
-                            textContent = JSON.parse(`"${val}"`);
-                        } catch (err) {
-                            textContent = val.replace(/\\n/g, '\n').replace(/\\"/g, '"');
+                if (trimmed.startsWith('{')) {
+                    json = JSON.parse(content);
+                } else if (trimmed.startsWith('```json')) {
+                    // Handled below
+                } else {
+                    const hasJsonResponse = knownKeys.some(key => content.includes(key));
+                    if (hasJsonResponse) {
+                        if (!trimmed.startsWith('{') && trimmed.includes(':')) {
+                            json = tryParsePartialJson('{' + content);
                         }
                     }
                 }
+            } catch {
+                if (content.trim().startsWith('{')) {
+                    json = tryParsePartialJson(content);
+                } else {
+                    json = tryParsePartialJson('{' + content);
+                }
+            }
+
+            if (!json) {
+                const jsonBlockMatch = content.match(/```json\s*(\{[\s\S]*?\})\s*```/) || content.match(/(\{[\s\S]*\})/);
+                if (jsonBlockMatch) {
+                    const rawJson = jsonBlockMatch[1];
+                    json = tryParsePartialJson(rawJson);
+                }
+            }
+
+            if (json) {
+                if (json.content || json.insight_summary) {
+                    textContent = json.insight_summary || json.content;
+                }
+
+                if (json.quick_replies && Array.isArray(json.quick_replies)) quickReplies = json.quick_replies;
+
+                if (json.suggested_next_steps && Array.isArray(json.suggested_next_steps)) {
+                    suggestedSteps = json.suggested_next_steps;
+                } else if (json.next_actions && Array.isArray(json.next_actions)) {
+                    suggestedSteps = json.next_actions;
+                }
+
+                if (json.customer_profile) profileUpdates = json.customer_profile;
+                if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
+
+                if (json.recommendations && Array.isArray(json.recommendations)) {
+                    recommendations = json.recommendations;
+                }
+
+                if (json.sales_pitch) salesPitch = json.sales_pitch;
             } else {
-                // 3. 完全没有 JSON 迹象，显示原文本
+                const insightMatch = content.match(/"insight_summary"\s*:\s*"((?:[^"\\]|\\.)*)/);
+                const contentMatch = content.match(/"content"\s*:\s*"((?:[^"\\]|\\.)*)/);
+                if (insightMatch || contentMatch) {
+                    const val = (insightMatch ? insightMatch[1] : contentMatch![1]);
+                    try {
+                        textContent = JSON.parse(`"${val}"`);
+                    } catch {
+                        textContent = val.replace(/\\n/g, '\n').replace(/\\"/g, '"');
+                    }
+                }
+
+                const salesPitchIdx = content.indexOf('"sales_pitch"');
+                if (salesPitchIdx > -1) {
+                    const subStr = content.substring(salesPitchIdx);
+                    const valueStart = subStr.indexOf(':');
+                    if (valueStart > -1) {
+                        const potentialJson = subStr.substring(valueStart + 1).trim();
+                        if (potentialJson.startsWith('{')) {
+                            const repairedPitch = tryParsePartialJson(potentialJson);
+                            if (repairedPitch) {
+                                salesPitch = repairedPitch;
+                            }
+                        }
+                    }
+                }
+
+                const hasJsonResponse = knownKeys.some(key => content.includes(key));
+
+                if (!textContent && hasJsonResponse) {
+                    textContent = '';
+                } else if (!textContent && !hasJsonResponse && !content.trim().startsWith('{')) {
+                    textContent = content;
+                }
+            }
+
+        } catch (e) {
+            console.warn('Parse logic error:', e);
+            const hasJsonResponse = knownKeys.some(key => content.includes(key));
+            if (!hasJsonResponse && !content.trim().startsWith('{')) {
                 textContent = content;
+            } else {
+                textContent = '';
             }
         }
 
-        // 仅在数据真正变化时更新
         setParsedData({
             textContent,
             quickReplies,
@@ -169,7 +159,6 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             salesPitch
         });
 
-        // 触发外部档案更新 (副作用)
         if (profileUpdates && onUpdateProfile) {
             onUpdateProfile(profileUpdates);
         }
@@ -182,7 +171,7 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             {parsedData.profileUpdates && (
                 <div className="mb-2 w-full">
                     <CustomerProfileCards data={parsedData.profileUpdates} />
-                    <div className="bg-[#F2FAF5] border border-green-200 rounded-2xl p-3 mt-2 shadow-sm">
+                    <div className="mb-2 bg-[#F2FAF5] border border-green-200 rounded-xl overflow-hidden w-full max-w-full shadow-sm hover:shadow-md transition-all duration-300 p-3 mt-2">
                         <div className="flex items-start gap-2">
                             <i className="fa-solid fa-circle-check text-green-500 mt-0.5" />
                             <div className="flex-1">
@@ -223,89 +212,12 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
 
             {/* 3.5 推荐产品卡片 (如果是 V3 Agent 的推荐结构) */}
             {parsedData.recommendations && parsedData.recommendations.length > 0 && (
-                <div className="mt-4 space-y-3 animate-fadeIn">
-                    <p className="text-xs font-bold text-orange-500 mb-2 pl-1 tracking-wider uppercase flex items-center gap-2">
-                        <i className="fa-solid fa-star"></i> 为您甄选的保险产品
-                    </p>
-                    <div className="space-y-3">
-                        {parsedData.recommendations.map((prod, idx) => (
-                            <div key={idx} className="bg-white border border-gray-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow">
-                                <div className="flex justify-between items-start mb-2">
-                                    <span className="bg-[#FFF9F2] text-orange-600 px-2 py-0.5 rounded-full text-[10px] font-bold border border-orange-200 uppercase">
-                                        {prod.product_type}
-                                    </span>
-                                </div>
-                                <h4 className="font-bold text-gray-800 text-sm mb-1">{prod.product_name}</h4>
-                                <p className="text-xs text-gray-600 leading-relaxed mb-3">{prod.customer_fit}</p>
-
-                                {prod.recommendation_reason && (
-                                    <div className="mb-3 p-2 bg-orange-50 border border-orange-100 rounded-lg">
-                                        <p className="text-[10px] font-bold text-orange-400 mb-1 flex items-center gap-1">
-                                            <i className="fa-solid fa-thumbs-up"></i> 核心推荐理由
-                                        </p>
-                                        <p className="text-xs text-gray-700 italic">
-                                            "{prod.recommendation_reason}"
-                                        </p>
-                                    </div>
-                                )}
-
-                                {prod.coverage_highlights && (
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {prod.coverage_highlights.map((h: string, i: number) => (
-                                            <span key={i} className="bg-[#F0F7FF] text-blue-600 px-2 py-0.5 rounded-lg text-[10px] font-medium border border-blue-100 italic">
-                                                #{h}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <RecommendationList recommendations={parsedData.recommendations} />
             )}
 
             {/* 3.6 推荐推销话术 (Sales Pitch) */}
             {parsedData.salesPitch && (
-                <div className="mt-4 p-4 bg-[#F0F7FF] border border-blue-100 rounded-[20px] shadow-sm animate-fadeIn">
-                    <div className="flex items-center gap-2 mb-3">
-                        <div className="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xs">
-                            <i className="fa-solid fa-microphone-lines"></i>
-                        </div>
-                        <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">推荐沟通话术</span>
-                        {parsedData.salesPitch.tone && (
-                            <span className="ml-auto bg-blue-100 text-blue-600 px-2 py-0.5 rounded text-[10px] font-bold">
-                                {parsedData.salesPitch.tone}
-                            </span>
-                        )}
-                    </div>
-
-                    {parsedData.salesPitch.key_points && parsedData.salesPitch.key_points.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-3">
-                            {parsedData.salesPitch.key_points.map((pt: string, i: number) => (
-                                <span key={i} className="text-[10px] text-blue-500 font-medium flex items-center gap-1">
-                                    <i className="fa-solid fa-circle-check text-[8px]"></i> {pt}
-                                </span>
-                            ))}
-                        </div>
-                    )}
-
-                    <div className="bg-white rounded-xl p-3 border border-blue-50 relative">
-                        <i className="fa-solid fa-quote-left absolute -top-2 -left-1 text-blue-200 text-sm opacity-50"></i>
-                        <p className="text-sm text-gray-700 italic leading-6">
-                            "{parsedData.salesPitch.script}"
-                        </p>
-                        <button
-                            onClick={() => {
-                                navigator.clipboard.writeText(parsedData.salesPitch.script);
-                                // Optional: add a temporary "Copied!" toast/state
-                            }}
-                            className="absolute bottom-1 right-2 text-blue-400 hover:text-blue-600 p-1"
-                            title="复制话术"
-                        >
-                            <i className="fa-regular fa-copy text-xs"></i>
-                        </button>
-                    </div>
-                </div>
+                <SalesPitchCard data={parsedData.salesPitch} />
             )}
 
             {/* 4. 快捷回复按钮 */}
