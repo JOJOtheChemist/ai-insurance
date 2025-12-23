@@ -5,6 +5,7 @@
 import { Router } from 'express';
 import { multiUserStorage } from '../../modules/session-management/multi-user-storage';
 import { generateSessionTitle, extractMessageContent } from '../../modules/session-management/auto-naming';
+import { formatMessagesForFrontend } from '../modules/session-management/message-formatter';
 import { authenticateToken, generateToken } from '../middleware/auth';
 
 const router = Router();
@@ -67,16 +68,16 @@ router.get('/sessions', authenticateToken, async (req, res) => {
   try {
     // 从JWT token获取用户ID
     const userId = req.user?.userId || req.query.userId as string;
-    
+
     console.log(`[会话API] 🔍 获取会话列表请求:`);
     console.log(`  - 来自JWT的userId: ${req.user?.userId}`);
     console.log(`  - 来自query的userId: ${req.query.userId}`);
     console.log(`  - 最终使用的userId: ${userId}`);
     console.log(`  - req.user对象:`, JSON.stringify(req.user, null, 2));
-    
+
     const sessionIds = multiUserStorage.getAllSessionIds(userId);
     console.log(`[会话API] 📋 找到 ${sessionIds.length} 个会话ID:`, sessionIds);
-    
+
     const sessions: any[] = [];
 
     for (const agentId of sessionIds) {
@@ -109,14 +110,14 @@ router.get('/sessions', authenticateToken, async (req, res) => {
         console.error(`读取会话失败 (${agentId}):`, error);
       }
     }
-    
+
     res.json({
       ok: true,
       sessions,
       total: sessions.length,
       userId,
-      message: sessions.length > 0 
-        ? `成功读取 ${sessions.length} 个会话 (用户: ${userId})` 
+      message: sessions.length > 0
+        ? `成功读取 ${sessions.length} 个会话 (用户: ${userId})`
         : `暂无会话数据 (用户: ${userId})`
     });
   } catch (error: any) {
@@ -154,10 +155,14 @@ router.get('/sessions/:agentId', authenticateToken, async (req, res) => {
 
     const meta = multiUserStorage.readMeta(userId, agentId);
     const messages = multiUserStorage.readMessages(userId, agentId);
-    
+
     console.log(`[会话详情API] ✅ 找到会话:`);
     console.log(`  - 消息数量: ${messages.length}`);
     console.log(`  - 会话名称: ${meta.customName || '未命名'}`);
+
+    // 🔥 Format messages for frontend (includes tool calls)
+    const formattedMessages = formatMessagesForFrontend(messages);
+    console.log(`[会话详情API] 🎨 消息格式化完成: ${formattedMessages.length} 条`);
 
     res.json({
       ok: true,
@@ -165,7 +170,7 @@ router.get('/sessions/:agentId', authenticateToken, async (req, res) => {
         id: agentId,
         name: meta.customName || generateSessionTitle(messages),
         agentId,
-        messages,
+        messages: formattedMessages,
         createdAt: meta.createdAt || meta.created,
         updatedAt: meta.updatedAt || meta.updated,
         messagesCount: messages.length
