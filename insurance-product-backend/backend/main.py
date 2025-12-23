@@ -91,11 +91,12 @@ from models import user, user_profile, invite_code, client, family_member, follo
 Base.metadata.create_all(bind=engine)
 
 # 注册路由
-from routers import users, invite_codes, clients
+from routers import users, invite_codes, clients, sessions
 # ...
 app.include_router(users.router, prefix="/api/v1")
 app.include_router(invite_codes.router, prefix="/api/v1")
 app.include_router(clients.router, prefix="/api/v1")
+app.include_router(sessions.router, prefix="/api/v1")
 # ------------------
 
 # 配置 CORS

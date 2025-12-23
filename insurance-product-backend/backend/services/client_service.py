@@ -133,6 +133,15 @@ class ClientService:
 
     @staticmethod
     def submit_plan(data: PlanSubmissionSchema, db: Session):
+        # 0. 确保 Session 存在 (关键修复: 防止外键约束失败)
+        session = db.query(ChatSession).filter(ChatSession.id == data.sessionId).first()
+        if not session:
+            # 如果 Session 不存在，先创建一个默认的
+            session = ChatSession(id=data.sessionId, salesperson_id=1) # 默认归属给ID为1的销售
+            db.add(session)
+            db.commit()
+            db.refresh(session)
+
         # 1. 查找客户 (按姓名和 Session 关联)
         link = db.query(SessionClientLink).filter(
             SessionClientLink.session_id == data.sessionId
@@ -275,3 +284,26 @@ class ClientService:
             "groups": client_groups,
             "unassigned": unassigned_sessions
         }
+
+    @staticmethod
+    def bind_session(session_id: str, client_id: int, db: Session):
+        """建立 Session 和 Client 的关联"""
+        # 1. 确保 Session 存在
+        session = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+        if not session:
+            session = ChatSession(id=session_id, salesperson_id=1) # 默认
+            db.add(session)
+            db.commit()
+        
+        # 2. 检查是否已关联
+        link = db.query(SessionClientLink).filter(
+            SessionClientLink.session_id == session_id,
+            SessionClientLink.client_id == client_id
+        ).first()
+        
+        if not link:
+            link = SessionClientLink(session_id=session_id, client_id=client_id)
+            db.add(link)
+        
+        db.commit()
+        return {"status": "success", "session_id": session_id, "client_id": client_id}

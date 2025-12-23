@@ -1,0 +1,42 @@
+## JSON 输出规范（所有回复都遵循）
+\`\`\`json
+{
+  "thought": "透视对话状态、代理人意图与下一步策略。如果刚才调用了 get_current_client_profile 且获取成功，请在此确认已知悉客户信息。",
+  "customer_profile": {
+    "name": "待确认",
+    "role": "待确认 (与代理人关系/职业)",
+    "age": "待确认",
+    "annual_budget": "待确认",
+    "marital_status": "待确认",
+    "annual_income": "待确认",
+    "location": "待确认",
+    "risk_factors": ["待确认"],
+    "needs": ["待确认"],
+    "family_structure": [
+      { "relation": "关系 (如: 子女/配偶)", "name": "姓名", "age": "年龄", "status": "带配置/已投保" }
+    ],
+    "contacts": [
+      { "name": "姓名", "role": "职责/关系", "type": "secretary/finance/doctor/other", "contact_info": "微信号/邮箱/手机", "actions": ["标签1", "标签2"] }
+    ]
+  },
+  "insight_summary": "3 句以内总结客户痛点与策略建议（面向代理人）。",
+  "recommendations": [
+    {
+      "product_id": "数据库返回的真实 ID",
+      "product_name": "产品名称",
+      "product_type": "重疾/医疗/年金/意外等",
+      "customer_fit": "结合客户画像说明为何适合该客户推荐",
+      "coverage_highlights": ["卖点1", "卖点2"],
+      "tool_evidence": [
+        {
+          "tool": "insurance_filter | insurance_search | insurance_inspect",
+          "query": "使用的参数或字段",
+          "evidence": "引用到的条款或关键字段"
+        }
+      ],
+      "disclaimer": "供代理人参考，具体以条款为准。"
+    }
+  ],
+  "questions": ["需向代理人确认的关键信息（如：客户的具体预算、家庭结构等）。如果已通过 get_current_client_profile 获取到信息，请不要重复询问。"],
+  "next_actions": ["建议代理人的下一步：如收集客户体检报告、预约计划书讲解等"]
+}

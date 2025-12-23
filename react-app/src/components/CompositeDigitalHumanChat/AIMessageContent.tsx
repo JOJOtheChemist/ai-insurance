@@ -18,7 +18,7 @@ const QuickReplies: React.FC<QuickReplyProps> = ({ replies, onReply }) => (
             <button
                 key={idx}
                 onClick={() => onReply(reply)}
-                className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 text-xs font-semibold rounded-xl border border-blue-100 shadow-sm hover:shadow-md hover:from-blue-100 hover:to-indigo-100 active:scale-95 transition-all duration-200"
+                className="px-4 py-2 bg-[#F0F7FF] text-blue-700 text-xs font-semibold rounded-xl border border-blue-100 shadow-sm hover:shadow-md hover:bg-[#E0EFFF] active:scale-95 transition-all duration-200"
             >
                 {reply}
             </button>
@@ -53,6 +53,7 @@ const SuggestedSteps: React.FC<SuggestedStepsProps> = ({ steps, onStep }) => (
 interface AIMessageContentProps {
     content: string;
     onSend: (msg: string) => void;
+    toolCalls?: any[]; // Added to fix TS error
     onUpdateProfile?: (profile: any) => void;
 }
 
@@ -75,13 +76,15 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
         profileUpdates: any;
         thinkContent: string | null;
         recommendations: any[];
+        salesPitch: any | null;
     }>({
         textContent: '',
         quickReplies: [],
         suggestedSteps: [],
         profileUpdates: null,
         thinkContent: null,
-        recommendations: []
+        recommendations: [],
+        salesPitch: null
     });
 
     useEffect(() => {
@@ -91,6 +94,7 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
         let profileUpdates: any = null;
         let thinkContent: string | null = null;
         let recommendations: any[] = [];
+        let salesPitch: any = null;
 
         try {
             // 1. 尝试解析完整 JSON
@@ -116,6 +120,8 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
                 recommendations = json.recommendations;
             }
 
+            if (json.sales_pitch) salesPitch = json.sales_pitch;
+
         } catch (e) {
             // 2. 解析失败（可能是流式传输中，或者包含 Markdown 代码块）
             // 尝试通过正则寻找所有的 JSON 块
@@ -132,6 +138,7 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
                     if (json.customer_profile) profileUpdates = json.customer_profile;
                     if (json.thought || json.thinking) thinkContent = json.thought || json.thinking;
                     if (json.recommendations) recommendations = json.recommendations;
+                    if (json.sales_pitch) salesPitch = json.sales_pitch;
                 } catch (parseErr) {
                     // 正则回退提取特定字段 (用于流式输出)
                     const insightMatch = rawJson.match(/"insight_summary"\s*:\s*"((?:[^"\\]|\\.)*)/);
@@ -158,7 +165,8 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             suggestedSteps,
             profileUpdates,
             thinkContent,
-            recommendations: recommendations || []
+            recommendations: recommendations || [],
+            salesPitch
         });
 
         // 触发外部档案更新 (副作用)
@@ -174,7 +182,7 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
             {parsedData.profileUpdates && (
                 <div className="mb-2 w-full">
                     <CustomerProfileCards data={parsedData.profileUpdates} />
-                    <div className="bg-green-50 border border-green-200 rounded-2xl p-3 mt-2 shadow-sm">
+                    <div className="bg-[#F2FAF5] border border-green-200 rounded-2xl p-3 mt-2 shadow-sm">
                         <div className="flex items-start gap-2">
                             <i className="fa-solid fa-circle-check text-green-500 mt-0.5" />
                             <div className="flex-1">
@@ -221,19 +229,30 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
                     </p>
                     <div className="space-y-3">
                         {parsedData.recommendations.map((prod, idx) => (
-                            <div key={idx} className="bg-white border-2 border-orange-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow">
+                            <div key={idx} className="bg-white border border-gray-100 rounded-[20px] p-4 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex justify-between items-start mb-2">
-                                    <span className="bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full text-[10px] font-bold border border-orange-200 uppercase">
+                                    <span className="bg-[#FFF9F2] text-orange-600 px-2 py-0.5 rounded-full text-[10px] font-bold border border-orange-200 uppercase">
                                         {prod.product_type}
                                     </span>
                                 </div>
                                 <h4 className="font-bold text-gray-800 text-sm mb-1">{prod.product_name}</h4>
                                 <p className="text-xs text-gray-600 leading-relaxed mb-3">{prod.customer_fit}</p>
 
+                                {prod.recommendation_reason && (
+                                    <div className="mb-3 p-2 bg-orange-50 border border-orange-100 rounded-lg">
+                                        <p className="text-[10px] font-bold text-orange-400 mb-1 flex items-center gap-1">
+                                            <i className="fa-solid fa-thumbs-up"></i> 核心推荐理由
+                                        </p>
+                                        <p className="text-xs text-gray-700 italic">
+                                            "{prod.recommendation_reason}"
+                                        </p>
+                                    </div>
+                                )}
+
                                 {prod.coverage_highlights && (
                                     <div className="flex flex-wrap gap-1.5">
                                         {prod.coverage_highlights.map((h: string, i: number) => (
-                                            <span key={i} className="bg-blue-50 text-blue-600 px-2 py-0.5 rounded-lg text-[10px] font-medium border border-blue-100 italic">
+                                            <span key={i} className="bg-[#F0F7FF] text-blue-600 px-2 py-0.5 rounded-lg text-[10px] font-medium border border-blue-100 italic">
                                                 #{h}
                                             </span>
                                         ))}
@@ -241,6 +260,50 @@ export const AIMessageContent: React.FC<AIMessageContentProps> = ({ content, onS
                                 )}
                             </div>
                         ))}
+                    </div>
+                </div>
+            )}
+
+            {/* 3.6 推荐推销话术 (Sales Pitch) */}
+            {parsedData.salesPitch && (
+                <div className="mt-4 p-4 bg-[#F0F7FF] border border-blue-100 rounded-[20px] shadow-sm animate-fadeIn">
+                    <div className="flex items-center gap-2 mb-3">
+                        <div className="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xs">
+                            <i className="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">推荐沟通话术</span>
+                        {parsedData.salesPitch.tone && (
+                            <span className="ml-auto bg-blue-100 text-blue-600 px-2 py-0.5 rounded text-[10px] font-bold">
+                                {parsedData.salesPitch.tone}
+                            </span>
+                        )}
+                    </div>
+
+                    {parsedData.salesPitch.key_points && parsedData.salesPitch.key_points.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-3">
+                            {parsedData.salesPitch.key_points.map((pt: string, i: number) => (
+                                <span key={i} className="text-[10px] text-blue-500 font-medium flex items-center gap-1">
+                                    <i className="fa-solid fa-circle-check text-[8px]"></i> {pt}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
+                    <div className="bg-white rounded-xl p-3 border border-blue-50 relative">
+                        <i className="fa-solid fa-quote-left absolute -top-2 -left-1 text-blue-200 text-sm opacity-50"></i>
+                        <p className="text-sm text-gray-700 italic leading-6">
+                            "{parsedData.salesPitch.script}"
+                        </p>
+                        <button
+                            onClick={() => {
+                                navigator.clipboard.writeText(parsedData.salesPitch.script);
+                                // Optional: add a temporary "Copied!" toast/state
+                            }}
+                            className="absolute bottom-1 right-2 text-blue-400 hover:text-blue-600 p-1"
+                            title="复制话术"
+                        >
+                            <i className="fa-regular fa-copy text-xs"></i>
+                        </button>
                     </div>
                 </div>
             )}

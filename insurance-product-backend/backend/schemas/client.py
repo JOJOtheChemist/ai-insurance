@@ -41,3 +41,7 @@ class IntelligenceUpdateSchema(BaseModel):
     familyMembers: Optional[List[FamilyMemberSchema]] = None
     # 跟进摘要
     followUpSummary: Optional[str] = None
+
+class SessionBindSchema(BaseModel):
+    session_id: str
+    client_id: int

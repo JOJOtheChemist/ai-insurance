@@ -495,7 +495,7 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
     };
 
     return (
-        <div className="h-full w-full relative bg-[#F9FAFB] overflow-hidden font-sans">
+        <div className="h-full w-full relative bg-[#F5F5F7] overflow-hidden font-sans">
             {/* Compact Header (Stage 2) */}
             <CompactHeader
                 stage={stage}

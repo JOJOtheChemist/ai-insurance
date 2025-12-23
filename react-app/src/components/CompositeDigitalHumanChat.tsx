@@ -403,7 +403,7 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
     };
 
     return (
-        <div className="h-full w-full relative bg-[#F9FAFB] overflow-hidden font-sans">
+        <div className="h-full w-full relative bg-[#FFFBF9] overflow-hidden font-sans">
             {/* Compact Header (Stage 2) */}
             <CompactHeader
                 stage={stage}
@@ -425,7 +425,12 @@ const CompositeDigitalHumanChat: React.FC<CompositeDigitalHumanChatProps> = ({ i
 
             {/* Chat Sheet Container */}
             <div
-                className={`flex flex-col absolute left-0 w-full bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.15)] transition-all duration-600 cubic-bezier(0.34, 1.56, 0.64, 1) z-20 ${getChatSheetClasses()}`}
+                className={`flex flex-col absolute left-0 w-full shadow-[0_-10px_40px_rgba(0,0,0,0.1)] transition-all duration-600 cubic-bezier(0.34, 1.56, 0.64, 1) z-20 ${getChatSheetClasses()}`}
+                style={{
+                    backgroundColor: '#FFF9F6',
+                    backgroundImage: 'radial-gradient(circle at 1px 1px, #FFEDD5 1.5px, transparent 0)',
+                    backgroundSize: '24px 24px'
+                }}
             >
                 {/* Handle (Start only) */}
                 <div className={`w-full flex justify-center pt-3 pb-1 shrink-0 ${stage === 2 ? 'hidden' : ''}`}>

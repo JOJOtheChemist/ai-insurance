@@ -22,7 +22,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
     return (
         <div
             ref={chatContainerRef}
-            className={`px-4 flex-1 overflow-y-auto pt-2 space-y-4 pb-24 ${stage > 0 ? 'block animate-[fadeIn_0.5s_forwards]' : 'hidden'}`}
+            className={`px-4 flex-1 overflow-y-auto pt-2 space-y-4 pb-24 bg-transparent ${stage > 0 ? 'block animate-[fadeIn_0.5s_forwards]' : 'hidden'}`}
         >
             {messages.map((msg, idx) => (
                 <MessageBubble key={idx} message={msg} index={idx} />

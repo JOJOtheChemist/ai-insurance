@@ -29,8 +29,8 @@ const CustomerProfilePanel: React.FC<CustomerProfilePanelProps> = ({ className =
         <div className={`bg-white p-6 flex flex-col overflow-y-auto scrollbar-hide ${className || 'w-[400px] border border-orange-100 shadow-xl rounded-[24px] h-[850px]'}`}>
             <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 pl-1">Customer Profile</h2>
 
-            <div className="bg-orange-50/50 rounded-[30px] p-5 mb-4 border border-orange-100 relative overflow-hidden group shrink-0">
-                <div className="absolute -right-4 -top-4 w-20 h-20 bg-orange-200/20 rounded-full blur-xl group-hover:bg-orange-300/30 transition-all"></div>
+            <div className="bg-[#FFF9F2] rounded-[30px] p-5 mb-4 border border-orange-100 relative overflow-hidden group shrink-0">
+                <div className="absolute -right-4 -top-4 w-20 h-20 bg-[#FFEBD6] rounded-full blur-xl transition-all"></div>
                 <div className="flex justify-between items-center mb-4 relative z-10">
                     <div className="flex items-center gap-3">
                         <div className="w-16 h-16 rounded-full p-1 bg-white shadow-sm">
@@ -54,7 +54,7 @@ const CustomerProfilePanel: React.FC<CustomerProfilePanelProps> = ({ className =
                     </div>
                 </div>
 
-                <div className="mt-4 border-t border-orange-100/50 pt-3">
+                <div className="mt-4 border-t border-orange-100 pt-3">
                     <p className="text-[10px] font-bold text-orange-400 uppercase mb-2 tracking-wider opacity-80">
                         <i className="fa-solid fa-address-card mr-1"></i>客户画像
                     </p>
@@ -82,7 +82,7 @@ const CustomerProfilePanel: React.FC<CustomerProfilePanelProps> = ({ className =
             )}
 
             <div className="grid grid-cols-2 gap-3 mb-6 shrink-0">
-                <div className="bg-orange-50/50 rounded-2xl p-3 border border-orange-100 flex flex-col h-full">
+                <div className="bg-[#FFF9F2] rounded-2xl p-3 border border-orange-100 flex flex-col h-full">
                     <span className="text-[10px] font-bold text-orange-400 mb-2 tracking-wider flex items-center gap-1">
                         <i className="fa-solid fa-bullseye"></i> 需求点
                     </span>
@@ -100,7 +100,7 @@ const CustomerProfilePanel: React.FC<CustomerProfilePanelProps> = ({ className =
                 </div>
 
 
-                <div className="bg-red-50/50 rounded-2xl p-3 border border-red-100 flex flex-col h-full">
+                <div className="bg-[#FFF5F5] rounded-2xl p-3 border border-red-100 flex flex-col h-full">
                     <span className="text-[10px] font-bold text-red-400 mb-2 tracking-wider flex items-center gap-1">
                         <i className="fa-solid fa-shield-virus"></i> 抗拒点
                     </span>

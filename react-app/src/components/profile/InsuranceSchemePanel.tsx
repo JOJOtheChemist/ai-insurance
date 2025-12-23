@@ -21,7 +21,7 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
     return (
         <>
             <div className="bg-white rounded-[24px] shadow-[0_-10px_40px_rgba(0,0,0,0.02)] flex flex-col overflow-hidden relative border border-gray-100 pb-4 shrink-0 mb-6">
-                <div className="px-5 py-3 flex justify-between items-center bg-gray-50/50">
+                <div className="px-5 py-3 flex justify-between items-center bg-[#F9FAFB]">
                     <span className="text-sm font-bold text-gray-800 flex items-center gap-2">
                         <i className="fa-solid fa-layer-group text-orange-500"></i> 推荐保险方案 ({proposedPlans?.length || 0})
                     </span>
@@ -49,13 +49,13 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                                 <div className="relative z-10 p-5 h-full flex flex-col justify-between text-white">
                                     <div>
                                         <div className="flex justify-between items-start mb-1">
-                                            <span className="bg-white/20 backdrop-blur px-2 py-0.5 rounded-full text-[10px] font-bold border border-white/30 flex items-center gap-1">
+                                            <span className="bg-[#FF9366] px-2 py-0.5 rounded-full text-[10px] font-bold border border-white/40 flex items-center gap-1">
                                                 <i className="fa-solid fa-shield-heart text-white"></i> {plan.tag || '推荐方案'}
                                             </span>
                                             <span className="text-2xl font-black tracking-tight">#{proposedPlans.length - idx}</span>
                                         </div>
-                                        <p className="text-sm font-bold opacity-85 break-words line-clamp-1">{plan.title}</p>
-                                        <p className="text-[11px] opacity-70 mt-1 line-clamp-2 break-words">{plan.description || plan.reasoning || '暂无描述'}</p>
+                                        <p className="text-sm font-bold text-white break-words line-clamp-1">{plan.title}</p>
+                                        <p className="text-[11px] text-[#FFD8C2] mt-1 line-clamp-2 break-words">{plan.description || plan.reasoning || '暂无描述'}</p>
                                     </div>
                                     <div className="flex items-center justify-between text-xs font-semibold tracking-wide gap-2">
                                         <span className="flex items-center gap-1 shrink-0">
@@ -79,7 +79,7 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
             {isSchemePopupOpen && proposedPlans && proposedPlans[activeSchemeIndex] && (
                 <div className="fixed inset-0 z-[100] flex items-end justify-center">
                     <div
-                        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+                        className="absolute inset-0 bg-black/50 transition-opacity"
                         onClick={() => setIsSchemePopupOpen(false)}
                     ></div>
                     <div className="relative w-full max-w-md h-[85vh] bg-white rounded-t-[30px] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300">
@@ -88,7 +88,7 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F2F4F6] to-transparent"></div>
 
                             <div className="relative z-10 p-6 pt-12 text-white">
-                                <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-bold border border-white/30 inline-flex items-center gap-1 mb-3">
+                                <span className="bg-[#FF9366] px-3 py-1 rounded-full text-xs font-bold border border-white/40 inline-flex items-center gap-1 mb-3">
                                     <i className="fa-solid fa-shield-heart"></i> {proposedPlans[activeSchemeIndex].tag || '推荐方案'}
                                 </span>
                                 <h2 className="text-2xl font-black mb-1">{proposedPlans[activeSchemeIndex].title}</h2>

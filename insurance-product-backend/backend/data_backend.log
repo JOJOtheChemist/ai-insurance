@@ -1,0 +1,2276 @@
+INFO:     Will watch for changes in these directories: ['/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [60536] using StatReload
+INFO:     Started server process [60543]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+🔌 [SSE] 会话 session-1766491963482 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:54149 - "GET /api/v1/clients/sse/session-1766491963482 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54147 - "GET /api/v1/clients/session/session-1766491963482 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766491963482 连接被取消
+🔌 [SSE] 会话 session-1766491963482 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766491969129 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:54185 - "GET /api/v1/clients/sse/session-1766491969129 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54183 - "GET /api/v1/clients/session/session-1766491969129 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54184 - "GET /api/v1/clients/session/session-1766491969129 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54223 - "GET /api/v1/clients/session/session-1766491969129 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766491969129 连接被取消
+🔌 [SSE] 会话 session-1766491969129 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766491969129 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:54491 - "GET /api/v1/clients/sse/session-1766491969129 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54490 - "GET /api/v1/clients/session/session-1766491969129 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54698 - "GET /api/v1/clients/sessions/history?salesperson_id=1 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766491969129 连接被取消
+🔌 [SSE] 会话 session-1766491969129 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:54721 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54719 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:54725 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54723 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54792 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54861 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54891 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:55093 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55091 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:55262 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55260 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:55667 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55665 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:55765 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55764 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:56068 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56066 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:56222 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56221 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:56392 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56390 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:56706 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56705 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:56903 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56902 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:57681 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57680 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57782 - "GET /api/tools/filter?age_min=42&age_max=42&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57782 - "GET /api/tools/inspect?product_id=42&fields=product_name%2Ccoverage%2Cextend_info%2Cage_range&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57782 - "GET /api/tools/inspect?product_id=33&fields=product_name%2Ccoverage%2Cextend_info%2Cage_range&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57782 - "GET /api/tools/inspect?product_id=42&fields=coverage.%E9%87%8D%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Ccoverage.%E4%B8%AD%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Ccoverage.%E8%BD%BB%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights%2Cextend_info.illness_features&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57782 - "GET /api/tools/inspect?product_id=33&fields=coverage.%E9%87%8D%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Ccoverage.%E7%89%B9%E5%88%AB%E4%BF%9D%E9%9A%9C%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights%2Cextend_info.illness_features&view=full HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:57810 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57811 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "POST /api/v1/clients/submit-plan HTTP/1.1" 200 OK
+📤 [SSE] 已向会话 session-multi-001 发送 client_updated 事件
+📢 [SSE] 已发送客户信息更新通知: session_id=session-multi-001, client_id=14
+INFO:     127.0.0.1:57878 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57893 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:57954 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57955 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:58289 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58287 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:59060 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59059 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-multi-001 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:59290 - "GET /api/v1/clients/sse/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59289 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59384 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59415 - "GET /api/v1/clients/session/session-multi-001 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-multi-001 连接被取消
+🔌 [SSE] 会话 session-multi-001 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766492949909 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:59489 - "GET /api/v1/clients/sse/session-1766492949909 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 连接被取消
+🔌 [SSE] 会话 session-1766492949909 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:59488 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:59493 - "GET /api/v1/clients/sse/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59491 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/v1/clients/search?keyword=%E6%9D%8E%E5%A5%B3%E5%A3%AB HTTP/1.1" 200 OK
+📤 [SSE] 已向会话 session-1766492949909 发送 client_updated 事件
+📢 [SSE] 已发送客户信息更新通知: session_id=session-1766492949909, client_id=14
+INFO:     127.0.0.1:59605 - "POST /api/v1/clients/update-intelligence HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59620 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E6%84%8F%E5%A4%96%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/search?keyword=%E9%AA%A8%E8%B4%A8%E7%96%8F%E6%9D%BE&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/search?keyword=%E5%BF%83%E8%84%91%E8%A1%80%E7%AE%A1&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/inspect?product_id=55&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/inspect?product_id=41&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/tools/search?keyword=%E6%88%90%E4%BA%BA%E9%87%8D%E7%96%BE&limit=10 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 连接被取消
+🔌 [SSE] 会话 session-1766492949909 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766492949909 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:59976 - "GET /api/v1/clients/sse/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59974 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 连接被取消
+🔌 [SSE] 会话 session-1766492949909 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766492949909 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:60190 - "GET /api/v1/clients/sse/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60189 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 连接被取消
+🔌 [SSE] 会话 session-1766492949909 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:60431 - "POST /api/v1/clients/submit-plan HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:60463 - "GET /api/v1/clients/sse/session-1766492949909 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/v1/clients/session/session-1766492949909 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766492949909 连接被取消
+🔌 [SSE] 会话 session-1766492949909 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493153312 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:60559 - "GET /api/v1/clients/sse/session-1766493153312 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493153312 连接被取消
+🔌 [SSE] 会话 session-1766493153312 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493153312 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:60563 - "GET /api/v1/clients/sse/session-1766493153312 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60558 - "GET /api/v1/clients/session/session-1766493153312 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60561 - "GET /api/v1/clients/session/session-1766493153312 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60619 - "GET /api/v1/clients/list?salesperson_id=1&limit=100&offset=0 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493153312 连接被取消
+🔌 [SSE] 会话 session-1766493153312 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493162458 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:60628 - "GET /api/v1/clients/sse/session-1766493162458 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60631 - "GET /api/v1/clients/14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60694 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60694 - "GET /api/v1/clients/search?keyword=%E6%9D%8E%E5%A5%B3%E5%A3%AB HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493162458 连接被取消
+🔌 [SSE] 会话 session-1766493162458 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:60756 - "GET /api/tools/search?keyword=%E5%B9%B4%E9%87%91+%E5%A2%9E%E9%A2%9D+%E7%BB%88%E8%BA%AB+%E7%8E%B0%E9%87%91%E6%B5%81&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/search?keyword=%E5%B9%B4%E9%87%91&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=25&fields=product_name%2Cdescription%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=13&fields=product_name%2Cdescription%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=15&fields=product_name%2Cdescription%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=25&fields=extend_info.highlights%2Cextend_info.pension_features&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=13&fields=extend_info.highlights%2Cextend_info.pension_features&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60756 - "GET /api/tools/inspect?product_id=15&fields=extend_info.highlights%2Cextend_info.pension_features&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60859 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493162458) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493162458) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493162458', 'client_id': 14}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+INFO:     127.0.0.1:60887 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493162458) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493162458) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493162458', 'client_id': 14}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493162458 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:61200 - "GET /api/v1/clients/sse/session-1766493162458 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61198 - "GET /api/v1/clients/session/session-1766493162458 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493162458 连接被取消
+🔌 [SSE] 会话 session-1766493162458 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493278994 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:61262 - "GET /api/v1/clients/sse/session-1766493278994 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61257 - "GET /api/v1/clients/session/session-1766493278994 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61261 - "GET /api/v1/clients/session/session-1766493278994 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61299 - "GET /api/v1/clients/list?salesperson_id=1&limit=100&offset=0 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493278994 连接被取消
+🔌 [SSE] 会话 session-1766493278994 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:61310 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61313 - "GET /api/v1/clients/14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:61374 - "GET /api/v1/clients/search?keyword=%E6%9D%8E%E5%A5%B3%E5%A3%AB HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/filter?age_min=60&age_max=60&product_type=%E6%84%8F%E5%A4%96%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/search?keyword=%E8%80%81%E5%B9%B4%E9%98%B2%E7%99%8C&limit=5 HTTP/1.1" 200 OK
+⚠️ [Inspect] 跳过非法或不存在的列: premium
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info%2Cpremium&view=summary HTTP/1.1" 200 OK
+⚠️ [Inspect] 跳过非法或不存在的列: premium
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=35&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info%2Cpremium&view=summary HTTP/1.1" 200 OK
+⚠️ [Inspect] 跳过非法或不存在的列: premium
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=55&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info%2Cpremium&view=summary HTTP/1.1" 200 OK
+⚠️ [Inspect] 跳过非法或不存在的列: premium
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=19&fields=product_name%2Cage_range%2Ccoverage%2Cextend_info%2Cpremium&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=26&fields=coverage.%E4%B8%80%E8%88%AC%E5%8C%BB%E7%96%97%E8%A1%A5%E5%81%BF%E9%87%91%2Ccoverage.%E9%87%8D%E5%A4%A7%E7%96%BE%E7%97%85%E5%8C%BB%E7%96%97%E8%A1%A5%E5%81%BF%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=35&fields=coverage.%E4%BD%8F%E9%99%A2%E8%B4%B9%E7%94%A8%E8%A1%A5%E5%81%BF%E9%87%91%2Ccoverage.%E5%BB%B6%E4%BC%B8%E5%8C%BB%E7%96%97%E8%B4%B9%E7%94%A8%E8%A1%A5%E5%81%BF%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=55&fields=coverage.%E5%9F%BA%E6%9C%AC%E9%83%A8%E5%88%86-%E5%8C%BB%E8%8D%AF%E8%B4%B9%E7%94%A8%E8%A1%A5%E5%81%BF%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/inspect?product_id=19&fields=coverage.%E4%BD%8F%E9%99%A2%E5%8F%8A%E4%BD%8F%E9%99%A2%E5%89%8D%E5%90%8E%E9%97%A8%E8%AF%8A%E6%80%A5%2Ccoverage.%E7%89%B9%E5%AE%9A%E8%8D%AF%E5%93%81%E5%8C%BB%E7%96%97%E8%B4%B9%E7%94%A8%E4%BF%9D%E9%99%A9%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61374 - "GET /api/tools/search?keyword=%E7%99%8C%E7%97%87%E6%B2%BB%E7%96%97&limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61464 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493287581', 'client_id': 14}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:61498 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61496 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61502 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493287581', 'client_id': 14}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:61630 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61628 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:62193 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:62423 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62421 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:62553 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62551 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62683 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62718 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493287581) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493287581', 'client_id': 14}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63353 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63351 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63526 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63525 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63692 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63690 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63759 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+INFO:     127.0.0.1:63813 - "GET /api/product-types HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63808 - "GET /api/product-types HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63812 - "GET /api/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63814 - "GET /api/products HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63828 - "GET /api/v1/clients/sessions/history?salesperson_id=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /api/v1/clients/sessions/history?salesperson_id=1 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63845 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63844 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63851 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63849 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493287581 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63925 - "GET /api/v1/clients/sse/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63924 - "GET /api/v1/clients/session/session-1766493287581 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63952 - "GET /api/v1/clients/list?salesperson_id=1&limit=100&offset=0 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493287581 连接被取消
+🔌 [SSE] 会话 session-1766493287581 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:63983 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63986 - "GET /api/v1/clients/6 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:64149 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64148 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64186 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64186 - "GET /api/v1/clients/search?keyword=%E6%9D%8E%E5%8F%AF%E5%84%BF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64186 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64365 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/search?keyword=%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E6%84%8F%E5%A4%96%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/inspect?product_id=42&fields=product_name%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/inspect?product_id=35&fields=product_name%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64484 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493727877', 'client_id': 6}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+INFO:     127.0.0.1:64514 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493727877', 'client_id': 6}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:64676 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64674 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64817 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64817 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493727877', 'client_id': 6}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+INFO:     127.0.0.1:64925 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64929 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64936 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64938 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64941 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65044 - "POST /api/v1/sessions/bind HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65130 - "POST /api/v1/clients/submit-plan HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.ForeignKeyViolation: insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/opt/homebrew/lib/python3.13/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/core/sse_notifier.py", line 26, in wrapper
+    result = await func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/routers/clients.py", line 36, in submit_insurance_plan
+    return ClientService.submit_plan(data, db)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/yeya/Documents/HBuilderProjects/ai保险-产品详情页/insurance-product-backend/backend/services/client_service.py", line 166, in submit_plan
+    db.commit()
+    ~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) insert or update on table "session_client_links" violates foreign key constraint "session_client_links_session_id_fkey"
+DETAIL:  Key (session_id)=(session-1766493727877) is not present in table "chat_sessions".
+
+[SQL: INSERT INTO session_client_links (session_id, client_id) VALUES (%(session_id)s, %(client_id)s) RETURNING session_client_links.id]
+[parameters: {'session_id': 'session-1766493727877', 'client_id': 6}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:65354 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65353 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'schemas/client.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [60543]
+INFO:     Started server process [66397]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'services/client_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66397]
+INFO:     Started server process [66403]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'routers/clients.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66403]
+INFO:     Started server process [66405]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66405]
+INFO:     Started server process [66444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'routers/clients.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66444]
+INFO:     Started server process [66458]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'services/client_service.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66458]
+INFO:     Started server process [66467]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49626 - "POST /api/v1/sessions/bind HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49628 - "POST /api/v1/clients/submit-plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49630 - "POST /api/v1/clients/submit-plan HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:49699 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49697 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:49746 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49744 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:50489 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50488 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766493727877 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:50615 - "GET /api/v1/clients/sse/session-1766493727877 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50613 - "GET /api/v1/clients/session/session-1766493727877 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766493727877 连接被取消
+🔌 [SSE] 会话 session-1766493727877 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:50643 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50644 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:50647 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50648 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51064 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51062 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51395 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51393 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51628 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51626 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51656 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51654 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51910 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51908 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494255102 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51935 - "GET /api/v1/clients/sse/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51934 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51936 - "GET /api/v1/clients/session/session-1766494255102 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51952 - "GET /api/v1/clients/list?salesperson_id=1&limit=100&offset=0 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494255102 连接被取消
+🔌 [SSE] 会话 session-1766494255102 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494489235 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:51966 - "GET /api/v1/clients/sse/session-1766494489235 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51969 - "GET /api/v1/clients/4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51992 - "POST /api/v1/sessions/bind HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51992 - "GET /api/v1/clients/search?keyword=%E5%AD%99%E7%87%95%E5%A7%BF HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "POST /api/v1/sessions/bind HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E9%87%8D%E7%96%BE%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E5%8C%BB%E7%96%97%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/search?keyword=%E7%8C%9D%E6%AD%BB&limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/filter?age_min=30&age_max=30&product_type=%E5%AE%9A%E6%9C%9F%E5%AF%BF%E9%99%A9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=42&fields=product_name%2Cproduct_type%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=26&fields=product_name%2Cproduct_type%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=40&fields=product_name%2Cproduct_type%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=20&fields=product_name%2Cproduct_type%2Cage_range%2Ccoverage%2Cextend_info&view=summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=42&fields=coverage.%E9%87%8D%E5%BA%A6%E7%96%BE%E7%97%85%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=26&fields=coverage.%E4%B8%80%E8%88%AC%E5%8C%BB%E7%96%97%E8%A1%A5%E5%81%BF%E9%87%91%2Ccoverage.%E9%87%8D%E5%A4%A7%E7%96%BE%E7%97%85%E5%8C%BB%E7%96%97%E8%A1%A5%E5%81%BF%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=40&fields=coverage.%E7%8C%9D%E6%AD%BB%E4%BF%9D%E9%99%A9%E9%87%91%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52151 - "GET /api/tools/inspect?product_id=20&fields=coverage%2Cextend_info.highlights&view=full HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52225 - "POST /api/v1/clients/submit-plan HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494489235 连接被取消
+🔌 [SSE] 会话 session-1766494489235 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494489235 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:52403 - "GET /api/v1/clients/sse/session-1766494489235 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52404 - "GET /api/v1/clients/session/session-1766494489235 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494489235 连接被取消
+🔌 [SSE] 会话 session-1766494489235 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494489235 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:52495 - "GET /api/v1/clients/sse/session-1766494489235 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52494 - "GET /api/v1/clients/session/session-1766494489235 HTTP/1.1" 200 OK
+🔌 [SSE] 会话 session-1766494489235 连接被取消
+🔌 [SSE] 会话 session-1766494489235 已断开
+📊 [SSE] 当前活跃连接数: 0
+🔌 [SSE] 会话 session-1766494489235 已连接 (user_id=None)
+📊 [SSE] 当前活跃连接数: 1
+INFO:     127.0.0.1:52691 - "GET /api/v1/clients/sse/session-1766494489235 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52690 - "GET /api/v1/clients/session/session-1766494489235 HTTP/1.1" 200 OK

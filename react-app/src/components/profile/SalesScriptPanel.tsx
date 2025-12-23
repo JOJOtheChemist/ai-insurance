@@ -32,7 +32,7 @@ const SalesScriptPanel: React.FC<SalesScriptPanelProps> = ({ customerData }) => 
 
             {/* 需求点和抗拒点 */}
             <div className="grid grid-cols-2 gap-3">
-                <div className="bg-orange-50/50 rounded-[18px] p-3 border border-orange-100 flex flex-col h-full">
+                <div className="bg-[#FFF9F2] rounded-[18px] p-3 border border-orange-100 flex flex-col h-full">
                     <span className="text-[10px] font-bold text-orange-400 mb-2 tracking-wider flex items-center gap-1">
                         <i className="fa-solid fa-bullseye"></i> 需求点
                     </span>
@@ -49,7 +49,7 @@ const SalesScriptPanel: React.FC<SalesScriptPanelProps> = ({ customerData }) => 
                     </div>
                 </div>
 
-                <div className="bg-red-50/50 border border-red-100 rounded-[18px] p-3">
+                <div className="bg-[#FFF5F5] border border-red-100 rounded-[18px] p-3">
                     <p className="text-[10px] font-bold text-red-400 uppercase mb-2 tracking-wider">
                         <i className="fa-solid fa-shield-virus mr-1"></i>抗拒点
                     </p>

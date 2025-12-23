@@ -15,11 +15,11 @@ export const InputArea: React.FC<InputAreaProps> = ({ onSend }) => {
     };
 
     return (
-        <div className="absolute bottom-0 w-full bg-white border-t border-gray-100 px-4 py-3 pb-6 z-50 flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-gray-50 text-gray-500 hover:text-orange-500 transition-colors flex items-center justify-center">
+        <div className="absolute bottom-0 w-full bg-white border-t border-orange-50 px-4 py-3 pb-6 z-50 flex items-center gap-3">
+            <button className="w-10 h-10 rounded-full bg-[#FFF9F2] text-orange-400 hover:text-orange-500 transition-colors flex items-center justify-center">
                 <i className="fa-solid fa-microphone text-lg"></i>
             </button>
-            <div className="flex-1 bg-gray-100 rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-gray-300 transition-colors">
+            <div className="flex-1 bg-[#F9FAFB] rounded-full h-11 px-4 flex items-center border border-transparent focus-within:bg-white focus-within:border-orange-100 transition-colors">
                 <input
                     id="user-input-field"
                     type="text"

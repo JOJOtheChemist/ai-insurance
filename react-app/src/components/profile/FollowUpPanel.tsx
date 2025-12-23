@@ -17,7 +17,7 @@ const FollowUpPanel: React.FC<FollowUpPanelProps> = ({ followUps }) => {
 
             <div className="space-y-4">
                 {(followUps && followUps.length > 0) ? followUps.slice(0, 3).map((record, idx) => (
-                    <div key={idx} className={record.type === 'AI' ? "flex gap-3" : "rounded-2xl border border-dashed border-gray-200 p-4 bg-gray-50/50"}>
+                    <div key={idx} className={record.type === 'AI' ? "flex gap-3" : "rounded-2xl border border-dashed border-gray-200 p-4 bg-[#F9FAFB]"}>
                         {record.type === 'AI' ? (
                             <>
                                 <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-sm font-bold shrink-0">

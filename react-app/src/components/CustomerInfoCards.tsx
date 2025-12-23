@@ -64,8 +64,8 @@ export const CustomerBasicCard: React.FC<{ data: CustomerProfile }> = ({ data })
     };
 
     return (
-        <div className="bg-orange-50/50 rounded-[24px] p-4 border border-orange-100 relative overflow-hidden group">
-            <div className="absolute -right-4 -top-4 w-16 h-16 bg-orange-200/20 rounded-full blur-xl group-hover:bg-orange-300/30 transition-all"></div>
+        <div className="bg-[#FFF9F2] rounded-[24px] p-4 border border-orange-100 relative overflow-hidden group">
+            <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#FFEBD6] rounded-full blur-xl transition-all"></div>
             <div className="flex justify-between items-center relative z-10">
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full p-1 bg-white shadow-sm">
@@ -94,8 +94,8 @@ export const CustomerBasicCard: React.FC<{ data: CustomerProfile }> = ({ data })
                 </div>
             </div>
 
-            <div className="mt-3 border-t border-orange-100/50 pt-2.5">
-                <p className="text-[10px] font-bold text-orange-400 uppercase mb-1.5 tracking-wider opacity-80">
+            <div className="mt-3 border-t border-orange-100 pt-2.5">
+                <p className="text-[10px] font-bold text-orange-400 uppercase mb-1.5 tracking-wider">
                     <i className="fa-solid fa-address-card mr-1"></i>客户画像
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -148,7 +148,7 @@ export const DemandPointsCard: React.FC<{ demands: string[] }> = ({ demands }) =
     if (!demands || demands.length === 0 || (demands.length === 1 && demands[0] === '待确认')) return null;
 
     return (
-        <div className="bg-orange-50/50 rounded-2xl p-3 border border-orange-100 flex flex-col h-full">
+        <div className="bg-[#FFF9F2] rounded-2xl p-3 border border-orange-100 flex flex-col h-full">
             <span className="text-[10px] font-bold text-orange-400 mb-2 tracking-wider flex items-center gap-1">
                 <i className="fa-solid fa-bullseye"></i> 需求点
             </span>
@@ -171,7 +171,7 @@ export const ResistancePointsCard: React.FC<{ resistances?: string[] }> = ({ res
     if (!resistances || resistances.length === 0) return null;
 
     return (
-        <div className="bg-red-50/50 rounded-2xl p-3 border border-red-100 flex flex-col h-full">
+        <div className="bg-[#FFF5F5] rounded-2xl p-3 border border-red-100 flex flex-col h-full">
             <span className="text-[10px] font-bold text-red-400 mb-2 tracking-wider flex items-center gap-1">
                 <i className="fa-solid fa-shield-virus"></i> 抗拒点
             </span>

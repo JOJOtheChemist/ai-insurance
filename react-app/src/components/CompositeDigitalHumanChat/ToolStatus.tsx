@@ -41,13 +41,13 @@ export const ToolStatus: React.FC<{ tool: ToolCall }> = ({ tool }) => {
                     <div className="relative z-10 p-5 h-full flex flex-col justify-between text-white">
                         <div>
                             <div className="flex justify-between items-start mb-1">
-                                <span className="bg-white/20 backdrop-blur px-2 py-0.5 rounded-full text-[10px] font-bold border border-white/30 flex items-center gap-1">
+                                <span className="bg-[#FF9366] px-2 py-0.5 rounded-full text-[10px] font-bold border border-white/40 flex items-center gap-1">
                                     <i className="fa-solid fa-shield-heart text-white"></i> {plan.tag || '推荐方案'}
                                 </span>
                                 <i className={`fa-solid fa-chevron-down text-white text-sm transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}></i>
                             </div>
-                            <p className="text-sm font-bold opacity-85 break-words line-clamp-1">{plan.title}</p>
-                            <p className="text-[11px] opacity-70 mt-1 line-clamp-2 break-words">{plan.description || tool.args.reasoning || '暂无描述'}</p>
+                            <p className="text-sm font-bold text-white break-words line-clamp-1">{plan.title}</p>
+                            <p className="text-[11px] text-[#FFD8C2] mt-1 line-clamp-2 break-words">{plan.description || tool.args.reasoning || '暂无描述'}</p>
                         </div>
                         <div className="flex items-center justify-between text-xs font-semibold tracking-wide gap-2">
                             <span className="flex items-center gap-1 shrink-0">
@@ -60,7 +60,7 @@ export const ToolStatus: React.FC<{ tool: ToolCall }> = ({ tool }) => {
 
                 {/* Expanded Product List */}
                 {isOpen && plan.products && plan.products.length > 0 && (
-                    <div className="mt-2 bg-gray-50 rounded-[20px] p-4 border border-gray-100 animate-in slide-in-from-top duration-200">
+                    <div className="mt-2 bg-[#F9FAFB] rounded-[20px] p-4 border border-gray-100 animate-in slide-in-from-top duration-200">
                         <h3 className="text-xs font-bold text-gray-800 mb-3 ml-1 flex items-center gap-2">
                             <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span> 推荐保险组合
                         </h3>
@@ -70,7 +70,7 @@ export const ToolStatus: React.FC<{ tool: ToolCall }> = ({ tool }) => {
                                     key={idx}
                                     className={`p-3 border rounded-xl flex items-start gap-3 ${prod.type === 'main'
                                         ? 'border-orange-200 bg-white shadow-sm'
-                                        : 'border-gray-200 bg-white/50'
+                                        : 'border-gray-200 bg-white'
                                         }`}
                                 >
                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm shrink-0 ${prod.type === 'main'

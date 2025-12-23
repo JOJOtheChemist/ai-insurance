@@ -16,7 +16,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
     onPromptClick
 }) => {
     return (
-        <div className={`px-6 flex flex-col h-full transition-all duration-500 overflow-hidden ${stage > 0 ? 'opacity-0 h-0 hidden' : 'opacity-100'}`}>
+        <div className={`px-6 flex flex-col h-full bg-[#F5F5F7] transition-all duration-500 overflow-hidden ${stage > 0 ? 'opacity-0 h-0 hidden' : 'opacity-100'}`}>
             <div className="mb-4 mt-2">
                 <h1 className="text-xl font-bold text-gray-900 mb-1">我是数智保险策略官 V3 👋</h1>
                 <p className="text-sm text-gray-500">
@@ -41,7 +41,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
                     <div className="space-y-3 overflow-y-auto no-scrollbar pb-10">
                         <button
                             onClick={() => onPromptClick('生成降维打击方案')}
-                            className="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-orange-50 hover:border-orange-200 transition-colors text-left"
+                            className="w-full bg-[#FFFFFF] p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-gray-50 transition-colors text-left shadow-sm"
                         >
                             <div>
                                 <div className="text-sm font-bold text-gray-800 flex items-center">
@@ -52,7 +52,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
                         </button>
                         <button
                             onClick={() => onPromptClick('模拟异议处理')}
-                            className="w-full bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-between group hover:bg-orange-50 hover:border-orange-200 transition-colors text-left"
+                            className="w-full bg-[#F0F7FF] p-4 rounded-xl border border-blue-100 flex items-center justify-between group hover:bg-blue-100/50 hover:border-blue-200 transition-colors text-left"
                         >
                             <div>
                                 <div className="text-sm font-bold text-gray-800 flex items-center">
@@ -70,7 +70,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
                         <div onClick={() => onPromptClick('企业债务隔离')}>
                             <PromptCard
                                 icon="fa-solid fa-scale-balanced"
-                                iconColorClass="bg-orange-50 text-orange-500"
+                                iconColorClass="bg-white text-orange-500 shadow-sm"
                                 title="企业债务隔离"
                                 subtitle="&quot;公司破产会影响我的个人房产吗？&quot;"
                             />
@@ -79,7 +79,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
                         <div onClick={() => onPromptClick('大额保单架构')}>
                             <PromptCard
                                 icon="fa-solid fa-piggy-bank"
-                                iconColorClass="bg-blue-50 text-blue-500"
+                                iconColorClass="bg-white text-blue-500 shadow-sm"
                                 title="大额保单架构"
                                 subtitle="&quot;如何利用保险进行税务合规筹划？&quot;"
                             />
@@ -88,7 +88,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({
                         <div onClick={() => onPromptClick('子女婚前财产')}>
                             <PromptCard
                                 icon="fa-solid fa-child-reaching"
-                                iconColorClass="bg-purple-50 text-purple-500"
+                                iconColorClass="bg-white text-purple-500 shadow-sm"
                                 title="子女婚前财产"
                                 subtitle="&quot;给孩子买的房怎么防止被分割？&quot;"
                             />

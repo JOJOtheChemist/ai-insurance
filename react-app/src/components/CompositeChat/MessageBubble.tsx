@@ -49,7 +49,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message, index }) 
                     )}
 
                     {/* Message Bubble */}
-                    <div className={`px-4 py-2.5 text-sm shadow-sm w-full ${message.role === 'user' ? 'bg-[#1F2937] text-white rounded-[20px_4px_20px_20px]' : 'bg-[#F3F4F6] text-[#1F2937] rounded-[4px_20px_20px_20px] overflow-hidden'}`}>
+                    <div className={`px-4 py-2.5 text-sm w-full ${message.role === 'user' ? 'bg-[#1F2937] text-white rounded-[20px_4px_20px_20px] shadow-md' : 'bg-white border border-[#E5E7EB] text-[#1F2937] rounded-[4px_20px_20px_20px] overflow-hidden shadow-[0_4px_12px_-2px_rgba(0,0,0,0.05)]'}`}>
                         {message.role === 'ai' && typeof message.content === 'string' ? (
                             <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>

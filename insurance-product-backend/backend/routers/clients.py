@@ -13,7 +13,8 @@ from schemas.client import (
     IntelligenceUpdateSchema, 
     PlanSubmissionSchema, 
     PlanSchema,
-    FamilyMemberSchema
+    FamilyMemberSchema,
+    SessionBindSchema
 )
 from services.client_service import ClientService
 

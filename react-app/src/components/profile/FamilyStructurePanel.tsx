@@ -21,7 +21,7 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
             >
                 <div className="absolute right-0 top-0 w-24 h-24 bg-gray-50 rounded-bl-full -z-0"></div>
 
-                <div className="px-4 py-3 border-b border-gray-100 flex justify-between items-center bg-white/80 backdrop-blur z-10 relative">
+                <div className="px-4 py-3 border-b border-gray-100 flex justify-between items-center bg-white z-10 relative">
                     <div className="flex items-center gap-2">
                         <span className="w-6 h-6 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xs">
                             <i className="fa-solid fa-people-roof"></i>
@@ -74,7 +74,7 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
                     ) : (
                         <>
                             <div className="h-px w-6 bg-gray-200 shrink-0"></div>
-                            <div className="flex flex-col items-center gap-1 shrink-0 opacity-50">
+                            <div className="flex flex-col items-center gap-1 shrink-0">
                                 <div className="relative">
                                     <div className="w-10 h-10 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center bg-gray-50 text-gray-300">
                                         <i className="fa-solid fa-plus"></i>
@@ -91,11 +91,11 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
             {isDetailedFamilyPopupOpen && (
                 <div className="fixed inset-0 z-[100] flex items-end justify-center">
                     <div
-                        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+                        className="absolute inset-0 bg-black/50 transition-opacity"
                         onClick={() => setIsDetailedFamilyPopupOpen(false)}
                     ></div>
                     <div className="relative w-full max-w-md bg-white rounded-t-[30px] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300 max-h-[85vh]">
-                        <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                        <div className="px-5 py-3 flex justify-between items-center bg-[#F9FAFB]">
                             <h3 className="font-bold text-gray-800">家庭结构详细配置</h3>
                             <button
                                 onClick={() => setIsDetailedFamilyPopupOpen(false)}
@@ -151,21 +151,21 @@ const FamilyStructurePanel: React.FC<FamilyStructurePanelProps> = ({ customerDat
                                             </div>
 
                                             {expandedMemberIdx === idx && (
-                                                <div className="bg-orange-50/30 border-x border-b border-orange-100 p-3 rounded-b-xl -mt-2 pt-5 animate-in slide-in-from-top-1 duration-200">
+                                                <div className="bg-[#FFF9F2] border-x border-b border-orange-100 p-3 rounded-b-xl -mt-2 pt-5 animate-in slide-in-from-top-1 duration-200">
                                                     <div className="grid grid-cols-2 gap-3">
-                                                        <div className="bg-white/60 p-2 rounded-lg border border-orange-50">
+                                                        <div className="bg-white p-2 rounded-lg border border-orange-50">
                                                             <span className="text-[9px] text-gray-400 block mb-0.5">身份/关系</span>
                                                             <span className="text-xs font-bold text-gray-700">{member.relation}</span>
                                                         </div>
-                                                        <div className="bg-white/60 p-2 rounded-lg border border-orange-50">
+                                                        <div className="bg-white p-2 rounded-lg border border-orange-50">
                                                             <span className="text-[9px] text-gray-400 block mb-0.5">姓名</span>
                                                             <span className="text-xs font-bold text-gray-700">{member.name || '待录入'}</span>
                                                         </div>
-                                                        <div className="bg-white/60 p-2 rounded-lg border border-orange-50">
+                                                        <div className="bg-white p-2 rounded-lg border border-orange-50">
                                                             <span className="text-[9px] text-gray-400 block mb-0.5">年龄</span>
                                                             <span className="text-xs font-bold text-gray-700">{member.age || '-'} 岁</span>
                                                         </div>
-                                                        <div className="bg-white/60 p-2 rounded-lg border border-orange-50">
+                                                        <div className="bg-white p-2 rounded-lg border border-orange-50">
                                                             <span className="text-[9px] text-gray-400 block mb-0.5">拟推荐/现状</span>
                                                             <span className={`text-xs font-bold ${member.status && member.status !== '缺口' && member.status !== '待配置' ? 'text-green-500' : 'text-orange-500'}`}>{member.status && member.status !== '缺口' ? member.status : '需规划'}</span>
                                                         </div>
