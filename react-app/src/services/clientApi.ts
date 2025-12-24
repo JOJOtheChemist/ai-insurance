@@ -3,6 +3,15 @@ import type { CustomerProfile } from '../components/CustomerInfoCards';
 const API_HOST = (import.meta.env.VITE_CRM_API_BASE_URL || '').trim().replace(/\/$/, '');
 const API_BASE = API_HOST ? `${API_HOST}/api/v1` : '/api/v1';
 
+// Helper to get auth headers
+const getAuthHeaders = () => {
+    const token = localStorage.getItem('auth_token');
+    return {
+        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+    };
+};
+
 /**
  * 根据会话ID获取客户信息
  */
@@ -10,9 +19,7 @@ export const getClientBySession = async (sessionId: string): Promise<CustomerPro
     try {
         const response = await fetch(`${API_BASE}/clients/session/${sessionId}`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: getAuthHeaders(),
         });
 
         if (!response.ok) {
@@ -34,9 +41,7 @@ export const getClientDetail = async (clientId: string | number): Promise<Custom
     try {
         const response = await fetch(`${API_BASE}/clients/${clientId}`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: getAuthHeaders(),
         });
 
         if (!response.ok) {
@@ -73,21 +78,18 @@ export interface ClientListResponse {
 }
 
 export const getClientsList = async (
-    salespersonId?: number,
     limit: number = 100,
     offset: number = 0
 ): Promise<ClientListResponse | null> => {
     try {
         const params = new URLSearchParams();
-        if (salespersonId) params.append('salesperson_id', salespersonId.toString());
+        // salespersonId is no longer needed as backend uses current user
         params.append('limit', limit.toString());
         params.append('offset', offset.toString());
 
         const response = await fetch(`${API_BASE}/clients/list?${params.toString()}`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: getAuthHeaders(),
         });
 
         if (!response.ok) {
@@ -127,13 +129,12 @@ export interface HistoryResponse {
     unassigned: SessionSummary[];
 }
 
-export const getGroupedSessions = async (salespersonId: number = 1): Promise<HistoryResponse | null> => {
+export const getGroupedSessions = async (): Promise<HistoryResponse | null> => {
     try {
-        const response = await fetch(`${API_BASE}/clients/sessions/history?salesperson_id=${salespersonId}`, {
+        // Backend ignores salesperson_id now
+        const response = await fetch(`${API_BASE}/clients/sessions/history`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: getAuthHeaders(),
         });
 
         if (!response.ok) {

@@ -12,6 +12,8 @@ class PlanProductSchema(BaseModel):
     coverage: str
     reason: Optional[str] = None
     type: str = "main"
+    id: Optional[Any] = None
+    product_id: Optional[Any] = None
 
 class PlanSchema(BaseModel):
     title: str

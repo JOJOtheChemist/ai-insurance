@@ -1,4 +1,4 @@
-from sqlalchemy import Column, BigInteger, String, Boolean, DateTime
+from sqlalchemy import Column, BigInteger, String, Boolean, DateTime, Integer
 from sqlalchemy.sql import func
 from core.database import Base
 
@@ -13,6 +13,7 @@ class User(Base):
     invite_code = Column(String(50), nullable=True) # 注册时使用的邀请码
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
+    balance = Column(Integer, default=300)  # 积分余额，新用户默认300积分
     
     create_time = Column(DateTime(timezone=True), server_default=func.now())
     update_time = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())

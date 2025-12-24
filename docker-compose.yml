@@ -33,7 +33,7 @@ services:
   insurance-api:
     platform: linux/amd64
     build:
-      context: ./insurance-product-viewer/backend
+      context: ./insurance-product-backend/backend
       dockerfile: Dockerfile
     image: insurance-api:latest
     container_name: insurance-api

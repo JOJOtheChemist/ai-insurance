@@ -5,6 +5,9 @@ import './LoginPage.css';
 
 type Mode = 'login' | 'register' | 'reset';
 
+const API_HOST = (import.meta.env.VITE_CRM_API_BASE_URL || '').trim().replace(/\/$/, '');
+const API_BASE = API_HOST ? `${API_HOST}/api/v1` : '/api/v1';
+
 const LoginPage: React.FC = () => {
     const [mode, setMode] = useState<Mode>('login');
     const [loading, setLoading] = useState(false);
@@ -49,7 +52,7 @@ const LoginPage: React.FC = () => {
 
         try {
             const endpoint = mode === 'login' ? '/users/auth/login' : '/users/auth/register';
-            const response = await fetch(`http://localhost:8080/api/v1${endpoint}`, {
+            const response = await fetch(`${API_BASE}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

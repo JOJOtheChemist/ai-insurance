@@ -13,7 +13,6 @@ interface HistoryDrawerProps {
 export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
     isOpen,
     onClose,
-    customerProfile,
     onNewChat,
     onSelectSession
 }) => {
@@ -33,7 +32,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
         setLoading(false);
     };
 
-    const renderSessionCard = (session: SessionSummary, clientName: string, isGroupHover: boolean) => (
+    const renderSessionCard = (session: SessionSummary, isGroupHover: boolean) => (
         <div
             key={session.id}
             onClick={() => onSelectSession(session.id)}
@@ -93,7 +92,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                 </div>
 
                 <div className="space-y-2">
-                    {visibleSessions.map(session => renderSessionCard(session, group.client.name, false))}
+                    {visibleSessions.map(session => renderSessionCard(session, false))}
 
                     {hasMore && (
                         <div
@@ -129,7 +128,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
             </div>
 
             <div className="space-y-2">
-                {sessions.map(session => renderSessionCard(session, 'Unassigned', false))}
+                {sessions.map(session => renderSessionCard(session, false))}
             </div>
         </div>
     );

@@ -139,17 +139,17 @@ router.get('/sessions/:agentId', authenticateToken, async (req, res) => {
     const { agentId } = req.params;
     const userId = req.user?.userId || req.query.userId as string;
 
-    console.log(`[会话详情API] 🔍 获取会话详情请求:`);
-    console.log(`  - agentId: ${agentId}`);
-    console.log(`  - userId: ${userId}`);
-    console.log(`  - 来自JWT的userId: ${req.user?.userId}`);
-    console.log(`  - 来自query的userId: ${req.query.userId}`);
+    console.log(`[Sessions Route Debug] Request for session: ${agentId}`);
+    console.log(`[Sessions Route Debug] User ID resolved to: ${userId}`);
+    console.log(`[Sessions Route Debug] Auth header present: ${!!req.headers['authorization']}`);
+    console.log(`[Sessions Route Debug] req.user: ${JSON.stringify(req.user)}`);
 
     if (!multiUserStorage.sessionExists(userId, agentId)) {
-      console.log(`[会话详情API] ⚠️ 会话不存在: ${userId}/${agentId}`);
+      console.error(`[Sessions Route Debug] Session NOT found at path: .kode/${userId}/${agentId}`);
+      // Fallback checkout for "admin" or other common IDs if debugging
       return res.status(404).json({
         ok: false,
-        error: `会话 ${agentId} 不存在`
+        error: `会话 ${agentId} 不存在 (User: ${userId})`
       });
     }
 

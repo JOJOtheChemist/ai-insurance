@@ -4,7 +4,7 @@
 # 使用方法: ./deploy-docker.sh your-server-ip
 # ==========================================
 
-set -e  # 遇到错误立即退出
+set -euo pipefail  # 遇到错误立即退出，并在管道中传播错误
 
 # 颜色定义
 GREEN='\033[0;32m'
@@ -40,7 +40,7 @@ echo ""
 # ==========================================
 # 步骤1: 检查.env文件
 # ==========================================
-echo -e "${YELLOW}📋 步骤1/6: 检查环境变量配置...${NC}"
+echo -e "${YELLOW}📋 步骤1/7: 检查环境变量配置...${NC}"
 if [ ! -f ".env" ]; then
     echo -e "${YELLOW}⚠️  未找到.env文件，复制.env.example...${NC}"
     cp .env.example .env
@@ -54,9 +54,23 @@ fi
 echo -e "${GREEN}✓ 环境变量配置检查完成${NC}"
 
 # ==========================================
-# 步骤2: 本地构建Docker镜像
+# 步骤2: 本地构建 React 前端静态文件
 # ==========================================
-echo -e "\n${YELLOW}🔨 步骤2/6: 本地构建Docker镜像...${NC}"
+echo -e "\n${YELLOW}🧱 步骤2/7: 构建 React 前端静态资源...${NC}"
+pushd react-app > /dev/null
+if [ ! -d "node_modules" ]; then
+    echo "  • 首次安装依赖..."
+    npm install
+fi
+echo "  • 执行 npm run build..."
+npm run build
+popd > /dev/null
+echo -e "${GREEN}✓ React 前端构建完成${NC}"
+
+# ==========================================
+# 步骤3: 本地构建Docker镜像
+# ==========================================
+echo -e "\n${YELLOW}🔨 步骤3/7: 本地构建Docker镜像...${NC}"
 echo "这可能需要5-10分钟，请耐心等待..."
 
 docker-compose build --no-cache 2>&1 | while read line; do
@@ -68,7 +82,10 @@ echo -e "${GREEN}✓ Docker镜像构建完成${NC}"
 # ==========================================
 # 步骤3: 保存镜像为tar文件
 # ==========================================
-echo -e "\n${YELLOW}📦 步骤3/6: 保存镜像为tar文件...${NC}"
+echo -e "\n${YELLOW}📦 步骤4/7: 保存镜像为tar文件...${NC}"
+echo "  • 确保 postgres 基础镜像存在..."
+docker pull postgres:15-alpine > /dev/null
+
 docker save -o "${TAR_FILE}" \
     insurance-frontend:latest \
     insurance-api:latest \
@@ -82,7 +99,7 @@ echo -e "${GREEN}✓ 镜像已保存: ${TAR_FILE} (${TAR_SIZE})${NC}"
 # ==========================================
 # 步骤4: 上传tar文件到服务器
 # ==========================================
-echo -e "\n${YELLOW}📤 步骤4/6: 上传镜像到服务器...${NC}"
+echo -e "\n${YELLOW}📤 步骤5/7: 上传镜像到服务器...${NC}"
 echo "正在上传 ${TAR_SIZE} 数据，这可能需要几分钟..."
 
 scp -P "${SERVER_PORT}" "${TAR_FILE}" "${SERVER_USER}@${SERVER_IP}:/tmp/" 2>&1 | while read line; do
@@ -94,7 +111,7 @@ echo -e "${GREEN}✓ 镜像上传完成${NC}"
 # ==========================================
 # 步骤5: 上传配置文件到服务器
 # ==========================================
-echo -e "\n${YELLOW}📤 步骤5/6: 上传配置文件...${NC}"
+echo -e "\n${YELLOW}📤 步骤6/7: 上传配置文件...${NC}"
 
 # 创建临时目录存放要上传的文件
 TMP_UPLOAD_DIR="/tmp/insurance-deploy"
@@ -114,7 +131,7 @@ echo -e "${GREEN}✓ 配置文件上传完成${NC}"
 # ==========================================
 # 步骤6: 在服务器上加载镜像并启动
 # ==========================================
-echo -e "\n${YELLOW}🚀 步骤6/6: 在服务器上部署...${NC}"
+echo -e "\n${YELLOW}🚀 步骤7/7: 远程启动 Docker 服务...${NC}"
 
 ssh -p "${SERVER_PORT}" "${SERVER_USER}@${SERVER_IP}" << 'ENDSSH'
 set -e

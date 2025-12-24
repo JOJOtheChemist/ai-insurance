@@ -51,7 +51,7 @@ sleep 2
 
 # 启动工具后端 (端口 8000)
 echo -e "\n${YELLOW}2/4 启动工具后端服务 (端口 8000)...${NC}"
-cd ../insurance-product-viewer/backend
+cd ../insurance-product-backend/backend
 if [ -d "venv" ]; then
     source venv/bin/activate
 fi
@@ -67,7 +67,7 @@ if lsof -i:8000 > /dev/null 2>&1; then
   echo -e "  ${GREEN}✓ 工具后端服务运行正常 (端口 8000)${NC}"
 else
   echo -e "  ${RED}❌ 工具后端服务启动失败！${NC}"
-  echo -e "  ${YELLOW}查看日志: tail -f ../insurance-product-viewer/backend/backend.log${NC}"
+  echo -e "  ${YELLOW}查看日志: tail -f ../insurance-product-backend/backend/backend.log${NC}"
 fi
 
 # 启动后端 (端口 3001)
@@ -123,8 +123,7 @@ echo -e "  • ${GREEN}工具修复${NC}: 已自动连接 8000 端口的保险�
 
 echo -e "${YELLOW}💡 提示：${NC}"
 echo -e "  • 查看后端日志: ${BLUE}tail -f server.log${NC}"
-echo -e "  • 查看工具日志: ${BLUE}tail -f ../insurance-product-viewer/backend/backend.log${NC}"
+echo -e "  • 查看工具日志: ${BLUE}tail -f ../insurance-product-backend/backend/backend.log${NC}"
 echo -e "  • 查看前端日志: ${BLUE}tail -f /tmp/frontend-8890.log${NC}\n"
 
 echo -e "${GREEN}👉 请打开浏览器访问 http://localhost:8890 进行测试${NC}\n"
-

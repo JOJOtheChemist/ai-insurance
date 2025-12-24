@@ -32,13 +32,13 @@ rsync -avz --progress \
     --exclude 'dist' \
     kode-sdk/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/kode-sdk/
 
-# 上传 insurance-product-viewer 目录
+# 上传 insurance-product-backend 目录
 echo "  📦 上传 FastAPI 工具后端..."
 rsync -avz --progress \
     --exclude 'venv' \
     --exclude '__pycache__' \
     --exclude '*.log' \
-    insurance-product-viewer/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/insurance-product-viewer/
+    insurance-product-backend/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/insurance-product-backend/
 
 # 上传数据库文件
 echo "  📦 上传数据库文件..."
@@ -62,7 +62,7 @@ ssh ${REMOTE_USER}@${REMOTE_HOST} bash << 'ENDSSH'
     npm run build || true
     
     echo "  📦 设置 Python 虚拟环境..."
-    cd ../insurance-product-viewer/backend
+    cd ../insurance-product-backend/backend
     if [ ! -d "venv" ]; then
         python3 -m venv venv
     fi

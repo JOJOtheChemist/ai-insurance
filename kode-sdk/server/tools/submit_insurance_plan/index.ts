@@ -53,6 +53,44 @@ export const SubmitInsurancePlan = defineTool({
         const { targetClient, plan, reasoning } = args;
         const sessionId = context.sessionId;
 
+        // 🔍 Auto-lookup Product IDs
+        try {
+            // 1. Fetch all products to match against
+            // In a real production scenario, you might want to search by name individually or use a search API
+            // For now, we fetch the list to do an in-memory match which is faster for small datasets
+            const productRes = await fetch(`${API_CONFIG.BASE_URL}/api/products`);
+            if (productRes.ok) {
+                const productsData = await productRes.json() as any;
+                const allProducts = productsData.data || [];
+
+                // 2. Iterate and match
+                if (plan.products && Array.isArray(plan.products)) {
+                    plan.products = plan.products.map((p: any) => {
+                        // If ID already exists, skip
+                        if (p.id || p.product_id) return p;
+
+                        // fuzzy match mechanism could be added here, for now use exact or partial inclusion
+                        const match = allProducts.find((dbProd: any) =>
+                            dbProd.name === p.name ||
+                            dbProd.name.includes(p.name) ||
+                            p.name.includes(dbProd.name)
+                        );
+
+                        if (match) {
+                            console.log(`✅ [Auto-Match] Found ID for product "${p.name}": ${match.id}`);
+                            return { ...p, id: match.id, product_id: match.id };
+                        }
+
+                        console.warn(`⚠️ [Auto-Match] No ID found for product "${p.name}"`);
+                        return p;
+                    });
+                }
+            }
+        } catch (err) {
+            console.error('❌ Failed to auto-lookup product IDs:', err);
+            // Continue execution even if lookup fails
+        }
+
         try {
             const response = await fetch(`${API_CONFIG.BASE_URL}/api/v1/clients/submit-plan`, {
                 method: 'POST',

@@ -56,9 +56,9 @@ echo -e "${YELLOW}步骤 3/5: 同步后端代码到远程服务器...${NC}"
 rsync -avz --exclude 'node_modules' --exclude '*.log' --exclude '.kode' \
     ../kode-sdk/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/kode-sdk/
 
-# 上传 insurance-product-viewer 目录
+# 上传 insurance-product-backend 目录
 rsync -avz --exclude 'venv' --exclude '__pycache__' --exclude '*.log' \
-    ../insurance-product-viewer/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/insurance-product-viewer/
+    ../insurance-product-backend/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/insurance-product-backend/
 
 # 上传 .env 配置文件
 scp ../kode-sdk/.env ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PROJECT_DIR}/kode-sdk/.env
@@ -78,7 +78,7 @@ ssh ${REMOTE_USER}@${REMOTE_HOST} << 'ENDSSH'
     fi
     
     # 安装 Python 虚拟环境（如果需要）
-    cd ../insurance-product-viewer/backend
+    cd ../insurance-product-backend/backend
     if [ ! -d "venv" ]; then
         echo "  📦 创建 Python 虚拟环境..."
         python3 -m venv venv

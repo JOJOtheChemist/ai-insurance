@@ -7,8 +7,9 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# 安装必要的系统依赖
-RUN apk add --no-cache curl
+# 使用阿里云镜像源并安装必要依赖
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+    && apk add --no-cache curl
 
 # 复制package文件
 COPY package*.json ./

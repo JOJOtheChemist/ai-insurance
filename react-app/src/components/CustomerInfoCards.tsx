@@ -42,6 +42,8 @@ export interface CustomerProfile {
             coverage: string;
             type: string;
             reason?: string;
+            id?: string | number;
+            product_id?: string | number;
         }[];
         reasoning?: string;
         created_at?: string;

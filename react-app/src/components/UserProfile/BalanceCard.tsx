@@ -1,10 +1,16 @@
 import React from 'react';
+import { useUserStats } from '../../hooks/useUserStats';
 
 interface BalanceCardProps {
     onTopupClick: () => void;
 }
 
 const BalanceCard: React.FC<BalanceCardProps> = ({ onTopupClick }) => {
+    const { stats, loading } = useUserStats();
+
+    const displayBalance = loading ? '--' : (stats?.balance !== undefined ? stats.balance.toLocaleString() : '未知');
+    const displayConsumed = loading ? '--' : (stats?.tokens_consumed_today !== undefined ? stats.tokens_consumed_today : '--');
+
     return (
         <section className="relative z-10 px-4 mb-8">
             <div className="member-card p-6 flex flex-col justify-between min-h-[190px] relative overflow-hidden rounded-[24px] shadow-[0_12px_40px_-5px_rgba(31,41,55,0.4)]"
@@ -23,13 +29,13 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ onTopupClick }) => {
                     <div>
                         <div className="text-xs text-yellow-100/60 uppercase tracking-widest mb-2 font-bold">AI 算力余额 (Tokens)</div>
                         <div className="text-4xl font-black text-white flex items-baseline gap-1.5">
-                            2,450
+                            {displayBalance}
                             <span className="text-base font-medium text-yellow-100/60">点</span>
                         </div>
                     </div>
                     <div
                         className="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 flex items-center gap-2 cursor-pointer active:scale-95 transition-transform">
-                        <span className="text-xs text-yellow-100 font-bold">至 2025.12.31</span>
+                        <span className="text-xs text-yellow-100 font-bold">有效期 未知</span>
                         <i className="fa-solid fa-chevron-right text-[10px] text-yellow-100/50"></i>
                     </div>
                 </div>
@@ -38,7 +44,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ onTopupClick }) => {
                     <div className="flex flex-col">
                         <span className="text-xs text-yellow-100/80 font-medium">
                             <i className="fa-solid fa-fire text-orange-500 mr-1.5"></i>
-                            今日已消耗 320 点
+                            今日已消耗 {displayConsumed} 点
                         </span>
                     </div>
                     <button

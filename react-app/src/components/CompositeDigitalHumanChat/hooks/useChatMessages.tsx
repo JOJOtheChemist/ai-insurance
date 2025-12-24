@@ -105,7 +105,7 @@ export const useChatMessages = (props: UseChatMessagesProps) => {
 
         try {
             // 🔥 API URL Configuration
-            const API_HOST = (import.meta.env.VITE_CHAT_API_URL || 'http://127.0.0.1:3001').replace(/\/$/, '');
+            const API_HOST = (import.meta.env.VITE_CHAT_API_URL || '').replace(/\/$/, '');
             const chatUrl = `${API_HOST}/api/chat`;
 
             console.log('🚀 [Chat] Sending request to:', chatUrl);
@@ -287,50 +287,50 @@ export const useChatMessages = (props: UseChatMessagesProps) => {
         }
     }, [messages, stage, setStage, token, sessionId, selectedClient, user, renderMessageContent]);
 
-// Store the handleStartChat in ref so renderMessageContent can use it
-useEffect(() => {
-    handleStartChatRef.current = handleStartChat;
-}, [handleStartChat]);
+    // Store the handleStartChat in ref so renderMessageContent can use it
+    useEffect(() => {
+        handleStartChatRef.current = handleStartChat;
+    }, [handleStartChat]);
 
-// Sync history messages to local state when they change
-useEffect(() => {
-    console.log('[History Effect] Triggered:', {
-        historyMessagesLength: historyMessages?.length,
-        currentMessagesLength: messages.length,
-        currentStage: stage
-    });
+    // Sync history messages to local state when they change
+    useEffect(() => {
+        console.log('[History Effect] Triggered:', {
+            historyMessagesLength: historyMessages?.length,
+            currentMessagesLength: messages.length,
+            currentStage: stage
+        });
 
-    if (historyMessages && historyMessages.length > 0) {
-        console.log('[History Effect] Processing history messages...');
-        const formattedMessages: Message[] = historyMessages.map((msg: any) => ({
-            role: msg.role,
-            content: msg.role === 'ai'
-                ? (msg.hideBubble ? '' : renderMessageContent(msg.content))
-                : msg.content,
-            toolCalls: msg.toolCalls,
-            hideBubble: msg.hideBubble
-        }));
+        if (historyMessages && historyMessages.length > 0) {
+            console.log('[History Effect] Processing history messages...');
+            const formattedMessages: Message[] = historyMessages.map((msg: any) => ({
+                role: msg.role,
+                content: msg.role === 'ai'
+                    ? (msg.hideBubble ? '' : renderMessageContent(msg.content))
+                    : msg.content,
+                toolCalls: msg.toolCalls,
+                hideBubble: msg.hideBubble
+            }));
 
-        console.log('[History Effect] Formatted messages:', formattedMessages.length);
-        console.log('[History Effect] First message:', formattedMessages[0]);
+            console.log('[History Effect] Formatted messages:', formattedMessages.length);
+            console.log('[History Effect] First message:', formattedMessages[0]);
 
-        setMessages(formattedMessages);
+            setMessages(formattedMessages);
 
-        // If there are messages, transition directly to stage 2 (full screen efficiency mode)
-        if (formattedMessages.length > 0) {
-            console.log('[History Effect] Setting stage to 2 (full screen for history)');
-            setStage(2);
+            // If there are messages, transition directly to stage 2 (full screen efficiency mode)
+            if (formattedMessages.length > 0) {
+                console.log('[History Effect] Setting stage to 2 (full screen for history)');
+                setStage(2);
+            }
+        } else {
+            console.log('[History Effect] No history messages to process');
         }
-    } else {
-        console.log('[History Effect] No history messages to process');
-    }
-}, [historyMessages, renderMessageContent, setStage]);
+    }, [historyMessages, renderMessageContent, setStage]);
 
-return {
-    messages,
-    setMessages,
-    handleStartChat,
-    renderMessageContent,
-    reloadHistory
-};
+    return {
+        messages,
+        setMessages,
+        handleStartChat,
+        renderMessageContent,
+        reloadHistory
+    };
 };

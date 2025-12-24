@@ -17,6 +17,8 @@ from schemas.client import (
     SessionBindSchema
 )
 from services.client_service import ClientService
+from core.deps import get_current_user
+from models.user import User
 
 router = APIRouter(prefix="/clients", tags=["客户管理"])
 
@@ -38,20 +40,22 @@ async def submit_insurance_plan(data: PlanSubmissionSchema, db: Session = Depend
 
 @router.get("/sessions/history")
 async def get_grouped_chat_history(
-    salesperson_id: int = 1, # Default to 1 for now
-    db: Session = Depends(get_db)
+    salesperson_id: int = 1, # Deprecated: value ignored
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
     """
     获取分组的历史会话列表 - Refactored
     """
-    return ClientService.get_grouped_history(salesperson_id, db)
+    return ClientService.get_grouped_history(current_user.id, db)
 
 @router.get("/list")
 async def get_clients_list(
     salesperson_id: Optional[int] = None,
     limit: int = 100,
     offset: int = 0,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
     """
     获取客户列表
@@ -59,9 +63,8 @@ async def get_clients_list(
     """
     query = db.query(Client)
     
-    # 如果提供了销售人员ID，则筛选
-    if salesperson_id:
-        query = query.filter(Client.salesperson_id == salesperson_id)
+    # 强制仅显示当前登录销售的客户
+    query = query.filter(Client.salesperson_id == current_user.id)
     
     # 按更新时间倒序排列
     query = query.order_by(Client.update_time.desc())
@@ -96,7 +99,8 @@ async def search_clients(
     keyword: str,
     salesperson_id: Optional[int] = None,
     limit: int = 5,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
     """
     搜索客户 (按姓名模糊匹配)
@@ -106,8 +110,8 @@ async def search_clients(
 
     query = db.query(Client).filter(Client.name.ilike(f"%{keyword}%"))
     
-    if salesperson_id:
-        query = query.filter(Client.salesperson_id == salesperson_id)
+    # 强制过滤当前用户
+    query = query.filter(Client.salesperson_id == current_user.id)
         
     results = query.limit(limit).all()
     
@@ -136,11 +140,12 @@ async def search_clients(
     }
 
 @router.get("/{client_id}")
-async def get_client_detail(client_id: int, db: Session = Depends(get_db)):
+async def get_client_detail(client_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     """获取全景档案详情"""
-    client = db.query(Client).filter(Client.id == client_id).first()
+    # 增加权限校验
+    client = db.query(Client).filter(Client.id == client_id, Client.salesperson_id == current_user.id).first()
     if not client:
-        raise HTTPException(status_code=404, detail="Client not found")
+        raise HTTPException(status_code=404, detail="Client not found or access denied")
     
     return {
         "id": client.id,
@@ -222,14 +227,5 @@ async def client_sse_endpoint(session_id: str, user_id: Optional[str] = None):
     """
     return await sse_manager.subscribe(session_id=session_id, user_id=user_id)
 
-@router.get("/sse/{session_id}")
-async def client_sse_endpoint(session_id: str, user_id: Optional[str] = None):
-    """
-    建立SSE连接，监听客户信息更新
-    
-    Args:
-        session_id: 会话ID
-        user_id: 可选的用户ID
-    """
-    return await sse_manager.subscribe(session_id=session_id, user_id=user_id)
+
 

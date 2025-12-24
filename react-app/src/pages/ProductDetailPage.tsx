@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import {
     ProductHeader,
     TagsList,
@@ -32,10 +32,17 @@ const ProductDetailPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     // Custom back handler to return to product list tab
     const handleBack = () => {
-        // Navigate to the main page with state to active product list tab
+        // If we came from a specific location (e.g. chat), go back there
+        if (location.state?.from) {
+            navigate(location.state.from);
+            return;
+        }
+
+        // Default behavior: Navigate to the main page with state to active product list tab
         navigate('/', {
             state: { activeTab: '/product-list' },
             replace: true // Use replace to avoid building up history stack with back/forth

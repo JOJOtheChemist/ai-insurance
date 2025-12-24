@@ -39,7 +39,7 @@ export const useChatHistory = (sessionId: string | null, token: string | null) =
         setError(null);
 
         try {
-            const API_HOST = (import.meta.env.VITE_CHAT_API_URL || 'http://127.0.0.1:3001').replace(/\/$/, '');
+            const API_HOST = (import.meta.env.VITE_CHAT_API_URL || '').replace(/\/$/, '');
             const sessionUrl = `${API_HOST}/api/sessions/${sessionId}`;
 
             console.log('📜 [History] 加载历史消息:', sessionUrl);

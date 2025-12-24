@@ -48,7 +48,7 @@ sleep 2
 
 # 启动工具后端 (端口 8000)
 echo -e "\n${YELLOW}2/4 启动工具后端服务 (端口 8000)...${NC}"
-cd ../insurance-product-viewer/backend
+cd ../insurance-product-backend/backend
 # 检查是否存在虚拟环境并激活
 if [ -d "venv" ]; then
     source venv/bin/activate
@@ -97,9 +97,8 @@ echo -e "  • 用户隔离 - yeya 用户独立会话空间\n"
 
 echo -e "${YELLOW}💡 提示：${NC}"
 echo -e "  • 查看后端日志: ${BLUE}tail -f server.log${NC}"
-echo -e "  • 查看工具日志: ${BLUE}tail -f ../insurance-product-viewer/backend/backend.log${NC}"
+echo -e "  • 查看工具日志: ${BLUE}tail -f ../insurance-product-backend/backend/backend.log${NC}"
 echo -e "  • 查看前端日志: ${BLUE}tail -f /tmp/frontend-8890.log${NC}"
 echo -e "  • 停止所有服务: ${BLUE}pkill -f 'tsx.*server'; lsof -ti:8890 | xargs kill -9; lsof -ti:8000 | xargs kill -9${NC}\n"
 
 echo -e "${GREEN}👉 请打开浏览器访问上述页面进行测试${NC}\n"
-

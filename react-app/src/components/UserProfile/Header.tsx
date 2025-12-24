@@ -1,39 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import LogoutBottomSheet from './LogoutBottomSheet';
 
 
 const Header: React.FC = () => {
     const { user } = useAuth();
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+    // 获取用户名首字母作为头像
+    const getInitials = (name: string) => {
+        return name ? name.charAt(0).toUpperCase() : 'U';
+    };
 
     return (
-        <header className="relative z-10 px-5 pt-12 pb-4 flex justify-between items-center">
+        <header className="px-4 pt-12 pb-6 flex items-center justify-between relative z-10">
             <div className="flex items-center gap-4">
-                <div className="relative">
-                    <div className="w-20 h-20 rounded-full border-4 border-white shadow-sm overflow-hidden bg-gray-200">
-                        <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.username || 'SalesUser'}`} className="w-full h-full" alt="Avatar" />
-                    </div>
-                    <div
-                        className="absolute bottom-0 right-1 w-6 h-6 bg-gray-900 rounded-full border-2 border-white flex items-center justify-center text-white text-[12px]">
-                        <i className="fa-solid fa-camera"></i>
-                    </div>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl font-black shadow-lg shadow-orange-500/30 border-2 border-white">
+                    {getInitials(user?.username || 'User')}
                 </div>
-
-                <div>
-                    <h1 className="text-2xl font-black text-gray-900 leading-tight">{user?.username || '未登录'}</h1>
-                    <div className="flex items-center gap-2 mt-1.5">
-                        <span className="text-sm text-gray-500 font-medium">ID: {user?.id || '------'}</span>
-                        <span
-                            className="px-2 py-0.5 bg-gray-900 text-[#FDE68A] text-[10px] font-bold rounded flex items-center gap-1">
-                            <i className="fa-solid fa-crown"></i> PRO 会员
+                <div className="flex flex-col">
+                    <h1 className="text-2xl font-black text-gray-900 tracking-tight">
+                        {user?.username || '未登录用户'}
+                    </h1>
+                    <div className="flex items-center gap-2 mt-0.5">
+                        <span className="bg-orange-100 text-orange-600 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            黄金级会员
                         </span>
+                        <span className="text-[10px] font-bold text-gray-400">ID: {user?.id || '----'}</span>
                     </div>
                 </div>
             </div>
 
             <button
-                className="w-9 h-9 rounded-full bg-white text-gray-400 flex items-center justify-center shadow-sm border border-gray-100 hover:text-gray-600">
-                <i className="fa-solid fa-gear"></i>
+                onClick={() => {
+                    console.log('Opening Account Actions Sheet');
+                    setIsSheetOpen(true);
+                }}
+                className="w-12 h-12 rounded-full bg-white text-gray-400 flex items-center justify-center shadow-md border border-gray-100 hover:text-gray-600 active:bg-gray-100 active:scale-90 transition-all z-[100] relative cursor-pointer"
+                title="账户设置"
+            >
+                <i className="fa-solid fa-gear text-xl"></i>
             </button>
+
+            <LogoutBottomSheet
+                isOpen={isSheetOpen}
+                onClose={() => setIsSheetOpen(false)}
+            />
         </header>
     );
 };

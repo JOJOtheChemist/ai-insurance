@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import type { CustomerProfile } from '../CustomerInfoCards';
 
 interface InsuranceSchemePanelProps {
@@ -16,6 +17,16 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
             const index = Math.round(scrollLeft / (clientWidth * 0.70));
             setActiveSchemeIndex(index);
         }
+    };
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleProductClick = (productId?: string | number) => {
+        if (!productId) return;
+        navigate(`/product-detail/${productId}`, {
+            state: { from: location.pathname }
+        });
     };
 
     return (
@@ -110,7 +121,11 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                                 </h3>
                                 <div className="space-y-3">
                                     {proposedPlans[activeSchemeIndex].products.map((prod, pIdx) => (
-                                        <div key={pIdx} className={`p-3 border rounded-2xl flex items-center gap-3 ${prod.type === 'main' ? 'border-orange-200 bg-white shadow-sm' : 'border-gray-200 bg-white shadow-sm'}`}>
+                                        <div
+                                            key={pIdx}
+                                            onClick={() => handleProductClick(prod.id || prod.product_id)}
+                                            className={`p-3 border rounded-2xl flex items-center gap-3 cursor-pointer hover:shadow-md transition-all ${prod.type === 'main' ? 'border-orange-200 bg-white shadow-sm' : 'border-gray-200 bg-white shadow-sm'}`}
+                                        >
                                             <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${prod.type === 'main' ? 'bg-orange-100 text-orange-500' : 'bg-blue-50 text-blue-500'}`}>
                                                 <i className={`fa-solid ${prod.type === 'main' ? 'fa-heart-pulse' : 'fa-shield-halved'}`}></i>
                                             </div>
@@ -118,7 +133,10 @@ const InsuranceSchemePanel: React.FC<InsuranceSchemePanelProps> = ({ proposedPla
                                                 <p className="text-sm font-bold text-gray-700">{prod.name}</p>
                                                 <p className="text-xs text-gray-400">{prod.coverage} {prod.reason ? `· ${prod.reason}` : ''}</p>
                                             </div>
-                                            {prod.type === 'main' ? <i className="fa-solid fa-check-circle text-orange-500"></i> : <i className="fa-solid fa-plus-circle text-blue-500"></i>}
+                                            <div className="flex items-center gap-2">
+                                                {prod.type === 'main' ? <i className="fa-solid fa-check-circle text-orange-500"></i> : <i className="fa-solid fa-plus-circle text-blue-500"></i>}
+                                                <i className="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>

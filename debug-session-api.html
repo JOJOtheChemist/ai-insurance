@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Session History Debug Tool</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #2d2d2d;
+            border-radius: 5px;
+        }
+
+        .success {
+            color: #4ec9b0;
+        }
+
+        .error {
+            color: #f48771;
+        }
+
+        .warning {
+            color: #dcdcaa;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background: #0e639c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background: #1177bb;
+        }
+
+        pre {
+            background: #1e1e1e;
+            padding: 10px;
+            overflow-x: auto;
+            border-radius: 3px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #d4d4d4;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔍 Session History Debug Tool</h1>
+
+    <div class="section">
+        <h2>1. Check LocalStorage</h2>
+        <div id="localStorage-info"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Login to Get Token</h2>
+        <input type="text" id="username" placeholder="Username" value="demon" />
+        <input type="password" id="password" placeholder="Password" value="demon123" />
+        <button onclick="login()">Login</button>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Test Session API</h2>
+        <input type="text" id="sessionId" placeholder="Session ID" value="session-1766497101132"
+            style="width: 300px;" />
+        <button onclick="testSessionAPI()">Test API</button>
+        <div id="api-result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:3001';
+
+        // Check localStorage on load
+        function checkLocalStorage() {
+            const token = localStorage.getItem('auth_token');
+            const user = localStorage.getItem('auth_user');
+            const sessionId = localStorage.getItem('insure_chat_session_id');
+
+            const html = `
+                <div class="success">✓ Auth Token: ${token ? 'Present' : '<span class="error">Missing!</span>'}</div>
+                ${token ? `<pre>${token.substring(0, 50)}...</pre>` : ''}
+                <div class="success">✓ Auth User: ${user || '<span class="error">Missing!</span>'}</div>
+                <div class="success">✓ Session ID: ${sessionId || '<span class="error">Missing!</span>'}</div>
+            `;
+            document.getElementById('localStorage-info').innerHTML = html;
+        }
+
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('login-result');
+
+            try {
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.ok) {
+                    localStorage.setItem('auth_token', data.access_token);
+                    localStorage.setItem('auth_user', JSON.stringify(data.user));
+                    resultDiv.innerHTML = `<div class="success">✓ Login successful! Token saved to localStorage.</div><pre>${JSON.stringify(data.user, null, 2)}</pre>`;
+                    checkLocalStorage();
+                } else {
+                    resultDiv.innerHTML = `<div class="error">✗ Login failed: ${data.error}</div>`;
+                }
+            } catch (err) {
+                resultDiv.innerHTML = `<div class="error">✗ Error: ${err.message}</div>`;
+            }
+        }
+
+        async function testSessionAPI() {
+            const sessionId = document.getElementById('sessionId').value;
+            const token = localStorage.getItem('auth_token');
+            const resultDiv = document.getElementById('api-result');
+
+            if (!token) {
+                resultDiv.innerHTML = '<div class="error">✗ No auth token found! Please login first.</div>';
+                return;
+            }
+
+            try {
+                const url = `${API_BASE}/api/sessions/${sessionId}`;
+                console.log('Fetching:', url);
+
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.ok && data.session) {
+                    const messageCount = data.session.messages.length;
+                    const firstMsg = data.session.messages[0];
+                    const lastMsg = data.session.messages[messageCount - 1];
+
+                    resultDiv.innerHTML = `
+                        <div class="success">✓ API call successful!</div>
+                        <div class="success">✓ Session ID: ${data.session.id}</div>
+                        <div class="success">✓ Messages count: ${messageCount}</div>
+                        <h3>First Message:</h3>
+                        <pre>${JSON.stringify(firstMsg, null, 2)}</pre>
+                        <h3>Last Message:</h3>
+                        <pre>${JSON.stringify(lastMsg, null, 2)}</pre>
+                        <h3>Full Response:</h3>
+                        <pre>${JSON.stringify(data, null, 2).substring(0, 2000)}...</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">✗ API returned error: ${data.error || 'Unknown error'}</div><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (err) {
+                resultDiv.innerHTML = `<div class="error">✗ Fetch error: ${err.message}</div>`;
+            }
+        }
+
+        // Run on load
+        checkLocalStorage();
+    </script>
+</body>
+
+</html>

@@ -22,12 +22,12 @@ const ClientSelector: React.FC<ClientSelectorProps> = ({
         if (isOpen) {
             loadClients();
         }
-    }, [isOpen, salespersonId]);
+    }, [isOpen]);
 
     const loadClients = async () => {
         setLoading(true);
         try {
-            const response = await getClientsList(salespersonId);
+            const response = await getClientsList();
             if (response) {
                 setClients(response.clients);
             }
